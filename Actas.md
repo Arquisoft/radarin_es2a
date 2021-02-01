@@ -36,5 +36,9 @@
 
 ### Revisiones
 
-1. Actas
-2. Prueba git participantes
+1. Realización del acta.
+2. Prueba git participantes añadiendo los datos en el Readme.
+
+### Acuerdos adoctados para la próxima 
+1. Investigar sobre las herramientas de desarrollo de la aplicación para la próxima sesión (SOLID)
+2. Pensar sobre la funcionalidad de la aplicación y como se podrá desarrollar.
