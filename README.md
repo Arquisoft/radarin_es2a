@@ -43,3 +43,5 @@ You should be able to access the application in [http://localhost:3000](http://l
 - Eloy Alfredo Schmidt Rodríguez (UO271588)
 - Raúl López Calvo (UO263918)
 - Christian Díaz González (UO258427)
+- Javier González Fernández (UO245020)
+- Lucas Suarez Cabal (UO264423)
