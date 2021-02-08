@@ -42,3 +42,10 @@
 ### Acuerdos adoctados para la próxima 
 1. Investigar sobre las herramientas de desarrollo de la aplicación para la próxima sesión (SOLID)
 2. Pensar sobre la funcionalidad de la aplicación y como se podrá desarrollar.
+
+
+## Acta 2
+
+### Fecha
+
+**08-02-2021**
