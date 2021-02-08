@@ -45,4 +45,4 @@ You should be able to access the application in [http://localhost:3000](http://l
 - Christian Díaz González (UO258427)
 - Javier González Fernández (UO245020)
 - Lucas Suarez Cabal (UO264423)
-- Gaspar Pisa Eyaralar (UO250825)
+- Gaspar Pisa Eyaralar (UO250825) 
