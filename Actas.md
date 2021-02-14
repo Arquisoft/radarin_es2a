@@ -80,3 +80,33 @@
    Christian Díaz González - Constraints y Architectural Decisions.
 
 
+## Acta 3
+
+### Fecha
+
+**14-02-2021** :heart:
+
+### Participantes
+
+1. Lucas
+1. Laura
+1. Javier
+1. Raúl
+1. Christian
+1. Gaspar
+
+### Revisiones
+
+1. Realización del acta.
+2. Revisión del trabajo semanal.
+3. Discutidas las metas de calidad prioritarias.
+4. Acordamos el uso de React Native.
+5. Acordamos el uso de la API de Google Maps.
+
+
+### Acuerdos adoctados para la próxima reunión
+
+1. Crear una rama para cada punto de la documentación.
+2. Preguntar acerca de dónde se publican las actas.
+
+

@@ -48,13 +48,8 @@ relacionados.
 
 * Usabilidad de la documentación técnica teniendo en cuenta los registros de decisión arquitectónica
 * Calidad del código analizada tanto manual como automáticamente. Se tendrá en cuenta la cobertura de código en las pruebas así como la automatización de los procesos de despliegue y pruebas.
-
-
 * Estética y facilidad de uso por personas no técnicas
 * Seguridad y respeto a la privacidad de los usuarios
-* Capacidad de respuesta de la aplicación
-
-* Originalidad de la solución.
 
 
 [role="arc42help"]
