@@ -42,19 +42,33 @@ Hay muchas formas de describir los escenarios, por ejemplo:
 
 image:login.png["Vista en Tiempo de Ejecución del Login"]
 
-[plantuml,"Sequence diagram",png]
-----
-actor Alice
-actor Bob
-database Pod as "Bob's Pod"
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-Alice  --> Pod: Store route
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
-----
-=== <Runtime Scenario 2>
+=== <Ver Amigos>
 
-=== ...
 
-=== <Runtime Scenario n>
+* _El usuario entra en la aplicación_
+* _El usuario solicita ver a los amigos que tiene cercanos_
+* _Radarin le muestra la lista de amigos cercanos_
+* _El usuario selecciona información de un amigo en concreto_
+* _Radarin le muestra la información_
+
+image:verAmigos.png["Vista en Tiempo de Ejecución de la petición del usuario de ver a sus amigos"]
+
+=== <Añadir un Nuevo Amigo>
+
+
+* _El usuario entra en la aplicación_
+* _El usuario solicita añadir un nuevo amigo_
+* _El usuario introduce el nombre y el usuario del nuevo amigo_
+
+image:añadirNuevoAmigo.png["Vista en Tiempo de Ejecución de la petición del usuario de añadir a un nuevo amigo"]
+
+=== <Ver Amigos>
+
+
+* _El usuario entra en la aplicación_
+* _El usuario solicita ver a los amigos que tiene cercanos_
+* _Radarin le muestra la lista de amigos cercanos_
+* _El usuario selecciona información de un amigo en concreto_
+* _Radarin le muestra la información_
+
+image:verAmigos.png["Vista en Tiempo de Ejecución de la petición del usuario de ver a sus amigos"]
