@@ -1,31 +1,32 @@
 [[section-runtime-view]]
-== Runtime View
+== Vistas en Tiempo de Ejecución
 
 
 [role="arc42help"]
 ****
-.Contents
-The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios from the following areas:
+.Contenido
+Las vistas en tiempo de ejecución muestran el comportamiento y las interacciones del sistema en ciertos casos de uso de la aplicacion:
 
-* important use cases or features: how do building blocks execute them?
-* interactions at critical external interfaces: how do building blocks cooperate with users and neighboring systems?
-* operation and administration: launch, start-up, stop
-* error and exception scenarios
+* ¿Cómo se ejecutan los bloques de código? - Casos importantes o funciones de la app.
+* ¿Cómo interactuan estos bloques de código con los ususarios y los sistemas vecinos a este? - Interaciones de interfaces externas.
+* Operaciones y administración de la aplicación: lanzamiento de la app, pausar la app, iniciar la app, reiniciarla, etc.
+* Escenarios de errores y excepciones.
 
-Remark: The main criterion for the choice of possible scenarios (sequences, workflows) is their *architectural relevance*. It is *not* important to describe a large number of scenarios. You should rather document a representative selection.
+Importante: El criterio de elección de los escenarios viene escogido por su relevancia dentro de la arquitectura. No es importante describir muchos escenarios, si no que
+documentar correctamente y representativamente los seleccionados.
 
-.Motivation
-You should understand how (instances of) building blocks of your system perform their job and communicate at runtime.
-You will mainly capture scenarios in your documentation to communicate your architecture to stakeholders that are less willing or able to read and understand the static models (building block view, deployment view).
+.Motivación
+Se debería de entender como las instancias de los bloques de código de nuestro sistema realizan su trabajo y se comunican en tiempo de ejecución.
+Se deben de capturar escenarios en la documentación para mostrar la arquitectura a las demás personas con modelos estáticos que son fáciles de entender mediante vistas en tiempo de ejecución o vistas de bloque de código en funcionamiento.
 
-.Form
-There are many notations for describing scenarios, e.g.
+.Forma
+Hay muchas formas de describir los escenarios, por ejemplo:
 
-* numbered list of steps (in natural language)
-* activity diagrams or flow charts
-* sequence diagrams
-* BPMN or EPCs (event process chains)
-* state machines
+* En lenguaje natural, enumerar una lista de pasos.
+* Diagramas de actividad o de funcionamiento
+* Diagramas de secuencia
+* BPMN or EPCs (Cadenas de procesamiento de eventos)
+* Máquinas de estado
 * ...
 
 ****
