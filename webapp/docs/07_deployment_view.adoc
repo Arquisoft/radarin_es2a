@@ -36,16 +36,30 @@ El usuario, necesita su dispositov de confianza, este debe de estar conectado a 
 
 image:deploymentViewPC.png["Vista de implementación desde el ordenador"]
 
-Motivation::
+Motivación de la Vista::
 
-_<explanation in text form>_
+La motivación de esta vista de implementación es la de que el usuario pueda interactuar con la aplicación hecha en SOLID, interactuando así con sus amigos. Esta aplicación tiene el acceso al POD del usuario donde sus datos personales necesarios para el correcto funcionamiento de la aplicación serán almacenados.
 
-Quality and/or Performance Features::
+Calidad y/o Características de Rendimiento::
 
-_<explanation in text form>_
+La motivación de esta vista es que el usuario pueda interactuar con la aplicación desarrollada en SOLID para poder interactuar con sus amigos, lo cual quiere decir que la aplicación tendra acceso al POD del usuario para poder guardar yu obtener información sobre el usuario y sus amigos.
 
-Mapping of Building Blocks to Infrastructure::
-_<description of the mapping>_
+Mapeo de los Bloques utilizados en la Infraestructura::
+Los componentes que forman parte de esta infraestructura son los siguientes:
+
+* El ordenador del usuario, el cual será el dispositivo utilizado.
+
+* El navegador web el cual se encuentra dentro del ordenador del usuario.
+
+* La página web en la cual se mostrá nuestra aplicación.
+
+* El servidor web en el que GitHub Pages será el entorno de ejecución de la aplicación
+
+* El POD del usuario el cual viene dado por un proveedor de POD.
+
+* El servidor del POD el cual controlará el funcionamiento del POD.
+
+* La propia aplicación por sí misma
 
 
 === Infrastructure Level 2
