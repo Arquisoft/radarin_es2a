@@ -62,13 +62,11 @@ image:verAmigos.png["Vista en Tiempo de Ejecución de la petición del usuario d
 
 image:añadirNuevoAmigo.png["Vista en Tiempo de Ejecución de la petición del usuario de añadir a un nuevo amigo"]
 
-=== <Ver Amigos>
+=== <Eliminar un Amigo>
 
 
 * _El usuario entra en la aplicación_
-* _El usuario solicita ver a los amigos que tiene cercanos_
-* _Radarin le muestra la lista de amigos cercanos_
-* _El usuario selecciona información de un amigo en concreto_
-* _Radarin le muestra la información_
+* _El usuario solicita eliminar un amigo_
+* _El usuario introduce el nombre de usuario del amigo que quiere eliminar_
 
-image:verAmigos.png["Vista en Tiempo de Ejecución de la petición del usuario de ver a sus amigos"]
+image:eliminarAmigo.png["Vista en Tiempo de Ejecución de la petición del usuario de eliminar a un amigo"]
