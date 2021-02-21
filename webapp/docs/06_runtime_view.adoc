@@ -31,7 +31,7 @@ Hay muchas formas de describir los escenarios, por ejemplo:
 
 ****
 
-=== <Login>
+=== Login
 
 
 * _El usuario entra en la aplicación_
@@ -42,7 +42,7 @@ Hay muchas formas de describir los escenarios, por ejemplo:
 
 image:login.png["Vista en Tiempo de Ejecución del Login"]
 
-=== <Ver Amigos>
+=== Ver Amigos
 
 
 * _El usuario entra en la aplicación_
@@ -53,7 +53,7 @@ image:login.png["Vista en Tiempo de Ejecución del Login"]
 
 image:verAmigos.png["Vista en Tiempo de Ejecución de la petición del usuario de ver a sus amigos"]
 
-=== <Añadir un Nuevo Amigo>
+=== Añadir un Nuevo Amigo
 
 
 * _El usuario entra en la aplicación_
@@ -62,7 +62,7 @@ image:verAmigos.png["Vista en Tiempo de Ejecución de la petición del usuario d
 
 image:añadirNuevoAmigo.png["Vista en Tiempo de Ejecución de la petición del usuario de añadir a un nuevo amigo"]
 
-=== <Eliminar un Amigo>
+=== Eliminar un Amigo
 
 
 * _El usuario entra en la aplicación_
