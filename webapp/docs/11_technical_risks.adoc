@@ -1,13 +1,21 @@
 [[section-technical-risks]]
 == Riesgos y deuda técnica
 
+La aplicación nos presenta una serie de riesgos a la hora de desarrollarla, que son los siguientes:
+
 |===
 
-| Cell in column 1, row 1 | Cell in column 2, row 1 | Cell 3 | Cell 4
+| Riesgo | Descripción del riesgo | Solución
 
-| Cell in column 1, row 2 | Cell in column 2, row 2 | Cell 3 | Cell 4
+|  Uso de Solid| El proyecto nos requiere utilizar Solid , una tecnología relativamente nueva que no dispone de demasiada documentación, por lo que pueden surgirnos problemas para los que nos sea difícil encontrar ayuda. | Investigar acerca de Solid para poder solucionar los inconvenientes surgidos.
 
-| Cell in column 1, row 3 | Cell in column 2, row 3 | Cell 3 | Cell 4
+|  Uso de React | Los desarrolladores nunca hemos utilizado React lo que nos puede provocar numerosos problemas  | La solución que tenemos es invertir tiempo para poder dominar React, buscando información y trabajando con el mismo.
+
+| Desarrollo en equipo | Trabajar en equipo puede darnos problemas a la hora de repartir equitativamente las tareas, de realizarlas, etc. | Realizar actas de las reuniones donde quede registrado claramente que debe hacer cada uno y las decisiones tomadas.
+
+| Organización del tiempo | Los miembros de este proyecto somos estudiantes de la Universidad, lo que hace que no podamos dedicar todo el tiempo exclusivamente al proyecto. | Intentar ser organizados y responsables para poder desarrollar el proyecto de una forma adecuadagit.
+
+
 
 |===
 
