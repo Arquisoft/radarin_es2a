@@ -1,24 +1,51 @@
 [[section-solution-strategy]]
-== Solution Strategy
+== Estrategia de Solución
 
 
-[role="arc42help"]
-****
-.Contents
-A short summary and explanation of the fundamental decisions and solution strategies, that shape the system's architecture. These include
 
-* technology decisions
-* decisions about the top-level decomposition of the system, e.g. usage of an architectural pattern or design pattern
-* decisions on how to achieve key quality goals
-* relevant organizational decisions, e.g. selecting a development process or delegating certain tasks to third parties.
 
-.Motivation
-These decisions form the cornerstones for your architecture. They are the basis for many other detailed decisions or implementation rules.
+.Contenido
+Para construir la aplicación, hemos escogido el lenguaje de programación Javascript, uno de los lenguajes más utilizados para construir aplicaciones web.
+También utilizaremos React, una biblioteca de Javascript que consideramos que nos permitirá hacer la aplicación de una forma más sencilla y ordenada que si
+utilizaramos Javascript puro.
 
-.Form
-Keep the explanation of these key decisions short.
+Para gestionar los datos de los usuarios utilizaremos los PODs de Solid, para darle al usuario la libertad de decidir que datos comparte, y cumplir con el requisito de compatibilidad con el proyecto Solid.
 
-Motivate what you have decided and why you decided that way,
-based upon your problem statement, the quality goals and key constraints.
-Refer to details in the following sections.
-****
+Como entorno de trabajo hemos decidido utilizar Visual Studio Code por su simplicidad.
+
+Para el control de versiones utilizaremos GitHub que nos facilitará el desarrollo del sistema por parte de todos los miembros del equipo.
+
+El sistema será desplegable desde contenedores docker y también estará desplegado en heroku para cumplir con el requisito correspondiente.
+
+Por último, hemos decidido utilizar la api de google maps para permitir a los usuarios recibir notificaciones de sus conocidos que se encuentren cerca de su ubicación.
+
+
+
+.Objetivos de calidad
+
+[cols=2*,options="header"]
+|===
+|Objetivo de calidad
+|Cómo lo obtendremos
+
+|Privacidad
+|Cumpliremos con este objetivo almacenando la mínima información posible, y mediante el uso de los PODs de Solid.
+
+|Usabilidad
+|Radarin tiene que ser una aplicación intuitiva, utilizaremos los conocimientos adquiridos durante la carrera para lograr dicho objetivo.
+
+|Portabilidad
+|Buscaremos que la aplicación tenga todas sus funcionaliades disponibles tanto en PC como en los dispositivos móviles desarrollando la aplicación para que sea compatible con ambos.
+
+|Fiabilidad
+|Desarrollaremos la aplicación buscando obtener una buena cobertura de código y realizando los cambios necesarios para conseguirla.
+|===
+
+
+
+.En cuanto a las decisiones de organización, hemos decidido:
+- Utilizar los issues de Github para registrar que parte del trabajo tenemos que hacer cada miembro del equipo, que nos queda por hacer, etc. 
+- Realizar reuniones mediante Teams para tomar decisiones, ver coomo vamos avanzando, etc. Realizaremos un acta de cada una de las reuniones que subiremos a nuestro repositorio de GitHub para que quede constancia de las mismas.
+- El uso de Whatsapp para concretar los horarios de las reuniones que llevaremos a cabo, o para cuando necesitemos comunicarnos de forma urgente con algún otro miembro del equipo.
+- Finalmente, decidimos realizar la documentación en español por comodidad.
+
