@@ -1,57 +1,71 @@
 [[section-runtime-view]]
-== Runtime View
-.............
+
 
 [role="arc42help"]
 ****
-.Contents
-The runtime view describes concrete behavior and interactions of the system’s building blocks in form of scenarios from the following areas:
+.Contenido
+Las vistas en tiempo de ejecución muestran el comportamiento y las interacciones del sistema en ciertos casos de uso de la aplicacion:
 
-* important use cases or features: how do building blocks execute them?
-* interactions at critical external interfaces: how do building blocks cooperate with users and neighboring systems?
-* operation and administration: launch, start-up, stop
-* error and exception scenarios
+* ¿Cómo se ejecutan los bloques de código? - Casos importantes o funciones de la app.
+* ¿Cómo interactuan estos bloques de código con los ususarios y los sistemas vecinos a este? - Interaciones de interfaces externas.
+* Operaciones y administración de la aplicación: lanzamiento de la app, pausar la app, iniciar la app, reiniciarla, etc.
+* Escenarios de errores y excepciones.
 
-Remark: The main criterion for the choice of possible scenarios (sequences, workflows) is their *architectural relevance*. It is *not* important to describe a large number of scenarios. You should rather document a representative selection.
+Importante: El criterio de elección de los escenarios viene escogido por su relevancia dentro de la arquitectura. No es importante describir muchos escenarios, si no que
+documentar correctamente y representativamente los seleccionados.
 
-.Motivation
-You should understand how (instances of) building blocks of your system perform their job and communicate at runtime.
-You will mainly capture scenarios in your documentation to communicate your architecture to stakeholders that are less willing or able to read and understand the static models (building block view, deployment view).
+.Motivación
+Se debería de entender como las instancias de los bloques de código de nuestro sistema realizan su trabajo y se comunican en tiempo de ejecución.
+Se deben de capturar escenarios en la documentación para mostrar la arquitectura a las demás personas con modelos estáticos que son fáciles de entender mediante vistas en tiempo de ejecución o vistas de bloque de código en funcionamiento.
 
-.Form
-There are many notations for describing scenarios, e.g.
+.Forma
+Hay muchas formas de describir los escenarios, por ejemplo:
 
-* numbered list of steps (in natural language)
-* activity diagrams or flow charts
-* sequence diagrams
-* BPMN or EPCs (event process chains)
-* state machines
+* En lenguaje natural, enumerar una lista de pasos.
+* Diagramas de actividad o de funcionamiento
+* Diagramas de secuencia
+* BPMN or EPCs (Cadenas de procesamiento de eventos)
+* Máquinas de estado
 * ...
 
 ****
 
-=== <Runtime Scenario 1>
+=== Login
 
 
-* _<insert runtime diagram or textual description of the scenario>_
-* _<insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.>_
+* _El usuario entra en la aplicación_
+* _El usuario selecciona el proveedor de Pod que desea utilizar_
+* _El usuario introduce sus creedenciales de usuario_
+* _El usuario le da al botón de logearse_
+* _En el caso de que el usuario se logue correctamente se le mostrará una vista, en el caso de logearse incorrectamente, al usuario se le mostrará otra vista_
 
-It is possible to use a sequence diagram:
+image:login.png["Vista en Tiempo de Ejecución del Login"]
 
-[plantuml,"Sequence diagram",png]
-----
-actor Alice
-actor Bob
-database Pod as "Bob's Pod"
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-Alice  --> Pod: Store route
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
-----
-=== <Runtime Scenario 2>
+=== Ver Amigos
 
-=== ...
 
-=== <Runtime Scenario n>
+* _El usuario entra en la aplicación_
+* _El usuario solicita ver a los amigos que tiene cercanos_
+* _Radarin le muestra la lista de amigos cercanos_
+* _El usuario selecciona información de un amigo en concreto_
+* _Radarin le muestra la información_
+
+image:verAmigos.png["Vista en Tiempo de Ejecución de la petición del usuario de ver a sus amigos"]
+
+=== Añadir un Nuevo Amigo
+
+
+* _El usuario entra en la aplicación_
+* _El usuario solicita añadir un nuevo amigo_
+* _El usuario introduce el nombre y el usuario del nuevo amigo_
+
+image:añadirNuevoAmigo.png["Vista en Tiempo de Ejecución de la petición del usuario de añadir a un nuevo amigo"]
+
+=== Eliminar un Amigo
+
+
+* _El usuario entra en la aplicación_
+* _El usuario solicita eliminar un amigo_
+* _El usuario introduce el nombre de usuario del amigo que quiere eliminar_
+
+image:eliminarAmigo.png["Vista en Tiempo de Ejecución de la petición del usuario de eliminar a un amigo"]
