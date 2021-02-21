@@ -1,86 +1,97 @@
 [[section-deployment-view]]
 
 
-== Deployment View
+== Vista de Implementación
 
 [role="arc42help"]
 ****
-.Content
-The deployment view describes:
+.Contenido
+La vista de implementación describe lo siguiente:
 
- 1. the technical infrastructure used to execute your system, with infrastructure elements like geographical locations, environments, computers, processors, channels and net topologies as well as other infrastructure elements and
+1. La infrastructura técnica utilizada para ejecutar el sistema, con elementos de esta como localizaciones geográficas, ordenadores, procesadores, canales y topologias asi como otros elementos de la infraestructura.
 
-2. the mapping of (software) building blocks to that infrastructure elements.
+2. El mapeo del software a elementos infraestructurales
 
-Often systems are executed in different environments, e.g. development environment, test environment, production environment. In such cases you should document all relevant environments.
+Habitualmente, los sistemas son ejecutados en distintos medios, como por ejemplo, en ambientes de desarrollo, de pruebas o de producción. En estos casos, se deben de documentar todos los ambientes importantes.
 
-Especially document the deployment view when your software is executed as distributed system with more then one computer, processor, server or container or when you design and construct your own hardware processors and chips.
+Especialmente el documento de la vista de implementación se utiliza cuando el software es ejecutado con más de un ordenador, procesador, servidor o contenedor o cuando se diseña tu propio hardware y chips.
 
-From a software perspective it is sufficient to capture those elements of the infrastructure that are needed to show the deployment of your building blocks. Hardware architects can go beyond that and describe the infrastructure to any level of detail they need to capture.
+Desde una perspectiva del software es suficiente con capturar esos elementos de la infraestructura que son necesarios para mostrar la implementación de los bloques construidos. Los arquitectos del Hardware pueden ir a través de estas infraestructuras hasta llegar a cualquier nivel de detalle que ellos consideren necesario capturar.
 
-.Motivation
-Software does not run without hardware.
-This underlying infrastructure can and will influence your system and/or some
-cross-cutting concepts. Therefore, you need to know the infrastructure.
+.Motivación
+El Software no puede funcionar sin el Hardware. 
+Esta infraestructura puede y va a influenciar el sistema o algunos conceptos, debido a esto, debemos de conocer correctamente la infraestructura utilizada.
 
-.Form
+.Forma
 
-Maybe the highest level deployment diagram is already contained in section 3.2. as
-technical context with your own infrastructure as ONE black box. In this section you will
-zoom into this black box using additional deployment diagrams:
-
-* UML offers deployment diagrams to express that view. Use it, probably with nested diagrams,
-when your infrastructure is more complex.
-* When your (hardware) stakeholders prefer other kinds of diagrams rather than the deployment diagram, let them use any kind that is able to show nodes and channels of the infrastructure.
+Probablemente, el nivel mas alto del diagrama de implementación se encuentra en la sección 3.2 como hemos visto con anterioridad. Este diagrama lo podemos interpretar como UNA caja negra. Los diagramas que se explicarán a continuación, se adentran dentro de esta caja negra utilizando diagramas de implementación mediante UMLs.
 ****
 
 === Infrastructure Level 1
 
 [role="arc42help"]
 ****
-Describe (usually in a combination of diagrams, tables, and text):
-
-*  the distribution of your system to multiple locations, environments, computers, processors, .. as well as the physical connections between them
-*  important justification or motivation for this deployment structure
-* Quality and/or performance features of the infrastructure
-*  the mapping of software artifacts to elements of the infrastructure
-
-For multiple environments or alternative deployments please copy that section of arc42 for all relevant environments.
+El usuario, necesita su dispositivo de confianza, este debe de estar conectado a internet ya que sin este no podrá funcionar correctamente. Para ello, se necesita un navegador Web para el funcionamiento de este. En el caso de este diagrama que se mostrará a continuación, se utilizará un PC para ello. En el caso del navegador web, los recomenados son los más actualizados que existen hoy en día, Firefox o Google Chrome ya que también serán los que utilicemos para probar nuestra apliación. En nuestro caso en concreto, utilizaremos GitHub Pages para la implementación de la aplicación. Un POD utilizando SOLID sera necesario para utilizar la aplicación, en el cual se guardaran los permisos y las funciones necesarias para el correcto funcionamientos de esta. El POD se encontrará en un servidor el cual es accesible desde cualquier lugar en el que nos encontremos.
 ****
 
-_**<Overview Diagram>**_
+image:deploymentViewPC.png["Vista de implementación desde el ordenador"]
 
-Motivation::
+Motivación de la Vista::
 
-_<explanation in text form>_
+La motivación de esta vista de implementación es la de que el usuario pueda interactuar con la aplicación hecha en SOLID, interactuando así con sus amigos. Esta aplicación tiene el acceso al POD del usuario donde sus datos personales necesarios para el correcto funcionamiento de la aplicación serán almacenados.
 
-Quality and/or Performance Features::
+Calidad y/o Características de Rendimiento::
 
-_<explanation in text form>_
+La motivación de esta vista es que el usuario pueda interactuar con la aplicación desarrollada en SOLID para poder interactuar con sus amigos, lo cual quiere decir que la aplicación tendra acceso al POD del usuario para poder guardar yu obtener información sobre el usuario y sus amigos.
 
-Mapping of Building Blocks to Infrastructure::
-_<description of the mapping>_
+Mapeo de los Bloques utilizados en la Infraestructura::
+Los componentes que forman parte de esta infraestructura son los siguientes:
+
+* El ordenador del usuario, el cual será el dispositivo utilizado.
+
+* El navegador web el cual se encuentra dentro del ordenador del usuario.
+
+* La página web en la cual se mostrá nuestra aplicación.
+
+* El servidor web en el que GitHub Pages será el entorno de ejecución de la aplicación
+
+* El POD del usuario el cual viene dado por un proveedor de POD.
+
+* El servidor del POD el cual controlará el funcionamiento del POD.
+
+* La propia aplicación por sí misma
 
 
 === Infrastructure Level 2
 
 [role="arc42help"]
 ****
-Here you can include the internal structure of (some) infrastructure elements from level 1.
-
-Please copy the structure from level 1 for each selected element.
+El usuario, necesita su dispositivo de confianza, este debe de estar conectado a internet ya que sin este no podrá funcionar correctamente. Para ello, se necesita un navegador Web para el funcionamiento de este. En el caso de este diagrama que se mostrará a continuación, se utilizará un móvil para ello. En el caso del navegador web, los recomenados son los más actualizados que existen hoy en día, Firefox o Google Chrome ya que también serán los que utilicemos para probar nuestra apliación. En nuestro caso en concreto, utilizaremos GitHub Pages para la implementación de la aplicación. Un POD utilizando SOLID sera necesario para utilizar la aplicación, en el cual se guardaran los permisos y las funciones necesarias para el correcto funcionamientos de esta. El POD se encontrará en un servidor el cual es accesible desde cualquier lugar en el que nos encontremos.
 ****
 
-==== _<Infrastructure Element 1>_
+image:deploymentViewMovil.png["Vista de implementación desde el móvil"]
 
-_<diagram + explanation>_
+Motivación de la Vista::
 
-==== _<Infrastructure Element 2>_
+La motivación de esta vista de implementación es la de que el usuario pueda interactuar con la aplicación hecha en SOLID, interactuando así con sus amigos. Esta aplicación tiene el acceso al POD del usuario donde sus datos personales necesarios para el correcto funcionamiento de la aplicación serán almacenados.
 
-_<diagram + explanation>_
+Calidad y/o Características de Rendimiento::
 
-...
+La motivación de esta vista es que el usuario pueda interactuar con la aplicación desarrollada en SOLID para poder interactuar con sus amigos, lo cual quiere decir que la aplicación tendra acceso al POD del usuario para poder guardar yu obtener información sobre el usuario y sus amigos.
 
-==== _<Infrastructure Element n>_
+Mapeo de los Bloques utilizados en la Infraestructura::
+Los componentes que forman parte de esta infraestructura son los siguientes:
 
-_<diagram + explanation>_
+* El móvil del usuario, el cual será el dispositivo utilizado.
+
+* El navegador web el cual se encuentra dentro del móvil del usuario.
+
+* La página web en la cual se mostrá nuestra aplicación.
+
+* El servidor web en el que GitHub Pages será el entorno de ejecución de la aplicación
+
+* El POD del usuario el cual viene dado por un proveedor de POD.
+
+* El servidor del POD el cual controlará el funcionamiento del POD.
+
+* La propia aplicación por sí misma

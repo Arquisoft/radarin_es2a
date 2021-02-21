@@ -1,19 +1,39 @@
 [[section-architecture-constraints]]
-== Architecture Constraints
+
+== Restricciones de Arquitectura
+
+=== Restricciones técnicas
+[width="100%",options="header"]
+|====================
+| Id | Restricción | Descripción 
+| RT1 | Aplicación para dispositivos móviles | La aplicación debe ser soportada por dispositivos móviles, ya sea que mediante una página web o la realización de una aplicación específica para éstos.
+| RT2 | Almacenamiento con Solid | Será fundamental el uso de Solid, que permitirá a los usuarios almacenar sus datos de una forma segura en almacenes de datos descentralizados(Pods).
+| RT3 | Almacenamiento mínimo | Sólo se almacenarán localizaciones e instantes de tiempo en los que éstas han ocurrido, tratando de evitar en todo momento el guardado de información personal del usuario (sólo se almacenarán aquellos datos esenciales). Esta restricción se relaciona directamente con la anterior, puesto que es uno de los objetivos de Solid.
+| RT4 | Empleo de geolocalización | La aplicación podrá acceder a la información de localización del teléfono móvil del usuario siempre que éste lo permita.
+| RT5 | Sistema de listado de amigos | La aplicación ha de permitir que un usuario tenga un listado de amigos, de manera que éstos puedan saber cuándo están cerca entre ellos.
+| RT6 | Uso de Docker y servicio en la nube | El sistema ha de ser desplegable en contenedores Docker, así como en algún servicio en la nube (ej:heroku).
+| RT7 | Monitorización | La aplicación debe tener un sistema de monitorización para evaluar la salud y el rendimiento de todo el sistema.
+| RP8 | Desarollo de pruebas | Se realizarán pruebas unitarias, de carga y aceptación que se ejecutarán de forma automatizada a traves de un servidor de integración continua.
+|====================
+
+=== Restricciones Organizativas
+[width="100%",options="header"]
+|====================
+| Id | Restricción | Descripción  
+| RO1 | Fecha de entrega | El proyecto tiene como fecha límite el 03/05/2021. 
+| RO2 | Tamaño del equipo de desarrollo | El proyecto será realizado por un equipo de 6 personas.
+| RO3 | Front-End y Back-End | Debido a que va a haber integrantes del equipo que tengan que hacer front-end y otros back-end, puede ser que estos últimos tengan que esperar a que esté hecha la parte del front-end para poder unirla a su parte de back-end.
+| RO4 | Aplicación elaborada en ordenadores diferentes  | Debido a que cada integrante del equipo tiene un pc diferente, es posible que las condiciones de algunos de los miembros no sean las idóneas durante la realización del proyecto. A su vez, se pueden dar problemas ajenos al pc(ej:conexión a internet, apagón,etc) que puedan alterar el desarrollo.
 
 
-[role="arc42help"]
-****
-.Contents
-Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
+|====================
 
-.Motivation
-Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
-Constraints must always be dealt with; they may be negotiable, though.
-
-.Form
-Simple tables of constraints with explanations.
-If needed you can subdivide them into
-technical constraints, organizational and political constraints and
-conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
-****
+=== Restricciones Políticas
+[width="100%",options="header"]
+|====================
+| Id | Restricción | Descripción  
+| RP1 | Visual Studio Code como entorno de trabajo | Debido a su simplicidad de uso y a la extensa capacidad que ofrece gracias a sus extensiones, se hará uso de Visual Studio Code como entorno de trabajo.
+| RP2 | Documentación | A lo largo de la vida del proyecto se irá haciendo una documentación exahustiva siguiendo la estructura de Arc42 y haciendo uso de AsciiDoctor.
+| RP3 | Github como repositorio remoto | Todos los cambios que se van realizando se tendrán que ir reflejando en el repositorio, habiendo solicitado antes una "pull request".
+| RP4 | Empleo de diferentes ramas | No se subirá a la rama master nada hasta que una versión no sea finalizada al completo. De esta manera, evitamos que en la rama master pueda haber errores no deseados. Cada nueva funcionalidad podrá ser implementada a partir de la rama develop (hija de la rama master) o de multitud de subramas que partiran de develop.
+|====================

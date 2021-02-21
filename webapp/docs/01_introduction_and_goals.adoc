@@ -1,75 +1,42 @@
 [[section-introduction-and-goals]]
-== Introduction and Goals
+== Introducción y Objetivos
 
-[role="arc42help"]
-****
-Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
+El proyecto radarin_es2a se centra en aprender y aplicar los conceptos fundamentales de la arquitectura del software. Para ello se desarrollará una aplicación web cuyo objetivo es facilitar encuentros entre amigos en base a su posición GPS. Por otro lado, el sistema será compatible con el proyecto SOLID, manteniendo los datos del usuario descentralizados.
 
-* underlying business goals, essential features and functional requirements for the system
-* quality goals for the architecture
-* relevant stakeholders and their expectations
-****
+=== Vista de Requisitos
 
-=== Requirements Overview
+Requisitos funcionales:
 
-[role="arc42help"]
-****
-.Contents
-Short description of the functional requirements, driving forces, extract (or abstract)
-of requirements. Link to (hopefully existing) requirements documents
-(with version number and information where to find it).
+* Acceso únicamente a los datos imprescindibles, localización y tiempo. Almacenados de forma descentralizada en el POD del usuario.
+* Aplicación Web funcionando en un servidor, que permitirá a los usuarios:
+** Gestionar y visualizar sus localizaciones.
+** Administrar usuarios.
+** Monitorizar el estado del servidor.
+* Aplicación para el dispositivo móvil del usuario, capaz de :
+** Obtener localizaciones y enviarlas al servidor.
+** Notificar al usuario acerca de contactos cercanos.
 
-.Motivation
-From the point of view of the end users a system is created or modified to
-improve support of a business activity and/or improve the quality.
+=== Objetivos de Calidad
 
-.Form
-Short textual description, probably in tabular use-case format.
-If requirements documents exist this overview should refer to these documents.
 
-Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
-****
+.Objetivos de calidad
+[options="header",cols="1,2"]
+|===
+|*Objetivo*|*Motivación*
+| _Privacidad_ | Respeto por los datos de caracter privado de los usuarios
+| _Usabilidad documental_ | Proporcionar documentación actualizada y acorde con el desarrollo, de acuerdo a los registros de decisión arquitectónica.
+| _Facilidad de uso_ | Interfaz accesible, amigable y manejo sencillo para personas no técnicas.
+| _QA_ | Asegurar la calidad del código mediante pruebas manuales y automáticas. Teniendo en cuenta la cobertura del código.
+|===
 
-=== Quality Goals
+=== Partes interesadas (Stakeholders)
 
-[role="arc42help"]
-****
-.Contents
-The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don't confuse them with project goals. They are not necessarily identical.
-
-.Motivation
-You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.
-If you as an architect do not know how the quality of your work will be judged …
-
-.Form
-A table with quality goals and concrete scenarios, ordered by priorities
-****
-
-=== Stakeholders
-
-[role="arc42help"]
-****
-.Contents
-Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that
-
-* should know the architecture
-* have to be convinced of the architecture
-* have to work with the architecture or with code
-* need the documentation of the architecture for their work
-* have to come up with decisions about the system or its development
-
-.Motivation
-You should know all parties involved in development of the system or affected by the system.
-Otherwise, you may get nasty surprises later in the development process.
-These stakeholders determine the extent and the level of detail of your work and its results.
-
-.Form
-Table with role names, person names, and their expectations with respect to the architecture and its documentation.
-****
-
+.Stakeholders
 [options="header",cols="1,2,2"]
 |===
-|Role/Name|Contact|Expectations
-| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
+|Rol/Nombre|Contacto|Expectativas
+| Desarrolladores | Se trata de los alumnos encargados de finalizar el proyecto como parte de su evaluación. | Adquisición de conocimientos de Arquitectura.
+| Profesores | Han planteado las guías para la realización del proyecto. Son los encargados de la evaluación del mismo. | Conseguir que los alumnos tengan en cuenta la arquitectura del software a la hora de desarrollar proyectos.
+| Inrupt | Se trata de la compañía fundada por Tim Berners-Lee, cuyo objetivo es fomentar el desarrollo y la utilización de SOLID. | Dar a conocer el proyecto SOLID
+| Usuarios | Cualquier persona que quiera compartir su localización con sus contacto. | Contar con aplicaciones de calidad y que respetan la privacidad de los usuarios.
 |===

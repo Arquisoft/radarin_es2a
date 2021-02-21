@@ -1,5 +1,4 @@
 [[section-runtime-view]]
-== Vistas en Tiempo de Ejecución
 
 
 [role="arc42help"]
