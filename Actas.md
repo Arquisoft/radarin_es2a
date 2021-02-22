@@ -109,4 +109,51 @@
 1. Crear una rama para cada punto de la documentación.
 2. Preguntar acerca de dónde se publican las actas.
 
+### Fecha
 
+**21-02-2021**
+
+### Participantes
+
+1. Lucas
+1. Laura
+1. Javier
+1. Raúl
+1. Christian
+1. Gaspar
+
+### Revisiones
+
+1. Realización del acta.
+2. Revisión del trabajo semanal.
+3. Revisión del trabajo realizado por cada miemrbo en la parte de la documentación.
+4. Realización de un merge a la capa master con toda la documentación del proyecto.
+
+
+### Acuerdos adoptados para la próxima reunión
+
+1. Comprobar el correcto funcionamiento del trabajo de cada miembro
+
+### Fecha
+
+**22-02-2021**
+
+### Participantes
+
+1. Lucas
+1. Laura
+1. Javier
+1. Raúl
+1. Christian
+1. Gaspar
+
+### Revisiones
+
+1. Realización del acta.
+2. Revisión de la documentación realizada por cada miembro.
+
+
+### Acuerdos adoptados para la próxima reunión
+
+1. Realizar los cambios para arreglar los problemas vistos en la documentación, mediante issues que cada miembro se ha de asignar.
+2. Realizar una reunión de comprobación de los arreglos de la documentación realizados antes de la próxima reunión de clase.
