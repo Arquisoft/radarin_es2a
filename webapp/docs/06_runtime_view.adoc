@@ -59,6 +59,8 @@ image:verAmigos.png["Vista en Tiempo de Ejecución de la petición del usuario d
 * _El usuario entra en la aplicación_
 * _El usuario solicita añadir un nuevo amigo_
 * _El usuario introduce el nombre y el usuario del nuevo amigo_
+* _Radarin le muestra al usuario una vista mediante la cual podrá mandarle una solicitud de amistad al otro usuario_
+* _El usuario solicita mandar la solicitud de amistad y Radarin se la envía al Gestor de POD del otro usuario_
 
 image:añadirNuevoAmigo.png["Vista en Tiempo de Ejecución de la petición del usuario de añadir a un nuevo amigo"]
 
