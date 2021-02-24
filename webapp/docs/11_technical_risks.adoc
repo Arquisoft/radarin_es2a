@@ -21,9 +21,12 @@ La aplicación nos presenta una serie de riesgos a la hora de desarrollarla, que
 
 === Deuda Técnica
 
-·En esta sección,incluimos las distintas deudas técnicas que consideramos que nos van a surgir:
+En esta sección,incluimos las distintas deudas técnicas que consideramos que nos van a surgir:
+
 
 ·El uso de GitHub nos puede llevar a tener conflictos a la hora de fusionar las distintas ramas, y a problemas para poder solucionar dichos conflictos. 
+
+
 ·La falta de documentación en las bibliotecas de Solid y la falta de experiencia de los integrantes del equipo con esta tecnología
 
 
