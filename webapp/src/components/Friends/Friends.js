@@ -13,7 +13,7 @@ const Friends = () => {
     return (
       <DocumentTitle title="Friends">
         <div className="prueba">
-          <h2 className="h2" data-testId="label">Tus amigos, <Value src="Javier" /> </h2>
+          <h2 className="h2" data-testId="label">Estos son tus amigos, <Value src="Javier" /> </h2>
           <h4 class="card-title" id="addFriend" data-testId="addFriend">Añade tus amigos</h4>
           <div class="wrap">
             <div class="search">

@@ -22,19 +22,16 @@ class App extends React.Component{
           <img src={logo} className="App-logo" alt="logo"/>
           <Welcome name="ASW students"/>
         </header>
-       
-      </div>
+    <div className="panelAmigos" data-testid="friendsPart">
+            <Friends />
+        </div>
+    </div>
     )
   }
-
-
-  PanelAmigos = () => {
-    return (
-        <nav className="leftPanel_leftPart" data-testid="friendsPart">
-            <Friends />
-        </nav>
-    );
-};
 }
+
+
+
+
 
 export default App;
