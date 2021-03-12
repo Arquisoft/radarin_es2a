@@ -5,45 +5,14 @@ image::08-Crosscutting-Concepts-Structure-EN.png[]
 
 === User Experience concepts (UX)
 
-==User interface
+=== User interface
 Radarin tendra una interfaz de usuario sencilla que facilitara su uso de todos los usuarios aunque no esten familiarizados con su uso,
 se seguiran los estandares de diseño de UI apropiados para cada seccion de la aplicación. Además, queremos usar la libreria bootrap para
 el diseño de Radarin.
 
-==Domain concepts
+=== Domain concepts
 
-[plantuml,"Domain concepts",png]
-----
-@startuml
-class User{
-   mediaUser: Media
-   position: Position
-   hasFriends(): boolean
-}
-
-class Position{
-   latitude: String
-   altitude: String
-}
-
-class Media{
-   photo: String
-   name: String
-   surname: String
-   usernme: String
-}
-
-class FriendShip{
-   userA: User
-   userB: User
-   isAccepted(): boolean
-}
-
-User --- Media
-User --- Position
-FriendShip o-- "2" User
-@enduml
-----
+image::domain_concepts.JPG[Domain Concepts]
 
 [cols="1,3"] 
 |===
@@ -58,9 +27,11 @@ FriendShip o-- "2" User
 |FriendShip
 |Se encarga de manejar las amistades entre dos usuarios en la aplicacion
 
+|Location
+|Almacena la altitud y la latitud para asi proporcionar una ubicacion
+
 |===
 
-----
 
 === Safety and security
 
@@ -73,6 +44,3 @@ de descentralizar la aplicacion usando solid pods, garantiza que los usuarios ti
 La arquitectura utilizada para esta aplicacion sera el parton Modelo Vista Controlador (MVC) debido a que es mas facil de distinguir la capa de negocio de 
 la logica de la aplicacion, haciendo mucho mas facil su lectura de codigo y sus actualizaciones. 
 
-=== Internacionalization
-
-Preguntar en el acta si vamos a internacionalizar la aplicacion

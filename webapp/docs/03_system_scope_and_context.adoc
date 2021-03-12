@@ -3,7 +3,6 @@
 
 
 .Context and Scope
-image::08-Crosscutting-Concepts-Structure-EN.png[]
 El objetivo de esta aplicacion (Radarin) es conseguir que sus usuarios puedan comunicarse y reunirse simpre y cuando estén cerca de ti. La informacion
 de los usuarios estara descentralizada gracias a pods de solid. La aplicacion estará disponible en dispositivos moviles gracias al uso de React
 Native.
