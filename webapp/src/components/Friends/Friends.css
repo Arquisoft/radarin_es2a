@@ -48,8 +48,8 @@
     height: 2.3em;
     border-radius: 5px 0 0 5px;
     outline: none;
-    color: #9DBFAF;
-    background-color: #f8f9fa;
+    color: #9f9dbf;
+    background-color: #f8f8fa;
 }
 
 .searchTerm:focus {
