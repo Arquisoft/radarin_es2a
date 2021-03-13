@@ -9,7 +9,6 @@ const mapStyles = {
     }
 };
 
-
 export class MyLocation extends React.Component {
     constructor(props){
         super(props);
@@ -44,7 +43,7 @@ export class MyLocation extends React.Component {
         }
     }
 
-    /* Si el servidor de google no funciona correctamente */
+    /* Si el servidor de google no funciona correctamente o es necesario recentrar el mapa */
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.google !== this.props.google){
             this.loadMap();
