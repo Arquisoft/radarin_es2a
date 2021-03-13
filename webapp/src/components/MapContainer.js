@@ -3,10 +3,6 @@ import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import credentials from '../api/credentials'
 import MyLocation from './MyLocation'
 
-const latitudes = [43.484117, 43.481026, 43.483089];
-const longitudes = [-5.435590, -5.429485, -5.444645];
-const personas = ['Lucas', 'Christian', 'Gaspar'];
-
 
 // Propiedades por defecto de la ubicacion del usuario:
 MyLocation.defaultProps = {
