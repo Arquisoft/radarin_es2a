@@ -83,7 +83,9 @@ export class MapContainer extends Component {
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
+          onClose={this.onClose}export default{
+    mapsKey: 'AIzaSyB0L-Y8pLtMN59qzpETrM4DMIPFR6XKNpo'
+}
         >
           <div>
             <h4>{this.state.selectedPlace.name}</h4>
