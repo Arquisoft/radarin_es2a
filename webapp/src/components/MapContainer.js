@@ -3,28 +3,26 @@ import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import credentials from '../api/credentials'
 import MyLocation from './MyLocation'
 
-
-
-
-//--------------------------------------------
-
-
-const mapStyles = {
-  width: '500px',
-  height: '500px'
+// Propiedades por defecto del marcador del usuario:
+MyLocation.defaultProps = {
+  zoom: 5,
+  initialCenter: {
+    lat: 43.355008507725366,
+    lng: -5.851265172858888
+  },
+  centerAroundCurrentLocation: false,
+  visible: true
 };
 
 export class MapContainer extends Component {
 
   state = {
-    showingInfoWindow: false,  // Hides or shows the InfoWindow
-    activeMarker: {},          // Shows the active marker upon click
-    selectedPlace: {}          // Shows the InfoWindow to the selected place upon a marker
+    showingInfoWindow: false,  // Oculta o muestra InfoWindow
+    activeMarker: {},          // Muestra el marcador activo al hacer clic
+    selectedPlace: {}          // Muestra la InfoWindow del lugar seleccionado sobre un marcador
   };
   
-  //-----------Eventos de Marcador e Informacion --------------
-  
-  
+  // Evento que muestra la InfoWindow al hacer clic sobre el marcador.
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
@@ -32,6 +30,7 @@ export class MapContainer extends Component {
       showingInfoWindow: true
     });
   
+  // Evento que cierra la InfoWindow.
   onClose = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
@@ -43,23 +42,13 @@ export class MapContainer extends Component {
 
   render() {
     return (
-     
-      <Map
-
-      
+      <MyLocation
+        centerAroundCurrentLocation
         google={this.props.google}
-        zoom={15}
-        style={mapStyles}
-        initialCenter={
-          {
-            lat: 43.355008507725366,
-            lng: -5.851265172858888
-          }
-        }
       >
         <Marker
           onClick={this.onMarkerClick}
-          name={'Escuela de Ingenieria Informatica'}
+          name={'Nombre Apellido1 Apellido2'}
         />
         <InfoWindow
           marker={this.state.activeMarker}
@@ -70,31 +59,7 @@ export class MapContainer extends Component {
             <h4>{this.state.selectedPlace.name}</h4>
           </div>
         </InfoWindow>
-
-
-      </Map>
-      /*
-
-      <MyLocation
-        centerAroundCurrentLocation
-        google={this.props.google}
-      >
-        <Marker onClick={this.onMarkerClick} name={'Current Location'} />
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}export default{
-    mapsKey: 'AIzaSyB0L-Y8pLtMN59qzpETrM4DMIPFR6XKNpo'
-}
-        >
-          <div>
-            <h4>{this.state.selectedPlace.name}</h4>
-          </div>
-        </InfoWindow>
       </MyLocation>
-
-          */
-
     );
   }
 }

@@ -52,10 +52,9 @@ class App extends React.Component{
 
           <Route path="/map" render={() =>{
             return(
-            <div>
-            <MapContainer
-            />
-            </div>
+              <div>
+                <MapContainer/>
+              </div>
             )
           }}>
           </Route>
