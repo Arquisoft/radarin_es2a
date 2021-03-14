@@ -1,6 +1,8 @@
 [[section-technical-risks]]
 == Riesgos y deuda técnica
 
+=== Deuda Técnica
+
 La aplicación nos presenta una serie de riesgos a la hora de desarrollarla, que son los siguientes:
 
 |===
@@ -13,11 +15,20 @@ La aplicación nos presenta una serie de riesgos a la hora de desarrollarla, que
 
 | Desarrollo en equipo | Trabajar en equipo puede darnos problemas a la hora de repartir equitativamente las tareas, de realizarlas, etc. | Realizar actas de las reuniones donde quede registrado claramente que debe hacer cada uno y las decisiones tomadas.
 
-| Organización del tiempo | Los miembros de este proyecto somos estudiantes de la Universidad, lo que hace que no podamos dedicar todo el tiempo exclusivamente al proyecto. | Intentar ser organizados y responsables para poder desarrollar el proyecto de una forma adecuadagit.
-
-
-
+| Organización del tiempo | Los miembros de este proyecto somos estudiantes de la Universidad, lo que hace que no podamos dedicar todo el tiempo exclusivamente al proyecto. | Intentar ser organizados y responsables para poder desarrollar el proyecto de una forma adecuada.
 |===
+
+
+=== Deuda Técnica
+
+En esta sección,incluimos las distintas deudas técnicas que consideramos que nos van a surgir:
+
+
+·El uso de GitHub nos puede llevar a tener conflictos a la hora de fusionar las distintas ramas, y a problemas para poder solucionar dichos conflictos. 
+
+
+·La falta de documentación en las bibliotecas de Solid y la falta de experiencia de los integrantes del equipo con esta tecnología
+
 
 
 
