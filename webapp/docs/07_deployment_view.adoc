@@ -31,10 +31,10 @@ Probablemente, el nivel mas alto del diagrama de implementación se encuentra en
 
 [role="arc42help"]
 ****
-El usuario, necesita su dispositivo de confianza, este debe de estar conectado a internet ya que sin este no podrá funcionar correctamente. Para ello, se necesita un navegador Web para el funcionamiento de este. En el caso de este diagrama que se mostrará a continuación, se utilizará un PC para ello. En el caso del navegador web, los recomenados son los más actualizados que existen hoy en día, Firefox o Google Chrome ya que también serán los que utilicemos para probar nuestra apliación. En nuestro caso en concreto, utilizaremos GitHub Pages para la implementación de la aplicación. Un POD utilizando SOLID sera necesario para utilizar la aplicación, en el cual se guardaran los permisos y las funciones necesarias para el correcto funcionamientos de esta. El POD se encontrará en un servidor el cual es accesible desde cualquier lugar en el que nos encontremos.
+El usuario, necesita su dispositivo de confianza, este debe de estar conectado a internet ya que sin este no podrá funcionar correctamente. Para ello, se necesita un navegador Web para el funcionamiento de este en el caso de la aplicación desarrollada para la versión de ordenador. En el caso de la versión para móviles, el usuario contará con una aplicación nativa para este la cual no dependerá del Servicio Web como si hace la versión para ordenadores. En el caso del navegador web, los recomenados son los más actualizados que existen hoy en día, Firefox o Google Chrome ya que también serán los que utilicemos para probar nuestra apliación. En nuestro caso en concreto, utilizaremos GitHub Pages para la implementación de la aplicación. Un POD utilizando SOLID sera necesario para utilizar la aplicación, en el cual se guardaran los permisos y las funciones necesarias para el correcto funcionamientos de esta. El POD se encontrará en un servidor el cual es accesible desde cualquier lugar en el que nos encontremos.
 ****
 
-image:deploymentViewPC.png["Vista de implementación desde el ordenador"]
+image:deploymentViewPC.png["Vista de implementación desde ambos dispositivos de la Aplicación Radarin"]
 
 Motivación de la Vista::
 
@@ -42,12 +42,12 @@ La motivación de esta vista de implementación es la de que el usuario pueda in
 
 Calidad y/o Características de Rendimiento::
 
-La motivación de esta vista es que el usuario pueda interactuar con la aplicación desarrollada en SOLID para poder interactuar con sus amigos, lo cual quiere decir que la aplicación tendra acceso al POD del usuario para poder guardar yu obtener información sobre el usuario y sus amigos.
+La motivación de esta vista es que el usuario pueda interactuar con la aplicación desarrollada en SOLID para poder interactuar con sus amigos, lo cual quiere decir que la aplicación tendra acceso al POD del usuario para poder guardar yu obtener información sobre el usuario y sus amigos. Además de esto como se puede apreciar en la imagen, diferenciamos entre la aplicación móvil, la cual será una aplicación nativa y la aplicación para el ordenador, la cual utilizará como base GitHub Pages para que pueda ser vista desde un navegador cualquiera (Google Chrome, Mozilla Firefox). Ambas utilizarán como servicio de localización la API de Google Maps para poder localizar al usuario y para el correcto funcionamiento de la aplicación. La principal diferencia que podemos observar en la vista de implementación, es que en la aplicación móvil como se puede observar en la imagen, al ser desarrollada en una Aplicación Nativa, no tendrá que depender de un Servicio Web como si lo hara la aplicación para ordenador, la cual dependerá del entorno de GitHub Pages para su correcto funcionamiento.
 
 Mapeo de los Bloques utilizados en la Infraestructura::
 Los componentes que forman parte de esta infraestructura son los siguientes:
 
-* El ordenador del usuario, el cual será el dispositivo utilizado.
+* El ordenador del usuario, el cual contará de una aplicación desarrollada en un Servicio Web como ya se ha citado anteriormente.
 
 * El navegador web el cual se encuentra dentro del ordenador del usuario.
 
@@ -59,39 +59,8 @@ Los componentes que forman parte de esta infraestructura son los siguientes:
 
 * El servidor del POD el cual controlará el funcionamiento del POD.
 
-* La propia aplicación por sí misma
+* La propia aplicación por sí misma.
 
+* En el caso del móvil del usuario, será parecido al ordenador pero con una aplicación nativa mediante la cual el/la usuario/a podrá utilizar la aplicación.
 
-=== Infrastructure Level 2
-
-[role="arc42help"]
-****
-El usuario, necesita su dispositivo de confianza, este debe de estar conectado a internet ya que sin este no podrá funcionar correctamente. Para ello, se necesita un navegador Web para el funcionamiento de este. En el caso de este diagrama que se mostrará a continuación, se utilizará un móvil para ello. En el caso del navegador web, los recomenados son los más actualizados que existen hoy en día, Firefox o Google Chrome ya que también serán los que utilicemos para probar nuestra apliación. En nuestro caso en concreto, utilizaremos GitHub Pages para la implementación de la aplicación. Un POD utilizando SOLID sera necesario para utilizar la aplicación, en el cual se guardaran los permisos y las funciones necesarias para el correcto funcionamientos de esta. El POD se encontrará en un servidor el cual es accesible desde cualquier lugar en el que nos encontremos.
-****
-
-image:deploymentViewMovil.png["Vista de implementación desde el móvil"]
-
-Motivación de la Vista::
-
-La motivación de esta vista de implementación es la de que el usuario pueda interactuar con la aplicación hecha en SOLID, interactuando así con sus amigos. Esta aplicación tiene el acceso al POD del usuario donde sus datos personales necesarios para el correcto funcionamiento de la aplicación serán almacenados.
-
-Calidad y/o Características de Rendimiento::
-
-La motivación de esta vista es que el usuario pueda interactuar con la aplicación desarrollada en SOLID para poder interactuar con sus amigos, lo cual quiere decir que la aplicación tendra acceso al POD del usuario para poder guardar yu obtener información sobre el usuario y sus amigos.
-
-Mapeo de los Bloques utilizados en la Infraestructura::
-Los componentes que forman parte de esta infraestructura son los siguientes:
-
-* El móvil del usuario, el cual será el dispositivo utilizado.
-
-* El navegador web el cual se encuentra dentro del móvil del usuario.
-
-* La página web en la cual se mostrá nuestra aplicación.
-
-* El servidor web en el que GitHub Pages será el entorno de ejecución de la aplicación
-
-* El POD del usuario el cual viene dado por un proveedor de POD.
-
-* El servidor del POD el cual controlará el funcionamiento del POD.
-
-* La propia aplicación por sí misma
+* La API de Google Maps para la localización del usuario en todo momento que este lo solicite.
