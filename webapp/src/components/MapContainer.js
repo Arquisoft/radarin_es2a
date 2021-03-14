@@ -23,7 +23,7 @@ export class MapContainer extends Component {
     selectedPlace: {}          // Muestra la InfoWindow del lugar seleccionado sobre un marcador
   };
   
-  // Evento que muestra la InfoWindow al hacer clic sobre el marcador.
+  // Evento que muestra la InfoWindow al hacer clic sobre el marcador
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
@@ -42,11 +42,13 @@ export class MapContainer extends Component {
   };
 
   render() {
+    console.log(this.props.google)
     return (
       <MyLocation
         centerAroundCurrentLocation
         google={this.props.google}
       >
+
         <Marker
           onClick={this.onMarkerClick}
           name={'Nombre Apellido1 Apellido2'}

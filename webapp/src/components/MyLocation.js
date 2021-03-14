@@ -1,23 +1,24 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 const mapStyles = {
-    map: {
-        position: 'absolute',
-        width: '100%',
-        height: '100%'
-    }
+  map: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%'
+  }
 };
 
 export class MyLocation extends React.Component {
     constructor(props){
         super(props);
+    
         const { lat, lng } = this.props.initialCenter;
         this.state = {
-            currentLocation: {
-                lat: lat,
-                lng: lng
-            }
+          currentLocation: {
+            lat: lat,
+            lng: lng
+          }
         };
     }
 
@@ -35,8 +36,8 @@ export class MyLocation extends React.Component {
             const mapConfig = Object.assign(
                 {},
                 {
-                    center: center,
-                    zoom: zoom
+                  center: center,
+                  zoom: zoom
                 }
             );
             this.map = new maps.Map(node, mapConfig); // instancia el mapa
@@ -97,8 +98,8 @@ export class MyLocation extends React.Component {
                 map: this.map,
                 google: this.props.google,
                 mapCenter: this.state.currentLocation
+              });
             });
-        });
     }
 
     render() {

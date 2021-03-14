@@ -7,7 +7,6 @@ import UserList from "./components/UserList";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MapContainer from './components/MapContainer';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import MyLocation from './components/MyLocation';
 
 
 class App extends React.Component{
