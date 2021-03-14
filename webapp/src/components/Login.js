@@ -1,9 +1,9 @@
 import React from 'react';
-import { AppLoading } from 'expo';
-import { Container, Button, Header, Item, Input, Content, Form, Text } from 'native-base';
-import EmailForm from 'EmailForm.js';
+import { Container, Button, Input} from '@material-ui/core';
+import EmailForm from './EmailForm';
 
-export default class App extends React.Component {
+class Login extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +12,6 @@ export default class App extends React.Component {
       password:''
     };
   }
-
   
   loginUser = (email, password) =>{
     try {
@@ -25,39 +24,23 @@ export default class App extends React.Component {
         return;
       }
       EmailForm.fetchUsers();
-        alert( JSON.stringify(user))
-      }
+    }
     catch (error) {
       console.log(error.toString())
     }
    }
 
-  async componentDidMount() {
-    this.fetchUsers()
-  }
-
   render() {
-    if (!this.state.isReady) {
-      return <AppLoading />;
-    }
-
     return (
         <Container>
-        <Header />
-        <Content padder>
-        <Form>
-            <Item>
-              <Input placeholder="Correo Electrónico" onChangeText={email => this.setState({email})} />
-            </Item>
-            <Item last>
-              <Input placeholder="Contraseña" onChangeText={password => this.setState({password})} />
-            </Item>
+            <Input placeholder="Correo Electrónico" onChangeText={email => this.setState({email})} />
+            <Input placeholder="Contraseña" onChangeText={password => this.setState({password})} />
             <Button onPress={()=> this.loginUser(this.state.email, this.state.password)}>
-              <Text>Login</Text>
+              Login
             </Button>
-          </Form>
-        </Content>
       </Container>
     );
   }
 }
+
+export default Login;

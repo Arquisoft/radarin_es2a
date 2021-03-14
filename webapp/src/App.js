@@ -2,8 +2,7 @@ import React from 'react';
 import './App.css';
 import logo from './logo.svg';
 import Welcome from './components/Welcome';
-import EmailForm from "./components/EmailForm";
-import UserList from "./components/UserList";
+import Login from "./components/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component{
@@ -24,12 +23,7 @@ class App extends React.Component{
           <Welcome name="ASW students"/>
         </header>
         <div className="App-content">
-          <EmailForm refreshUsers={this.refreshUsers.bind(this)}/>
-          <UserList users={this.state.users}/>
-          <a className="App-link"
-            href="https://github.com/pglez82/radarin_0"
-            target="_blank"
-            rel="noopener noreferrer">Source code</a>
+          <Login />
         </div>
       </div>
     )
