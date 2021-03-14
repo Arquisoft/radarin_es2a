@@ -1,5 +1,6 @@
 [[section-runtime-view]]
 
+== Vista de Ejecución
 
 [role="arc42help"]
 ****
@@ -58,6 +59,8 @@ image:verAmigos.png["Vista en Tiempo de Ejecución de la petición del usuario d
 * _El usuario entra en la aplicación_
 * _El usuario solicita añadir un nuevo amigo_
 * _El usuario introduce el nombre y el usuario del nuevo amigo_
+* _Radarin le muestra al usuario una vista mediante la cual podrá mandarle una solicitud de amistad al otro usuario_
+* _El usuario solicita mandar la solicitud de amistad y Radarin se la envía al Gestor de POD del otro usuario_
 
 image:añadirNuevoAmigo.png["Vista en Tiempo de Ejecución de la petición del usuario de añadir a un nuevo amigo"]
 
@@ -67,5 +70,7 @@ image:añadirNuevoAmigo.png["Vista en Tiempo de Ejecución de la petición del u
 * _El usuario entra en la aplicación_
 * _El usuario solicita eliminar un amigo_
 * _El usuario introduce el nombre de usuario del amigo que quiere eliminar_
+* _Radarin elimina al amigo del gestor de POD del usuario_
+* _Radarin envía una notificación al Gestor de POD del usuario eliminado avisándole de que el usuario que ha solicitado eliminarlo, ya no es su amigo_
 
 image:eliminarAmigo.png["Vista en Tiempo de Ejecución de la petición del usuario de eliminar a un amigo"]
