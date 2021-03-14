@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, InfoWindow, Marker, Circle } from 'google-maps-react';
 import credentials from '../api/credentials'
 import MyLocation from './MyLocation'
 
@@ -14,6 +14,11 @@ MyLocation.defaultProps = {
   centerAroundCurrentLocation: false,
   visible: true
 };
+
+const coords = { lat: 43.355008507725366, lng: -5.851265172858888 };
+const coords1 = { lat: 43.357786, lng: -5.847369 };
+const amigos = [coords,coords1];
+
 
 export class MapContainer extends Component {
 
@@ -48,7 +53,23 @@ export class MapContainer extends Component {
         centerAroundCurrentLocation
         google={this.props.google}
       >
-
+        {
+          amigos.map((value, index) =>{
+            return(<Circle
+              radius={200}
+              center={value}
+              onMouseover={() => console.log('mouseover')}
+              onClick={() => console.log('click')}
+              onMouseout={() => console.log('mouseout')}
+              strokeColor='transparent'
+              strokeOpacity={0}
+              strokeWeight={5}
+              fillColor='#FF0000'
+              fillOpacity={0.2}
+            />
+            )
+          })
+        }
         <Marker
           onClick={this.onMarkerClick}
           name={'Nombre Apellido1 Apellido2'}
