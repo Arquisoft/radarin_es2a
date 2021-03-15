@@ -36,7 +36,7 @@ Requisitos funcionales:
 |===
 |Rol/Nombre|Contacto|Expectativas
 | Desarrolladores | Se trata de los alumnos encargados de finalizar el proyecto como parte de su evaluación. | Adquisición de conocimientos de Arquitectura.
-| Profesores | Han planteado las guías para la realización del proyecto. Son los encargados de la evaluación del mismo. | Conseguir que los alumnos tengan en cuenta la arquitectura del software a la hora de desarrollar proyectos.
+| Clientes | Han planteado las guías para la realización del proyecto. Son los encargados de la evaluación del mismo. | Conseguir que los alumnos tengan en cuenta la arquitectura del software a la hora de desarrollar proyectos.
 | Inrupt | Se trata de la compañía fundada por Tim Berners-Lee, cuyo objetivo es fomentar el desarrollo y la utilización de SOLID. | Dar a conocer el proyecto SOLID
 | Usuarios | Cualquier persona que quiera compartir su localización con sus contacto. | Contar con aplicaciones de calidad y que respetan la privacidad de los usuarios.
 |===
