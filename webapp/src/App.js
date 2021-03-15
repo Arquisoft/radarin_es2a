@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import logo from './logo.svg';
 import Welcome from './components/Welcome';
+//import LoginConstants from "./components/LoginConstants";
 import Login from "./components/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -20,7 +21,7 @@ class App extends React.Component{
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo"/>
-          <Welcome name="ASW students"/>
+          <Welcome name="Bienvenid@"/>
         </header>
         <div className="App-content">
           <Login />

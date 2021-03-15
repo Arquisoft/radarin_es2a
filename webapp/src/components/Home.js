@@ -1,18 +1,20 @@
 import React, {Component} from 'react';
-import {Button, View, Text} from 'react-native';
+import {Container, Button} from '@material-ui/core';
 
 
-export default class Aboutscreen extends Component {
+class Aboutscreen extends Component {
   render(){
     return(
-      <View style={{ flex:1, alingItems: "center", justifyContent: 'center'}}>
-        <Text>Sí estas registrado, haz click en Login</Text>
+      <Container>
+        <h1>PÁGINA DE INICIO</h1>
         <Button
           onPress={()=> this.props.navigation.navigate('Login')}
-          title="Ir al Login de la App"
+          title="Página principal de la app"
           color=""
         />
-      </View>
+      </Container>
     )
   }
 }
+
+export default Aboutscreen;

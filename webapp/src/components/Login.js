@@ -1,46 +1,51 @@
-import React from 'react';
-import { Container, Button, Input} from '@material-ui/core';
-import EmailForm from './EmailForm';
+import React, {useState} from 'react';
+import LoginForm from './LoginForm';
+import Home from './Home';
+import { Container, Button} from '@material-ui/core';
 
-class Login extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      isReady: false,
-      email:'',
-      password:''
-    };
-  }
-  
-  loginUser = (email, password) =>{
-    try {
-      if(this.state.email.length < 6){
-        alert("El email debe de tener al menos 7 caracteres")
-        return;
-      }
-      if(this.state.password.length < 6){
-        alert("La contraseña debe de tener al menos 7 caracteres")
-        return;
-      }
-      EmailForm.fetchUsers();
+function Login() {
+    const admin = {
+        email: "user@uniovi.es",
+        password: "user"
     }
-    catch (error) {
-      console.log(error.toString())
-    }
-   }
 
-  render() {
+    const [user, setUser] = useState({name: "", email: ""});
+    const [error, setError] = useState("");
+
+    const Login = details => {
+        console.log(details);
+
+        if(details.email === admin.email && details.password === admin.password) {
+            console.log("Logged in");
+            setUser({
+                name: details.name,
+                email: details.email
+            });
+        } else {
+            setError("Existe algún campo inválido");
+        }
+            
+    }
+
+    const Logout = () => {
+        setUser({
+            name: "",
+            email: ""
+        });
+    }
+
     return (
-        <Container>
-            <Input placeholder="Correo Electrónico" onChangeText={email => this.setState({email})} />
-            <Input placeholder="Contraseña" onChangeText={password => this.setState({password})} />
-            <Button onPress={()=> this.loginUser(this.state.email, this.state.password)}>
-              Login
-            </Button>
-      </Container>
+        <Container className="LoginConstants">
+            {(user.email !== "") ? (
+                <Container>
+                    <Home/>
+                    <Button onClick={Logout}>Cerrar sesión</Button>
+                </Container>
+            ) : (
+                <LoginForm Login={Login} error={error}/>
+            )}
+        </Container>
     );
-  }
 }
 
-export default Login;
+export default Login
