@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Container, Button} from '@material-ui/core';
 import MapContainer from './MapContainer';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Friends from './Friends/Friends'
 
 
 class Aboutscreen extends Component {
@@ -22,11 +23,21 @@ class Aboutscreen extends Component {
 
       
         <Link to='/map'>Mapa</Link>
+        <br></br>
+        <Link to='/amigos'>Amigos</Link>
 
           <Route path="/map" render={() =>{
             return(
               <div>
                 <MapContainer/>
+              </div>
+            )
+          }}>
+          </Route>
+          <Route path="/amigos" render={() =>{
+            return(
+              <div>
+                <Friends/>
               </div>
             )
           }}>

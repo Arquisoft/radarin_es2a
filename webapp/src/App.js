@@ -6,6 +6,7 @@ import Welcome from './components/Welcome';
 import Login from "./components/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 class App extends React.Component{
   constructor(){
     super()
@@ -26,7 +27,10 @@ class App extends React.Component{
         <div className="App-content">
           <Login />
         </div>
+
       </div>
+      
+      
     )
   }
 }
