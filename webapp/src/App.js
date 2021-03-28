@@ -5,6 +5,8 @@ import Welcome from './components/Welcome';
 //import LoginConstants from "./components/LoginConstants";
 import Login from "./components/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Registrer from './components/Registrer';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 
 class App extends React.Component{
@@ -27,9 +29,26 @@ class App extends React.Component{
         <div className="App-content">
           <Login />
         </div>
+        <Router>
+
+<br></br>
+<Link to='/registrarse'>Registrarse</Link>
+
+  <Route path="/registrarse" render={() =>{
+    return(
+      <div>
+        <Registrer/>
+      </div>
+    )
+  }}>
+  </Route>
+  
+</Router>
 
       </div>
       
+
+
       
     )
   }

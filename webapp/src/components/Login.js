@@ -13,7 +13,6 @@ function Login() {
     const [error, setError] = useState("");
 
     const Login = details => {
-        console.log(details);
 
         if(details.email === admin.email && details.password === admin.password) {
             console.log("Logged in");
@@ -33,10 +32,10 @@ function Login() {
             email: ""
         });
     }
-
     return (
+        
         <Container className="LoginConstants">
-            {(user.email !== "") ? (
+            {(user.email !== "") ? ( 
                 <Container>
                     <Home/>
                     <Button onClick={Logout}>Cerrar sesión</Button>
