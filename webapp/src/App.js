@@ -5,6 +5,10 @@ import Welcome from './components/Welcome';
 //import LoginConstants from "./components/LoginConstants";
 import Login from "./components/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Registrer from './components/Registrer';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 class App extends React.Component{
@@ -26,10 +30,29 @@ class App extends React.Component{
         </header>
         <div className="App-content">
           <Login />
+          <ToastContainer/>
         </div>
+        <Router>
+
+<br></br>
+<Link to='/registrarse'>Registrarse</Link>
+
+  <Route path="/registrarse" render={() =>{
+    return(
+      <div>
+        <Registrer/>
+        <ToastContainer/>
+      </div>
+    )
+  }}>
+  </Route>
+  
+</Router>
 
       </div>
       
+
+
       
     )
   }

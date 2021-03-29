@@ -12,9 +12,9 @@ class Aboutscreen extends Component {
         <h1>PÁGINA DE INICIO</h1>
 
         <Button
-          onPress={()=> this.props.navigation.navigate('Login')}
+          onClick={()=> this.props.navigation.navigate('Login')}
           title="Página principal de la app"
-          color=""
+          color="default"
         />
 
         <br></br>
