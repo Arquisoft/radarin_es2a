@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {FirebaseAppProvider} from 'reactfire';
 import reportWebVitals from './reportWebVitals';
 import { Suspense } from 'react';
 
