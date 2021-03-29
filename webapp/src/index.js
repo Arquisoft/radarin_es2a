@@ -5,9 +5,8 @@ import App from './App';
 import {FirebaseAppProvider} from 'reactfire';
 import reportWebVitals from './reportWebVitals';
 import { Suspense } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/firestore'
-import './firebaseConfig'
+
+import './api/firebase'
 
 
 ReactDOM.render(
@@ -23,3 +22,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
