@@ -30,6 +30,7 @@ class App extends React.Component{
         </header>
         <div className="App-content">
           <Login />
+          <ToastContainer/>
         </div>
         <Router>
 

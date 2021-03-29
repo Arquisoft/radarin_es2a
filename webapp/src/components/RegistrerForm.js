@@ -13,7 +13,7 @@ function RegistrerForm (props) {
     return (
       <form onSubmit={submitHandler}>
         <Container>
-            <h2>Registrarse</h2>
+            <h2>REGISTRARSE</h2>
             <Container>
               <Input type="email" name="email" id="emailRegistro" placeholder="Correo Electrónico" onChange={e => setDetails({...details, email:e.target.value})} value={details.email} />
             </Container>
