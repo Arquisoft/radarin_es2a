@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import RegistrerForm from './RegistrerForm';
-import { Container, Button } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import Home from './Home';
 import {db} from '../api/firebase'
+import { toast } from 'react-toastify';
 
 function Registrer() {
 
@@ -10,19 +11,34 @@ function Registrer() {
 
     const addUser = async (details) => {
         if (details.email.length ===0 || details.password.length ===0 || details.pod.length === 0){
-            console.log("No pueden existir campos vacios")
+            toast("No pueden existir campos vacíos",
+            {
+                type: 'error',
+                autoClose: 3000,
+            })
         }
         else{
         if (details.password.length < 5 ){
-            console.log("La contraseña ha de tener mínimo 5 caracteres")
+            toast("La contraseña ha de tener mínimo 5 caracteres",
+            {
+                type: 'error',
+                autoClose: 3000,
+            })
         }
         else{
         if(await existeUsuario(details.email)===false){
             await db.collection('users').doc().set(details);
-            console.log("Usuario añadido correctamente")
+            toast("Usuario añadido correctamente",
+            {
+                type: 'success',
+                autoClose: 3000,
+            })
         }
         else{
-        console.log("Ya existe un usuario con esa dirección de correo")
+        toast("Ya existe un usuario con ese email", {
+            type: "error",
+            autoClose: 3000,
+        });
         }
     }
     }

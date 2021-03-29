@@ -7,6 +7,8 @@ import Login from "./components/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registrer from './components/Registrer';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 class App extends React.Component{
@@ -38,6 +40,7 @@ class App extends React.Component{
     return(
       <div>
         <Registrer/>
+        <ToastContainer/>
       </div>
     )
   }}>
