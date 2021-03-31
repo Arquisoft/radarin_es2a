@@ -13,6 +13,7 @@ import NavBar from './components/Navigation/Navbar';
 import { MapContainer } from './components/MapContainer';
 import Friends from './components/Friends/Friends';
 import {UserContextProvider} from './context/UserContext'
+import ReactDOM from 'react-dom';
 
 
 class App extends React.Component {
@@ -39,6 +40,7 @@ class App extends React.Component {
             <Route path='/login' component={Login} /> 
             <Route path="/registrarse" component={Registrer} />
             <Route path="/amigos" component={Friends} />
+            <Route path="/map" component={MapContainer} />
             <ToastContainer />
           </div>
           
