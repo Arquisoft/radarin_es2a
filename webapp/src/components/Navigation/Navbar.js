@@ -12,16 +12,31 @@ export default class NavBar extends Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ml-auto">
+                        {(window.sessionStorage.getItem('user') !== null) ? (
+                            <li className="nav-item active">
+                                <Link to="/login" className="nav-link" hidden>Login</Link>
+                            </li>
+                             ) : ( 
                             <li className="nav-item active">
                                 <Link to="/login" className="nav-link">Login</Link>
                             </li>
+                            )} 
+                            {(window.sessionStorage.getItem('user') !== null) ? (
+                            <li className="nav-item">
+                                <Link to="/registrarse" className="nav-link" hidden>Register</Link>
+                            </li>
+                            ) : ( 
                             <li className="nav-item">
                                 <Link to="/registrarse" className="nav-link">Register</Link>
                             </li>
-
+                            )}   
+                            {(window.sessionStorage.getItem('user') !== null) ? ( 
                             <li className="nav-item">
-                                <Link to="/amigos" className="nav-link">Amigos</Link>
+                                <Link to="/amigos" className="nav-link" >Amigos</Link>
                             </li>
+                            ) : ( 
+                            <Link to="/amigos" className="nav-link" hidden>Amigos</Link>
+                            )}
                         </ul>
                     </div>
                 </div>
