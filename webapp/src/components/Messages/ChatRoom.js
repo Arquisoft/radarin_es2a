@@ -8,14 +8,20 @@ export const ChatRoom = (props) => {
     const [messageToSend, setMessageToSend] = useState("");
 
     const loadMessages = async () => {
+        console.log("El props.user")
+        console.log(props.user)
         db.collection('messages').
-            where('user', '==', props.user).
-            where('friend', '==', props.friend)
+            where('user', 'in', [props.user,props.friend])
             .onSnapshot(
                 (querySnapshot) => {
                     const docs = [];
                     querySnapshot.forEach(element => {
-                        docs.push({ ...element.data(), id: element.id })
+                        
+                        if(element.data().friend===props.friend){
+                            docs.push({ ...element.data(), id: element.id })
+                        }
+                        if(element.data().friend===props.user)
+                            docs.push({ ...element.data(), id: element.id })
                     });
                     setMessages(docs)
                 }
@@ -31,10 +37,11 @@ export const ChatRoom = (props) => {
 
 
     const addMessage = async () => {
+        console.log(db)
         const messageObject = {
             friend: props.friend,
             user: props.user,
-            text: messageToSend
+            text: messageToSend,
         }
         await db.collection('messages').doc().set(messageObject)
         console.log(messageObject)
@@ -42,9 +49,9 @@ export const ChatRoom = (props) => {
 
     }
 
-    function MessageList(props) {
+    function MessageList() {
         const messageList = messages.map((message) => (
-            <Message text={message.text} sender={props.user === message.sender ? 'T' : 'F'}></Message>)
+            <Message text={message.text} session={props.user} messageSender={message.user}></Message>)
         )
         return (
             <ul>{messageList}</ul>
@@ -54,10 +61,11 @@ export const ChatRoom = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault()
+        if(messageToSend!=""){
         console.log("Enviando mensaje")
         console.log(messageToSend)
         addMessage(messageToSend);
-
+        }
     }
 
     const handleChange = (e) => {
@@ -67,13 +75,15 @@ export const ChatRoom = (props) => {
 
 
     return (
-        <div className="col-md-42 p-2">
-            <div class="card text-white bg-primary">
-                <div class="card-header bg-dark">{props.friend}</div>
-                <div class="card-body">
-                    <MessageList></MessageList>
-                    <form className="card card-body" onSubmit={handleSubmit}>
-                        <div className="input-group mb-3">
+        <div className="container">
+            <div className="card text-white bg-info">
+                <div className="card-header bg-dark">{props.friend}</div>
+                <div className="card-body">
+                    <div className="card-body mb-1 bg-light">
+                        <MessageList></MessageList>
+                    </div>
+                    <form className="card card-body " onSubmit={handleSubmit}>
+                        <div className="input-group">
                             <textarea
                                 rows="2"
                                 className="form-control"
@@ -82,14 +92,13 @@ export const ChatRoom = (props) => {
                                 value={messageToSend}
                             />
                             <button className="btn btn-primary">
-                                <i className="material-icons">add</i>
+                                <i className="material-icons">insert_comment</i>
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-
     )
 }
 export default ChatRoom;

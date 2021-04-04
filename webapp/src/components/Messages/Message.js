@@ -6,18 +6,19 @@ export default class Message extends Component {
         super(props);
         this.state = {
             text: this.props.text,
-            sender: this.props.sender
         };
+        
     }
 
 
     render() {
-        
-        if (this.props.sender==='T') {
-            return (<div style={{background:"grey"}}><p style={{ textAlign:"right"}}>{this.state.text}</p></div>)
+        console.log("Las props")
+        console.log(this.props)
+        if (this.props.session===this.props.messageSender) {
+            return (<div className="alert alert-primary textAlign-right">{this.state.text}</div>)
         }
         else {
-            return (<div><p style={{color:"red", textAlign:"left"}}>{this.state.text}</p></div>)
+            return (<div className="alert alert-warning textAlign-right">{this.state.text}</div>)
         }
     }
 }

@@ -25,43 +25,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <Welcome name="Bienvenid@" />
-        </header>
-        <div className="App-content">
-          <Login />
-          <ToastContainer />
-        </div>
-
-        <Router>
-
-          <br></br>
-          <Link to='/registrarse'>Registrarse</Link>
-
-          <Route path="/registrarse" render={() => {
-            return (
-              <div>
-                <Registrer />
-                <ToastContainer />
-              </div>
-            )
-          }}>
-          </Route>
-
-          <Route path='/messages' render={() => {
-            return (
-              <div>
-                <h1>Cargando mensajes</h1>
-                <ChatRoom user='lucas' friend='amigo' />
-              </div>
-            )
-          }}>
-          </Route>
-
-        </Router>
-
+      <div>
+        <ChatRoom user='amigo' friend='lucas' />
       </div>
 
 
