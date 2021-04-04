@@ -10,60 +10,63 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ChatRoom from './components/Messages/ChatRoom';
+import Message from './components/Messages/Message'
 
 
-class App extends React.Component{
-  constructor(){
+class App extends React.Component {
+  constructor() {
     super()
-    this.state = {users:[]}
+    this.state = { users: [] }
   }
 
-  refreshUsers(users){
-    this.setState({users:users})
+  refreshUsers(users) {
+    this.setState({ users: users })
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <Welcome name="Bienvenid@"/>
+          <img src={logo} className="App-logo" alt="logo" />
+          <Welcome name="Bienvenid@" />
         </header>
         <div className="App-content">
           <Login />
-          <ToastContainer/>
+          <ToastContainer />
         </div>
+
         <Router>
 
-<br></br>
-<Link to='/registrarse'>Registrarse</Link>
+          <br></br>
+          <Link to='/registrarse'>Registrarse</Link>
 
-  <Route path="/registrarse" render={() =>{
-    return(
-      <div>
-        <Registrer/>
-        <ToastContainer/>
+          <Route path="/registrarse" render={() => {
+            return (
+              <div>
+                <Registrer />
+                <ToastContainer />
+              </div>
+            )
+          }}>
+          </Route>
+
+          <Route path='/messages' render={() => {
+            return (
+              <div>
+                <h1>Cargando mensajes</h1>
+                <ChatRoom user='lucas' friend='amigo' />
+              </div>
+            )
+          }}>
+          </Route>
+
+        </Router>
+
       </div>
-    )
-  }}>
-  </Route>
-
-  <Route path='/messages' render={() =>{
-    return(
-      <div>
-        <ChatRoom user='lucas' friend='amigo'/>
-      </div>
-    )
-  }}>
-  </Route>
-  
-</Router>
-
-      </div>
-      
 
 
-      
+
+
     )
   }
 }
