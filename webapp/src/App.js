@@ -2,13 +2,15 @@ import React from 'react';
 import './App.css';
 import logo from './logo.svg';
 import Welcome from './components/Welcome';
-//import LoginConstants from "./components/LoginConstants";
 import Login from "./components/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registrer from './components/Registrer';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Admin from './components/Admin';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
 
 class App extends React.Component{
@@ -28,32 +30,45 @@ class App extends React.Component{
           <img src={logo} className="App-logo" alt="logo"/>
           <Welcome name="Bienvenid@"/>
         </header>
-        <div className="App-content">
-          <Login />
-          <ToastContainer/>
-        </div>
+
+
         <Router>
+          <Navbar bg="primary" variant="dark">
+            <Navbar.Brand href="#home">Radarin</Navbar.Brand>
+            <Nav className="mr-auto">
+              <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link href="/registrarse">Registro</Nav.Link>
+              <Nav.Link href="/admin">Admin</Nav.Link>
+            </Nav>
+          </Navbar>
 
-<br></br>
-<Link to='/registrarse'>Registrarse</Link>
+          <Route path="/login" render={() =>{
+            return(
+              <div className="App-content">
+                <Login/>
+                <ToastContainer/>
+              </div>
+            ) 
+          }}></Route>
 
-  <Route path="/registrarse" render={() =>{
-    return(
-      <div>
-        <Registrer/>
-        <ToastContainer/>
+          <Route path="/registrarse" render={() =>{
+            return(
+              <div>
+                <Registrer/>
+                <ToastContainer/>
+              </div>
+            ) 
+          }}></Route>
+
+          <Route path="/admin" render={() =>{
+            return(
+              <div>
+                <Admin/>
+              </div>
+            )
+          }}></Route>
+        </Router>
       </div>
-    )
-  }}>
-  </Route>
-  
-</Router>
-
-      </div>
-      
-
-
-      
     )
   }
 }
