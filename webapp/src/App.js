@@ -9,6 +9,7 @@ import Registrer from './components/Registrer';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ChatRoom from './components/Messages/ChatRoom';
 
 
 class App extends React.Component{
@@ -42,6 +43,15 @@ class App extends React.Component{
       <div>
         <Registrer/>
         <ToastContainer/>
+      </div>
+    )
+  }}>
+  </Route>
+
+  <Route path='/messages' render={() =>{
+    return(
+      <div>
+        <ChatRoom user='lucas' friend='amigo'/>
       </div>
     )
   }}>
