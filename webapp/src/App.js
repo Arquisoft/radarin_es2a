@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import NavBar from './components/Navigation/Navbar';
 import { MapContainer } from './components/MapContainer';
 import Friends from './components/Friends/Friends';
+import Profile from './components/Profile/Profile';
 import {UserContextProvider} from './context/UserContext'
 import ReactDOM from 'react-dom';
 
@@ -41,6 +42,7 @@ class App extends React.Component {
             <Route path="/registrarse" component={Registrer} />
             <Route path="/amigos" component={Friends} />
             <Route path="/map" component={MapContainer} />
+	          <Route path="/perfil" component={Profile} />
             <ToastContainer />
           </div>
           
