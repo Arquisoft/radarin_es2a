@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import './App.css';
-import logo from './logo.svg';
-import Welcome from './components/Welcome';
 import Login from "./components/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registrer from './components/Registrer';
@@ -9,38 +7,24 @@ import Admin from './components/Admin';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
+import Barra from './components/NavBar';
+import { UserContext } from './api/UserContext';
+import ReactDOM from 'react-dom';
+ 
+function refreshUsers(users){
+  this.setState({users:users})
+}
 
-
-class App extends React.Component{
-  constructor(){
-    super()
-    this.state = {users:[]}
-  }
-
-  refreshUsers(users){
-    this.setState({users:users})
-  }
-
-  render(){
+function App(){
+  const [users] = useState([]);
+  const { user } = useContext(UserContext);
+    
     return(
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <Welcome name="Bienvenid@"/>
-        </header>
-
-
+      <div id="barra">
+        <Barra showMe={user.auth}/>
+      </div>
         <Router>
-          <Navbar bg="primary" variant="dark">
-            <Navbar.Brand href="#home">Radarin</Navbar.Brand>
-            <Nav className="mr-auto">
-              <Nav.Link href="/login">Login</Nav.Link>
-              <Nav.Link href="/registrarse">Registro</Nav.Link>
-              <Nav.Link href="/admin">Admin</Nav.Link>
-            </Nav>
-          </Navbar>
 
           <Route path="/login" render={() =>{
             return(
@@ -51,26 +35,12 @@ class App extends React.Component{
             ) 
           }}></Route>
 
-          <Route path="/registrarse" render={() =>{
-            return(
-              <div>
-                <Registrer/>
-                <ToastContainer/>
-              </div>
-            ) 
-          }}></Route>
+          <Route path="/registrarse" component={Registrer}></Route>
 
-          <Route path="/admin" render={() =>{
-            return(
-              <div>
-                <Admin/>
-              </div>
-            )
-          }}></Route>
+          <Route path="/admin" component={Admin}></Route>
         </Router>
       </div>
     )
-  }
 }
 
 export default App;

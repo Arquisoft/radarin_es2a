@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Suspense } from 'react';
+import  UserProvider from './api/UserContext';
 
 import './api/firebase'
 
@@ -11,7 +12,9 @@ import './api/firebase'
 ReactDOM.render(
   <React.StrictMode>
       <Suspense fallback={'loading'}>
-      <App />
+      <UserProvider>
+        <App />
+      </UserProvider>
       </Suspense>
   </React.StrictMode>,
   document.getElementById('root')

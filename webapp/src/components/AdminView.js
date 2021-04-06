@@ -1,11 +1,16 @@
-import React, {useState} from 'react';
+import { Container } from 'react-bootstrap';
+import React, {useEffect, useState} from 'react'
 
 
 class AdminView extends React.Component{
 
     render(){
     return (
-        <h2>REGISTRARSE</h2>  
+        <Container>
+            <br></br><br></br>
+            <h2>USUARIOS REGISTRADOS:</h2>
+           
+        </Container>
     )
     }
 }
