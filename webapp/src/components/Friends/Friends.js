@@ -117,10 +117,6 @@ const addFriend = async (idAmigo) => {
 
 
 
-  const reload = () => {
-    window.location.reload();
-  };
-
   async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
