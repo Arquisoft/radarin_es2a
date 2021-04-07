@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {  List, Value, Name, Link } from "@solid/react";
 import "./Friends.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -6,23 +6,30 @@ import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import DocumentTitle from "react-document-title";
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {db} from '../../api/firebase'
+
+
+function Friends() {
 
 const { default: data } = require("@solid/query-ldflex");
 
+const [details, setDetails] = useState({emisor: window.sessionStorage.getItem('user'), receptor: "", estado: "creada"});
 
-
-const addFriend = async (idAmigo, id) => {
-    const user = data[id]; 
-   
-      if (idAmigo.localeCompare("") !== 0) {
-        if (await amigoExistente(idAmigo, id)) {
-          toast.error("Ya tienes agregado este amigo", {
-            position: toast.POSITION.BOTTOM_LEFT,
-            autoClose: 5000
+const addFriend = async (idAmigo) => {
+      console.log(details.receptor);
+      console.log(details.emisor);
+      console.log(details.estado);
+      if (idAmigo.localeCompare(window.sessionStorage.getItem('user')) !== 0 ){
+        if (await existeUsuario(idAmigo)){
+         if (idAmigo.localeCompare("") !== 0) {
+            if (await amigoExistente(idAmigo)) {
+               toast.error("Ya sois amig@s", {
+                position: toast.POSITION.BOTTOM_LEFT,
+                autoClose: 5000
           } );
-        } else {
-        await user.knows.add(data[idAmigo]);
-          toast.info("Tu amigo se ha agregado", {
+        }  else {
+          await db.collection('peticiones').doc().set(details);
+          toast.info("Tu amig@ se ha agregado", {
             position: toast.POSITION.BOTTOM_LEFT,
             autoClose: 5000
           } );
@@ -35,46 +42,23 @@ const addFriend = async (idAmigo, id) => {
           autoClose: 5000
         } );
       }
+    }
+  } else{
+    toast.error("No puedes agregarte a ti mism@", {
+      position: toast.POSITION.BOTTOM_LEFT,
+      autoClose: 5000
+    } );
+  }
     };
 
-  const amigoExistente = async (idAmigo, id) => {
-    const user = data[id];
-    for await (const friend of user.friends) {
-      if (String(friend).localeCompare(String(idAmigo)) === 0){ return true;}
-    }
+  const amigoExistente = async (idAmigo) => {
     return false;
   };
 
-const Friends = () => {
-    return (
-      <DocumentTitle title="Amigos">
-        <div className="prueba">
-          <h2 className="h2" data-testId="label">Estos son tus amigos, <Value src="Javier" /> </h2>
-          <h4 class="card-title" id="addFriend" data-testId="addFriend">Añade tus amigos</h4>
-          <div class="wrap">
-            <div class="search">
-              <input type="text" class="searchTerm" placeholder="https://usuario.solid.community/profile/card#me" id="input" />
-              <button type="submit" class="searchButton" npm>
-                <SearchOutlinedIcon className="iconSearch" />
-              </button>
-            </div>
-          </div>
-
-          <br></br>
-        <List src={`[${"https://javigrao.solidcommunity.net/profile/card#me"}].friends`} className="list" padding-inline-start="0">{(friend) =>
-          <li key={friend} className="listElement">
-            <p>
-              <Card nombre={`[${friend}]`} web={"https://javigrao.solidcommunity.net/profile/card#me"}></Card>
-            </p>
-          </li>}
-        </List>
-  
-          <br></br>
-          <ToastContainer />
-        </div>
-      </DocumentTitle>
-    );
+  const existeUsuario = async (idAmigo) => {
+    return false;
   };
+
 
 
   const reload = () => {
@@ -103,5 +87,39 @@ const Friends = () => {
       </div>
     );
   };
+
+  
+  return (
+    <DocumentTitle title="Amigos">
+      <div className="prueba">
+      <h2 className="h2" data-testId="label">Estos son tus amig@s: </h2>
+        <h4 class="card-title" id="addFriend" data-testId="addFriend">Envía una petición a un/a amig@</h4>
+        <div class="wrap">
+          <div class="search">
+            <input type="text" class="searchTerm" placeholder="correoamigo@amigosparasiempre.es" onChange={e => setDetails({...details, receptor:e.target.value})} id="input" />
+            <button type="submit" class="searchButton"  onClick={() => addFriend(document.getElementById("input").value)}>
+              <SearchOutlinedIcon className="iconSearch" />
+            </button>
+          </div>
+        </div>
+
+        
+
+        <br></br>
+      <List src={`[${"https://javigrao.solidcommunity.net/profile/card#me"}].friends`} className="list" padding-inline-start="0">{(friend) =>
+        <li key={friend} className="listElement">
+          <p>
+            <Card nombre={`[${friend}]`} web={"https://javigrao.solidcommunity.net/profile/card#me"}></Card>
+          </p>
+        </li>}
+      </List>
+
+        <br></br>
+      </div>
+    </DocumentTitle>
+  );
+
+
+}
 
   export default Friends;
