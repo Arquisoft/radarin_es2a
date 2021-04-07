@@ -52,8 +52,6 @@ function Peticiones() {
                 autoClose: 2500
             });
         }
-        //await sleep(2500);
-        //reload();
     };
 
     async function sleep(ms) {

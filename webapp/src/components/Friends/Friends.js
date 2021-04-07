@@ -137,6 +137,16 @@ function Friends() {
     }
   };
 
+  const eliminarAmigo = async (id) => {
+    if (window.confirm("¿Estás seguro de eliminar est@ amig@")) {
+        await db.collection('amigos').doc(id).delete();
+        toast.info("Has eliminado tu amig@ correctamente", {
+            position: toast.POSITION.BOTTOM_LEFT,
+            autoClose: 2500
+        });
+    }
+};
+
 
 
   async function sleep(ms) {
@@ -178,9 +188,9 @@ function Friends() {
                   </h2>
                   <center>
                     <div className="botones p-2">
-                      <button className="btn btn-light" id="botonOpcion" /*onClick={() => chatear(usuarioActivo, amigo)} */ data-testId="btnChatear" >Chatear</button>
-                      <button className="btn btn-light" id="botonOpcion" /*onClick={() => verUbicación(amigo)} */ data-testId="btnUbicacion"  >Ver ubicación </button>
-                      <button className="btn btn-light" id="botonOpcion" /*onClick={() => eliminarAmigo(amigo)} */ data-testId="btnEliminar"  >Eliminar </button>
+                      <button className="btn btn-light" id="botonOpcion" /*onClick={() => chatear(usuarioActivo, amigo.nombre)} */ data-testId="btnChatear" >Chatear</button>
+                      <button className="btn btn-light" id="botonOpcion" /*onClick={() => verUbicación(amigo.nombre)} */ data-testId="btnUbicacion"  >Ver ubicación </button>
+                      <button className="btn btn-light" id="botonOpcion" onClick={() => eliminarAmigo(amigo.id)}  data-testId="btnEliminar"  >Eliminar </button>
                     </div>
                   </center>
                 </div>
