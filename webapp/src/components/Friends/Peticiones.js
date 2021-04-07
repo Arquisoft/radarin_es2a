@@ -18,52 +18,48 @@ const usuarioActivo = window.sessionStorage.getItem('user');
 
 const [peticiones, setPeticiones] = useState([]);
 
-const getPeticiones= async () => {
-    const docs = [];
-    const querySnapShot = await db.collection('peticiones').get();
-    querySnapShot.forEach(doc => {
-        if (String(doc.data().receptor.localeCompare(usuarioActivo))=== String(0)){
-            docs.push({...doc.data(), id: doc.id})
-        }
-    });
-    setPeticiones(docs);
-};
+const [amigos, setAmigos] = useState({usuario1: window.sessionStorage.getItem('user'), usuario2: ""});
 
-const aceptarPeticion= async (idUsuario) => {
+const getPeticiones= async () => {
+    db.collection("peticiones").onSnapshot((querySnapShot) => {
+        const docs = [];
+        querySnapShot.forEach(doc => {
+            if (String(doc.data().receptor.localeCompare(usuarioActivo))=== String(0)){
+                docs.push({...doc.data(), id: doc.id})
+            }
+        });
+        setPeticiones(docs);
+    });
+};
+    
+
+const aceptarPeticion= async (id,idUsuario) => {
+    await db.collection('peticiones').doc(id).delete();
+    setAmigos(amigos.usuario2=idUsuario);
+    await db.collection('amigos').doc().set(amigos);
     toast.info("Has aceptado la petición de amistad", {
         position: toast.POSITION.BOTTOM_LEFT,
-        autoClose: 5000
+        autoClose: 2500
       } );
       };
   
 
-  const rechazarPeticion = async (idUsuario) => {
+  const rechazarPeticion = async (id) => {
     if (window.confirm("¿Estás seguro de rechazar esta petición?")){
+        await db.collection('peticiones').doc(id).delete();
         toast.info("Has eliminado la petición de amistad correctamente", {
             position: toast.POSITION.BOTTOM_LEFT,
-            autoClose: 5000
+            autoClose: 2500
           } );
     }
+    //await sleep(2500);
+    //reload();
       };
 
-  const Card = (props) => {
-    return (
-      <div class="card bg-info text-white" >
-        <div class="card-body">
-          <h2 class="card-title" id="friendName">
-            <Name src={props.nombre}>{props.nombre}</Name>
-          </h2>
-          <center>
-            <div className="botones">
-             <button className="btn btn-light"  id="botonOpcion"  onClick={() => aceptarPeticion(props.idUsuario)} data-testId="button" >Aceptar</button>
-              <button className="btn btn-light" id="botonOpcion"  onClick={() => rechazarPeticion(props.idUsuario)}  data-testId="button"  >Rechazar 
-              </button>
-            </div>
-          </center>
-        </div>
-      </div>
-    );
-  };
+    async function sleep(ms) {
+     return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
 
   useEffect(() => {
     getPeticiones();
@@ -75,12 +71,14 @@ const aceptarPeticion= async (idUsuario) => {
   return (
     <DocumentTitle title="Peticiones">
       <div className="prueba">
-      <h2 className="h2" data-testId="label">Estos son tus peticiones pendientes: </h2>
-    <div className="col-md-8">
+      <h2 className="h2" data-testId="label">Estas son tus peticiones pendientes: </h2>
+    <div className="col-md-8 p-2">
         {peticiones.map(peticion => (
             <div className="card mb-1">
                 <div className="card-body">
             <h4>{peticion.emisor}</h4>
+            <button className="btn btn-light"  id="botonOpcion"  onClick={() => aceptarPeticion(peticion.id,peticion.emisor)} data-testId="button" >Aceptar</button>
+            <button className="btn btn-light" id="botonOpcion"  onClick={() => rechazarPeticion(peticion.id)}  data-testId="button"  >Rechazar </button>
             </div>
             </div>
         )
