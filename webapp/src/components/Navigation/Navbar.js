@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import ReactDOM from 'react-dom';
 
 export default class NavBar extends Component {
     state = {
@@ -53,6 +52,9 @@ export default class NavBar extends Component {
                             </li>
                             <li className="nav-item">
                                 <Link to="/amigos" className="nav-link" >Amigos</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/peticiones" className="nav-link" >Peticiones</Link>
                             </li>
                         </ul>
                     </div>
