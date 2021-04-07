@@ -13,29 +13,41 @@ function Friends() {
 
 const { default: data } = require("@solid/query-ldflex");
 
-const [details, setDetails] = useState({emisor: window.sessionStorage.getItem('user'), receptor: "", estado: "creada"});
+const [details, setDetails] = useState({emisor: window.sessionStorage.getItem('user'), receptor: ""});
 
 const addFriend = async (idAmigo) => {
-      console.log(details.receptor);
-      console.log(details.emisor);
-      console.log(details.estado);
+
       if (idAmigo.localeCompare(window.sessionStorage.getItem('user')) !== 0 ){
-        if (await existeUsuario(idAmigo)){
          if (idAmigo.localeCompare("") !== 0) {
-            if (await amigoExistente(idAmigo)) {
+           if (await existeUsuario(idAmigo)){
+            if (await existeAmigo(idAmigo)) {
                toast.error("Ya sois amig@s", {
                 position: toast.POSITION.BOTTOM_LEFT,
                 autoClose: 5000
           } );
         }  else {
+           if (await existePeticion(idAmigo)){
+            toast.error("Ya habías enviado esta petición", {
+              position: toast.POSITION.BOTTOM_LEFT,
+              autoClose: 5000
+        } );
+           }
+           else{
           await db.collection('peticiones').doc().set(details);
-          toast.info("Tu amig@ se ha agregado", {
+          toast.info("Has enviado la petición de amistad correctamente", {
             position: toast.POSITION.BOTTOM_LEFT,
             autoClose: 5000
           } );
           await sleep(5000);
-          reload();
         }
+        }
+      }
+      else{
+        toast.error("No existe el usuario indicado", {
+          position: toast.POSITION.BOTTOM_LEFT,
+          autoClose: 5000
+    } );
+      }
       } else {
         toast.error("Cadena vacía", {
           position: toast.POSITION.BOTTOM_LEFT,
@@ -43,7 +55,7 @@ const addFriend = async (idAmigo) => {
         } );
       }
     }
-  } else{
+   else{
     toast.error("No puedes agregarte a ti mism@", {
       position: toast.POSITION.BOTTOM_LEFT,
       autoClose: 5000
@@ -51,13 +63,57 @@ const addFriend = async (idAmigo) => {
   }
     };
 
-  const amigoExistente = async (idAmigo) => {
-    return false;
+  const existeAmigo = async (idAmigo) => {
+    const querySnapShot = await db.collection('amigos').get();
+    var existeAmigo = false;
+    querySnapShot.forEach(doc => {
+        if (String(doc.data().usuario1.localeCompare(details.emisor))=== String(0) && (String(doc.data().usuario2.localeCompare(idAmigo))=== String(0))){
+            existeAmigo = true;
+            }
+            if (String(doc.data().usuario2.localeCompare(details.emisor))=== String(0) && (String(doc.data().usuario1.localeCompare(idAmigo))=== String(0))){
+              existeAmigo = true;
+              }   
+    })
+    if (existeAmigo){
+        return true;
+    }
+    else{
+        return false;
+    }
   };
 
+  const existePeticion= async (idAmigo) => {
+    const querySnapShot = await db.collection('peticiones').get();
+        var existePeticion = false;
+        querySnapShot.forEach(doc => {
+            if (String(doc.data().emisor.localeCompare(details.emisor))=== String(0) && (String(doc.data().receptor.localeCompare(idAmigo))=== String(0))){
+                existePeticion = true;
+                }
+        })
+        if (existePeticion){
+            return true;
+        }
+        else{
+            return false;
+        }
+      };
+  
+
   const existeUsuario = async (idAmigo) => {
-    return false;
-  };
+    const querySnapShot = await db.collection('users').get();
+        var existeUsuario = false;
+        querySnapShot.forEach(doc => {
+            if (String(doc.data().email.localeCompare(idAmigo))=== String(0)){
+                existeUsuario = true;
+                }
+        })
+        if (existeUsuario){
+            return true;
+        }
+        else{
+            return false;
+        }
+      };
 
 
 
@@ -106,7 +162,7 @@ const addFriend = async (idAmigo) => {
         
 
         <br></br>
-      <List src={`[${"https://javigrao.solidcommunity.net/profile/card#me"}].friends`} className="list" padding-inline-start="0">{(friend) =>
+      <List className="list" padding-inline-start="0">{(friend) =>
         <li key={friend} className="listElement">
           <p>
             <Card nombre={`[${friend}]`} web={"https://javigrao.solidcommunity.net/profile/card#me"}></Card>
