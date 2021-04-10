@@ -179,7 +179,7 @@ function Friends() {
           
             {amigos.map(amigo => (
               
-              <div class="card bg-info text-white" >
+              <div class="card bg-info text-white mb-2" >
                 
                 <div class="card-body">
                   <h2 class="card-title" id="friendName">
@@ -188,9 +188,15 @@ function Friends() {
                   </h2>
                   <center>
                     <div className="botones p-2">
-                      <button className="btn btn-light" id="botonOpcion" /*onClick={() => chatear(usuarioActivo, amigo.nombre)} */ data-testId="btnChatear" >Chatear</button>
-                      <button className="btn btn-light" id="botonOpcion" /*onClick={() => verUbicación(amigo.nombre)} */ data-testId="btnUbicacion"  >Ver ubicación </button>
-                      <button className="btn btn-light" id="botonOpcion" onClick={() => eliminarAmigo(amigo.id)}  data-testId="btnEliminar"  >Eliminar </button>
+                      <button className="btn btn-light" id="botonOpcion" /*onClick={() => chatear(usuarioActivo, amigo.nombre)} */ data-testId="btnChatear" >
+                        <i className="material-icons">insert_comment</i>
+                      </button>
+                      <button className="btn btn-light" id="botonOpcion" /*onClick={() => verUbicación(amigo.nombre)} */ data-testId="btnUbicacion"  >
+                        <i className="material-icons">location_on</i>  
+                      </button>
+                      <button className="btn btn-light" id="botonOpcion" onClick={() => eliminarAmigo(amigo.id)}  data-testId="btnEliminar"  >
+                        <i className="material-icons">delete</i>  
+                      </button>
                     </div>
                   </center>
                 </div>
