@@ -7,6 +7,8 @@ import DocumentTitle from "react-document-title";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { db } from '../../api/firebase'
+import { useHistory,Redirect, browserHistory } from "react-router-dom" 
+
 
 
 
@@ -19,6 +21,8 @@ function Friends() {
   const [details, setDetails] = useState({ emisor: window.sessionStorage.getItem('user'), receptor: "" });
 
   const [amigos, setAmigos] = useState([]);
+
+  const history = useHistory();
 
 
 
@@ -148,6 +152,12 @@ function Friends() {
 };
 
 
+const  NavigateToMessages = (id)=>{
+  history.push("/mensajes/"+id);
+  history.go(0)
+}
+
+
 
   async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -188,7 +198,7 @@ function Friends() {
                   </h2>
                   <center>
                     <div className="botones p-2">
-                      <button className="btn btn-light" id="botonOpcion" /*onClick={() => chatear(usuarioActivo, amigo.nombre)} */ data-testId="btnChatear" >
+                      <button className="btn btn-light" id="botonOpcion" onClick={() => NavigateToMessages(amigo.nombre)} data-testId="btnChatear" >
                         <i className="material-icons">insert_comment</i>
                       </button>
                       <button className="btn btn-light" id="botonOpcion" /*onClick={() => verUbicación(amigo.nombre)} */ data-testId="btnUbicacion"  >

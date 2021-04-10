@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { db } from '../../api/firebase'
-
+import { useParams } from "react-router";
 
 import Message from './Message';
 
@@ -8,18 +8,24 @@ export const ChatRoom = (props) => {
 
     const [messages, setMessages] = useState([]);
     const [messageToSend, setMessageToSend] = useState("");
+    let { friend } = useParams();
 
     const loadMessages = async () => {
         console.log("El props.user")
         console.log(props.user)
+        console.log("Ruta")
+        
+        console.log(friend)
+        console.log("Amigo props")
+        console.log(friend)
         db.collection('messages').
-            where('user', 'in', [props.user,props.friend])
+            where('user', 'in', [props.user,friend])
             .onSnapshot(
                 (querySnapshot) => {
                     const docs = [];
                     querySnapshot.forEach(element => {
                         
-                        if(element.data().friend===props.friend){
+                        if(element.data().friend===friend){
                             docs.push({ ...element.data(), id: element.id })
                         }
                         if(element.data().friend===props.user)
@@ -36,7 +42,7 @@ export const ChatRoom = (props) => {
 
 
     useEffect(() => {
-        loadMessages(props.user, props.friend);
+        loadMessages(props.user, friend);
         console.log(messages)
     }, [])
 
@@ -45,7 +51,7 @@ export const ChatRoom = (props) => {
         const fecha = Date.now()
         console.log(fecha);
         const messageObject = {
-            friend: props.friend,
+            friend: friend,
             user: props.user,
             text: messageToSend,
             date: fecha
@@ -84,7 +90,7 @@ export const ChatRoom = (props) => {
     return (
         <div className="container">
             <div className="card text-white bg-info">
-                <div className="card-header bg-dark">{props.friend}</div>
+                <div className="card-header bg-dark">{friend}</div>
                 <div className="card-body">
                     <div className="list-group list-group-flush mb-1 h-50 bg-light">
                         <MessageList></MessageList>
