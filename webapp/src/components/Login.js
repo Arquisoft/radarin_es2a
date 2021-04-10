@@ -1,20 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import LoginForm from './LoginForm';
 import Home from './Home';
 import { Container, Button} from '@material-ui/core';
 import {db} from '../api/firebase'
 import { toast } from 'react-toastify';
+import Context from '../context/UserContext'
 
 function Login() {
 
     const [user, setUser] = useState({email: "", pod:""});
     const [error, setError] = useState("");
 
-
-    const user2 = {
-        email : "",
-        pod:""
-    }
 
     const Login = async (details) => {
         const querySnapShot = await db.collection('users').get();
@@ -27,6 +23,9 @@ function Login() {
                         pod: details.pod
                     });
                     cambio = true;
+                    window.sessionStorage.setItem('user', details.email)
+                    
+                    
                 }
                 }
 
@@ -47,13 +46,13 @@ function Login() {
             email: "",
             pod: ""
         });
+        window.sessionStorage.removeItem('user');
     }
     return (
         
         <Container className="LoginConstants">
             {(user.email !== "") ? ( 
-                <Container>
-                     
+                <Container>    
                     <Home/>
                     <Button onClick={Logout}>Cerrar sesión</Button>
                 </Container>

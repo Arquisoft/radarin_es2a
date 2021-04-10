@@ -4,13 +4,19 @@ import logo from './logo.svg';
 import Welcome from './components/Welcome';
 //import LoginConstants from "./components/LoginConstants";
 import Login from "./components/Login";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Registrer from './components/Registrer';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ChatRoom from './components/Messages/ChatRoom';
-import Message from './components/Messages/Message'
+
+import NavBar from './components/Navigation/Navbar';
+import { MapContainer } from './components/MapContainer';
+import Friends from './components/Friends/Friends';
+import Peticiones from './components/Friends/Peticiones';
+import {UserContextProvider} from './context/UserContext'
+import ReactDOM from 'react-dom';
+
 
 
 class App extends React.Component {
@@ -25,12 +31,27 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <ChatRoom user='amigo' friend='lucas' />
+      <UserContextProvider>
+      <div className="App">
+        <Router>
+          <NavBar/>
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <Welcome name="Bienvenid@" />
+          </header>
+          <div className="App-content">
+            <Route path='/login' component={Login} /> 
+            <Route path="/registrarse" component={Registrer} />
+            <Route path="/amigos" component={Friends} />
+            <Route path="/map" component={MapContainer} />
+            <Route path="/peticiones" component={Peticiones} />
+            <ToastContainer />
+          </div>
+          
+        </Router>
       </div>
-
-
-
+      
+      </UserContextProvider>
 
     )
   }
