@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { db } from '../../api/firebase'
+
+
 import Message from './Message';
 
 export const ChatRoom = (props) => {
@@ -23,7 +25,8 @@ export const ChatRoom = (props) => {
                         if(element.data().friend===props.user)
                             docs.push({ ...element.data(), id: element.id })
                     });
-                    setMessages(docs)
+                    const sorted = docs.sort((a, b) => (a.date > b.date) ? 1 : -1)
+                    setMessages(sorted)
                 }
             )
         console.log("Se han cargado los mensajes")
@@ -37,16 +40,18 @@ export const ChatRoom = (props) => {
 
 
     const addMessage = async () => {
-        console.log(db)
+        const fecha = Date.now()
+        console.log(fecha);
         const messageObject = {
             friend: props.friend,
             user: props.user,
             text: messageToSend,
+            date: fecha
         }
         await db.collection('messages').doc().set(messageObject)
         console.log(messageObject)
         console.log("Se ha enviado el mensaje")
-
+        setMessageToSend("")
     }
 
     function MessageList() {
@@ -79,7 +84,7 @@ export const ChatRoom = (props) => {
             <div className="card text-white bg-info">
                 <div className="card-header bg-dark">{props.friend}</div>
                 <div className="card-body">
-                    <div className="card-body mb-1 bg-light">
+                    <div className="card-body mb-1 h-50 bg-light overflowY-scroll">
                         <MessageList></MessageList>
                     </div>
                     <form className="card card-body " onSubmit={handleSubmit}>

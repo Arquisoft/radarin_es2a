@@ -12,8 +12,6 @@ export default class Message extends Component {
 
 
     render() {
-        console.log("Las props")
-        console.log(this.props)
         if (this.props.session===this.props.messageSender) {
             return (<div className="alert alert-primary textAlign-right">{this.state.text}</div>)
         }
