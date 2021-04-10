@@ -21,10 +21,10 @@ function App(){
     
     return(
       <div className="App">
-      <div id="barra">
-        <Barra showMe={user.auth}/>
-      </div>
         <Router>
+            <div id="barra">
+        <Barra showMe={user.auth}/>
+            </div>
 
           <Route path="/login" render={() =>{
             return(
@@ -38,6 +38,7 @@ function App(){
           <Route path="/registrarse" component={Registrer}></Route>
 
           <Route path="/admin" component={Admin}></Route>
+          <ToastContainer/>
         </Router>
       </div>
     )

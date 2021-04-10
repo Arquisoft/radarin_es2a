@@ -2,11 +2,9 @@ import React, { useState, useContext} from 'react';
 import LoginForm from './LoginForm';
 import Home from './Home';
 import { Container, Button} from '@material-ui/core';
-import {db} from '../api/firebase'
+import {db} from '../api/firebase';
 import { toast } from 'react-toastify';
 import { UserContext } from '../api/UserContext';
-import ReactDOM from 'react-dom';
-import Barra from '../components/NavBar';
 
 function Login() {
     const { login } = useContext(UserContext);

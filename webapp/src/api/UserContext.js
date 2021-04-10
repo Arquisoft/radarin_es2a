@@ -11,14 +11,14 @@ export default function UserProvider({ children }) {
     setUser((user) => ({
       auth: true
     }));
-    ReactDOM.render(<Barra showMe={true}/>, document.getElementById('barra'));
+    ReactDOM.render(<div id="barra"><Barra showMe={true}/></div>, document.getElementById('barra'));
   };
 
   const logout = () => {
     setUser((user) => ({
       auth: false
     }));
-    ReactDOM.render(<Barra showMe={false}/>, document.getElementById('barra'));
+    ReactDOM.render(<div id="barra"><Barra showMe={false}/></div>, document.getElementById('barra'));
   };
 
   return <UserContext.Provider value={{ user, login, logout }}>

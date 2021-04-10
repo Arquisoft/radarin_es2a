@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import ReactDOM from 'react-dom';
 
 class Barra extends React.Component{
     constructor(props){
@@ -13,36 +14,16 @@ class Barra extends React.Component{
             <Navbar bg="primary" variant="dark">
                 <Navbar.Brand>Radarin</Navbar.Brand>
                 <Nav className="mr-auto">
-                {(() => {
-                            if (this.props.showMe) {
-                                return (
-                                    <Nav.Link href="/login">Logout</Nav.Link>
-                                        );
-                                    }
-                            else {
-                                return (
-                                    <Nav.Link href="/login">Login</Nav.Link>
-                                );
-                            }
-                        })()}
-            
                 {
-                    /*this.props.showMe?
+                    this.props.showMe?
                     
                     <Nav.Link href="/login">Logout</Nav.Link>:
-                    <Nav.Link href="/login">Login</Nav.Link>*/
+                    <Nav.Link href="/login">Login</Nav.Link>
                 }
-                {(() => {
-                            if (!this.props.showMe) {
-                                return (
-                                    <Nav.Link href="/registrarse">Registro</Nav.Link>
-                                        );
-                                    }
-                        })()}
                 {
-                    /*this.props.showMe?
+                    this.props.showMe?
                     null:
-                    <Nav.Link href="/registrarse">Registro</Nav.Link>*/
+                    <Nav.Link href="/registrarse">Registro</Nav.Link>
                 }
                     <Nav.Link href="/admin">Admin</Nav.Link>
                 </Nav>
