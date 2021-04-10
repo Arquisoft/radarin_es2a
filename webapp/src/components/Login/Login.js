@@ -50,6 +50,7 @@ function Login() {
             pod: ""
         });
         window.sessionStorage.removeItem('user');
+        
     }
     return (
         <Container className="LoginConstants" style={{width: '500px'}}>
