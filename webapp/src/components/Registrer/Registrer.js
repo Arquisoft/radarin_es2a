@@ -1,8 +1,8 @@
 import React from 'react';
 import RegistrerForm from './RegistrerForm';
 import { Container } from '@material-ui/core';
-import Home from './Home';
-import {db} from '../api/firebase'
+import Home from '../Home';
+import {db} from '../../api/firebase'
 import { toast } from 'react-toastify';
 
 function Registrer() {
@@ -70,7 +70,7 @@ function Registrer() {
     );
     }
         return (
-        <RegistrerForm addUser={addUser}/>
+        <RegistrerForm  addUser={addUser}/>
         );
     
 
