@@ -3,10 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Suspense } from 'react';
+
+import './api/firebase'
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Suspense fallback={'loading'}>
+      <App />
+      </Suspense>
   </React.StrictMode>,
   document.getElementById('root')
 );
@@ -15,3 +21,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
