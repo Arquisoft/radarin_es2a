@@ -16,6 +16,7 @@ import Friends from './components/Friends/Friends';
 import Peticiones from './components/Friends/Peticiones';
 import {UserContextProvider} from './context/UserContext'
 import ReactDOM from 'react-dom';
+import ChatRoom from './components/Messages/ChatRoom';
 
 
 
@@ -45,6 +46,9 @@ class App extends React.Component {
             <Route path="/amigos" component={Friends} />
             <Route path="/map" component={MapContainer} />
             <Route path="/peticiones" component={Peticiones} />
+            <Route path="/mensajes/:friend">
+                <ChatRoom user={window.sessionStorage.getItem('user')}/>
+            </Route>
             <ToastContainer />
           </div>
           
