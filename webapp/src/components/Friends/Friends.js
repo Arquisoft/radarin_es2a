@@ -145,7 +145,7 @@ function Friends() {
     if (window.confirm("¿Estás seguro de eliminar est@ amig@")) {
         await db.collection('amigos').doc(id).delete();
         toast.info("Has eliminado tu amig@ correctamente", {
-            position: toast.POSITION.BOTTOM_LEFT,
+            position: toast.POSITION.TOP_CENTER,
             autoClose: 2500
         });
     }
