@@ -5,8 +5,7 @@ webapp/node_modules
 /.pnp
 .pnp.js
 
-#Apikey
-webapp/src/api/credentials.js
+
 
 # testing
 /webapp/coverage
