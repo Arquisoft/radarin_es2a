@@ -25,7 +25,9 @@ export const ChatRoom = (props) => {
                         if(element.data().friend===props.user)
                             docs.push({ ...element.data(), id: element.id })
                     });
-                    const sorted = docs.sort((a, b) => (a.date > b.date) ? 1 : -1)
+                    let sorted = docs.sort((a, b) => (a.date > b.date) ? 1 : -1)
+                    if(sorted.length>15)
+                        sorted = sorted.slice(-15)
                     setMessages(sorted)
                 }
             )
@@ -59,7 +61,7 @@ export const ChatRoom = (props) => {
             <Message text={message.text} session={props.user} messageSender={message.user}></Message>)
         )
         return (
-            <ul>{messageList}</ul>
+            <div>{messageList}</div>
         )
 
     }
@@ -84,7 +86,7 @@ export const ChatRoom = (props) => {
             <div className="card text-white bg-info">
                 <div className="card-header bg-dark">{props.friend}</div>
                 <div className="card-body">
-                    <div className="card-body mb-1 h-50 bg-light overflowY-scroll">
+                    <div className="list-group list-group-flush mb-1 h-50 bg-light">
                         <MessageList></MessageList>
                     </div>
                     <form className="card card-body " onSubmit={handleSubmit}>
