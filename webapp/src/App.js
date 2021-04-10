@@ -9,12 +9,14 @@ import Registrer from './components/Registrer';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 import NavBar from './components/Navigation/Navbar';
 import { MapContainer } from './components/MapContainer';
 import Friends from './components/Friends/Friends';
 import Peticiones from './components/Friends/Peticiones';
 import {UserContextProvider} from './context/UserContext'
 import ReactDOM from 'react-dom';
+
 
 
 class App extends React.Component {
@@ -50,7 +52,6 @@ class App extends React.Component {
       </div>
       
       </UserContextProvider>
-
 
     )
   }
