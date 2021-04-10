@@ -15,7 +15,7 @@ function LoginForm({ Login, error }) {
 
     <div className="container">
 
-      <form className="card bg-white border-primary mx-auto w-75" onSubmit={submitHandler}>
+      <form className="card bg-white border-primary mx-auto w-140" onSubmit={submitHandler}>
           <div className="card-header bg-primary text-white font-weight-bold">INICIAR SESIÓN</div>
           {(error !== "") ? (<Container className="error">{error}</Container>) : ""}
           <div className="card card-body">

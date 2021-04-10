@@ -49,7 +49,7 @@ function Login() {
         window.sessionStorage.removeItem('user');
     }
     return (
-        <Container className="LoginConstants">
+        <Container className="LoginConstants" style={{width: '500px'}}>
             {(user.email !== "") ? ( 
                 <div>    
                     <Home/>
