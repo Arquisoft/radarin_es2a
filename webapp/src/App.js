@@ -3,7 +3,7 @@ import './App.css';
 import logo from './logo.svg';
 import Welcome from './components/Welcome';
 //import LoginConstants from "./components/LoginConstants";
-import Login from "./components/Login";
+import Login from "./components/Login/Login";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Registrer from './components/Registrer';
 import { BrowserRouter as Router, Route } from 'react-router-dom';

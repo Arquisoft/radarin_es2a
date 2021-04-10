@@ -1,10 +1,10 @@
 import React, {useState, useContext} from 'react';
 import LoginForm from './LoginForm';
-import Home from './Home';
+import Home from '../Home';
 import { Container, Button} from '@material-ui/core';
-import {db} from '../api/firebase'
+import {db} from '../../api/firebase'
 import { toast } from 'react-toastify';
-import Context from '../context/UserContext'
+import Context from '../../context/UserContext'
 
 function Login() {
 
@@ -49,13 +49,12 @@ function Login() {
         window.sessionStorage.removeItem('user');
     }
     return (
-        
         <Container className="LoginConstants">
             {(user.email !== "") ? ( 
-                <Container>    
+                <div>    
                     <Home/>
                     <Button onClick={Logout}>Cerrar sesión</Button>
-                </Container>
+                </div>
             ) : (
                 <LoginForm Login={Login} error={error}/>
             )}
