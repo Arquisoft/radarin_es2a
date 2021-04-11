@@ -4,30 +4,20 @@ import logo from './logo.svg';
 import Welcome from './components/Welcome';
 //import LoginConstants from "./components/LoginConstants";
 import Login from "./components/Login/Login";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Registrer from './components/Registrer/Registrer';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Login from "./components/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Registrer from './components/Registrer';
 import Admin from './components/Admin';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Barra from './components/Navegation/NavBar';
 import AdminBar from './components/Navegation/AdminBar';
-import { UserContext } from './api/UserContext';
- 
-function refreshUsers(users){
-  this.setState({users:users})
-}
-
 import NavBar from './components/Navigation/Navbar';
 import { MapContainer } from './components/Map/MapContainer';
 import Friends from './components/Friends/Friends';
 import Peticiones from './components/Friends/Peticiones';
 import {UserContextProvider} from './context/UserContext'
-import ReactDOM from 'react-dom';
 import ChatRoom from './components/Messages/ChatRoom';
 
 import Home from './components/Home'
@@ -61,7 +51,7 @@ class App extends React.Component {
       <UserContextProvider>
       <div className="App">
         <Router>
-          <NavBar/>
+          <Barra/>
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
             <Welcome name="Bienvenid@" />
@@ -87,5 +77,5 @@ class App extends React.Component {
 
     )
 }
-
+}
 export default App;
