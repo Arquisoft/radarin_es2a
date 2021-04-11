@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import React, {useEffect, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrashAlt, faEdit} from '@fortawesome/free-solid-svg-icons';
-import { ToastContainer } from 'react-toastify';
 
 export const Admin = () => {
 

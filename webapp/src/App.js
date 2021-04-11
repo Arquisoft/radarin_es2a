@@ -7,9 +7,9 @@ import Admin from './components/Admin';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Barra from './components/NavBar';
+import Barra from './components/Navegation/NavBar';
+import AdminBar from './components/Navegation/AdminBar';
 import { UserContext } from './api/UserContext';
-import ReactDOM from 'react-dom';
  
 function refreshUsers(users){
   this.setState({users:users})
@@ -22,9 +22,8 @@ function App(){
     return(
       <div className="App">
         <Router>
-            <div id="barra">
-        <Barra showMe={user.auth}/>
-            </div>
+          <Barra/>
+          <AdminBar/>
 
           <Route path="/login" render={() =>{
             return(
@@ -36,6 +35,7 @@ function App(){
           }}></Route>
 
           <Route path="/registrarse" component={Registrer}></Route>
+          <ToastContainer/>
 
           <Route path="/admin" component={Admin}></Route>
           <ToastContainer/>
