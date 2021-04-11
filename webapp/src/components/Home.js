@@ -13,8 +13,10 @@ function Home() {
   };
   
   function success(pos) {
-    var crd = pos.coords;
-    addUserPos(crd.latitude,crd.longitude)
+    if(window.sessionStorage.getItem('user') !== null){
+      var crd = pos.coords;
+      addUserPos(crd.latitude,crd.longitude)
+    }
   };
   
   function error(err) {

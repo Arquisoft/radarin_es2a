@@ -8,6 +8,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { db } from '../../api/firebase'
 import { useHistory,Redirect, browserHistory } from "react-router-dom" 
+import getUserPos from '../Service/LocationService'
+import distancia from '../Service/DistanceService'
 
 
 
@@ -158,6 +160,21 @@ const  NavigateToMessages = (id)=>{
 }
 
 
+const getDistanciaAmigo =async (emailAmigo) =>{
+    const emailSession = window.sessionStorage.getItem('user');
+    const coordsSession = getUserPos(emailSession)
+    const coordsAmigo = getUserPos(emailAmigo)
+    console.log("Coordenadas amigo y sesion")
+    console.log(coordsSession)
+    console.log(coordsAmigo)
+    if(coordsSession==null || coordsAmigo ==null){
+      return("NO DISPONIBLE")
+    }else{
+      return(distancia(coordsAmigo,coordsSession) + 'Km')
+    }
+}
+
+
 
   async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -208,6 +225,9 @@ const  NavigateToMessages = (id)=>{
                         <i className="material-icons">delete</i>  
                       </button>
                     </div>
+                  </center>
+                  <center>
+                    <h4>getDistanciaAmigo(amigo.id)</h4>
                   </center>
                 </div>
               </div>
