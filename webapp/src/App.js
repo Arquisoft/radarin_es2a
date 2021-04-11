@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import './App.css';
 import logo from './logo.svg';
 import Welcome from './components/Welcome';
@@ -7,8 +7,20 @@ import Login from "./components/Login/Login";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Registrer from './components/Registrer/Registrer';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Login from "./components/Login";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Registrer from './components/Registrer';
+import Admin from './components/Admin';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Barra from './components/Navegation/NavBar';
+import AdminBar from './components/Navegation/AdminBar';
+import { UserContext } from './api/UserContext';
+ 
+function refreshUsers(users){
+  this.setState({users:users})
+}
 
 import NavBar from './components/Navigation/Navbar';
 import { MapContainer } from './components/Map/MapContainer';
@@ -74,7 +86,6 @@ class App extends React.Component {
       </UserContextProvider>
 
     )
-  }
 }
 
 export default App;
