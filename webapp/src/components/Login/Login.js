@@ -35,6 +35,7 @@ function Login() {
         })
         if (!cambio){
             toast("El usuario y/o la contraseña no coinciden", {
+                position: toast.POSITION.TOP_CENTER,
                 type: "error",
                 autoClose: 3000,
             });

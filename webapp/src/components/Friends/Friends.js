@@ -48,20 +48,20 @@ function Friends() {
         if (await existeUsuario(idAmigo)) {
           if (await existeAmigo(idAmigo)) {
             toast.error("Ya sois amig@s", {
-              position: toast.POSITION.BOTTOM_LEFT,
+              position: toast.POSITION.TOP_CENTER,
               autoClose: 2500
             });
           } else {
             if (await existePeticion(idAmigo)) {
               toast.error("Ya habías enviado esta petición", {
-                position: toast.POSITION.BOTTOM_LEFT,
+                position: toast.POSITION.TOP_CENTER,
                 autoClose: 2500
               });
             }
             else {
               await db.collection('peticiones').doc().set(details);
               toast.info("Has enviado la petición de amistad correctamente", {
-                position: toast.POSITION.BOTTOM_LEFT,
+                position: toast.POSITION.TOP_CENTER,
                 autoClose: 2500
               });
               await sleep(2500);
@@ -70,20 +70,20 @@ function Friends() {
         }
         else {
           toast.error("No existe el usuario indicado", {
-            position: toast.POSITION.BOTTOM_LEFT,
+            position: toast.POSITION.TOP_CENTER,
             autoClose: 2500
           });
         }
       } else {
         toast.error("Cadena vacía", {
-          position: toast.POSITION.BOTTOM_LEFT,
+          position: toast.POSITION.TOP_CENTER,
           autoClose: 2500
         });
       }
     }
     else {
       toast.error("No puedes agregarte a ti mism@", {
-        position: toast.POSITION.BOTTOM_LEFT,
+        position: toast.POSITION.TOP_CENTER,
         autoClose: 2500
       });
     }

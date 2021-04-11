@@ -20,17 +20,17 @@ export default class NavBar extends Component {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
                 <div className="container">
-                    <Link className="navbar-brand" to="/">Home</Link>
+                    <Link className="navbar-brand" to="/">Inicio</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item active">
-                                <Link to="/login" className="nav-link">Login</Link>
+                                <Link to="/login" className="nav-link">Iniciar Sesión</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/registrarse" className="nav-link">Register</Link>
+                                <Link to="/registrarse" className="nav-link">Registarse</Link>
                             </li>
                         </ul>
                     </div>
@@ -41,7 +41,7 @@ export default class NavBar extends Component {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
                 <div className="container">
-                    <Link className="navbar-brand" to="/">Home</Link>
+                    <Link className="navbar-brand" to="/">Inicio</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -57,7 +57,7 @@ export default class NavBar extends Component {
                                 <Link to="/peticiones" className="nav-link" >Peticiones</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/logout" className="nav-link" >Logout</Link>
+                                <Link to="/logout" className="nav-link" >Cerrar Sesión</Link>
                             </li>
                         </ul>
                     </div>
