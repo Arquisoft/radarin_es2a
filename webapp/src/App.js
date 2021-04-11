@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import './App.css';
 import logo from './logo.svg';
 import Welcome from './components/Welcome';
-//import LoginConstants from "./components/LoginConstants";
 import Login from "./components/Login/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registrer from './components/Registrer/Registrer';
@@ -17,9 +16,9 @@ import Friends from './components/Friends/Friends';
 import Peticiones from './components/Friends/Peticiones';
 import {UserContextProvider} from './context/UserContext'
 import ChatRoom from './components/Messages/ChatRoom';
-
-import Home from './components/Home'
-import {useHistory} from 'react-router-dom'
+import Principal from './components/Principal';
+import Home from './components/Home';
+import {useHistory} from 'react-router-dom';
 
 
 
@@ -50,13 +49,11 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <Barra/>
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <Welcome name="Bienvenid@" />
-          </header>
+          
           <div className="App-content">
-            <Route path='/login' component={Login} /> 
-            <Route path='/logout' component={Logout} /> 
+            <Route exact path="/" component={Principal} />
+            <Route path="/login" component={Login} /> 
+            <Route path="/logout" component={Logout} /> 
             <Route path="/registrarse" component={Registrer} />
             <Route path="/home" component={Home} />
             <Route path="/amigos" component={Friends} />
