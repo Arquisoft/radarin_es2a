@@ -11,12 +11,13 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import NavBar from './components/Navigation/Navbar';
-import { MapContainer } from './components/MapContainer';
+import { MapContainer } from './components/Map/MapContainer';
 import Friends from './components/Friends/Friends';
 import Peticiones from './components/Friends/Peticiones';
 import {UserContextProvider} from './context/UserContext'
 import ReactDOM from 'react-dom';
 import ChatRoom from './components/Messages/ChatRoom';
+import Home from './components/Home'
 
 
 
@@ -43,6 +44,7 @@ class App extends React.Component {
           <div className="App-content">
             <Route path='/login' component={Login} /> 
             <Route path="/registrarse" component={Registrer} />
+            <Route path="/home" component={Home} />
             <Route path="/amigos" component={Friends} />
             <Route path="/map" component={MapContainer} />
             <Route path="/peticiones" component={Peticiones} />
