@@ -12,8 +12,6 @@ import Admin from './components/Admin';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Barra from './components/Navegation/NavBar';
-import AdminBar from './components/Navegation/AdminBar';
-import NavBar from './components/Navigation/Navbar';
 import { MapContainer } from './components/Map/MapContainer';
 import Friends from './components/Friends/Friends';
 import Peticiones from './components/Friends/Peticiones';
@@ -30,7 +28,7 @@ function Logout ()
 {
   const history = useHistory();
   window.sessionStorage.removeItem('user');
-  history.push('/login');
+  history.push('/');
   history.go(0)
 }
 
