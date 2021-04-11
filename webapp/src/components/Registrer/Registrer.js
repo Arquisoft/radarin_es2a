@@ -13,6 +13,7 @@ function Registrer() {
         if (details.email.length ===0 || details.password.length ===0 || details.pod.length === 0){
             toast("No pueden existir campos vacíos",
             {
+                position: toast.POSITION.TOP_CENTER,
                 type: 'error',
                 autoClose: 3000,
             })
@@ -21,6 +22,7 @@ function Registrer() {
         if (details.password.length < 5 ){
             toast("La contraseña ha de tener mínimo 5 caracteres",
             {
+                position: toast.POSITION.TOP_CENTER,
                 type: 'error',
                 autoClose: 3000,
             })
@@ -30,12 +32,14 @@ function Registrer() {
             await db.collection('users').doc().set(details);
             toast("Usuario añadido correctamente",
             {
+                position: toast.POSITION.TOP_CENTER,
                 type: 'success',
                 autoClose: 3000,
             })
         }
         else{
         toast("Ya existe un usuario con ese email", {
+            position: toast.POSITION.TOP_CENTER,
             type: "error",
             autoClose: 3000,
         });
