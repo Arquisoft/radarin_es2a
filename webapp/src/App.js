@@ -17,9 +17,20 @@ import Peticiones from './components/Friends/Peticiones';
 import {UserContextProvider} from './context/UserContext'
 import ReactDOM from 'react-dom';
 import ChatRoom from './components/Messages/ChatRoom';
+
 import Home from './components/Home'
+import {useHistory} from 'react-router-dom'
 
 
+
+
+function Logout () 
+{
+  const history = useHistory();
+  window.sessionStorage.removeItem('user');
+  history.push('/login');
+  history.go(0)
+}
 
 class App extends React.Component {
   constructor() {
@@ -30,6 +41,8 @@ class App extends React.Component {
   refreshUsers(users) {
     this.setState({ users: users })
   }
+
+  
 
   render() {
     return (
@@ -43,6 +56,7 @@ class App extends React.Component {
           </header>
           <div className="App-content">
             <Route path='/login' component={Login} /> 
+            <Route path='/logout' component={Logout} /> 
             <Route path="/registrarse" component={Registrer} />
             <Route path="/home" component={Home} />
             <Route path="/amigos" component={Friends} />

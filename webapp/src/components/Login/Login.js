@@ -5,11 +5,13 @@ import { Container, Button} from '@material-ui/core';
 import {db} from '../../api/firebase'
 import { toast } from 'react-toastify';
 import Context from '../../context/UserContext'
+import {useHistory} from 'react-router-dom'
 
 function Login() {
 
     const [user, setUser] = useState({email: "", pod:""});
     const [error, setError] = useState("");
+    const history = useHistory();
 
 
     const Login = async (details) => {
@@ -24,7 +26,8 @@ function Login() {
                     });
                     cambio = true;
                     window.sessionStorage.setItem('user', details.email)
-                    
+                    history.push('/amigos');
+                    history.go(0)
                     
                 }
                 }
@@ -32,6 +35,7 @@ function Login() {
         })
         if (!cambio){
             toast("El usuario y/o la contraseña no coinciden", {
+                position: toast.POSITION.TOP_CENTER,
                 type: "error",
                 autoClose: 3000,
             });
@@ -47,6 +51,7 @@ function Login() {
             pod: ""
         });
         window.sessionStorage.removeItem('user');
+        
     }
     return (
         <Container className="LoginConstants" style={{width: '500px'}}>
