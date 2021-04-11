@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleApiWrapper, InfoWindow, Marker, Circle } from 'google-maps-react';
-import credentials from '../api/credentials'
+import credentials from '../../api/credentials'
 import MyLocation from './MyLocation'
 
 
