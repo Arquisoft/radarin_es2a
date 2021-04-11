@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {db} from '../../api/firebase'
 
 
@@ -20,5 +21,5 @@ const getUserPos = async (email) => {
     return coords;
 }
 
-export default {addUserPos, getUserPos};
+export default addUserPos;
 
