@@ -9,7 +9,7 @@ defineFeature(feature, test => {
 
   test('The user is not registered in the site', ({given,when,then}) => {
     
-   /* let email;
+    let email;
     let username;
 
     given('An unregistered user', () => {
@@ -29,11 +29,11 @@ defineFeature(feature, test => {
 
     then('A welcome message should be shown in the screen', async () => {
     });
-  */});
+  });
 
   test('The user is already registered in the site', ({ given, when, then }) => {
     
-   /*given('An already registered user', () => {
+   given('An already registered user', () => {
     });
 
     when('I fill the data in the form and press submit', async () => {
@@ -42,6 +42,6 @@ defineFeature(feature, test => {
 
     then('An error message should be shown in the screen', async () => {
     });
-    */
+    
   });
 });
