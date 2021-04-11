@@ -1,22 +1,18 @@
-import React, { useState, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import LoginForm from './LoginForm';
-import Home from './Home';
+import Home from '../Home';
 import { Container, Button} from '@material-ui/core';
-import {db} from '../api/firebase';
+import {db} from '../../api/firebase'
 import { toast } from 'react-toastify';
-import { UserContext } from '../api/UserContext';
+import Context from '../../context/UserContext'
+import {useHistory} from 'react-router-dom'
 
 function Login() {
-    const { login } = useContext(UserContext);
 
     const [user, setUser] = useState({email: "", pod:""});
     const [error, setError] = useState("");
+    const history = useHistory();
 
-
-    const user2 = {
-        email : "",
-        pod:""
-    }
 
     const Login = async (details) => {
         const querySnapShot = await db.collection('users').get();
@@ -24,39 +20,46 @@ function Login() {
         querySnapShot.forEach(doc => {
             if (String(doc.data().email.localeCompare(details.email))=== String(0)){
                 if (String(doc.data().password.localeCompare(details.password))=== String(0)){
-                    login();
                     setUser({
                         email: details.email,
                         pod: details.pod
                     });
                     cambio = true;
+                    window.sessionStorage.setItem('user', details.email)
+                    history.push('/amigos');
+                    history.go(0)
+                    
                 }
                 }
 
         })
         if (!cambio){
             toast("El usuario y/o la contraseña no coinciden", {
+                position: toast.POSITION.TOP_CENTER,
                 type: "error",
                 autoClose: 3000,
             });
         }
+        
+
+        
       };
 
     const Logout = () => {
-        
         setUser({
             email: "",
             pod: ""
         });
+        window.sessionStorage.removeItem('user');
+        
     }
     return (
-        
-        <Container className="LoginConstants">
+        <Container className="LoginConstants" style={{width: '500px'}}>
             {(user.email !== "") ? ( 
-                <Container>
+                <div>    
                     <Home/>
                     <Button onClick={Logout}>Cerrar sesión</Button>
-                </Container>
+                </div>
             ) : (
                 <LoginForm Login={Login} error={error}/>
             )}
