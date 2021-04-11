@@ -3,7 +3,7 @@ import {db} from '../../api/firebase'
 
 
 
-const addUserPos = async (lat,lng) => {
+export async function addUserPos (lat,lng) {
     const emailSession = window.sessionStorage.getItem('user');
     const userPos={
         email: emailSession,
@@ -15,11 +15,9 @@ const addUserPos = async (lat,lng) => {
         set(userPos)
     }
 
-const getUserPos = async (email) => {
+export async function getUserPos(email) {
     const coords = await db.collection('locations')
     .doc(email).get()
     return coords;
 }
-
-export default addUserPos;
 

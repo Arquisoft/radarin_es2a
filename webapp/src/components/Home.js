@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import addUserPos from '../components/Service/LocationService'
+import {addUserPos} from '../components/Service/LocationService'
 
 function Home() {
 
