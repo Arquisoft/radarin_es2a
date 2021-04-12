@@ -20,6 +20,7 @@ import ChatRoom from './components/Messages/ChatRoom';
 
 import Home from './components/Home'
 import {useHistory} from 'react-router-dom'
+import MapFriendLocation from './components/Map/MapFriendLocation';
 
 
 
@@ -60,10 +61,12 @@ class App extends React.Component {
             <Route path="/registrarse" component={Registrer} />
             <Route path="/home" component={Home} />
             <Route path="/amigos" component={Friends} />
-            <Route path="/map" component={MapContainer} />
             <Route path="/peticiones" component={Peticiones} />
             <Route path="/mensajes/:friend">
                 <ChatRoom user={window.sessionStorage.getItem('user')}/>
+            </Route>
+            <Route path="/map/:friend">
+                <MapContainer user={window.sessionStorage.getItem('user')}/>
             </Route>
             <ToastContainer />
           </div>

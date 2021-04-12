@@ -11,13 +11,6 @@ export const ChatRoom = (props) => {
     let { friend } = useParams();
 
     const loadMessages = async () => {
-        console.log("El props.user")
-        console.log(props.user)
-        console.log("Ruta")
-        
-        console.log(friend)
-        console.log("Amigo props")
-        console.log(friend)
         db.collection('messages').
             where('user', 'in', [props.user,friend])
             .onSnapshot(

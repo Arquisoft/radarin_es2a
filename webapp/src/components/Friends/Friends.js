@@ -10,6 +10,7 @@ import { db } from '../../api/firebase'
 import { useHistory,Redirect, browserHistory } from "react-router-dom" 
 //import {getUserPos} from '../Service/LocationService'
 import distancia from '../Service/DistanceService'
+import {getUserPos} from '../Service/LocationService'
 
 
 
@@ -24,36 +25,13 @@ function Friends() {
 
   const [amigos, setAmigos] = useState([]);
 
+  const [distances, setDistances] = useState([])
+
   const history = useHistory();
 
 
-  const addUserPos = async (lat,lng) => {
-    const emailSession = window.sessionStorage.getItem('user');
-    const userPos={
-        email: emailSession,
-        lat: lat,
-        lng: lng
-    }
-        await db.collection('locations').
-        doc(emailSession).
-        set(userPos)
-    }
-
-const getUserPos = async (email) => {
-    const coords = await db.collection('locations')
-    .doc(email).get()
-    return coords;
-}
-
-
-
-
-
-
-
-
-
   const getAmigos = async () => {
+
     db.collection("amigos").onSnapshot((querySnapShot) => {
       const docs = [];
       querySnapShot.forEach(doc => {
@@ -66,6 +44,7 @@ const getUserPos = async (email) => {
       });
       setAmigos(docs);
     });
+
   };
 
   const addFriend = async (idAmigo) => {
@@ -183,15 +162,27 @@ const  NavigateToMessages = (id)=>{
   history.go(0)
 }
 
+const  NavigateToMap = (id)=>{
+  history.push("/map/"+id);
+  history.go(0)
+}
+
 
 const getDistanciaAmigo =async (emailAmigo) =>{
-    const emailSession = window.sessionStorage.getItem('user');
-    const coordsSession = getUserPos(emailSession)
-    const coordsAmigo = getUserPos(emailAmigo)
-    console.log("Coordenadas amigo y sesion")
-    console.log(coordsSession)
-    console.log(coordsAmigo)
-    if(coordsSession==null || coordsAmigo ==null){
+    const coordsAmigo={lat:0,lng:0}
+    const coordsSession={lat:0,lng:0}
+    distances.forEach(dist =>{
+      if(dist.email==emailAmigo){
+        coordsAmigo.lat=dist.lat
+        coordsAmigo.lng=dist.lng
+      }
+      if(dist.email==usuarioActivo){
+        coordsSession.lat=dist.lat
+        coordsSession.lng=dist.lng
+      }
+    })
+
+    if(coordsSession.lat==0 || coordsAmigo.lat ==0){
       return("NO DISPONIBLE")
     }else{
       return(distancia(coordsAmigo,coordsSession) + 'Km')
@@ -200,12 +191,14 @@ const getDistanciaAmigo =async (emailAmigo) =>{
 
 
 
+
+
   async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   useEffect(() => {
-    getAmigos();
+    getAmigos()
   }, []);
 
   if (window.sessionStorage.getItem('user') !== null) {
@@ -242,7 +235,7 @@ const getDistanciaAmigo =async (emailAmigo) =>{
                       <button className="btn btn-light" id="botonOpcion" onClick={() => NavigateToMessages(amigo.nombre)} data-testId="btnChatear" >
                         <i className="material-icons">insert_comment</i>
                       </button>
-                      <button className="btn btn-light" id="botonOpcion" /*onClick={() => verUbicación(amigo.nombre)} */ data-testId="btnUbicacion"  >
+                      <button className="btn btn-light" id="botonOpcion" onClick={() => NavigateToMap(amigo.nombre)} data-testId="btnUbicacion"  >
                         <i className="material-icons">location_on</i>  
                       </button>
                       <button className="btn btn-light" id="botonOpcion" onClick={() => eliminarAmigo(amigo.id)}  data-testId="btnEliminar"  >
@@ -251,7 +244,7 @@ const getDistanciaAmigo =async (emailAmigo) =>{
                     </div>
                   </center>
                   <center>
-                    <h4>getDistanciaAmigo(amigo.id)</h4>
+                    <h4></h4>
                   </center>
                 </div>
               </div>
