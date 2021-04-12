@@ -74,3 +74,13 @@ image:añadirNuevoAmigo.png["Vista en Tiempo de Ejecución de la petición del u
 * _Radarin envía una notificación al Gestor de POD del usuario eliminado avisándole de que el usuario que ha solicitado eliminarlo, ya no es su amigo_
 
 image:eliminarAmigo.png["Vista en Tiempo de Ejecución de la petición del usuario de eliminar a un amigo"]
+
+=== Ver perfil del usuario
+
+
+* _El usuario entra en la aplicación_
+* _El usuario solicita ver su perfil_
+* _Radarin solicita información a la base de datos que esta a su vez se la solicita al Gestor de POD_
+* _Radarin muestra la información al usuario_
+
+image:verPerfil.png["Vista en Tiempo de Ejecución de la petición del usuario de ver su perfil"]
