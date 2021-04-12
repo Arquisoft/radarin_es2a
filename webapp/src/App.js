@@ -13,8 +13,8 @@ import Barra from './components/Navegation/NavBar';
 import { MapContainer } from './components/Map/MapContainer';
 import Friends from './components/Friends/Friends';
 import Peticiones from './components/Friends/Peticiones';
+import ChatRoom from './components/Messages/ChatRoom'
 import {UserContextProvider} from './context/UserContext'
-
 import Principal from './components/Principal';
 import Home from './components/Home';
 import {useHistory} from 'react-router-dom';
