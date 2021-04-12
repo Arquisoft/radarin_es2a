@@ -9,6 +9,7 @@ export const AdminUser = () => {
 
         const [users, setUsers] = useState([]);
         const [currentUser, setCurrentUser] =useState(''); // elemento seleccionado
+        const usuarioActivo = window.sessionStorage.getItem('user');
     
         const addOrEditUser = async (userObject) => {
             if(currentUser === ''){
@@ -43,26 +44,28 @@ export const AdminUser = () => {
             }
         }
 
-        const admin= async (userObject) =>{
-            /*const repetido = false;
+        const existeAdmin = async (idUser) => {
+            const querySnapShot = await db.collection('admins').get();
+            var existeAdmin = false;
+            querySnapShot.forEach(doc => {
+              if (String(doc.data().idUser.localeCompare(idUser)) === String(0)) 
+                existeAdmin = true;
+            })
+            return existeAdmin;
+          };
 
-            db.collection('admins').onSnapshot(
-                (querySnapshot) => {
-                    querySnapshot.forEach(doc => {
-                        const document = db.collection('admins').doc(doc.id).get().data();
-                        if(doc.get()==userObject.id)
-                            repetido = true;
-                    })
-            });
-            if(repetido)
+        const admin= async (userObject) =>{
+            if (await existeAdmin(userObject.id)) {
                 toast("El usuario " + userObject.email + " ya es administrador",{type:'error', autoClose: 3000});
-            else{*/
+            }
+            else{
             const adminUser = {
                 emailUser: userObject.email,
                 idUser: userObject.id
             }
             await db.collection('admins').doc().set(adminUser);
             toast("El usuario " + userObject.email + " se ha añadido al grupo de administradores",{type:'success', autoClose: 3000});
+            }
             
         }
     

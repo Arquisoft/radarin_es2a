@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import addUserPos from '../components/Service/LocationService'
+import {addUserPos} from '../components/Service/LocationService'
 
 function Home() {
 
@@ -13,8 +13,10 @@ function Home() {
   };
   
   function success(pos) {
-    var crd = pos.coords;
-    addUserPos(crd.latitude,crd.longitude)
+    if(window.sessionStorage.getItem('user') !== null){
+      var crd = pos.coords;
+      addUserPos(crd.latitude,crd.longitude)
+    }
   };
   
   function error(err) {

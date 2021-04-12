@@ -13,8 +13,8 @@ import Barra from './components/Navegation/NavBar';
 import { MapContainer } from './components/Map/MapContainer';
 import Friends from './components/Friends/Friends';
 import Peticiones from './components/Friends/Peticiones';
+import ChatRoom from './components/Messages/ChatRoom'
 import {UserContextProvider} from './context/UserContext'
-import ChatRoom from './components/Messages/ChatRoom';
 import Principal from './components/Principal';
 import Home from './components/Home';
 import {useHistory} from 'react-router-dom';
@@ -22,7 +22,7 @@ import {useHistory} from 'react-router-dom';
 
 
 
-function Logout () 
+function Logout ()
 {
   const history = useHistory();
   window.sessionStorage.removeItem('user');
@@ -40,7 +40,7 @@ class App extends React.Component {
     this.setState({ users: users })
   }
 
-  
+
 
   render() {
     return (
@@ -48,27 +48,29 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <Barra/>
-          
+
           <div className="App-content">
             <Route exact path="/" component={Principal} />
-            <Route path="/admin/users" component={AdminUser} /> 
+            <Route path="/admin/users" component={AdminUser} />
             <Route path="/admin/admins" component={AdminAdmin} />
-            <Route path="/login" component={Login} /> 
-            <Route path="/logout" component={Logout} /> 
+            <Route path="/login" component={Login} />
+            <Route path="/logout" component={Logout} />
             <Route path="/registrarse" component={Registrer} />
             <Route path="/home" component={Home} />
             <Route path="/amigos" component={Friends} />
-            <Route path="/map" component={MapContainer} />
             <Route path="/peticiones" component={Peticiones} />
             <Route path="/mensajes/:friend">
                 <ChatRoom user={window.sessionStorage.getItem('user')}/>
             </Route>
+            <Route path="/map/:friend">
+                <MapContainer user={window.sessionStorage.getItem('user')}/>
+            </Route>
             <ToastContainer />
           </div>
-          
+
         </Router>
       </div>
-      
+
       </UserContextProvider>
 
     )

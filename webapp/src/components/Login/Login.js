@@ -26,7 +26,7 @@ function Login() {
                     });
                     cambio = true;
                     window.sessionStorage.setItem('user', details.email);
-                    history.push('/amigos');
+                    history.push('/home');
                     history.go(0)
                     
                 }
