@@ -9,17 +9,25 @@ class BarraAdmin extends React.Component{
         super(props)
       }
 
-    render(){
+  
+    render(){ 
         return(
+            <div>
+            {
+                this.props.adm?
+
             <Navbar bg="primary" variant="dark">
                 <Navbar.Brand><i className="material-icons"><FontAwesomeIcon icon={faUserCog} size='1x'/></i></Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link href="/admin/users">Usuarios</Nav.Link>
                     <Nav.Link href="/admin/admins">Administradores</Nav.Link>
                 </Nav>
-            </Navbar>
+            </Navbar>:null
+           }
+           </div>
         )
     }
 }
+
 
 export default BarraAdmin;
