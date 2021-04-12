@@ -11,15 +11,13 @@ class BarraAdmin extends React.Component{
 
     render(){
         return(
-            <div id="barraAdmin">
             <Navbar bg="primary" variant="dark">
                 <Navbar.Brand><i className="material-icons"><FontAwesomeIcon icon={faUserCog} size='1x'/></i></Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link href="/admin">Usuarios</Nav.Link>
-                    <Nav.Link href="/login">Administradores</Nav.Link>
+                    <Nav.Link href="/admin/users">Usuarios</Nav.Link>
+                    <Nav.Link href="/admin/admins">Administradores</Nav.Link>
                 </Nav>
             </Navbar>
-            </div>
         )
     }
 }

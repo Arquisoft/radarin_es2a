@@ -5,6 +5,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faHome} from '@fortawesome/free-solid-svg-icons';
 import UserBar from './UserBar';
 import HomeBar from './HomeBar';
+import AdminBar from './AdminBar';
+
 
 export default class NavBar extends Component {
     state = {
@@ -22,6 +24,7 @@ export default class NavBar extends Component {
 
     render() {
         return(
+            <div>
             <Navbar bg="primary" variant="dark">
                 <div className="container">
                     <Navbar.Brand>Radarin</Navbar.Brand>
@@ -42,6 +45,11 @@ export default class NavBar extends Component {
                     </div>
                 </div>
             </Navbar>
+            {
+                this.state.session?
+                <AdminBar/>:null
+            }
+            </div>
         );
     } 
 }

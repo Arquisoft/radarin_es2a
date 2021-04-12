@@ -1,13 +1,12 @@
 import React, { useContext, useState } from 'react';
 import './App.css';
-import logo from './logo.svg';
-import Welcome from './components/Welcome';
+import AdminUser from "./components/Admin/AdminUser";
+import AdminAdmin from "./components/Admin/AdminAdmin";
 import Login from "./components/Login/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registrer from './components/Registrer/Registrer';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Admin from './components/Admin';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Barra from './components/Navegation/NavBar';
@@ -52,6 +51,8 @@ class App extends React.Component {
           
           <div className="App-content">
             <Route exact path="/" component={Principal} />
+            <Route path="/admin/users" component={AdminUser} /> 
+            <Route path="/admin/admins" component={AdminAdmin} />
             <Route path="/login" component={Login} /> 
             <Route path="/logout" component={Logout} /> 
             <Route path="/registrarse" component={Registrer} />
