@@ -11,7 +11,7 @@ import './api/firebase'
 ReactDOM.render(
   <React.StrictMode>
       <Suspense fallback={'loading'}>
-      <App />
+      <App/>
       </Suspense>
   </React.StrictMode>,
   document.getElementById('root')

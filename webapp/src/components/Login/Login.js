@@ -25,8 +25,8 @@ function Login() {
                         pod: details.pod
                     });
                     cambio = true;
-                    window.sessionStorage.setItem('user', details.email)
-                    history.push('/amigos');
+                    window.sessionStorage.setItem('user', details.email);
+                    history.push('/home');
                     history.go(0)
                     
                 }

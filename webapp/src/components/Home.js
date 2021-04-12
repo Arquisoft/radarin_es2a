@@ -1,56 +1,36 @@
-import React, {Component} from 'react';
-import {Container, Button} from '@material-ui/core';
-import MapContainer from './MapContainer';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Friends from './Friends/Friends'
+import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import {addUserPos} from '../components/Service/LocationService'
 
+function Home() {
 
-class Aboutscreen extends Component {
-  render(){
-    return(
-      <Container>
-        <h1>PÁGINA DE INICIO</h1>
+  const usuarioActivo = window.sessionStorage.getItem('user');
 
-        <Button
-          onClick={()=> this.props.navigation.navigate('Login')}
-          title="Página principal de la app"
-          color="default"
-        />
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+  
+  function success(pos) {
+    if(window.sessionStorage.getItem('user') !== null){
+      var crd = pos.coords;
+      addUserPos(crd.latitude,crd.longitude)
+    }
+  };
+  
+  function error(err) {
+    console.warn('ERROR(' + err.code + '): ' + err.message);
+  };
+  
+  navigator.geolocation.getCurrentPosition(success, error, options)
 
-        <br></br>
-        <br></br>
-    <Router>
+  return(
+    <div>
+      <h1>Dame tu localizacion</h1>
+    </div>
+  )  
 
-      
-        <Link to='/map'>Mapa</Link>
-        <br></br>
-        <Link to='/amigos'>Amigos</Link>
-
-          <Route path="/map" render={() =>{
-            return(
-              <div>
-                <MapContainer/>
-              </div>
-            )
-          }}>
-          </Route>
-          <Route path="/amigos" render={() =>{
-            return(
-              <div>
-                <Friends/>
-              </div>
-            )
-          }}>
-          </Route>
-          
-        </Router>
-
-      </Container>
-
-
-
-    )
-  }
 }
 
-export default Aboutscreen;
+export default Home;
