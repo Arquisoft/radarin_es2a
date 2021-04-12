@@ -8,6 +8,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { db } from '../../api/firebase'
 import { useHistory,Redirect, browserHistory } from "react-router-dom" 
+//import {getUserPos} from '../Service/LocationService'
+import distancia from '../Service/DistanceService'
+import {getUserPos} from '../Service/LocationService'
 
 
 
@@ -22,12 +25,13 @@ function Friends() {
 
   const [amigos, setAmigos] = useState([]);
 
+  const [distances, setDistances] = useState([])
+
   const history = useHistory();
 
 
-
-
   const getAmigos = async () => {
+
     db.collection("amigos").onSnapshot((querySnapShot) => {
       const docs = [];
       querySnapShot.forEach(doc => {
@@ -40,6 +44,7 @@ function Friends() {
       });
       setAmigos(docs);
     });
+
   };
 
   const addFriend = async (idAmigo) => {
@@ -157,6 +162,35 @@ const  NavigateToMessages = (id)=>{
   history.go(0)
 }
 
+const  NavigateToMap = (id)=>{
+  history.push("/map/"+id);
+  history.go(0)
+}
+
+
+const getDistanciaAmigo =async (emailAmigo) =>{
+    const coordsAmigo={lat:0,lng:0}
+    const coordsSession={lat:0,lng:0}
+    distances.forEach(dist =>{
+      if(dist.email==emailAmigo){
+        coordsAmigo.lat=dist.lat
+        coordsAmigo.lng=dist.lng
+      }
+      if(dist.email==usuarioActivo){
+        coordsSession.lat=dist.lat
+        coordsSession.lng=dist.lng
+      }
+    })
+
+    if(coordsSession.lat==0 || coordsAmigo.lat ==0){
+      return("NO DISPONIBLE")
+    }else{
+      return(distancia(coordsAmigo,coordsSession) + 'Km')
+    }
+}
+
+
+
 
 
   async function sleep(ms) {
@@ -164,7 +198,7 @@ const  NavigateToMessages = (id)=>{
   }
 
   useEffect(() => {
-    getAmigos();
+    getAmigos()
   }, []);
 
   if (window.sessionStorage.getItem('user') !== null) {
@@ -201,13 +235,16 @@ const  NavigateToMessages = (id)=>{
                       <button className="btn btn-light" id="botonOpcion" onClick={() => NavigateToMessages(amigo.nombre)} data-testId="btnChatear" >
                         <i className="material-icons">insert_comment</i>
                       </button>
-                      <button className="btn btn-light" id="botonOpcion" /*onClick={() => verUbicación(amigo.nombre)} */ data-testId="btnUbicacion"  >
+                      <button className="btn btn-light" id="botonOpcion" onClick={() => NavigateToMap(amigo.nombre)} data-testId="btnUbicacion"  >
                         <i className="material-icons">location_on</i>  
                       </button>
                       <button className="btn btn-light" id="botonOpcion" onClick={() => eliminarAmigo(amigo.id)}  data-testId="btnEliminar"  >
                         <i className="material-icons">delete</i>  
                       </button>
                     </div>
+                  </center>
+                  <center>
+                    <h4></h4>
                   </center>
                 </div>
               </div>
