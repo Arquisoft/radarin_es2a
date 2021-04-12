@@ -15,9 +15,6 @@ image:05_Nivel1.png["Nivel1"]
 Bloques contenidos::
 * Radarin: bloque que representa la aplicación.
 
-Interfaces importantes::
-* Gestor POD: será el encargado de llevar a cabo las relaciones entre Radarin y el POD del usuario que utiliza la aplicación.
-
 ****
 Desarrollo de cajas negras del nivel 1:
 
