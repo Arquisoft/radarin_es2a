@@ -6,9 +6,6 @@ export default class NavBar extends Component {
         return(
             <ul className="navbar-nav ml-auto"> 
                 <li className="nav-item">
-                    <Nav.Link href="/map" className="nav-link">Mapa</Nav.Link>
-                </li>
-                <li className="nav-item">
                     <Nav.Link href="/amigos" className="nav-link">Amigos</Nav.Link>
                 </li>
                 <li className="nav-item">
