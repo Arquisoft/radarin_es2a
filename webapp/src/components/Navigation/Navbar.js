@@ -54,6 +54,9 @@ export default class NavBar extends Component {
                                 <Link to="/peticiones" className="nav-link" >Peticiones</Link>
                             </li>
                             <li className="nav-item">
+                                <Link to="/perfil" className="nav-link" >Perfil</Link>
+                            </li>
+                            <li className="nav-item">
                                 <Link to="/logout" className="nav-link" >Cerrar Sesión</Link>
                             </li>
                         </ul>
