@@ -55,7 +55,7 @@ export default class NavBar extends Component {
                             </li>
                             <li className="nav-item">
                                 <Link to="/perfil" className="nav-link" >Perfil</Link>
-                            </li
+                            </li>
                             <li className="nav-item">
                                 <Link to="/logout" className="nav-link" >Cerrar Sesión</Link>
                             </li>
