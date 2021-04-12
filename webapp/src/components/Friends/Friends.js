@@ -259,7 +259,13 @@ const getDistanciaAmigo =async (emailAmigo) =>{
     );
   }
   else {
-    //Redireccionar a login
+    return(
+    <DocumentTitle title="Amigos">
+        <div className="prueba">
+          <h2 className="h2" data-testId="label">No estas registrado </h2>
+          </div>
+          </DocumentTitle>
+          );
 
   }
 

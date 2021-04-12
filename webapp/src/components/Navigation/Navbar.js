@@ -47,15 +47,15 @@ export default class NavBar extends Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ml-auto">  
-                        <li className="nav-item">
-                                <Link to="/map" className="nav-link" >Mapa</Link>
-                            </li>
                             <li className="nav-item">
                                 <Link to="/amigos" className="nav-link" >Amigos</Link>
                             </li>
                             <li className="nav-item">
                                 <Link to="/peticiones" className="nav-link" >Peticiones</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link to="/perfil" className="nav-link" >Perfil</Link>
+                            </li
                             <li className="nav-item">
                                 <Link to="/logout" className="nav-link" >Cerrar Sesión</Link>
                             </li>
