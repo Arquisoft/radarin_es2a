@@ -6,11 +6,13 @@ import {faHome} from '@fortawesome/free-solid-svg-icons';
 import UserBar from './UserBar';
 import HomeBar from './HomeBar';
 import AdminBar from './AdminBar';
+import {db} from '../../api/firebase';
 
 
 export default class NavBar extends Component {
     state = {
-        session: false
+        session: false,
+        admin: false
     }
 
     async componentDidMount(){
@@ -19,6 +21,13 @@ export default class NavBar extends Component {
             this.setState({
                 session: true
             })
+        const querySnapShot = await db.collection('admins').get();
+        querySnapShot.forEach(doc => {
+          if (String(doc.data().emailUser.localeCompare(window.sessionStorage.getItem('user'))) === String(0)) 
+          this.setState({
+            admin: true
+        })
+        })
         }
     }
 
@@ -45,10 +54,8 @@ export default class NavBar extends Component {
                     </div>
                 </div>
             </Navbar>
-            {
-                this.state.session?
-                <AdminBar/>:null
-            }
+
+            <AdminBar adm={this.state.admin}/>
             </div>
         );
     } 
