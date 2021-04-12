@@ -1,11 +1,11 @@
-import AdminView from './AdminView';
-import {db} from '../api/firebase';
+import AdminUserForm from './AdminUserForm';
+import {db} from '../../api/firebase';
 import { toast } from 'react-toastify';
 import React, {useEffect, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrashAlt, faEdit} from '@fortawesome/free-solid-svg-icons';
 
-export const Admin = () => {
+export const AdminUser = () => {
 
         const [users, setUsers] = useState([]);
         const [currentUser, setCurrentUser] =useState(''); // elemento seleccionado
@@ -42,6 +42,29 @@ export const Admin = () => {
                 toast("Se ha eliminado el usuario " + userObject.email + " de la base de datos",{type:'error', autoClose: 3000});
             }
         }
+
+        const admin= async (userObject) =>{
+            /*const repetido = false;
+
+            db.collection('admins').onSnapshot(
+                (querySnapshot) => {
+                    querySnapshot.forEach(doc => {
+                        const document = db.collection('admins').doc(doc.id).get().data();
+                        if(doc.get()==userObject.id)
+                            repetido = true;
+                    })
+            });
+            if(repetido)
+                toast("El usuario " + userObject.email + " ya es administrador",{type:'error', autoClose: 3000});
+            else{*/
+            const adminUser = {
+                emailUser: userObject.email,
+                idUser: userObject.id
+            }
+            await db.collection('admins').doc().set(adminUser);
+            toast("El usuario " + userObject.email + " se ha añadido al grupo de administradores",{type:'success', autoClose: 3000});
+            
+        }
     
     
         useEffect(() => {
@@ -52,7 +75,7 @@ export const Admin = () => {
         return(
             <div>
                 <div className="col-md-42 p-2">
-                    <AdminView {...{addOrEditUser, currentUser, users}}/>
+                    <AdminUserForm {...{addOrEditUser, currentUser, users}}/>
                 </div>
                 <div className="col-md-42 p-2">
                     {users.map((user) =>(
@@ -62,13 +85,15 @@ export const Admin = () => {
                                     <h4>{user.email}</h4>
                                     <div> 
                                         <i className="material-icons" style={{margin: '0.5em', paddingLeft: 0, listStyle: 'none'}}
-                                           onClick={() =>setCurrentUser(user.id)}><FontAwesomeIcon icon={faEdit} size='2x'/></i>
+                                           onClick={() =>setCurrentUser(user.id)}><FontAwesomeIcon icon={faEdit} size='1x'/></i>
                                         <i className="material-icons text-danger" onClick={()=>onDeleteUser(user)}>
-                                           <FontAwesomeIcon icon={faTrashAlt} size='2x'/></i>
+                                           <FontAwesomeIcon icon={faTrashAlt} size='1x'/></i>
                                     </div>
                                 </div>
                                 <p>Contraseña: {user.password}</p>
                                 <a href={user.pod + "/profile/card#me"} target="_blank" rel="react-hooks/exhaustive-deps">Ver POD</a>
+                                <br></br><br></br>
+                                <button class="btn btn-dark" target="_blank" rel="react-hooks/exhaustive-deps" onClick={()=>admin(user)}>Hacer admin</button>
                             </div>
                         </div>
                     ) 
@@ -78,4 +103,4 @@ export const Admin = () => {
         )
     }
     
-    export default Admin;
+    export default AdminUser;

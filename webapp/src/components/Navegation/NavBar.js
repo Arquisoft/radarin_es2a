@@ -4,6 +4,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faHome} from '@fortawesome/free-solid-svg-icons';
 import UserBar from './UserBar';
+import HomeBar from './HomeBar';
+import AdminBar from './AdminBar';
+
 
 export default class NavBar extends Component {
     state = {
@@ -21,6 +24,7 @@ export default class NavBar extends Component {
 
     render() {
         return(
+            <div>
             <Navbar bg="primary" variant="dark">
                 <div className="container">
                     <Navbar.Brand>Radarin</Navbar.Brand>
@@ -35,21 +39,17 @@ export default class NavBar extends Component {
                          
                         {
                             this.state.session?
-               
-                                <UserBar/>
-                            :
-                                <ul className="navbar-nav ml-auto">
-                                    <li className="nav-item active">
-                                        <Nav.Link href="/login" className="nav-link">Login</Nav.Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Nav.Link href="/registrarse" className="nav-link">Registro</Nav.Link>
-                                    </li>
-                                </ul>
+                                <UserBar/> : <HomeBar/>
+                                
                         }
                     </div>
                 </div>
             </Navbar>
+            {
+                this.state.session?
+                <AdminBar/>:null
+            }
+            </div>
         );
     } 
 }
