@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import distance from '../Service/DistanceService'
 import DistanceBetween from './DistanceBetween'
 
-const TableFriends = (props) => {
+
+export const TableFriends = (props) => {
 
     const friends = props.friends
     const [friendWithDistance, setFriendWithDistance] = useState([])
@@ -20,12 +21,7 @@ const TableFriends = (props) => {
     }
 
 
-    const añadirKmDistancia = (distancia) => {
-        if(!isNaN(distancia))
-            return distancia + "Km"
-        else 
-            return distancia
-    }
+    
 
 
 
@@ -46,7 +42,7 @@ const TableFriends = (props) => {
                 {friendWithDistance.map(friend => (
                     <tr>
                         <th className="align-middle">{friend.nombre}</th>
-                        <th className="align-middle">{añadirKmDistancia(friend.distance)}</th>
+                        <th className="align-middle">{friend.distance}</th>
                         <th>
                             <div>
                                 <button

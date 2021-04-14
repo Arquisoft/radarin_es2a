@@ -8,10 +8,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { db } from '../../api/firebase'
 import { useHistory,Redirect, browserHistory } from "react-router-dom" 
-//import {getUserPos} from '../Service/LocationService'
-import distancia from '../Service/DistanceService'
-import {getUserPos} from '../Service/LocationService'
-import DistanceBetween from "./DistanceBetween";
 import TableFriends from './TableFriends'
 
 
@@ -170,12 +166,6 @@ const  NavigateToMap = (id)=>{
 }
 
 
-
-
-
-
-
-
   async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -210,7 +200,6 @@ const  NavigateToMap = (id)=>{
               NavigateToMessages={NavigateToMessages}
               eliminarAmigo={eliminarAmigo}
             />
-            
           </div>
           <br></br>
         </div>
