@@ -9,28 +9,24 @@ export const TableFriends = (props) => {
     const [friendWithDistance, setFriendWithDistance] = useState([])
 
 
-    const load =async () =>{
+    const load = async () => {
         const docs = []
         friends.forEach(element => {
             docs.push({
                 nombre: element.nombre,
-                distance: <DistanceBetween friendEmail= {element.nombre}/>
+                distance: <DistanceBetween friendEmail={element.nombre} />
             })
             setFriendWithDistance(docs)
         });
     }
 
 
-    
-
-
-
     useEffect(() => {
         load()
-      }, []);
+    }, []);
 
     return (
-        <div className="table table-striped mydatatable">
+        <div className="table table-striped" id="tabla">
             <thead>
                 <tr>
                     <th scope='col'>Email</th>
@@ -44,7 +40,7 @@ export const TableFriends = (props) => {
                         <th className="align-middle">{friend.nombre}</th>
                         <th className="align-middle">{friend.distance}</th>
                         <th>
-                            <div>
+                            <div class="row">
                                 <button
                                     className="btn btn-success" id="botonOpcion"
                                     onClick={() => props.NavigateToMessages(friend.nombre)}
@@ -72,7 +68,6 @@ export const TableFriends = (props) => {
                 )
                 }
             </tbody>
-
         </div>
 
     )
