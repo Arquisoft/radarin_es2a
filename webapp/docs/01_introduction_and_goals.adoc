@@ -15,6 +15,7 @@ Requisitos funcionales:
 * Aplicación para el dispositivo móvil del usuario, capaz de :
 ** Obtener localizaciones y enviarlas al servidor.
 ** Notificar al usuario acerca de contactos cercanos.
+** La aplicación ha de permitir que un usuario tenga un listado de amigos, de manera que éstos puedan saber cuándo están cerca entre ellos.
 
 === Objetivos de Calidad
 
