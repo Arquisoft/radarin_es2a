@@ -84,3 +84,23 @@ image:eliminarAmigo.png["Vista en Tiempo de Ejecución de la petición del usuar
 * _Radarin muestra la información al usuario_
 
 image:verPerfil.png["Vista en Tiempo de Ejecución de la petición del usuario de ver su perfil"]
+
+=== Administrador crear un Usuario
+
+
+* _El administrador entra en la aplicación_
+* _Si ha entrado correctamente, Radarin le muestra las opciones correspondientes a los administradores_
+* _El administrador solicita introducir un nuevo usuario al introducir sus datos_
+* _Radarin en caso de poder haber introducido al usuario en la base de datos con su correspondiente POD muestra un aviso al administrador de que se ha introducido correctamente el usuario_
+
+image:adminCreateUsers.png["Vista en Tiempo de Ejecución de la introducción de un nuevo usuario por el administrador"]
+
+=== Administrador eliminar un Usuario
+
+
+* _El administrador entra en la aplicación_
+* _Si ha entrado correctamente, Radarin le muestra las opciones correspondientes a los administradores_
+* _El administrador solicita eliminar a un usuario de la aplicación_
+* _Radarin en caso de poder haber eliminado al usuario en la base de datos con su correspondiente POD muestra un aviso al administrador de que se ha eliminado correctamente el usuario_
+
+image:adminDeleteUsers.png["Vista en Tiempo de Ejecución de la eliminación de un usuario por el administrador"]
