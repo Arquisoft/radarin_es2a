@@ -12,6 +12,7 @@ import { useHistory,Redirect, browserHistory } from "react-router-dom"
 import distancia from '../Service/DistanceService'
 import {getUserPos} from '../Service/LocationService'
 import DistanceBetween from "./DistanceBetween";
+import TableFriends from './TableFriends'
 
 
 
@@ -186,6 +187,7 @@ const  NavigateToMap = (id)=>{
   if (window.sessionStorage.getItem('user') !== null) {
     return (
       <DocumentTitle title="Amigos">
+
         <div className="prueba">
           <h2 className="h2" data-testId="label">Estos son tus amig@s: </h2>
           <h4 class="card-title" id="addFriend" data-testId="addFriend">Envía una petición a un/a amig@</h4>
@@ -201,9 +203,13 @@ const  NavigateToMap = (id)=>{
 
 
           <br></br>
-          <div className="col-md-16 p-2">
-          
-            <TableFriends friendList={amigos}></TableFriends>
+          <div className="col-12">
+            <TableFriends 
+              friends={amigos}
+              NavigateToMap={NavigateToMap}
+              NavigateToMessages={NavigateToMessages}
+              eliminarAmigo={eliminarAmigo}
+            />
             
           </div>
           <br></br>

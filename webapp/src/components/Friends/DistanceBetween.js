@@ -18,7 +18,7 @@ export const DistanceBetween = (props) => {
             } else {
                 var km = distance(coord1, coord2)
                 var kmFormat = Math.round(km*100)/100;
-                return (kmFormat + 'Km')
+                return (kmFormat)
             }
         }
     }
@@ -53,12 +53,7 @@ export const DistanceBetween = (props) => {
         loadPositions()
     }, [])
 
-        return (
-            <div>
-                <h4>{getDistanciaAmigo()}</h4>
-                <h1></h1>
-            </div>
-        );
+        return (<p>{getDistanciaAmigo()}+'km'</p>);
 
 }
 
