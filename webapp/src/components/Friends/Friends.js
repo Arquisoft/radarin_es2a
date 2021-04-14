@@ -203,36 +203,7 @@ const  NavigateToMap = (id)=>{
           <br></br>
           <div className="col-md-16 p-2">
           
-            {amigos.map(amigo => (
-              
-              <div class="card bg-info text-white mb-2" >
-                
-                <div class="card-body">
-                  <h2 class="card-title" id="friendName">
-                    
-                    <Name src={amigo.nombre}>{amigo.nombre}</Name>
-                  </h2>
-                  <center>
-                    <div className="botones p-2">
-                      <button className="btn btn-light" id="botonOpcion" onClick={() => NavigateToMessages(amigo.nombre)} data-testId="btnChatear" >
-                        <i className="material-icons">insert_comment</i>
-                      </button>
-                      <button className="btn btn-light" id="botonOpcion" onClick={() => NavigateToMap(amigo.nombre)} data-testId="btnUbicacion"  >
-                        <i className="material-icons">location_on</i>  
-                      </button>
-                      <button className="btn btn-light" id="botonOpcion" onClick={() => eliminarAmigo(amigo.id)}  data-testId="btnEliminar"  >
-                        <i className="material-icons">delete</i>  
-                      </button>
-                    </div>
-                  </center>
-                  <center>
-                    <DistanceBetween friendEmail={amigo.nombre}/>
-                  </center>
-                </div>
-              </div>
-            )
-            
-            )}
+            <TableFriends friendList={amigos}></TableFriends>
             
           </div>
           <br></br>
