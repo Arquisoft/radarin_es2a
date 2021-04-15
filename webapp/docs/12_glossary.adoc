@@ -11,6 +11,8 @@
 | Bootstrap | Biblioteca de diseño. Framework de HTML, CSS y JS. 
 | Docker | Permite automatizar la virtualización de aplicaciones en varios sistemas operativos haciendo automático el despligue de aplicaciones en contenedores.
 | Herouku | Plataforma en la nube que soporta diversos lenguajes de programación.
-| Geojson | Formato estándar basado en JavaScript que codifica estructuras geográficas simples.
-| React | Framework de JavaScript para crear aplicaciones nativas para iOS y Android.
+| Geojson | Formato estándar basado en JavaScript que codifica estructuras geográficas simples. 
+| App | Aplicación desarrollada en distintos lenguajes de programación para móviles
+| Aplicación | Aplicación en la cual se tratan todos los datos en la web.
+| Firebase | Base de datos la cual está desarrollada por Google y se utiliza como plataforma como desarrollo de aplicaciones web y aplicaciones móviles
 |===
