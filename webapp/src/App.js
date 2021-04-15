@@ -5,7 +5,7 @@ import AdminAdmin from "./components/Admin/AdminAdmin";
 import Login from "./components/Login/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registrer from './components/Registrer/Registrer';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -47,8 +47,9 @@ class App extends React.Component {
       <UserContextProvider>
       <div className="App">
         <Router>
-          <Barra/>
 
+          <Barra/>
+          <Switch>
           <div className="App-content">
             <Route exact path="/" component={Principal} />
             <Route path="/admin/users" component={AdminUser} />
@@ -67,6 +68,7 @@ class App extends React.Component {
             </Route>
             <ToastContainer />
           </div>
+          </Switch>
 
         </Router>
       </div>
