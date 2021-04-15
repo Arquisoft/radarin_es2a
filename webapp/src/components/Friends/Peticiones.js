@@ -38,7 +38,7 @@ function Peticiones() {
         setAmigos(amigos.usuario2 = idUsuario);
         await db.collection('amigos').doc().set(amigos);
         toast.info("Has aceptado la petición de amistad", {
-            position: toast.POSITION.BOTTOM_LEFT,
+            position: toast.POSITION.TOP_CENTER,
             autoClose: 2500
         });
     };
@@ -48,7 +48,7 @@ function Peticiones() {
         if (window.confirm("¿Estás seguro de rechazar esta petición?")) {
             await db.collection('peticiones').doc(id).delete();
             toast.info("Has eliminado la petición de amistad correctamente", {
-                position: toast.POSITION.BOTTOM_LEFT,
+                position: toast.POSITION.TOP_CENTER,
                 autoClose: 2500
             });
         }

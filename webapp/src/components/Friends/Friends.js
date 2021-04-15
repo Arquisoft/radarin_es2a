@@ -7,6 +7,12 @@ import DocumentTitle from "react-document-title";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { db } from '../../api/firebase'
+import { useHistory,Redirect, browserHistory } from "react-router-dom" 
+//import {getUserPos} from '../Service/LocationService'
+import distancia from '../Service/DistanceService'
+import {getUserPos} from '../Service/LocationService'
+import DistanceBetween from "./DistanceBetween";
+
 
 
 
@@ -20,10 +26,13 @@ function Friends() {
 
   const [amigos, setAmigos] = useState([]);
 
+  const [distances, setDistances] = useState([])
 
+  const history = useHistory();
 
 
   const getAmigos = async () => {
+
     db.collection("amigos").onSnapshot((querySnapShot) => {
       const docs = [];
       querySnapShot.forEach(doc => {
@@ -36,6 +45,7 @@ function Friends() {
       });
       setAmigos(docs);
     });
+
   };
 
   const addFriend = async (idAmigo) => {
@@ -44,20 +54,20 @@ function Friends() {
         if (await existeUsuario(idAmigo)) {
           if (await existeAmigo(idAmigo)) {
             toast.error("Ya sois amig@s", {
-              position: toast.POSITION.BOTTOM_LEFT,
+              position: toast.POSITION.TOP_CENTER,
               autoClose: 2500
             });
           } else {
             if (await existePeticion(idAmigo)) {
               toast.error("Ya habías enviado esta petición", {
-                position: toast.POSITION.BOTTOM_LEFT,
+                position: toast.POSITION.TOP_CENTER,
                 autoClose: 2500
               });
             }
             else {
               await db.collection('peticiones').doc().set(details);
               toast.info("Has enviado la petición de amistad correctamente", {
-                position: toast.POSITION.BOTTOM_LEFT,
+                position: toast.POSITION.TOP_CENTER,
                 autoClose: 2500
               });
               await sleep(2500);
@@ -66,20 +76,20 @@ function Friends() {
         }
         else {
           toast.error("No existe el usuario indicado", {
-            position: toast.POSITION.BOTTOM_LEFT,
+            position: toast.POSITION.TOP_CENTER,
             autoClose: 2500
           });
         }
       } else {
         toast.error("Cadena vacía", {
-          position: toast.POSITION.BOTTOM_LEFT,
+          position: toast.POSITION.TOP_CENTER,
           autoClose: 2500
         });
       }
     }
     else {
       toast.error("No puedes agregarte a ti mism@", {
-        position: toast.POSITION.BOTTOM_LEFT,
+        position: toast.POSITION.TOP_CENTER,
         autoClose: 2500
       });
     }
@@ -141,11 +151,27 @@ function Friends() {
     if (window.confirm("¿Estás seguro de eliminar est@ amig@")) {
         await db.collection('amigos').doc(id).delete();
         toast.info("Has eliminado tu amig@ correctamente", {
-            position: toast.POSITION.BOTTOM_LEFT,
+            position: toast.POSITION.TOP_CENTER,
             autoClose: 2500
         });
     }
 };
+
+
+const  NavigateToMessages = (id)=>{
+  history.push("/mensajes/"+id);
+  history.go(0)
+}
+
+const  NavigateToMap = (id)=>{
+  history.push("/map/"+id);
+  history.go(0)
+}
+
+
+
+
+
 
 
 
@@ -154,7 +180,7 @@ function Friends() {
   }
 
   useEffect(() => {
-    getAmigos();
+    getAmigos()
   }, []);
 
   if (window.sessionStorage.getItem('user') !== null) {
@@ -179,7 +205,7 @@ function Friends() {
           
             {amigos.map(amigo => (
               
-              <div class="card bg-info text-white" >
+              <div class="card bg-info text-white mb-2" >
                 
                 <div class="card-body">
                   <h2 class="card-title" id="friendName">
@@ -188,10 +214,19 @@ function Friends() {
                   </h2>
                   <center>
                     <div className="botones p-2">
-                      <button className="btn btn-light" id="botonOpcion" /*onClick={() => chatear(usuarioActivo, amigo.nombre)} */ data-testId="btnChatear" >Chatear</button>
-                      <button className="btn btn-light" id="botonOpcion" /*onClick={() => verUbicación(amigo.nombre)} */ data-testId="btnUbicacion"  >Ver ubicación </button>
-                      <button className="btn btn-light" id="botonOpcion" onClick={() => eliminarAmigo(amigo.id)}  data-testId="btnEliminar"  >Eliminar </button>
+                      <button className="btn btn-light" id="botonOpcion" onClick={() => NavigateToMessages(amigo.nombre)} data-testId="btnChatear" >
+                        <i className="material-icons">insert_comment</i>
+                      </button>
+                      <button className="btn btn-light" id="botonOpcion" onClick={() => NavigateToMap(amigo.nombre)} data-testId="btnUbicacion"  >
+                        <i className="material-icons">location_on</i>  
+                      </button>
+                      <button className="btn btn-light" id="botonOpcion" onClick={() => eliminarAmigo(amigo.id)}  data-testId="btnEliminar"  >
+                        <i className="material-icons">delete</i>  
+                      </button>
                     </div>
+                  </center>
+                  <center>
+                    <DistanceBetween friendEmail={amigo.nombre}/>
                   </center>
                 </div>
               </div>
@@ -206,7 +241,13 @@ function Friends() {
     );
   }
   else {
-    //Redireccionar a login
+    return(
+    <DocumentTitle title="Amigos">
+        <div className="prueba">
+          <h2 className="h2" data-testId="label">No estas registrado </h2>
+          </div>
+          </DocumentTitle>
+          );
 
   }
 
