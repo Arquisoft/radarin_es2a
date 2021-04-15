@@ -36,7 +36,6 @@ export const ChatRoom = (props) => {
 
     useEffect(() => {
         loadMessages(props.user, friend);
-        console.log(messages)
     }, [])
 
 

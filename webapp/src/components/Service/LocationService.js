@@ -22,8 +22,6 @@ async function addUserPos (lat,lng) {
             .onSnapshot(
                 (querySnapshot) => {
                     querySnapshot.forEach(element => {
-                        console.log("Bingo")
-                        console.log(element.data)
                         objreturn.email = element.data.email
                         objreturn.lat = element.data.lat
                         objreturn.lng = element.data.lng
@@ -31,8 +29,6 @@ async function addUserPos (lat,lng) {
                     });
                 }
             )
-    //console.log(objreturn)
-    //return(objreturn)
 }
 export {addUserPos,getUserPos};
 

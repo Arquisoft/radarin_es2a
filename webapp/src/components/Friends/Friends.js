@@ -11,6 +11,7 @@ import { useHistory,Redirect, browserHistory } from "react-router-dom"
 //import {getUserPos} from '../Service/LocationService'
 import distancia from '../Service/DistanceService'
 import {getUserPos} from '../Service/LocationService'
+import DistanceBetween from "./DistanceBetween";
 
 
 
@@ -168,26 +169,7 @@ const  NavigateToMap = (id)=>{
 }
 
 
-const getDistanciaAmigo =async (emailAmigo) =>{
-    const coordsAmigo={lat:0,lng:0}
-    const coordsSession={lat:0,lng:0}
-    distances.forEach(dist =>{
-      if(dist.email==emailAmigo){
-        coordsAmigo.lat=dist.lat
-        coordsAmigo.lng=dist.lng
-      }
-      if(dist.email==usuarioActivo){
-        coordsSession.lat=dist.lat
-        coordsSession.lng=dist.lng
-      }
-    })
 
-    if(coordsSession.lat==0 || coordsAmigo.lat ==0){
-      return("NO DISPONIBLE")
-    }else{
-      return(distancia(coordsAmigo,coordsSession) + 'Km')
-    }
-}
 
 
 
@@ -244,7 +226,7 @@ const getDistanciaAmigo =async (emailAmigo) =>{
                     </div>
                   </center>
                   <center>
-                    <h4></h4>
+                    <DistanceBetween friendEmail={amigo.nombre}/>
                   </center>
                 </div>
               </div>
