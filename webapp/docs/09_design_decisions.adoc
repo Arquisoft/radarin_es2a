@@ -7,23 +7,25 @@
 
 .*Problemas*
 * Uso de tecnologías que nunca antes habíamos visto(Ej: Solid).
-* Debido a la multitud de lenguajes de programación existentes, se ha tenido que buscar uno que soportara Solid y que fuera bastante flexible.
+* Debido a la multitud de lenguajes de programación existentes, se ha tenido que buscar uno que soportara Solid y que fuera bastante flexible en nuestro.
 * Dificultad a la hora de decidirnos por el idioma de documentación y desarrollo de la aplicación. 
+* Al utilizar solo Solid, no podemos guardar o relacionar la información de los usuarios de una manera simlpe y correcta, para ello deberemos de utilizar una base de datos para cierta información y/o gestión de la aplicación.
 
 
 .*Consecuencias*
 * Debido al uso de nuevas tecnologías, hemos tenido que documentarnos y ejecutar una serie de proyectos ejemplo para poder entender mejor todo aquello que, hasta hace nada, era desconocido para nosotros.
 * Puesto que el lenguaje de programación es de libre elección, el equipo de desarrollo se ha reunido para elegir uno que fuera conocido por todos los integrantes, y que a su vez fuera bastante flexible y extendido. A su vez, este lenguaje ha de ser compatible con Solid.
-* La deción del idioma de documentación e implementación ha resultado complicado. A pesar de decidirnos por el Español por simplicidad, somos conscientes de que es una decisión arriesgada, puesto que sería difícil presentar esta aplicación a nivel internacional.
+* La decisión del idioma de documentación e implementación ha resultado complicado. A pesar de decidirnos por el Español por simplicidad, somos conscientes de que es una decisión arriesgada, puesto que sería difícil presentar esta aplicación a nivel internacional.
 
 
 .Alternativas Descartadas
 * Uso de cualquier sistema que ofrezca un almacenamiento de datos de tipo centralizado, puesto que una de las restricciones es el uso de Solid y sus pods para un almacenamiento de datos descentralizado.
-* Uso de cualquier framework de programación que no sea React Native. Esto ha sido una decisión tomada, ya que no existía ninguna restricción en este aspecto.
+* React Native ha sido descartado, ya que han surgido varios problemas a la hora de utilizarlo por otros equipos además de que el propio profesor nos ha recomendado plantear la aplicación móvil de otra forma, por lo que hemos descartado su utilización
 
 .*Decisiones Tomadas*
 * Uso de JavaScript, debido a que es un lenguaje que ofrece muchas posibilidades y tiene una alta compatibilidad con Solid. Además de ésto, JavaScript es un lenguaje conocido por todo el equipo de desarrollo.
-* Uso de React Native como framework de programación. React Native nos viene muy bien debido a que usamos JavaScript como lenguaje de programación, y porque creemos que nos puede facilitar bastante el desarrollo de la aplicación.
+* Uso de una aplicación de móvil que redirija a un navegador web, el uso de React Native lo hemos descartado como hemos citado con anterioridad por su complejidad. 
 * Para la geolocalización haremos uso de la api de google maps, muy extendida y fiable.
 * Sistema desplegable en contenedores docker y heroku.
 * Uso de bootstrap para la elaboración de hojas de estilo, de manera la aplicación resulte más agradable a la vista del usuario.
+* Uso de Firebase para el almacenamiento de datos de la aplicación que no han o no pueden ser guardados en los PODs. Hemos decidido utilizar Firebase debido a que otros proyectos de anteriores años era la base de datos que utilizaban y se acopla muy bien tanto con JavaSrcipt como con los PODs.
