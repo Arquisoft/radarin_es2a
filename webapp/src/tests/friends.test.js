@@ -11,11 +11,6 @@ describe('<Friends />',()=>{
         ReactDOM.render(<Friends />, div);
     });
 
-    it('App renders without crashing', () => {
-        
-        const { container } = render(<Friends />);
-        expect(container).toBeTruthy();
-      });
       
 
 });
