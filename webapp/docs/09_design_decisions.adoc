@@ -29,3 +29,4 @@
 * Sistema desplegable en contenedores docker y heroku.
 * Uso de bootstrap para la elaboración de hojas de estilo, de manera la aplicación resulte más agradable a la vista del usuario.
 * Uso de Firebase para el almacenamiento de datos de la aplicación que no han o no pueden ser guardados en los PODs. Hemos decidido utilizar Firebase debido a que otros proyectos de anteriores años era la base de datos que utilizaban y se acopla muy bien tanto con JavaSrcipt como con los PODs.
+* Uso de React para el desarrollo de la aplicación del ordenador, el principal motivo del uso de React es que se acopla muy bien tanto con los PODs, como JavaScript y con FireBase, es decir con todas las tecnologías que utilizaremos. Además de esto, fijandonos en proyectos de otros años React se utiliza en la gran mayoría de estos.
