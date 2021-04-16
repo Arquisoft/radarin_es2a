@@ -18,6 +18,7 @@ import {UserContextProvider} from './context/UserContext'
 import Principal from './components/Principal';
 import Home from './components/Home';
 import {useHistory} from 'react-router-dom';
+import Profile from './Profile';
 
 
 
@@ -60,6 +61,7 @@ class App extends React.Component {
             <Route path="/home" component={Home} />
             <Route path="/amigos" component={Friends} />
             <Route path="/peticiones" component={Peticiones} />
+            <Route path="/perfil" component={Profile} />
             <Route path="/mensajes/:friend">
                 <ChatRoom user={window.sessionStorage.getItem('user')}/>
             </Route>
