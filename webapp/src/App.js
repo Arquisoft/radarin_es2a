@@ -18,7 +18,7 @@ import {UserContextProvider} from './context/UserContext'
 import Principal from './components/Principal';
 import Home from './components/Home';
 import {useHistory} from 'react-router-dom';
-import Profile from './Profile';
+import Profile from './components/Profile/Profile';
 
 
 
@@ -50,8 +50,10 @@ class App extends React.Component {
         <Router>
 
           <Barra/>
-          <Switch>
+          
           <div className="App-content">
+          <Switch>
+          <React.Fragment>
             <Route exact path="/" component={Principal} />
             <Route path="/admin/users" component={AdminUser} />
             <Route path="/admin/admins" component={AdminAdmin} />
@@ -69,8 +71,10 @@ class App extends React.Component {
                 <MapContainer user={window.sessionStorage.getItem('user')}/>
             </Route>
             <ToastContainer />
+            </React.Fragment>
+            </Switch>
           </div>
-          </Switch>
+          
 
         </Router>
       </div>
