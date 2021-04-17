@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Button, Input } from '@material-ui/core';
-import { AuthButton } from "@solid/react";
+import { AuthButton, Link } from "@solid/react";
 
 
 function LoginForm({ Login, error }) {
@@ -49,13 +49,18 @@ function LoginForm({ Login, error }) {
                   type="submit">
                     Confirmar
                 </Button>
-              </div>     
+              </div>
+            <a> ¿Tienes un pod? </a>
+            <AuthButton popup="https://solid.github.io/solid-auth-client/dist/popup.html"
+            login="Iniciar sesión con solid" logout="Cerrar Sesion"/> 
+            <div>    
+            <Link href="https://solidcommunity.net/register">Registrate en Solid</Link>     
+            </div> 
             </div>
           </div>
       </form>
-      <a> ¿Tienes un pod de solid? </a>
-            <AuthButton popup="https://solid.github.io/solid-auth-client/dist/popup.html"
-            login="Iniciar sesión con solid"/>
+      
+            
     </div>
   )
 }

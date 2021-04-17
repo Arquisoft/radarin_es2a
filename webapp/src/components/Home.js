@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import {addUserPos} from '../components/Service/LocationService'
+import {  LoggedIn, Value } from "@solid/react";
 
 function Home() {
 
@@ -28,7 +29,14 @@ function Home() {
   return(
     <div>
       <h1>Dame tu localizacion</h1>
+      <LoggedIn>
+		
+    <p>Bienvenido a Radarín, está autenticado como:  <Value src="user.name"/></p>
+    
+  </LoggedIn>
     </div>
+
+
   )  
 
 }

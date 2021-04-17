@@ -12,7 +12,7 @@ export default class NavBar extends Component {
                     <Nav.Link href="/peticiones" className="nav-link">Peticiones</Nav.Link>
                 </li>
                 <li className="nav-item">
-                    <Nav.Link href="/logout" className="nav-link">Logout</Nav.Link>
+                    <Nav.Link href="/logout" className="nav-link">Cerrar Sesión</Nav.Link>
                 </li>
             </ul>
         );

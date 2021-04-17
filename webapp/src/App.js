@@ -3,6 +3,7 @@ import './App.css';
 import AdminUser from "./components/Admin/AdminUser";
 import AdminAdmin from "./components/Admin/AdminAdmin";
 import Login from "./components/Login/Login";
+import LoginHook from "./components/Login/LoginHook";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registrer from './components/Registrer/Registrer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -49,7 +50,9 @@ class App extends React.Component {
       <div className="App">
         <Router >
 
-          <Barra/>
+            <Barra/>
+       
+          
           
           <div className="App-content">
           <Switch>
@@ -70,9 +73,11 @@ class App extends React.Component {
             <Route path="/map/:friend">
                 <MapContainer user={window.sessionStorage.getItem('user')}/>
             </Route>
+            <LoginHook />
             <ToastContainer />
             </React.Fragment>
             </Switch>
+
           </div>
           
 
