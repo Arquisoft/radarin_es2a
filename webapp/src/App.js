@@ -47,7 +47,7 @@ class App extends React.Component {
     return (
       <UserContextProvider>
       <div className="App">
-        <Router>
+        <Router >
 
           <Barra/>
           
