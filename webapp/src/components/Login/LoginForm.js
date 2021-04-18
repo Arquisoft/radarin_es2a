@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Button, Input } from '@material-ui/core';
-import { AuthButton, Link } from "@solid/react";
+import { AuthButton, Link, LoggedOut } from "@solid/react";
+import {  LoggedIn } from "@solid/react";
+import RedirecttHook from './RedirectHook'
+
 
 
 function LoginForm({ Login, error }) {
@@ -59,11 +62,9 @@ function LoginForm({ Login, error }) {
             <div>    
             <Link href="https://solidcommunity.net/register">Registrate en Solid</Link>     
             </div> 
-           
-          
-      
-      
-            
+            <LoggedIn>
+              <RedirecttHook/>
+            </LoggedIn>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Nav from 'react-bootstrap/Nav';
-
+import { LoggedOut } from "@solid/react";
+import LogoutHook from '../Login/LogoutHook'
 
 export default class NavBar extends Component {
     render(){
@@ -13,7 +14,15 @@ export default class NavBar extends Component {
                 <li className="nav-item">
                     <Nav.Link href="/registrarse" className="nav-link">Registro</Nav.Link>
                 </li>
+                <LoggedOut>
+              {
+                window.sessionStorage.getItem('desconecto')==='si'?
+                <LogoutHook/>:
+                null
+              }
+            </LoggedOut>
             </ul>
+            
         );
     }
 }

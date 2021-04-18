@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import Nav from 'react-bootstrap/Nav';
-import { AuthButton, Link } from "@solid/react";
+import { AuthButton} from "@solid/react";
 import {  LoggedIn, LoggedOut} from "@solid/react";
 
+function desconectar(){
+    window.sessionStorage.setItem('desconecto','si')
+}
 export default class NavBar extends Component {
     render(){
         return(
@@ -20,8 +23,9 @@ export default class NavBar extends Component {
                 </LoggedOut>
                 <LoggedIn>
                 <AuthButton popup="https://solid.github.io/solid-auth-client/dist/popup.html"
-                    login="Iniciar sesión con solid" logout="Cerrar Sesion"/> 
+                    login="Iniciar sesión con solid" logout="Cerrar Sesion" onClick={desconectar()} /> 
                 </LoggedIn>
+
             </ul>
         );
     }
