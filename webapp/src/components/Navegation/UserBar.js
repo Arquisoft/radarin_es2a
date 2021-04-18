@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Nav from 'react-bootstrap/Nav';
+import { AuthButton, Link } from "@solid/react";
+import {  LoggedIn, LoggedOut} from "@solid/react";
 
 export default class NavBar extends Component {
     render(){
@@ -11,9 +13,15 @@ export default class NavBar extends Component {
                 <li className="nav-item">
                     <Nav.Link href="/peticiones" className="nav-link">Peticiones</Nav.Link>
                 </li>
+                <LoggedOut>
                 <li className="nav-item">
                     <Nav.Link href="/logout" className="nav-link">Cerrar Sesión</Nav.Link>
                 </li>
+                </LoggedOut>
+                <LoggedIn>
+                <AuthButton popup="https://solid.github.io/solid-auth-client/dist/popup.html"
+                    login="Iniciar sesión con solid" logout="Cerrar Sesion"/> 
+                </LoggedIn>
             </ul>
         );
     }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Nav from 'react-bootstrap/Nav';
-import { AuthButton } from "@solid/react";
 
 
 export default class NavBar extends Component {
