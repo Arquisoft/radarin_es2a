@@ -9,6 +9,10 @@ class EmailForm extends React.Component{
     this.state = {email: '', enabled: false, welcomeMsg: ''}
   }
 
+  componentWillMount() {
+        this.props.history.push('/thank-you');
+  }
+
   componentDidMount(){
     this.fetchUsers()
   }

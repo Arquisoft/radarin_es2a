@@ -4,7 +4,6 @@ import Home from '../Home';
 import { Container, Button} from '@material-ui/core';
 import {db} from '../../api/firebase'
 import { toast } from 'react-toastify';
-import Context from '../../context/UserContext'
 import {useHistory} from 'react-router-dom'
 
 function Login() {
@@ -17,6 +16,7 @@ function Login() {
     const Login = async (details) => {
         const querySnapShot = await db.collection('users').get();
         var cambio = false
+        console.log(details.email);
         querySnapShot.forEach(doc => {
             if (String(doc.data().email.localeCompare(details.email))=== String(0)){
                 if (String(doc.data().password.localeCompare(details.password))=== String(0)){
@@ -33,6 +33,7 @@ function Login() {
                 }
 
         })
+    
         if (!cambio){
             toast("El usuario y/o la contraseña no coinciden", {
                 position: toast.POSITION.TOP_CENTER,
@@ -40,9 +41,8 @@ function Login() {
                 autoClose: 3000,
             });
         }
-        
+    
 
-        
       };
 
     const Logout = () => {
