@@ -37,7 +37,6 @@ function Friends() {
   const getAmigos = async () => {
     if (window.sessionStorage.getItem('user') === null){
       usuarioActivo= pod;
-      console.log(pod)
     }
     
     db.collection("amigos").onSnapshot((querySnapShot) => {
@@ -50,7 +49,11 @@ function Friends() {
           docs.push({ nombre: doc.data().usuario1, id: doc.id })
         }
       });
+      
       setAmigos(docs);
+      amigos.map(amigo => (
+        console.log(amigo.nombre)
+          ))
     });
 
   };
@@ -172,8 +175,16 @@ function Friends() {
 
 
 const  NavigateToMessages = (id)=>{
-  history.push("/mensajes/"+id);
-  history.go(0)
+  if (id.includes('https://')){
+    let indice = id.indexOf("/");
+    let extraida = id.substring(indice+2, id.length);
+    history.push("/mensajes/"+ extraida);
+    history.go(0)
+  }
+  else{
+    history.push("/mensajes/"+ id);
+    history.go(0)
+  }
 }
 
 const  NavigateToMap = (id)=>{
@@ -209,16 +220,14 @@ const  NavigateToMap = (id)=>{
           <div className="col-md-16 p-2">
           
             {amigos.map(amigo => (
-              
               <div class="card bg-info text-white mb-2" >
                 
                 <div class="card-body">
                   <h2 class="card-title" id="friendName">
-                    
                     <Name src={amigo.nombre}>{amigo.nombre}</Name>
                   </h2>
                   <center>
-                    <div className="botones p-2">
+                      <div className="botones p-2">
                       <button className="btn btn-light" id="botonOpcion" onClick={() => NavigateToMessages(amigo.nombre)} data-testId="btnChatear" >
                         <i className="material-icons">insert_comment</i>
                       </button>
@@ -229,6 +238,7 @@ const  NavigateToMap = (id)=>{
                         <i className="material-icons">delete</i>  
                       </button>
                     </div>
+                    
                   </center>
                   <center>
                     <DistanceBetween friendEmail={amigo.nombre}/>

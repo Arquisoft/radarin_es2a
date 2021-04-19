@@ -20,6 +20,7 @@ import Principal from './components/Principal';
 import Home from './components/Home';
 import {useHistory} from 'react-router-dom';
 import Profile from './components/Profile/Profile';
+import { LoggedIn, LoggedOut } from '@solid/react';
 
 
 
@@ -67,12 +68,23 @@ class App extends React.Component {
             <Route path="/amigos" component={Friends} />
             <Route path="/peticiones" component={Peticiones} />
             <Route path="/perfil" component={Profile} />
+            <LoggedIn>
+            <Route path="/mensajes/:friend">
+                <ChatRoom user={window.sessionStorage.getItem('pod')}/>
+            </Route>
+            <Route path="/map/:friend">
+                <MapContainer user={window.sessionStorage.getItem('pod')}/>
+            </Route>
+            </LoggedIn>
+            <LoggedOut>
             <Route path="/mensajes/:friend">
                 <ChatRoom user={window.sessionStorage.getItem('user')}/>
             </Route>
             <Route path="/map/:friend">
                 <MapContainer user={window.sessionStorage.getItem('user')}/>
             </Route>
+            </LoggedOut>
+            
             <LoginHook />
             <ToastContainer />
             </React.Fragment>
