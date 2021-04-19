@@ -16,7 +16,7 @@ function Login() {
     const Login = async (details) => {
         const querySnapShot = await db.collection('users').get();
         var cambio = false
-
+        console.log(details.email);
         querySnapShot.forEach(doc => {
             if (String(doc.data().email.localeCompare(details.email))=== String(0)){
                 if (String(doc.data().password.localeCompare(details.password))=== String(0)){

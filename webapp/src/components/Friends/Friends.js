@@ -20,8 +20,9 @@ function Friends() {
 
   const { default: data } = require("@solid/query-ldflex");
 
-  const usuarioActivo = window.sessionStorage.getItem('user');
+  var usuarioActivo = window.sessionStorage.getItem('user');
 
+  
   const [details, setDetails] = useState({ emisor: window.sessionStorage.getItem('user'), receptor: "" });
 
   const [amigos, setAmigos] = useState([]);
@@ -30,9 +31,15 @@ function Friends() {
 
   const history = useHistory();
 
+  var pod = window.sessionStorage.getItem('pod')
+
 
   const getAmigos = async () => {
-
+    if (window.sessionStorage.getItem('user') === null){
+      usuarioActivo= pod;
+      console.log(pod)
+    }
+    
     db.collection("amigos").onSnapshot((querySnapShot) => {
       const docs = [];
       querySnapShot.forEach(doc => {
@@ -49,7 +56,11 @@ function Friends() {
   };
 
   const addFriend = async (idAmigo) => {
-    if (idAmigo.localeCompare(window.sessionStorage.getItem('user')) !== 0) {
+    if (window.sessionStorage.getItem('user') === null){
+      details.emisor=window.sessionStorage.getItem('pod')
+    }
+
+    if (idAmigo.localeCompare(details.emisor) !== 0 ) {
       if (idAmigo.localeCompare("") !== 0) {
         if (await existeUsuario(idAmigo)) {
           if (await existeAmigo(idAmigo)) {
@@ -96,6 +107,7 @@ function Friends() {
   };
 
   const existeAmigo = async (idAmigo) => {
+
     const querySnapShot = await db.collection('amigos').get();
     var existeAmigo = false;
     querySnapShot.forEach(doc => {
@@ -117,6 +129,7 @@ function Friends() {
   const existePeticion = async (idAmigo) => {
     const querySnapShot = await db.collection('peticiones').get();
     var existePeticion = false;
+    console.log(details.emisor)
     querySnapShot.forEach(doc => {
       if (String(doc.data().emisor.localeCompare(details.emisor)) === String(0) && (String(doc.data().receptor.localeCompare(idAmigo)) === String(0))) {
         existePeticion = true;
@@ -135,7 +148,7 @@ function Friends() {
     const querySnapShot = await db.collection('users').get();
     var existeUsuario = false;
     querySnapShot.forEach(doc => {
-      if (String(doc.data().email.localeCompare(idAmigo)) === String(0)) {
+      if (String(doc.data().email.localeCompare(idAmigo)) === String(0) || (String(doc.data().pod.localeCompare(idAmigo)) === String(0))) {
         existeUsuario = true;
       }
     })
@@ -169,12 +182,6 @@ const  NavigateToMap = (id)=>{
 }
 
 
-
-
-
-
-
-
   async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -183,7 +190,8 @@ const  NavigateToMap = (id)=>{
     getAmigos()
   }, []);
 
-  if (window.sessionStorage.getItem('user') !== null) {
+
+  if (window.sessionStorage.getItem('user') !== null  || window.sessionStorage.getItem('pod') !== null) {
     return (
       <DocumentTitle title="Amigos">
         <div className="prueba">
@@ -191,15 +199,12 @@ const  NavigateToMap = (id)=>{
           <h4 class="card-title" id="addFriend" data-testId="addFriend">Envía una petición a un/a amig@</h4>
           <div class="wrap">
             <div class="search">
-              <input type="text" class="searchTerm" placeholder="correoamigo@amigosparasiempre.es" onChange={e => setDetails({ ...details, receptor: e.target.value })} id="input" />
+              <input type="text" class="searchTerm" placeholder="Introduce su correo o dirección pod" onChange={e => setDetails({ ...details, receptor: e.target.value })} id="input" />
               <button type="submit" class="searchButton" onClick={() => addFriend(document.getElementById("input").value)}>
                 <SearchOutlinedIcon className="iconSearch" />
               </button>
             </div>
           </div>
-
-
-
           <br></br>
           <div className="col-md-16 p-2">
           
@@ -241,14 +246,14 @@ const  NavigateToMap = (id)=>{
     );
   }
   else {
-    return(
-    <DocumentTitle title="Amigos">
-        <div className="prueba">
-          <h2 className="h2" data-testId="label">No estas logueado </h2>
-          </div>
-          </DocumentTitle>
-          );
-
+      return(
+      <DocumentTitle title="Amigos">
+      <div className="prueba">
+        <h2 className="h2" data-testId="label">No estas logueado </h2>
+        </div>
+        </DocumentTitle>
+        );
+    
   }
 
 }

@@ -23,7 +23,7 @@ export default class NavBar extends Component {
                 </LoggedOut>
                 <LoggedIn>
                 <AuthButton popup="https://solid.github.io/solid-auth-client/dist/popup.html"
-                    login="Iniciar sesión con solid" logout="Cerrar Sesion" onClick={desconectar()} /> 
+                    login="Iniciar sesión con solid" logout="Cerrar Sesión" onClick={desconectar()} /> 
                 </LoggedIn>
 
             </ul>
