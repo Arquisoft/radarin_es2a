@@ -28,7 +28,6 @@ function Home() {
 
   async function Prueba(){
     if (window.sessionStorage.getItem('user') === null){
-    console.log(details.pod)
     var existeUsuario = false;
     const querySnapShot = await db.collection('users').get();
     querySnapShot.forEach(doc => {
@@ -37,7 +36,6 @@ function Home() {
       })
     if (existeUsuario!==true){
         db.collection('users').doc().set(details)
-        console.log("eeeee");
     }  
   }
 }
