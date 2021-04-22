@@ -29,6 +29,8 @@ function Friends() {
 
   const [usuarios, setUsuarios] = useState([]);
 
+  const [pods, setPods] = useState([]);
+
   const [distances, setDistances] = useState([])
 
   const history = useHistory();
@@ -63,15 +65,17 @@ function Friends() {
     
     db.collection("users").onSnapshot((querySnapShot) => {
       const docs = [];
+      const pods = [];
       querySnapShot.forEach(doc => {
         if ((String(doc.data().email.localeCompare("")) === String(0))) {
           docs.push({ nombre: doc.data().pod, id: doc.id })
+          pods.push({ nombre: doc.data().pod, id: doc.id })
         }
         else{
           docs.push({ nombre: doc.data().email, id: doc.id })
         }
       });
-      
+      setPods(pods);
       setUsuarios(docs);
     });
 
@@ -79,6 +83,9 @@ function Friends() {
 
 
   const addFriend = async (idAmigo) => {
+    
+    details.receptor=idAmigo;
+    console.log(details.receptor);
     if (window.sessionStorage.getItem('user') === null){
       details.emisor=window.sessionStorage.getItem('pod')
     }
@@ -224,15 +231,27 @@ function comprobarUsuario(idUsuario){
 return existeUsuario;
 }
 
+function existePod(idUsuario){
+  var existePod = false;
+ 
+  pods.forEach(usuario => {
+    
+    if (String(usuario.nombre.localeCompare(idUsuario)) ===String(0)){
+        existePod = true;
+    }
+  })
+
+return existePod;
+}
+
 function comprobarAmigo(idUsuario){
   
   var existeAmigo = false;
-  amigos.forEach(doc => {
-    if (String(doc.data().nombre.localeCompare(idUsuario)) === String(0)) {
+ amigos.forEach(doc => {
+    if (String(doc.nombre.localeCompare(idUsuario)) === String(0)) {
       existeAmigo = true;
     }
   })
-  console.log(existeAmigo)
   if (existeAmigo) {
     return true;
   }
@@ -244,43 +263,13 @@ function comprobarAmigo(idUsuario){
 
 const Card =  (props) => {
   //Tres posibles escenarios: El usuario de solid no usa la aplicación, la usa pero no somos amigos o la usa y somos amigos.
+  //Si la usa y somos amigos ya lo muestra en la primera lista, por lo que aquí no lo mostramos
   
   var friend = props.nombre.substring(1,props.nombre.length-1)
   var existeUsuario = comprobarUsuario(friend);
   var existeAmigo = comprobarAmigo(friend);
   if (existeUsuario){
-    if ( existeAmigo){
-      return (
-    
-    <div class="card bg-info text-white mb-2" >
-                
-      <div class="card-body">
-       <h2 class="card-title" id="friendName">
-        <Name src={props.nombre}>{props.nombre}</Name>
-      </h2>
-      <center>
-        <div className="botones p-2">
-        <button className="btn btn-light" id="botonOpcion" onClick={() => NavigateToMessages(friend)} data-testId="btnChatear" >
-          <i className="material-icons">insert_comment</i>
-      </button>
-      <button className="btn btn-light" id="botonOpcion" onClick={() => NavigateToMap(friend)} data-testId="btnUbicacion"  >
-        <i className="material-icons">location_on</i>  
-      </button>
-      <button className="btn btn-light" id="botonOpcion" /*onClick={() => eliminarAmigo(amigo.id)}*/  data-testId="btnEliminar"  >
-        <i className="material-icons">delete</i>  
-      </button>
-      <Link href={props.nombre} className="btn btn-light" id="botonOpcion" data-testId="link">Ver Perfil Solid</Link>
-    </div>
-    
-  </center>
-  <center>
-    <DistanceBetween friendEmail={friend}/>
-  </center>
-  </div>
-  </div>
-      );
-    }
-    else{
+    if (existeAmigo===false){
       return (
         <div class="card bg-info text-white" >
           <div class="card-body">
@@ -290,14 +279,17 @@ const Card =  (props) => {
             <center>
               <div className="botones">
                 <button className="btn btn-light" id="botonOpcion"   data-testId="button" onClick={() => addFriend(friend)}>Enviar petición de amistad </button>
-                <Link href={props.nombre} className="btn btn-light" id="botonOpcion" data-testId="link">Ver Perfil Solidd</Link>
-                
-                
+                <Link href={friend} className="btn btn-light" id="botonOpcion" data-testId="link">
+                      <i className="material-icons">person</i>
+                      </Link>
               </div>
             </center>
           </div>
         </div>
       );
+    }
+    else{
+      return null;
     }
   }
   else{
@@ -310,7 +302,9 @@ const Card =  (props) => {
         <center>
           <div className="botones">
           <button className="btn btn-light" id="botonOpcion" data-testId="button">Invitar a usar radarín</button>
-          <Link href={props.nombre} className="btn btn-light" id="botonOpcion" data-testId="link">Ver Perfil Solid</Link>
+          <Link href={props.nombre} className="btn btn-light" id="botonOpcion" data-testId="link">
+                      <i className="material-icons">person</i>
+          </Link>
             
             
           </div>
@@ -368,6 +362,16 @@ const Card =  (props) => {
                       <button className="btn btn-light" id="botonOpcion" onClick={() => eliminarAmigo(amigo.id)}  data-testId="btnEliminar"  >
                         <i className="material-icons">delete</i>  
                       </button>
+                      {(existePod(amigo.nombre) !== false) ? ( 
+                          <div>    
+                      <Link href={amigo.nombre} className="btn btn-light" id="botonOpcion" data-testId="link">
+                      <i className="material-icons">person</i>
+                      </Link>
+                          </div>
+                        ) : (
+                          <div>
+                          </div>
+                     )}
                     </div>
                     
                   </center>
