@@ -9,19 +9,30 @@ export const ChatRoom = (props) => {
     const [messages, setMessages] = useState([]);
     const [messageToSend, setMessageToSend] = useState("");
     let { friend } = useParams();
+    var usuario = props.user;
+    
+    function actualizarUsuario(){
+        if (props.user.includes('https://')){
+            let indice = props.user.indexOf("/");
+            usuario = props.user.substring(indice+2, props.user.length);
+            let indice2 = usuario.indexOf("/");
+            usuario = usuario.substring(0,  indice2);
+        }
+    }
 
+
+    
     const loadMessages = async () => {
         db.collection('messages').
-            where('user', 'in', [props.user,friend])
+            where('user', 'in', [usuario,friend])
             .onSnapshot(
                 (querySnapshot) => {
                     const docs = [];
                     querySnapshot.forEach(element => {
-                        
                         if(element.data().friend===friend){
                             docs.push({ ...element.data(), id: element.id })
                         }
-                        if(element.data().friend===props.user)
+                        if(element.data().friend===usuario)
                             docs.push({ ...element.data(), id: element.id })
                     });
                     let sorted = docs.sort((a, b) => (a.date > b.date) ? 1 : -1)
@@ -30,21 +41,22 @@ export const ChatRoom = (props) => {
                     setMessages(sorted)
                 }
             )
-        console.log("Se han cargado los mensajes")
     }
 
 
     useEffect(() => {
-        loadMessages(props.user, friend);
+        actualizarUsuario();
+        loadMessages(usuario, friend);
     }, [])
 
 
     const addMessage = async () => {
         const fecha = Date.now()
         console.log(fecha);
+        console.log(usuario)
         const messageObject = {
             friend: friend,
-            user: props.user,
+            user: usuario,
             text: messageToSend,
             date: fecha
         }
@@ -55,8 +67,9 @@ export const ChatRoom = (props) => {
     }
 
     function MessageList() {
+        actualizarUsuario();
         const messageList = messages.map((message) => (
-            <Message text={message.text} session={props.user} messageSender={message.user}></Message>)
+            <Message text={message.text} session={usuario} messageSender={message.user}></Message>)
         )
         return (
             <div>{messageList}</div>

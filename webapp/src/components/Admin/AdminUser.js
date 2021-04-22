@@ -72,7 +72,6 @@ export const AdminUser = () => {
     
         useEffect(() => {
             getUsers();
-            console.log(users)
         }, [])
     
         return(

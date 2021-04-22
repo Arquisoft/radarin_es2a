@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Button, Input } from '@material-ui/core';
+import { AuthButton, Link, LoggedOut } from "@solid/react";
+import {  LoggedIn } from "@solid/react";
+import RedirectHook from './RedirectHook'
+
 
 
 function LoginForm({ Login, error }) {
@@ -42,7 +46,6 @@ function LoginForm({ Login, error }) {
                   onChange={e => setDetails({ ...details, password: e.target.value })} 
                   value={details.password} />
               </div>
-              
               <div >
                 <Button 
                   className="bg-success btn btn-block text-white font-weight-bold" 
@@ -50,10 +53,18 @@ function LoginForm({ Login, error }) {
                     Confirmar
                 </Button>
               </div>
-              
-            </div>
-          </div>
-      </form>
+              </div>
+              </div>
+              </form>
+            <a> ¿Tienes un pod? </a>
+            <AuthButton popup="https://solid.github.io/solid-auth-client/dist/popup.html"
+            login="Iniciar sesión con solid" logout="Cerrar Sesion"/> 
+            <div>    
+            <Link href="https://solidcommunity.net/register">Registrate en Solid</Link>     
+            </div> 
+            <LoggedIn>
+              <RedirectHook/>
+            </LoggedIn>
     </div>
   )
 }
