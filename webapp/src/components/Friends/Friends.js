@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { List, Value, Name, Link } from "@solid/react";
+import { useWebId, List, Value, Name, Link, LoggedIn } from "@solid/react";
 import "./Friends.css";
 import "bootstrap/dist/css/bootstrap.css";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
@@ -12,11 +12,14 @@ import { useHistory,Redirect, browserHistory } from "react-router-dom"
 import distancia from '../Service/DistanceService'
 import {getUserPos} from '../Service/LocationService'
 import DistanceBetween from "./DistanceBetween";
+import emailjs from 'emailjs-com';
 
 
 
 
 function Friends() {
+
+  
 
   const { default: data } = require("@solid/query-ldflex");
 
@@ -27,12 +30,52 @@ function Friends() {
 
   const [amigos, setAmigos] = useState([]);
 
+  const [usuarios, setUsuarios] = useState([]);
+
+  const [pods, setPods] = useState([]);
+
   const [distances, setDistances] = useState([])
 
   const history = useHistory();
 
+  const id = useWebId();
+
+
   var pod = window.sessionStorage.getItem('pod')
 
+
+  function SendEmail(destinatario, correoDestinatario) {
+    //const webId = useWebId();
+    //e.preventDefault();
+    var Params ={
+      from_name:id,
+      to_name:destinatario,
+      to_address:correoDestinatario
+    };
+    emailjs.send('service_nlb79jf', 'template_6mokhp4', Params, 'user_HhFnythpqGU2PbbLkk938')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  }
+
+  function Correo(idAmigo){
+    let correo = prompt("Introduce el correo de tu amigo","amigo@amigo.com");
+    if(correo.includes("@")){
+      SendEmail(idAmigo, correo);
+      toast.info("Has enviado la invitación correctamente", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500
+    });
+    }
+    else{
+      toast.error("Introduce una dirección válida", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500
+      });
+    }
+  }
 
   const getAmigos = async () => {
     if (window.sessionStorage.getItem('user') === null){
@@ -51,14 +94,34 @@ function Friends() {
       });
       
       setAmigos(docs);
-      amigos.map(amigo => (
-        console.log(amigo.nombre)
-          ))
     });
 
   };
 
+  const getUsuarios = async () => {
+    db.collection("users").onSnapshot((querySnapShot) => {
+      const docs = [];
+      const pods = [];
+      querySnapShot.forEach(doc => {
+        if ((String(doc.data().email.localeCompare("")) === String(0))) {
+          docs.push({ nombre: doc.data().pod, id: doc.id })
+          pods.push({ nombre: doc.data().pod, id: doc.id })
+        }
+        else{
+          docs.push({ nombre: doc.data().email, id: doc.id })
+        }
+      });
+      setPods(pods);
+      setUsuarios(docs);
+    });
+
+  };
+
+
   const addFriend = async (idAmigo) => {
+    
+    details.receptor=idAmigo;
+    console.log(details.receptor);
     if (window.sessionStorage.getItem('user') === null){
       details.emisor=window.sessionStorage.getItem('pod')
     }
@@ -132,7 +195,6 @@ function Friends() {
   const existePeticion = async (idAmigo) => {
     const querySnapShot = await db.collection('peticiones').get();
     var existePeticion = false;
-    console.log(details.emisor)
     querySnapShot.forEach(doc => {
       if (String(doc.data().emisor.localeCompare(details.emisor)) === String(0) && (String(doc.data().receptor.localeCompare(idAmigo)) === String(0))) {
         existePeticion = true;
@@ -171,6 +233,8 @@ function Friends() {
             autoClose: 2500
         });
     }
+
+  
 };
 
 
@@ -192,16 +256,115 @@ const  NavigateToMap = (id)=>{
   history.go(0)
 }
 
+function comprobarUsuario(idUsuario){
+  
+  var existeUsuario = false;
+ 
+  usuarios.forEach(usuario => {
+    
+    if (String(usuario.nombre.localeCompare(idUsuario)) ===String(0)){
+        existeUsuario = true;
+    }
+  })
+return existeUsuario;
+}
+
+function existePod(idUsuario){
+  var existePod = false;
+ 
+  pods.forEach(usuario => {
+    
+    if (String(usuario.nombre.localeCompare(idUsuario)) ===String(0)){
+        existePod = true;
+    }
+  })
+
+return existePod;
+}
+
+function comprobarAmigo(idUsuario){
+  
+  var existeAmigo = false;
+ amigos.forEach(doc => {
+    if (String(doc.nombre.localeCompare(idUsuario)) === String(0)) {
+      existeAmigo = true;
+    }
+  })
+  if (existeAmigo) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+
+const Card =  (props) => {
+  //Tres posibles escenarios: El usuario de solid no usa la aplicación, la usa pero no somos amigos o la usa y somos amigos.
+  //Si la usa y somos amigos ya lo muestra en la primera lista, por lo que aquí no lo mostramos
+  
+  var friend = props.nombre.substring(1,props.nombre.length-1)
+  var existeUsuario = comprobarUsuario(friend);
+  var existeAmigo = comprobarAmigo(friend);
+  if (existeUsuario){
+    if (existeAmigo===false){
+      return (
+        <div class="card bg-info text-white" >
+          <div class="card-body">
+            <h4 class="card-title" id="friendName">
+              <Name src={props.nombre}>{props.nombre}</Name>
+            </h4>
+            <center>
+              <div className="botones">
+                <button className="btn btn-light" id="botonOpcion"   data-testId="button" onClick={() => addFriend(friend)}>Enviar petición de amistad </button>
+                <Link href={friend} className="btn btn-light" id="botonOpcion" data-testId="link">
+                      <i className="material-icons">person</i>
+                      </Link>
+              </div>
+            </center>
+          </div>
+        </div>
+      );
+    }
+    else{
+      return null;
+    }
+  }
+  else{
+  return (
+    <div class="card bg-info text-white" >
+      <div class="card-body">
+        <h4 class="card-title" id="friendName">
+          <Name src={props.nombre}>{props.nombre}</Name>
+        </h4>
+        <center>
+          <div className="botones">
+          <button className="btn btn-light" id="botonOpcion" data-testId="button" onClick={() => Correo(friend)}>Invitar a usar radarín</button>
+          <Link href={props.nombre} className="btn btn-light" id="botonOpcion" data-testId="link">
+                      <i className="material-icons">person</i>
+          </Link>
+            
+            
+          </div>
+        </center>
+      </div>
+    </div>
+    );
+  }
+};
+
 
   async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   useEffect(() => {
+    getUsuarios()
     getAmigos()
   }, []);
 
 
+  const webId = useWebId();
   if (window.sessionStorage.getItem('user') !== null  || window.sessionStorage.getItem('pod') !== null) {
     return (
       <DocumentTitle title="Amigos">
@@ -237,6 +400,16 @@ const  NavigateToMap = (id)=>{
                       <button className="btn btn-light" id="botonOpcion" onClick={() => eliminarAmigo(amigo.id)}  data-testId="btnEliminar"  >
                         <i className="material-icons">delete</i>  
                       </button>
+                      {(existePod(amigo.nombre) !== false) ? ( 
+                          <div>    
+                      <Link href={amigo.nombre} className="btn btn-light" id="botonOpcion" data-testId="link">
+                      <i className="material-icons">person</i>
+                      </Link>
+                          </div>
+                        ) : (
+                          <div>
+                          </div>
+                     )}
                     </div>
                     
                   </center>
@@ -251,7 +424,18 @@ const  NavigateToMap = (id)=>{
             
           </div>
           <br></br>
+          <LoggedIn>
+          <h2 className="h2" data-testId="label">Encuentra a tus amigos de solid </h2>
+        <List src={`[${webId}].friends`} className="list" padding-inline-start="0">{(friend) =>
+          <li key={friend} className="listElement">
+            <p>
+              <Card nombre={`[${friend}]`}></Card>
+            </p>
+          </li>}
+        </List>
+        </LoggedIn>
         </div>
+            
       </DocumentTitle>
     );
   }

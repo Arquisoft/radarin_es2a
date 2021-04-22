@@ -46,8 +46,6 @@ export const ChatRoom = (props) => {
 
     useEffect(() => {
         actualizarUsuario();
-        console.log(friend)
-        console.log(usuario)
         loadMessages(usuario, friend);
     }, [])
 
