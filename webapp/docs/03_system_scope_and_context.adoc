@@ -4,8 +4,7 @@
 
 .Context and Scope
 El objetivo de esta aplicacion (Radarin) es conseguir que sus usuarios puedan comunicarse y reunirse simpre y cuando estén cerca de ti. La informacion
-de los usuarios estara descentralizada gracias a pods de solid. La aplicacion estará disponible en dispositivos moviles gracias al uso de React
-Native.
+de los usuarios estara descentralizada gracias a PODs de solid. El Gestor de PODs que utilizaremos será inrupt. La aplicacion estará disponible en dispositivos moviles gracias a una aplicación del móvil que abrirá el navegador del móvil para su funcionamiento
 
 === Business Context
 .Application context
@@ -30,15 +29,14 @@ Native.
 
 .Use case
 image::business_context.png[]
-La comunicacion entre usuarios siempre sera utilizando sus propios pods. Siempre que un usuario envie su ubicacion a la aplicacion, esta 
-sera guardada en el pod, la informacion pasara a la aplicacion cuando esta la solicite.
+La comunicación entre los usuarios tendrá que utilizar la base de datos de Firebase para poder conectarse con los respectivos PODs del usuario ya que facilitará la utilización y programación de la aplicación. Cuando el usuario envié su ubicación a la aplicación, la aplicación mandará a Firebase que almacene la ubicación y en caso de ser necesario, quedará almacenada en el POD del usuario. Cuando la aplicación, solicite la ubicación o la información del usuario necesaria, esta siempre será mandada.
 
 
 .Application Contents
 
 === Technical Context
-Radarin usa muchas tecnologías como Solid, Docker, React Native... para garantizar la seguridad y la privacidad de los datos de nuestros usuarios.
-La interdaz de Radarin esta hecha con React Native, de esta manera la aplicacion es compatible con disipositivos moviles. Los datos del usuario seran
+Radarin usa muchas tecnologías como Solid, Docker, JavaScript.. para garantizar la seguridad y la privacidad de los datos de nuestros usuarios.
+La interdaz de Radarin esta hecha con React, debido a que hemos decidido no utilizar React Native por diversos factores, la aplicación móvil accederá a un navegador web para su funcionamiento. Los datos del usuario seran
 guardados usando SOLID para descentralizarlos.
 
 .Technical Context

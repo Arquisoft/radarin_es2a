@@ -11,7 +11,9 @@ La aplicación nos presenta una serie de riesgos a la hora de desarrollarla, que
 
 |  Uso de Solid| El proyecto nos requiere utilizar Solid , una tecnología relativamente nueva que no dispone de demasiada documentación, por lo que pueden surgirnos problemas para los que nos sea difícil encontrar ayuda. | Investigar acerca de Solid para poder solucionar los inconvenientes surgidos.
 
-|  Uso de React | Los desarrolladores nunca hemos utilizado React lo que nos puede provocar numerosos problemas  | La solución que tenemos es invertir tiempo para poder dominar React, buscando información y trabajando con el mismo.
+|  Uso de Firebase | La mayoría de los desarrolladores, nunca hemos utilizado Firebase lo cual puede causar problemas a la hora de su implementación  | La solución que tenemos es invertir tiempo para poder dominar Firebase, buscando información y trabajando con la tecnología, con videos o proyectos de práctica sobre este.
+
+|  Desarrollo de una aplicación móvil | Al igual que en el apartado anterior, la mayoría de los desarrolladores, nunca hemos desarrollado una aplicación móvil lo que puede causar problemas  | La solución que tenemos es invertir tiempo para poder dominar las aplicaciones desarrolladas en móviles, buscando información y trabajando con aplicaciones desarrolladas en móviles, con videos o proyectos de práctica sobre este.
 
 | Desarrollo en equipo | Trabajar en equipo puede darnos problemas a la hora de repartir equitativamente las tareas, de realizarlas, etc. | Realizar actas de las reuniones donde quede registrado claramente que debe hacer cada uno y las decisiones tomadas.
 
