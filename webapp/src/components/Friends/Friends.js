@@ -12,11 +12,14 @@ import { useHistory,Redirect, browserHistory } from "react-router-dom"
 import distancia from '../Service/DistanceService'
 import {getUserPos} from '../Service/LocationService'
 import DistanceBetween from "./DistanceBetween";
+import emailjs from 'emailjs-com';
 
 
 
 
 function Friends() {
+
+  
 
   const { default: data } = require("@solid/query-ldflex");
 
@@ -35,9 +38,44 @@ function Friends() {
 
   const history = useHistory();
 
+  const id = useWebId();
+
 
   var pod = window.sessionStorage.getItem('pod')
 
+
+  function SendEmail(destinatario, correoDestinatario) {
+    //const webId = useWebId();
+    //e.preventDefault();
+    var Params ={
+      from_name:id,
+      to_name:destinatario,
+      to_address:correoDestinatario
+    };
+    emailjs.send('service_nlb79jf', 'template_6mokhp4', Params, 'user_HhFnythpqGU2PbbLkk938')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  }
+
+  function Correo(idAmigo){
+    let correo = prompt("Introduce el correo de tu amigo","amigo@amigo.com");
+    if(correo.includes("@")){
+      SendEmail(idAmigo, correo);
+      toast.info("Has enviado la invitación correctamente", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500
+    });
+    }
+    else{
+      toast.error("Introduce una dirección válida", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500
+      });
+    }
+  }
 
   const getAmigos = async () => {
     if (window.sessionStorage.getItem('user') === null){
@@ -61,8 +99,6 @@ function Friends() {
   };
 
   const getUsuarios = async () => {
-
-    
     db.collection("users").onSnapshot((querySnapShot) => {
       const docs = [];
       const pods = [];
@@ -197,6 +233,8 @@ function Friends() {
             autoClose: 2500
         });
     }
+
+  
 };
 
 
@@ -301,7 +339,7 @@ const Card =  (props) => {
         </h4>
         <center>
           <div className="botones">
-          <button className="btn btn-light" id="botonOpcion" data-testId="button">Invitar a usar radarín</button>
+          <button className="btn btn-light" id="botonOpcion" data-testId="button" onClick={() => Correo(friend)}>Invitar a usar radarín</button>
           <Link href={props.nombre} className="btn btn-light" id="botonOpcion" data-testId="link">
                       <i className="material-icons">person</i>
           </Link>
