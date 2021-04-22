@@ -40,7 +40,7 @@ export const TableFriends = (props) => {
                         <th className="align-middle">{friend.nombre}</th>
                         <th className="align-middle">{friend.distance}</th>
                         <th>
-                            <div>
+                            <div classname="row">
                                 <button
                                     className="btn btn-success" id="botonOpcion"
                                     onClick={() => props.NavigateToMessages(friend.nombre)}
