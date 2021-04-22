@@ -9,7 +9,7 @@ Para construir la aplicación, hemos escogido el lenguaje de programación Javas
 También utilizaremos React, una biblioteca de Javascript que consideramos que nos permitirá hacer la aplicación de una forma más sencilla y ordenada que si
 utilizaramos Javascript puro.
 
-Para gestionar los datos de los usuarios utilizaremos los PODs de Solid, para darle al usuario la libertad de decidir que datos comparte, y cumplir con el requisito de compatibilidad con el proyecto Solid.
+Para gestionar los datos de los usuarios utilizaremos principalmetnela base de datos FireBase para almacenar las cuentas de usuario, sus amigos en la aplicación, etcétera. También utilzaremos los PODs de Solid, para darle al usuario la libertad de decidir que datos comparte, y cumplir con el requisito de compatibilidad con el proyecto Solid como por ejemplo la imágen del perfil del usuario o otra información más privada del usuario. Para gestionar los PODs de Solid, hemos decidido utilizar Inrupt ya que hemos visto que en anteriores años en otros proyectos de otros compañeros, era uno de los gestores que más se utilizaban y nos parece el más sencillo de acoplar a nuestra idea/tecnología
 
 Como entorno de trabajo hemos decidido utilizar Visual Studio Code por su simplicidad.
 
@@ -29,7 +29,7 @@ Por último, hemos decidido utilizar la api de google maps para permitir a los u
 |Cómo lo obtendremos
 
 |Privacidad
-|Cumpliremos con este objetivo almacenando la mínima información posible, y mediante el uso de los PODs de Solid.
+|Cumpliremos con este objetivo almacenando la mínima información posible, y mediante el uso de los PODs de Solid, gestionandolos mediante Inrupt. Además de almacenar otra información necesaria para la aplicación pero no de carácter tan privado mediante FireBase
 
 |Usabilidad
 |Radarin tiene que ser una aplicación intuitiva, utilizaremos los conocimientos adquiridos durante la carrera para lograr dicho objetivo.
@@ -44,8 +44,8 @@ Por último, hemos decidido utilizar la api de google maps para permitir a los u
 
 
 .En cuanto a las decisiones de organización, hemos decidido:
-- Utilizar los issues de Github para registrar que parte del trabajo tenemos que hacer cada miembro del equipo, que nos queda por hacer, etc. 
-- Realizar reuniones mediante Teams para tomar decisiones, ver coomo vamos avanzando, etc. Realizaremos un acta de cada una de las reuniones que subiremos a nuestro repositorio de GitHub para que quede constancia de las mismas.
-- El uso de Whatsapp para concretar los horarios de las reuniones que llevaremos a cabo, o para cuando necesitemos comunicarnos de forma urgente con algún otro miembro del equipo.
+- Utilizar los issues de Github para registrar que parte del trabajo tenemos que hacer cada miembro del equipo, que nos queda por hacer, que partes hemos de moificar o actualizar, etc. 
+- Realizar reuniones mediante Teams para tomar decisiones, ver como vamos avanzando, etc. Realizaremos un acta de cada una de las reuniones que subiremos a nuestro repositorio de GitHub concretamente a la sección de Wiki para que quede constancia de las mismas.
+- El uso de Whatsapp para concretar los horarios de las reuniones que llevaremos a cabo, o para cuando necesitemos comunicarnos de forma urgente con algún otro miembro del equipo. Principalmente, utilizaremos el teams para mensajes no tan urgentes y dudas que podamos tener o para preguntar algo al profesor.
 - Finalmente, decidimos realizar la documentación en español por comodidad.
 
