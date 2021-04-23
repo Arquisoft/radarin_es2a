@@ -272,7 +272,6 @@ return existeUsuario;
 }
 
 
-=======
 function existePod(idUsuario){
   var existePod = false;
  

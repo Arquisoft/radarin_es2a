@@ -16,7 +16,7 @@ export default class NavBar extends Component {
                 <li className="nav-item">
                     <Nav.Link href="/peticiones" className="nav-link">Peticiones</Nav.Link>
                 </li>
-                <LoggedOut>
+                <LoggedOut className="btn btn-danger">
                 <li className="nav-item">
                     <Nav.Link href="/logout" className="nav-link">Cerrar Sesión</Nav.Link>
                 </li>
