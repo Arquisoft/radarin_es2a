@@ -10,21 +10,23 @@ import { db } from '../../api/firebase'
 
 function Peticiones() {
 
-
-
     const { default: data } = require("@solid/query-ldflex");
 
-    const usuarioActivo = window.sessionStorage.getItem('user');
+    var usuarioActivo = window.sessionStorage.getItem('user');
 
     const [peticiones, setPeticiones] = useState([]);
 
     const [amigos, setAmigos] = useState({ usuario1: window.sessionStorage.getItem('user'), usuario2: "" });
 
     const getPeticiones = async () => {
+        if (usuarioActivo === null){
+            usuarioActivo= window.sessionStorage.getItem('pod');
+            amigos.usuario1=usuarioActivo;
+        }
         db.collection("peticiones").onSnapshot((querySnapShot) => {
             const docs = [];
             querySnapShot.forEach(doc => {
-                if (String(doc.data().receptor.localeCompare(usuarioActivo)) === String(0)) {
+                if (String(doc.data().receptor.localeCompare(usuarioActivo)) === String(0) || String(doc.data().receptor.localeCompare(window.sessionStorage.getItem('pod'))) === String(0) ) {
                     docs.push({ ...doc.data(), id: doc.id })
                 }
             });
@@ -35,6 +37,9 @@ function Peticiones() {
 
     const aceptarPeticion = async (id, idUsuario) => {
         await db.collection('peticiones').doc(id).delete();
+        if (window.sessionStorage.getItem('user')=== null){
+            amigos.usuario1=window.sessionStorage.getItem('pod');
+        }
         setAmigos(amigos.usuario2 = idUsuario);
         await db.collection('amigos').doc().set(amigos);
         toast.info("Has aceptado la petición de amistad", {
@@ -65,7 +70,7 @@ function Peticiones() {
 
 
 
-    if (window.sessionStorage.getItem('user') !== null) {
+    if (window.sessionStorage.getItem('user') !== null || window.sessionStorage.getItem('pod') !== null) {
         return (
             <DocumentTitle title="Peticiones">
                 <div className="prueba">
@@ -89,9 +94,14 @@ function Peticiones() {
         );
     }
     else {
-        //Redireccionar a login
-    }
-
+          return(
+          <DocumentTitle title="Amigos">
+          <div className="prueba">
+            <h2 className="h2" data-testId="label">No estas logueado </h2>
+            </div>
+            </DocumentTitle>
+            );
+      }
 }
 
 export default Peticiones;

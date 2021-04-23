@@ -10,10 +10,9 @@
 | RT2 | Almacenamiento con Solid | Será fundamental el uso de Solid, que permitirá a los usuarios almacenar sus datos de una forma segura en almacenes de datos descentralizados(Pods).
 | RT3 | Almacenamiento mínimo | Sólo se almacenarán localizaciones e instantes de tiempo en los que éstas han ocurrido, tratando de evitar en todo momento el guardado de información personal del usuario (sólo se almacenarán aquellos datos esenciales). Esta restricción se relaciona directamente con la anterior, puesto que es uno de los objetivos de Solid.
 | RT4 | Empleo de geolocalización | La aplicación podrá acceder a la información de localización del teléfono móvil del usuario siempre que éste lo permita.
-| RT5 | Sistema de listado de amigos | La aplicación ha de permitir que un usuario tenga un listado de amigos, de manera que éstos puedan saber cuándo están cerca entre ellos.
-| RT6 | Uso de Docker y servicio en la nube | El sistema ha de ser desplegable en contenedores Docker, así como en algún servicio en la nube (ej:heroku).
-| RT7 | Monitorización | La aplicación debe tener un sistema de monitorización para evaluar la salud y el rendimiento de todo el sistema.
-| RP8 | Desarollo de pruebas | Se realizarán pruebas unitarias, de carga y aceptación que se ejecutarán de forma automatizada a traves de un servidor de integración continua.
+| RT5 | Uso de Docker y servicio en la nube | El sistema ha de ser desplegable en contenedores Docker, así como en algún servicio en la nube (ej:heroku).
+| RT6 | Monitorización | La aplicación debe tener un sistema de monitorización para evaluar la salud y el rendimiento de todo el sistema.
+| RP7 | Desarollo de pruebas | Se realizarán pruebas unitarias, de carga y aceptación que se ejecutarán de forma automatizada a traves de un servidor de integración continua.
 |====================
 
 === Restricciones Organizativas
@@ -22,8 +21,8 @@
 | Id | Restricción | Descripción  
 | RO1 | Fecha de entrega | El proyecto tiene como fecha límite el 03/05/2021. 
 | RO2 | Tamaño del equipo de desarrollo | El proyecto será realizado por un equipo de 6 personas.
-| RO3 | Front-End y Back-End | Debido a que va a haber integrantes del equipo que tengan que hacer front-end y otros back-end, puede ser que estos últimos tengan que esperar a que esté hecha la parte del front-end para poder unirla a su parte de back-end.
-| RO4 | Aplicación elaborada en ordenadores diferentes  | Debido a que cada integrante del equipo tiene un pc diferente, es posible que las condiciones de algunos de los miembros no sean las idóneas durante la realización del proyecto. A su vez, se pueden dar problemas ajenos al pc(ej:conexión a internet, apagón,etc) que puedan alterar el desarrollo.
+| RO3 | Front-End y Back-End | Al trabajo ser dividido entre los distintos integrantes del grupo, en algún caso, se puede dar que un integrante deba esperar a que cierta funcionalidad que desarrolla otro miembro sea realizada/modificada para que este pueda seguir trabajando.
+| RO4 | Restricciones de movilidad  | Debido a la pandemia que estamos sufriendo actualmente, los miembros del equipo no nos podemos desplazar a las clases presencialmente ni podemos juntarnos para realizar el trabajo en común, lo cual es una gran restricción.
 
 
 |====================
@@ -32,8 +31,7 @@
 [width="100%",options="header"]
 |====================
 | Id | Restricción | Descripción  
-| RP1 | Visual Studio Code como entorno de trabajo | Debido a su simplicidad de uso y a la extensa capacidad que ofrece gracias a sus extensiones, se hará uso de Visual Studio Code como entorno de trabajo.
-| RP2 | Documentación | A lo largo de la vida del proyecto se irá haciendo una documentación exahustiva siguiendo la estructura de Arc42 y haciendo uso de AsciiDoctor.
-| RP3 | Github como repositorio remoto | Todos los cambios que se van realizando se tendrán que ir reflejando en el repositorio, habiendo solicitado antes una "pull request".
-| RP4 | Empleo de diferentes ramas | No se subirá a la rama master nada hasta que una versión no sea finalizada al completo. De esta manera, evitamos que en la rama master pueda haber errores no deseados. Cada nueva funcionalidad podrá ser implementada a partir de la rama develop (hija de la rama master) o de multitud de subramas que partiran de develop.
+| RP1 | Documentación | La documentación debe de ser realizada con la plantilla que nos han proporcionado los profesores de Arc42, esta documentación debe de ser actualizada constantemente con los cambios que sean realizados en la aplicación.
+| RP2 | Idioma | Este proyecto será desarrollado en su integridad en español, tanto la documentación, como las issues, como los commits y comentarios de este.
+
 |====================

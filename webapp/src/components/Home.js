@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect  } from "react";
 import "bootstrap/dist/css/bootstrap.css";
+
 import { addUserPos } from '../components/Service/LocationService'
 import imagen from '../home_image.jpg'
 import solid from '../solid.svg'
 import github from '../github.svg'
 import document from '../document.svg'
 
+
 function Home() {
+
+  //Hay que ponerle las comillas en esos campos para no dar problemas a la parte de login
+  const [details, setDetails] = useState({ email: "", password:"", pod: window.sessionStorage.getItem('pod') }); 
 
   const usuarioActivo = window.sessionStorage.getItem('user');
 
@@ -101,6 +106,7 @@ function Home() {
         </div>
       </div>
   )
+
 
 }
 

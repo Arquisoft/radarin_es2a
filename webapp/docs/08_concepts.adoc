@@ -1,16 +1,19 @@
 
 [[section-concepts]]
-== Cross-cutting Concepts
+== Conceptos Transversales de la Aplicación
+(Crosscutting Concepts)
+
 image::08-Crosscutting-Concepts-Structure-EN.png[]
 
-=== User Experience concepts (UX)
+=== Conceptos de la Experiencia de Usuario
+(User Experience (UX))
 
-=== User interface
-Radarin tendra una interfaz de usuario sencilla que facilitara su uso de todos los usuarios aunque no esten familiarizados con su uso,
-se seguiran los estandares de diseño de UI apropiados para cada seccion de la aplicación. Además, queremos usar la libreria bootrap para
-el diseño de Radarin.
+Radarin tendra una interfaz de usuario sencilla que facilitara su uso de todos los usuarios aunque no esten familiarizados con su uso, se seguiran los estandares de diseño de UI apropiados para cada seccion de la aplicación. Además, queremos usar la libreria bootrap para el diseño de Radarin. La aplicación ha de ser ergonoómica, lo cual mejorará el manejo del usuario correspondiente con la aplicación.
 
-=== Domain concepts
+=== Conceptos del Dominio
+(Domain Concepts)
+
+Los conceptos del dominio de la aplicación que aplicaremos serán los siguientes.
 
 image::domain_concepts.JPG[Domain Concepts]
 
@@ -33,14 +36,25 @@ image::domain_concepts.JPG[Domain Concepts]
 |===
 
 
-=== Safety and security
+=== Privacidad y Seguridad
+(Security & Safety)
 
 Uno de nuestros mayores objetivos en esta aplicacion es el de garantizar la seguridad y la privacidad de los datos de los usuarios, el simple hecho 
-de descentralizar la aplicacion usando solid pods, garantiza que los usuarios tienen el control de la informacion manejada por Radarin.
+de descentralizar la aplicacion usando solid PODs, garantiza que los usuarios tienen el control de la informacion manejada por Radarin. A pesar de utilizar los PODs para garantizar la seguridad y la privacidad del usuario, también utilizaremos FireBase para gestionar algunos datos de los usuarios, facilitadno así el uso y la programación de la aplicación
 
 
-=== Architecture and design patterns
+=== Arquitectura y patrones de diseño
+(Architecture and Design Patterns)
 
-La arquitectura utilizada para esta aplicacion sera el parton Modelo Vista Controlador (MVC) debido a que es mas facil de distinguir la capa de negocio de 
+La arquitectura utilizada para esta aplicacion sera el parton Modelo Vista Controlador (MVC) debido a que es mas fácil de distinguir la capa de negocio de 
 la logica de la aplicacion, haciendo mucho mas facil su lectura de codigo y sus actualizaciones. 
 
+=== Implementación de la Aplicación
+(Under-the-hood)
+
+La aplicación, ha de ser persistente para que los datos que almacenemos en esta, queden guardados correctamente y puedan ser recuperados cuando el usuario/aplicación los necesite. También contará con un control de acceso a la aplicación, mediante la cual se distinguirán las diferentes funciones que puede realizar el usuario que está en sesión. Todas las actividades que realice el usuario deben de ser transaccionales, por ejemplo si un usuario, no consigue registrarse en la aplicación debido a que a este se le ha caido el internet o cualquier otro motivo, deben de ser controladas con sus correspondientes avisos. La aplicación, también contará con un sistema de pruebas mediante el cual se pueda asegurar al usuario del correcto funcionamiento de la aplicación. La aplicación, también ha de informar al usuario de posibles errores que se cometan a la hora de utilizarla como puede ser por ejemplo que al iniciar sesión, la contraseña introducida por un usuario sea erronea, o que al registrarse ya exista un usuario con ese email, etc.
+
+=== Conceptos de Operación
+(Operation Concepts)
+
+La aplicación, consta con dos tipos de ususarios (administradores y usuarios normales). Los administradores, tienen una funcionalidad extra, que los usuarios normales no poseen. Los administradores pueden modificar ciertos datos de los usuarios como su contraseña o email. También pueden eliminar usuarios que ya no se quieran o requieran en la aplicación por algún motivo (mal uso de la aplicación, inactividad, etc). Por el contrario, los usuarios normales de la aplicación, no pueden acceder a la funcionalidad de los administradores y simplemente, tienen la funcionalidad de la aplicación sin poder gestionar las cuentas de otros usuarios, pueden añadir amigos, ver su ubicación, etc.
