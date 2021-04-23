@@ -1,26 +1,42 @@
-import React from "react";
-import { Value} from "@solid/react";
-import { Image} from '@material-ui/icons';
-import "./Profile.css";
-import "bootstrap/dist/css/bootstrap.css";
+import React, { Fragment } from 'react';
+import data from "@solid/query-ldflex";
+
+import { Value, Link } from "@solid/react";
 import DocumentTitle from "react-document-title";
-import 'react-toastify/dist/ReactToastify.css';
+import { Image} from "@solid/react";
 
-const Profile = () => {
+function Profile (){
+
+  const webId = sessionStorage.getItem("pod");
+  console.log(webId);
+  const image = data[webId].vcard_hasPhoto;
+
+  if (webId !== null){
     return (
-      <DocumentTitle title="Perfil">
-        <div className="prueba">
-          <h2 className="h2" data-testId="label">Este es tu Perfil, Bienvenido <Value src="" /> </h2>
-          <br></br>
-            <Image className = "imagen"
-              source={{
-                uri: 'https://uo263918.solidcommunity.net/profile/img001.jpg',
-              }}
-            />
-       </div>
-      </DocumentTitle>
+      <div>
+        <br></br>
+        
+      <DocumentTitle title="Profile">
+          <div className="prueba">
+            <Image src={image} defaultSrc="/img/defaultUser.png" />
+            <h2><Value src="user.name"></Value></h2>
+                      <p><Link href={`${webId}`}>Acceder a mi pod</Link></p>
+            </div>
+            </DocumentTitle>
+      </div>
+  );
+  }
+  else{
+    return (
+          <DocumentTitle title="Profile">
+          <div className="prueba">
+            <h2 className="h2" data-testId="label">No estas logueado con tu pod</h2>
+            </div>
+            </DocumentTitle>
     );
-  };
-
+  }
+  
+ 
+}
 
 export default Profile;
