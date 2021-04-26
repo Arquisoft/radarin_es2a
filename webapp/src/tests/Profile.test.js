@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { act } from 'react-dom/test-utils'
 import ReactDOM from 'react-dom'
-import UserBar from '.././components/Navegation/UserBar';
+import Profile from '.././components/Profile/Profile';
 
 let container
 
@@ -16,12 +16,12 @@ afterEach(() => {
   container = null
 })
 
-it('UserBar', () => {
+it('Profile', () => {
   act(() => {
     ReactDOM.render(<Router>
-      <UserBar />
+      <Profile />
     </Router>, container)
   })
 
   expect(container).toBeTruthy()
-}) 
+})
