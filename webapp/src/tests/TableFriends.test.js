@@ -1,14 +1,14 @@
 import React from 'react'
 import {  cleanup } from '@testing-library/react';
 import ReactDOM from 'react-dom'
-import Friends from '../components/Friends/Friends';
+import TableFriends from '../components/Friends/TableFriends';
 
 afterAll(cleanup);
-describe('<Friends />',()=>{
+describe('<Peticiones />',()=>{
   
     it('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<Friends />, div);
+        ReactDOM.render(<TableFriends />, div);
     });
 
       
