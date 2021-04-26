@@ -8,11 +8,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { db } from '../../api/firebase'
 import { useHistory,Redirect, browserHistory } from "react-router-dom" 
+
 //import {getUserPos} from '../Service/LocationService'
 import distancia from '../Service/DistanceService'
 import {getUserPos} from '../Service/LocationService'
 import DistanceBetween from "./DistanceBetween";
 import emailjs from 'emailjs-com';
+
 
 
 
@@ -269,6 +271,7 @@ function comprobarUsuario(idUsuario){
 return existeUsuario;
 }
 
+
 function existePod(idUsuario){
   var existePod = false;
  
@@ -354,6 +357,7 @@ const Card =  (props) => {
 };
 
 
+
   async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -368,6 +372,7 @@ const Card =  (props) => {
   if (window.sessionStorage.getItem('user') !== null  || window.sessionStorage.getItem('pod') !== null) {
     return (
       <DocumentTitle title="Amigos">
+
         <div className="prueba">
           <h2 className="h2" data-testId="label">Estos son tus amig@s: </h2>
           <h4 class="card-title" id="addFriend" data-testId="addFriend">Envía una petición a un/a amig@</h4>
@@ -380,6 +385,8 @@ const Card =  (props) => {
             </div>
           </div>
           <br></br>
+
+
           <div className="col-md-16 p-2">
           
             {amigos.map(amigo => (
@@ -422,6 +429,7 @@ const Card =  (props) => {
             
             )}
             
+
           </div>
           <br></br>
           <LoggedIn>

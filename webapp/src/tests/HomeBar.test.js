@@ -16,7 +16,7 @@ afterEach(() => {
   container = null
 })
 
-it('Login', () => {
+it('HomeBar', () => {
   act(() => {
     ReactDOM.render(<Router>
       <HomeBar />

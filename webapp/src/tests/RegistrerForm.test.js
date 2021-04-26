@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { act } from 'react-dom/test-utils'
 import ReactDOM from 'react-dom'
-import UserBar from '.././components/Navegation/UserBar';
+import RegistrerForm from '.././components/Registrer/RegistrerForm';
 
 let container
 
@@ -16,10 +16,10 @@ afterEach(() => {
   container = null
 })
 
-it('UserBar', () => {
+it('RegistrerForm', () => {
   act(() => {
     ReactDOM.render(<Router>
-      <UserBar />
+      <RegistrerForm />
     </Router>, container)
   })
 
