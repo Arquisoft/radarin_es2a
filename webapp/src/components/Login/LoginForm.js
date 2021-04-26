@@ -56,8 +56,9 @@ function LoginForm({ Login, error }) {
               </div>
               </div>
               </form>
+            <div className="mt-3">
             <a> ¿Tienes un pod? </a>
-            <AuthButton popup="https://solid.github.io/solid-auth-client/dist/popup.html"
+            <AuthButton className="btn btn-info" popup="https://solid.github.io/solid-auth-client/dist/popup.html"
             login="Iniciar sesión con solid" logout="Cerrar Sesion"/> 
             <div>    
             <Link href="https://solidcommunity.net/register">Registrate en Solid</Link>     
@@ -65,6 +66,7 @@ function LoginForm({ Login, error }) {
             <LoggedIn>
               <RedirectHook/>
             </LoggedIn>
+            </div>
     </div>
   )
 }
