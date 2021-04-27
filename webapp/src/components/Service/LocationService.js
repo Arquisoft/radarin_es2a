@@ -5,7 +5,7 @@ import {db} from '../../api/firebase'
 
 async function addUserPos (lat,lng) {
     const emailSession = window.sessionStorage.getItem('user');
-    const userPos={
+        const userPos={
         email: emailSession,
         lat: lat,
         lng: lng
