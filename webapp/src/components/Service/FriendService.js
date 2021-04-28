@@ -1,8 +1,6 @@
 import {db} from '../../api/firebase'
 import {toast } from 'react-toastify';
 
-
-
   const existeUsuario = async (idAmigo) => {
     const querySnapShot = await db.collection('users').get();
     var existeUsuario = false;
