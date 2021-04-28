@@ -17,22 +17,33 @@ function Home() {
 
   var options = {
     enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
+    timeout: 20000,
+    maximumAge: 1000
   };
 
   function success(pos) {
+    console.log("Success")
     if (window.sessionStorage.getItem('user') !== null) {
       var crd = pos.coords;
-      addUserPos(crd.latitude, crd.longitude)
+      addUserPos(crd.latitude,crd.longitude)
     }
+    navigator.geolocation.watchPosition(success, error, options);
   };
 
+ 
+
+  
+
   function error(err) {
+    console.log("Error")
     console.warn('ERROR(' + err.code + '): ' + err.message);
   };
 
-  navigator.geolocation.watchPosition(success, error, options);
+
+  useEffect(()=>{
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  });
+  
 
   return (
     <div className="card mb-3 ">
