@@ -1,4 +1,4 @@
-import { getDistance, getPreciseDistance } from 'geolib';
+import {getPreciseDistance } from 'geolib';
 
 
 
@@ -7,15 +7,11 @@ function distance(coord1,coord2) {
   var lon2 = parseFloat(coord2.lng)
   var lat1 = parseFloat(coord1.lat)
   var lat2 = parseFloat(coord2.lat)
-  var d = getPreciseDistance(
+  var metros = getPreciseDistance(
     { latitude: lat1, longitude: lon1 },
     { latitude: lat2, longitude: lon2 }
   );
-  return d;
+  return metros/1000;
 }
-
-
-
-  
 
 export default distance;
