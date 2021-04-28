@@ -1,16 +1,19 @@
 import React from 'react'
-import {  cleanup } from '@testing-library/react';
+import {  render, screen, cleanup } from '@testing-library/react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import ReactDOM from 'react-dom'
 import AdminAdmin from '.././components/Admin/AdminAdmin';
+import { BrowserRouter as Router } from 'react-router-dom'
 
 afterAll(cleanup);
 describe('<Peticiones />',()=>{
   
-    it('renders without crashing', () => {
-        const div = document.createElement('div');
-        ReactDOM.render(<AdminAdmin />, div);
+    test('renders without crashing', async () => {
+        render(<BrowserRouter><Route path="/admin/admins" component={AdminAdmin} /></BrowserRouter>);
     });
 
       
-
 });
+
+
+
