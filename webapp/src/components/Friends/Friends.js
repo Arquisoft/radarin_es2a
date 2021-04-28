@@ -8,8 +8,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { db } from '../../api/firebase'
 import { useHistory,Redirect, browserHistory } from "react-router-dom" 
-import DistanceBetween from './DistanceBetween'
-import {eliminarAmigo,existeUsuario} from '../Service/FriendService'
+
+//import {getUserPos} from '../Service/LocationService'
+import distancia from '../Service/DistanceService'
+import {getUserPos} from '../Service/LocationService'
+import DistanceBetween from "./DistanceBetween";
 import emailjs from 'emailjs-com';
 
 
@@ -171,6 +174,71 @@ function Friends() {
     }
   };
 
+  const existeAmigo = async (idAmigo) => {
+
+    const querySnapShot = await db.collection('amigos').get();
+    var existeAmigo = false;
+    querySnapShot.forEach(doc => {
+      if (String(doc.data().usuario1.localeCompare(details.emisor)) === String(0) && (String(doc.data().usuario2.localeCompare(idAmigo)) === String(0))) {
+        existeAmigo = true;
+      }
+      if (String(doc.data().usuario2.localeCompare(details.emisor)) === String(0) && (String(doc.data().usuario1.localeCompare(idAmigo)) === String(0))) {
+        existeAmigo = true;
+      }
+    })
+    if (existeAmigo) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  };
+
+  const existePeticion = async (idAmigo) => {
+    const querySnapShot = await db.collection('peticiones').get();
+    var existePeticion = false;
+    querySnapShot.forEach(doc => {
+      if (String(doc.data().emisor.localeCompare(details.emisor)) === String(0) && (String(doc.data().receptor.localeCompare(idAmigo)) === String(0))) {
+        existePeticion = true;
+      }
+    })
+    if (existePeticion) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  };
+
+
+  const existeUsuario = async (idAmigo) => {
+    const querySnapShot = await db.collection('users').get();
+    var existeUsuario = false;
+    querySnapShot.forEach(doc => {
+      if (String(doc.data().email.localeCompare(idAmigo)) === String(0) || (String(doc.data().pod.localeCompare(idAmigo)) === String(0))) {
+        existeUsuario = true;
+      }
+    })
+    if (existeUsuario) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  };
+
+  const eliminarAmigo = async (id) => {
+    if (window.confirm("¿Estás seguro de eliminar est@ amig@")) {
+        await db.collection('amigos').doc(id).delete();
+        toast.info("Has eliminado tu amig@ correctamente", {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 2500
+        });
+    }
+
+  
+};
+
 
 const  NavigateToMessages = (id)=>{
   if (id.includes('https://')){
@@ -216,43 +284,6 @@ function existePod(idUsuario){
 
 return existePod;
 }
-
-const existeAmigo = async (idAmigo) => {
-
-  const querySnapShot = await db.collection('amigos').get();
-  var existeAmigo = false;
-  querySnapShot.forEach(doc => {
-    if (String(doc.data().usuario1.localeCompare(details.emisor)) === String(0) && (String(doc.data().usuario2.localeCompare(idAmigo)) === String(0))) {
-      existeAmigo = true;
-    }
-    if (String(doc.data().usuario2.localeCompare(details.emisor)) === String(0) && (String(doc.data().usuario1.localeCompare(idAmigo)) === String(0))) {
-      existeAmigo = true;
-    }
-  })
-  if (existeAmigo) {
-    return true;
-  }
-  else {
-    return false;
-  }
-};
-
-const existePeticion = async (idAmigo) => {
-  const querySnapShot = await db.collection('peticiones').get();
-  var existePeticion = false;
-  querySnapShot.forEach(doc => {
-    if (String(doc.data().emisor.localeCompare(details.emisor)) === String(0) && (String(doc.data().receptor.localeCompare(idAmigo)) === String(0))) {
-      existePeticion = true;
-    }
-  })
-  if (existePeticion) {
-    return true;
-  }
-  else {
-    return false;
-  }
-};
-
 
 function comprobarAmigo(idUsuario){
   
