@@ -1,27 +1,21 @@
 import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { act } from 'react-dom/test-utils'
 import ReactDOM from 'react-dom'
 import BarraAdmin from '.././components/Navegation/AdminBar';
+import {  cleanup } from '@testing-library/react';
 
 let container
+let div
 
+afterAll(cleanup);
 beforeEach(() => {
-  container = document.createElement('div')
-  document.body.appendChild(container)
+  div = document.createElement('div');
+  container =  ReactDOM.render(<Router>
+    <BarraAdmin />
+  </Router>, div)
 })
 
-afterEach(() => {
-  document.body.removeChild(container)
-  container = null
-})
 
 it('BarraAdmin', () => {
-  act(() => {
-    ReactDOM.render(<Router>
-      <BarraAdmin />
-    </Router>, container)
-  })
-
   expect(container).toBeTruthy()
 })

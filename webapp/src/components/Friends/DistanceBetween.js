@@ -53,7 +53,7 @@ export const DistanceBetween = (props) => {
         loadPositions()
     }, [])
 
-        return (<p>{getDistanciaAmigo()}</p>);
+        return (<h4>{getDistanciaAmigo()}</h4>);
 
 }
 
