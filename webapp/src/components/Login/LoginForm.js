@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Container, Button, Input } from '@material-ui/core';
-import { AuthButton, Link } from "@solid/react";
+import React, { useState } from "react";
+import { Container, Button, Input } from "@material-ui/core";
+import { AuthButton, Link, LoggedOut } from "@solid/react";
 import {  LoggedIn } from "@solid/react";
-import RedirectHook from './RedirectHook'
+import RedirectHook from "./RedirectHook";
 
 
 

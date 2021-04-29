@@ -8,7 +8,6 @@ import { Image} from "@solid/react";
 function Profile (){
 
   const webId = sessionStorage.getItem("pod");
-  console.log(webId);
   const image = data[webId].vcard_hasPhoto;
 
   if (webId !== null){

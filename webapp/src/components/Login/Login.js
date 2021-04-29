@@ -1,10 +1,10 @@
-import React, {useState, useContext} from 'react';
-import LoginForm from './LoginForm';
-import Home from '../Home';
-import { Container, Button} from '@material-ui/core';
-import {db} from '../../api/firebase'
-import { toast } from 'react-toastify';
-import {useHistory} from 'react-router-dom'
+import React, {useState, useContext} from "react";
+import LoginForm from "./LoginForm";
+import Home from "../Home";
+import { Container, Button} from "@material-ui/core";
+import {db} from "../../api/firebase";
+import { toast } from "react-toastify";
+import {useHistory} from "react-router-dom";
 
 function Login() {
 

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import MapFriendLocation from './MapFriendLocation';
-import { db } from '../../api/firebase'
+import React, { useState, useEffect } from "react";
+import MapFriendLocation from "./MapFriendLocation";
+import { db } from "../../api/firebase";
 import { useParams } from "react-router";
 
 export const MapContainer=(props) => {
@@ -10,7 +10,7 @@ export const MapContainer=(props) => {
   let { friend } = useParams();
 
   const loadCoords = async() => {
-    db.collection('locations').onSnapshot((querySnapShot) => {
+    db.collection("locations").onSnapshot((querySnapShot) => {
       querySnapShot.forEach(doc => {
       if(doc.data().email==friend){
         setLat(doc.data().lat)

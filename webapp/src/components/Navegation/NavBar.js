@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faHome} from '@fortawesome/free-solid-svg-icons';
-import UserBar from './UserBar';
-import HomeBar from './HomeBar';
-import AdminBar from './AdminBar';
-import {db} from '../../api/firebase';
+import React, { Component } from "react";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faHome} from "@fortawesome/free-solid-svg-icons";
+import UserBar from "./UserBar";
+import HomeBar from "./HomeBar";
+import AdminBar from "./AdminBar";
+import {db} from "../../api/firebase";
 import {  LoggedIn, LoggedOut} from "@solid/react";
 
 
