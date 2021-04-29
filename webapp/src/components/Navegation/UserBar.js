@@ -11,14 +11,14 @@ export default class NavBar extends Component {
         return(
             <ul className="navbar-nav ml-auto"> 
                 <li className="nav-item">
-                    <Nav.Link href="/amigos" className="nav-link">Amigos</Nav.Link>
+                    <Nav.Link href="/amigos" data-testId="amigos" className="nav-link">Amigos</Nav.Link>
                 </li>
                 <li className="nav-item">
-                    <Nav.Link href="/peticiones" className="nav-link">Peticiones</Nav.Link>
+                    <Nav.Link href="/peticiones" data-testId="peticiones" className="nav-link">Peticiones</Nav.Link>
                 </li>
                 <LoggedOut className="btn btn-danger">
                 <li className="nav-item">
-                    <Nav.Link href="/logout" className="nav-link">Cerrar Sesión</Nav.Link>
+                    <Nav.Link href="/logout" data-testId="logout" className="nav-link">Cerrar Sesión</Nav.Link>
                 </li>
                 </LoggedOut>
                 <LoggedIn>

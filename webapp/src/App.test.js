@@ -1,19 +1,28 @@
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, fireEvent, screen } from '@testing-library/react';
 
 import App from './App';
-import ReactDOM from 'react-dom';
+
+
 afterAll(cleanup);
 describe('<App />',()=>{
   
-    it('renders without crashing', () => {
-        const div = document.createElement('div');
-        ReactDOM.render(<App />, div);
-    });
+    test('renders without crashing', () => {
+        const { getByText } = render(<App />);
 
-    it('App renders without crashing', () => {
-        
-        const { container } = render(<App />);
-        expect(container).toBeTruthy();
-      });
+        const mainHeader = getByText("Hola");
+      
+        expect(mainHeader).toBeInTheDocument();
+
+        const text2= screen.getByText(/Iniciar Sesión/i);
+        expect(text2).toBeInTheDocument();
+
+        const text1 = screen.getByText(/Registro/i);
+        expect(text1).toBeInTheDocument();
+      
+        const radarin = screen.getByText(/Radarin/i);
+
+        expect(radarin).toBeInTheDocument();
+       
+    });
 
 });

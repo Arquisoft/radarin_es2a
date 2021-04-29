@@ -4,10 +4,12 @@ import { Container, Button, Input} from '@material-ui/core';
 
 function RegistrerForm (props) {
   const [details, setDetails] = useState({email: "", password: "", pod: ""});
+  
 
   const submitHandler = e => {
     e.preventDefault();
     props.addUser(details);
+    
   }
 
     return (
@@ -22,6 +24,7 @@ function RegistrerForm (props) {
                   className="form-control w-100" 
                   type="email" 
                   name="email" 
+                  data-testid="emailRegistro" 
                   id="emailRegistro" 
                   placeholder="Correo Electrónico" 
                   onChange={e => setDetails({ ...details, email: e.target.value })} 
@@ -33,6 +36,7 @@ function RegistrerForm (props) {
                   type="password" 
                   name="password" 
                   id="passwordRegistro" 
+                  data-testid="passwordRegistro" 
                   placeholder="Contraseña" 
                   onChange={e => setDetails({ ...details, password: e.target.value })} 
                   value={details.password} />
@@ -42,13 +46,15 @@ function RegistrerForm (props) {
                   className="form-control w-100"
                   type="text" 
                   name="pod" 
-                  id="pod" 
+                  id="pod"
+                  data-testid="pod" 
                   placeholder="Direccion POD" 
                   onChange={e => setDetails({...details, pod:e.target.value})} 
                   value={details.pod} />
               </div>    
               <div >
                 <Button 
+                  data-testid="btnRegistro"
                   className="bg-warning btn btn-block text-white font-weight-bold" 
                   type="submit">
                     Registrarse
