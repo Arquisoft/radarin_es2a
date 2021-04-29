@@ -49,7 +49,7 @@ function Home() {
       <img src={imagen} className="img img-fluid" alt="imagen" />
       <div className="card-body">
         <h2 className="card-title">Radarin</h2>
-        <h4 class="card-text text-muted">¡Quedar con amigos nunca fue mas facil!</h4>
+        <h4 className="card-text text-muted">¡Quedar con amigos nunca fue mas facil!</h4>
 
         <div className="container d-flex justify-content-center flex-nowrap">
             <div className="row d-flex p-2 mb-5 justify-content-center">

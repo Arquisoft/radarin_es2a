@@ -7,7 +7,7 @@ import DocumentTitle from "react-document-title";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { db } from "../../api/firebase";
-import { useHistory,Redirect, browserHistory } from "react-router-dom" ;
+import { useHistory } from "react-router-dom" ;
 import DistanceBetween from "./DistanceBetween";
 import {eliminarAmigo,existeUsuario} from "../Service/FriendService";
 import emailjs from "emailjs-com";
@@ -96,6 +96,7 @@ function Friends() {
   };
 
   const getUsuarios = async () => {
+    
     db.collection("users").onSnapshot((querySnapShot) => {
       const docs = [];
       const pods = [];
@@ -330,6 +331,7 @@ const Card =  (props) => {
   }
 
   useEffect(() => {
+    console.log("AAAAA");
     getUsuarios()
     getAmigos()
   }, []);
@@ -359,8 +361,8 @@ const Card =  (props) => {
             {amigos.map(amigo => (
               <div class="card bg-info text-white mb-2" >
                 
-                <div class="card-body">
-                  <h2 class="card-title" id="friendName">
+                <div className="card-body">
+                  <h2 className="card-title" id="friendName">
                     <Name src={amigo.nombre}>{amigo.nombre}</Name>
                   </h2>
                   <center>

@@ -1,13 +1,13 @@
-import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
-import { act } from 'react-dom/test-utils'
-import ReactDOM from 'react-dom'
-import HomeBar from '.././components/Navegation/HomeBar';
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { act } from "react-dom/test-utils";
+import ReactDOM from "react-dom";
+import HomeBar from ".././components/Navegation/HomeBar";
 
 let container
 
 beforeEach(() => {
-  container = document.createElement('div')
+  container = document.createElement("div")
   document.body.appendChild(container)
 })
 
@@ -16,7 +16,7 @@ afterEach(() => {
   container = null
 })
 
-it('HomeBar', () => {
+it("HomeBar", () => {
   act(() => {
     ReactDOM.render(<Router>
       <HomeBar />
