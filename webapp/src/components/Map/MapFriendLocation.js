@@ -27,8 +27,8 @@ function MapFriendLocation(props) {
     lng: props.lng,
   };
 
-  if (loadError) return 'Error loading maps';
-  if (!isLoaded) return 'Loading maps';
+  if (loadError) return "Error loading maps";
+  if (!isLoaded) return "Loading maps";
 
   return (
     <div className="App">

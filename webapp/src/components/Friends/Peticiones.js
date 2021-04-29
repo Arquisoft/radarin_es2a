@@ -12,7 +12,7 @@ function Peticiones() {
 
     const { default: data } = require("@solid/query-ldflex");
 
-    var usuarioActivo = window.sessionStorage.getItem('user');
+    var usuarioActivo = window.sessionStorage.getItem("user");
 
     const [peticiones, setPeticiones] = useState([]);
 
@@ -36,12 +36,12 @@ function Peticiones() {
 
 
     const aceptarPeticion = async (id, idUsuario) => {
-        await db.collection('peticiones').doc(id).delete();
-        if (window.sessionStorage.getItem('user')=== null){
-            amigos.usuario1=window.sessionStorage.getItem('pod');
+        await db.collection("peticiones").doc(id).delete();
+        if (window.sessionStorage.getItem("user")=== null){
+            amigos.usuario1=window.sessionStorage.getItem("pod");
         }
         setAmigos(amigos.usuario2 = idUsuario);
-        await db.collection('amigos').doc().set(amigos);
+        await db.collection("amigos").doc().set(amigos);
         toast.info("Has aceptado la petición de amistad", {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 2500
@@ -51,7 +51,7 @@ function Peticiones() {
 
     const rechazarPeticion = async (id) => {
         if (window.confirm("¿Estás seguro de rechazar esta petición?")) {
-            await db.collection('peticiones').doc(id).delete();
+            await db.collection("peticiones").doc(id).delete();
             toast.info("Has eliminado la petición de amistad correctamente", {
                 position: toast.POSITION.TOP_CENTER,
                 autoClose: 2500
@@ -70,7 +70,7 @@ function Peticiones() {
 
 
 
-    if (window.sessionStorage.getItem('user') !== null || window.sessionStorage.getItem('pod') !== null) {
+    if (window.sessionStorage.getItem("user") !== null || window.sessionStorage.getItem("pod") !== null) {
         return (
             <DocumentTitle title="Peticiones">
                 <div className="prueba">

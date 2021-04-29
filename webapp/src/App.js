@@ -37,7 +37,7 @@ import { LoggedIn, LoggedOut } from '@solid/react';
 
 class App extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = { users: [] }
     
   }

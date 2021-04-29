@@ -7,7 +7,7 @@ import Profile from '.././components/Profile/Profile';
 let container
 
 beforeEach(() => {
-  container = document.createElement('div')
+  container = document.createElement('div');
   document.body.appendChild(container)
 })
 
@@ -25,3 +25,15 @@ it('Profile', () => {
 
   expect(container).toBeTruthy()
 })
+
+it('NavBar', () => {
+  //Para que se muestre el perfil
+  window.sessionStorage.setItem('pod', 'https://javigrao.solidcommunity.net/profile/card#me');
+  act(() => {
+    ReactDOM.render(<Router>
+      <Profile />
+    </Router>, container)
+  })
+  window.sessionStorage.removeItem('pod');
+  expect(container).toBeTruthy()
+}) 

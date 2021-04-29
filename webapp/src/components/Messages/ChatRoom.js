@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { db } from '../../api/firebase'
+import React, { useEffect, useState } from "react";
+import { db } from "../../api/firebase";
 import { useParams } from "react-router";
 
 import Message from './Message';
@@ -12,7 +12,7 @@ export const ChatRoom = (props) => {
     var usuario = props.user;
     
     function actualizarUsuario(){
-        if (props.user.includes('https://')){
+        if (props.user.includes("https://")){
             let indice = props.user.indexOf("/");
             usuario = props.user.substring(indice+2, props.user.length);
             let indice2 = usuario.indexOf("/");
@@ -23,7 +23,7 @@ export const ChatRoom = (props) => {
 
     
     const loadMessages = async () => {
-        db.collection('messages').
+        db.collection("messages").
             where('user', 'in', [usuario,friend])
             .onSnapshot(
                 (querySnapshot) => {
@@ -47,7 +47,7 @@ export const ChatRoom = (props) => {
     useEffect(() => {
         actualizarUsuario();
         loadMessages(usuario, friend);
-    }, [])
+    }, []);
 
 
     const addMessage = async () => {
@@ -60,9 +60,7 @@ export const ChatRoom = (props) => {
             text: messageToSend,
             date: fecha
         }
-        await db.collection('messages').doc().set(messageObject)
-        console.log(messageObject)
-        console.log("Se ha enviado el mensaje")
+        await db.collection("messages").doc().set(messageObject)
         setMessageToSend("")
     }
 
@@ -80,15 +78,12 @@ export const ChatRoom = (props) => {
     const handleSubmit = e => {
         e.preventDefault()
         if(messageToSend!=""){
-        console.log("Enviando mensaje")
-        console.log(messageToSend)
         addMessage(messageToSend);
         }
     }
 
     const handleChange = (e) => {
         setMessageToSend(e.target.value);
-        console.log(messageToSend)
     }
 
 

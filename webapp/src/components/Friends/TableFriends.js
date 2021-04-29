@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import distance from '../Service/DistanceService'
-import DistanceBetween from './DistanceBetween'
+import React, { useState, useEffect } from "react";
+import distance from "../Service/DistanceService";
+import DistanceBetween from "./DistanceBetween";
 
 
 export const TableFriends = (props) => {
