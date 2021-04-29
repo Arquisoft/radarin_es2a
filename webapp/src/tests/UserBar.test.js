@@ -1,27 +1,15 @@
 import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
-import { act } from 'react-dom/test-utils'
-import ReactDOM from 'react-dom'
 import UserBar from '.././components/Navegation/UserBar';
+import { render, fireEvent } from '@testing-library/react';
 
-let container
 
-beforeEach(() => {
-  container = document.createElement('div')
-  document.body.appendChild(container)
-})
-
-afterEach(() => {
-  document.body.removeChild(container)
-  container = null
-})
-
-it('UserBar', () => {
-  act(() => {
-    ReactDOM.render(<Router>
-      <UserBar />
-    </Router>, container)
-  })
-
-  expect(container).toBeTruthy()
-}) 
+test('usuario presiona desconectar', () => {
+  window.sessionStorage.setItem("user","usuario1@usuario.com")
+  const { getByTestId} = render(
+  <UserBar />
+   );
+  const logout = getByTestId("logout");
+  expect(logout).toBeInTheDocument();
+  fireEvent.click(logout);
+ 
+});

@@ -3,6 +3,7 @@ import './App.css';
 import AdminUser from "./components/Admin/AdminUser";
 import AdminAdmin from "./components/Admin/AdminAdmin";
 import Login from "./components/Login/Login";
+import Logout from "./components/Login/Logout";
 import LoginHook from "./components/Login/LoginHook";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registrer from './components/Registrer/Registrer';
@@ -18,31 +19,33 @@ import ChatRoom from './components/Messages/ChatRoom'
 import {UserContextProvider} from './context/UserContext'
 import Principal from './components/Principal';
 import Home from './components/Home';
-import {useHistory} from 'react-router-dom';
 import Profile from './components/Profile/Profile';
 import { LoggedIn, LoggedOut } from '@solid/react';
 
 
 
 
-function Logout ()
+/*function Logout ()
 {
   const history = useHistory();
   window.sessionStorage.removeItem('user');
   history.push('/');
   history.go(0)
-}
+  
+  
+}*/
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = { users: [] }
+    
   }
 
-  refreshUsers(users) {
+  /*refreshUsers(users) {
     this.setState({ users: users })
   }
-
+*/
 
 
   render() {
@@ -50,11 +53,7 @@ class App extends React.Component {
       <UserContextProvider>
       <div className="App">
         <Router >
-
             <Barra/>
-       
-          
-          
           <div className="App-content">
           <Switch>
           <React.Fragment>
