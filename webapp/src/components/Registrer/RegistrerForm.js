@@ -21,7 +21,7 @@ function RegistrerForm (props) {
             <div className="form-group mx-auto mb-3">
               <div className="input-group-text mx-0 mb-3">
                 <Input  
-                  className="form-control w-100" 
+                  className="form-control-lg w-100 bg-light" 
                   type="email" 
                   name="email" 
                   data-testid="emailRegistro" 
@@ -32,7 +32,7 @@ function RegistrerForm (props) {
               </div>        
               <div className="input-group-text mx-0 mb-3">
                 <Input 
-                  className="form-control w-100"
+                  className="form-control-lg w-100 bg-light"
                   type="password" 
                   name="password" 
                   id="passwordRegistro" 
@@ -43,7 +43,7 @@ function RegistrerForm (props) {
               </div>
               <div className="input-group-text mx-0 mb-3">
                 <Input 
-                  className="form-control w-100"
+                  className="form-control-lg w-100 bg-light"
                   type="text" 
                   name="pod" 
                   id="pod"
