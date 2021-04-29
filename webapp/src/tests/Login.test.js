@@ -1,16 +1,16 @@
-import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
-import { act } from 'react-dom/test-utils'
-import ReactDOM from 'react-dom'
-import Login from '.././components/Login/Login';
-import LoginForm from '.././components/Login/LoginForm';
-import {  render, screen } from '@testing-library/react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { act } from "react-dom/test-utils";
+import ReactDOM from "react-dom";
+import Login from ".././components/Login/Login";
+import LoginForm from ".././components/Login/LoginForm";
+import {  render, screen } from "@testing-library/react";
+import { BrowserRouter, Route } from "react-router-dom";
 
 let container
 
 beforeEach(() => {
-  container = document.createElement('div')
+  container = document.createElement("div")
   document.body.appendChild(container)
 })
 
@@ -19,7 +19,7 @@ afterEach(() => {
   container = null
 })
 
-it('Login', () => {
+it("Login", () => {
   act(() => {
     ReactDOM.render(<Router>
       <Login />
@@ -29,7 +29,7 @@ it('Login', () => {
   expect(container).toBeTruthy()
 }) 
 
-test('Aparece bien texto', async () => {
+test("Aparece bien texto", async () => {
   render(<BrowserRouter><LoginForm /><Route path='/login' exact component={Login}/></BrowserRouter>);
   
   const linkElement = screen.getByText(/¿Tienes un pod?/i);

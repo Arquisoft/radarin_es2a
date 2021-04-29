@@ -1,12 +1,9 @@
-import React from 'react'
-import Registrer from '.././components/Registrer/Registrer';
-import { render, fireEvent } from '@testing-library/react';
-
-let container
+import React from "react";
+import Registrer from ".././components/Registrer/Registrer";
+import { render, fireEvent } from "@testing-library/react";
 
 
-
-test('renders without crashing', () => {
+test("renders without crashing", () => {
   const { getByTestId, getByText } = render(<Registrer />);
   const pod = getByTestId("pod");
   expect(pod).toBeInTheDocument();
