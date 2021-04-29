@@ -16,14 +16,14 @@ afterEach(() => {
   container = null
 })
 
-it('NavBar', () => {
+test('NavBar', () => {
   //Para que cubra todo
-  window.sessionStorage.setItem('user', 'usuario1@usuario.com');
+  //window.sessionStorage.setItem('user', 'usuario1@usuario.com');
   act(() => {
     ReactDOM.render(<Router>
       <NavBar />
     </Router>, container)
   })
-  window.sessionStorage.removeItem('user');
+  //window.sessionStorage.removeItem('user');
   expect(container).toBeTruthy()
 }) 
