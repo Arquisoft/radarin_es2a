@@ -27,7 +27,7 @@ function LoginForm({ Login, error }) {
             <div className="form-group mx-auto mb-3">
               <div className="input-group-text mx-0 mb-3">
                 <Input  
-                  className="form-control w-100" 
+                  className="form-control-lg w-100 bg-light" 
                   type="email" 
                   name="email" 
                   id="email" 
@@ -38,7 +38,7 @@ function LoginForm({ Login, error }) {
               
               <div className="input-group-text mx-0 mb-3">
                 <Input 
-                  className="form-control w-100"
+                  className="form-control-lg w-100 bg-light"
                   type="password" 
                   name="password" 
                   id="password" 
