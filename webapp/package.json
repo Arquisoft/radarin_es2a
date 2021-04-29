@@ -20,6 +20,7 @@
     "enzyme": "^3.11.0",
     "express": "^4.17.1",
     "firebase": "^8.3.1",
+    "geolib": "^3.3.1",
     "google-map-react": "^2.1.9",
     "google-maps-react": "^2.0.6",
     "prop-types": "^15.7.2",
