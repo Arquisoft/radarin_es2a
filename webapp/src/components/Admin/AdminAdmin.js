@@ -1,8 +1,8 @@
-import {db} from '../../api/firebase';
-import { toast } from 'react-toastify';
-import React, {useEffect, useState} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faTrashAlt, faEdit} from '@fortawesome/free-solid-svg-icons';
+import {db} from "../../api/firebase";
+import { toast } from "react-toastify";
+import React, {useEffect, useState} from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faTrashAlt, faEdit} from "@fortawesome/free-solid-svg-icons";
 
 export const AdminAdmin = () => {
 
@@ -21,9 +21,9 @@ export const AdminAdmin = () => {
         }
     
         const onDeleteUser= async (userObject) =>{
-            if(window.confirm('Si pulsa aceptar el usuario ' + userObject.emailUser + ' dejará de ser administrador.')){
-                await db.collection('admins').doc(userObject.id).delete();
-                toast(userObject.emailUser + " ya no es administrador",{type:'error', autoClose: 3000});
+            if(window.confirm("Si pulsa aceptar el usuario " + userObject.emailUser + " dejará de ser administrador.")){
+                await db.collection("admins").doc(userObject.id).delete();
+                toast(userObject.emailUser + " ya no es administrador",{type:"error", autoClose: 3000});
             }
         }
     
@@ -45,7 +45,7 @@ export const AdminAdmin = () => {
                                     <h4>{user.emailUser}</h4>
                                     <div> 
                                         <i className="material-icons text-danger" onClick={()=>onDeleteUser(user)}>
-                                           <FontAwesomeIcon icon={faTrashAlt} size='1x'/></i>
+                                           <FontAwesomeIcon icon={faTrashAlt} size="1x"/></i>
                                     </div>
                                 </div>
                             </div>

@@ -4,13 +4,13 @@ import "./Friends.css";
 import "bootstrap/dist/css/bootstrap.css";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import DocumentTitle from "react-document-title";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { db } from '../../api/firebase'
-import { useHistory,Redirect, browserHistory } from "react-router-dom" 
-import DistanceBetween from './DistanceBetween'
-import {eliminarAmigo,existeUsuario} from '../Service/FriendService'
-import emailjs from 'emailjs-com';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { db } from "../../api/firebase";
+import { useHistory,Redirect, browserHistory } from "react-router-dom" ;
+import DistanceBetween from "./DistanceBetween";
+import {eliminarAmigo,existeUsuario} from "../Service/FriendService";
+import emailjs from "emailjs-com";
 
 
 
@@ -53,9 +53,7 @@ function Friends() {
     };
     emailjs.send('service_nlb79jf', 'template_6mokhp4', Params, 'user_HhFnythpqGU2PbbLkk938')
       .then((result) => {
-          console.log(result.text);
       }, (error) => {
-          console.log(error.text);
       });
   }
 
@@ -141,7 +139,7 @@ function Friends() {
               });
             }
             else {
-              await db.collection('peticiones').doc().set(details);
+              await db.collection("peticiones").doc().set(details);
               toast.info("Has enviado la petición de amistad correctamente", {
                 position: toast.POSITION.TOP_CENTER,
                 autoClose: 2500
@@ -173,7 +171,7 @@ function Friends() {
 
 
 const  NavigateToMessages = (id)=>{
-  if (id.includes('https://')){
+  if (id.includes("https://")){
     let indice = id.indexOf("/");
     let extraida = id.substring(indice+2, id.length);
     history.push("/mensajes/"+ extraida);
@@ -219,7 +217,7 @@ return existePod;
 
 const existeAmigo = async (idAmigo) => {
 
-  const querySnapShot = await db.collection('amigos').get();
+  const querySnapShot = await db.collection("amigos").get();
   var existeAmigo = false;
   querySnapShot.forEach(doc => {
     if (String(doc.data().usuario1.localeCompare(details.emisor)) === String(0) && (String(doc.data().usuario2.localeCompare(idAmigo)) === String(0))) {
@@ -238,7 +236,7 @@ const existeAmigo = async (idAmigo) => {
 };
 
 const existePeticion = async (idAmigo) => {
-  const querySnapShot = await db.collection('peticiones').get();
+  const querySnapShot = await db.collection("peticiones").get();
   var existePeticion = false;
   querySnapShot.forEach(doc => {
     if (String(doc.data().emisor.localeCompare(details.emisor)) === String(0) && (String(doc.data().receptor.localeCompare(idAmigo)) === String(0))) {
@@ -338,7 +336,7 @@ const Card =  (props) => {
 
 
   const webId = useWebId();
-  if (window.sessionStorage.getItem('user') !== null  || window.sessionStorage.getItem('pod') !== null) {
+  if (window.sessionStorage.getItem("user") !== null  || window.sessionStorage.getItem("pod") !== null) {
     return (
       <DocumentTitle title="Amigos">
 

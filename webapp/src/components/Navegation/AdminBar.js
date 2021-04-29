@@ -1,8 +1,8 @@
-import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faUserCog} from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faUserCog} from "@fortawesome/free-solid-svg-icons";
 
 class BarraAdmin extends React.Component{
     constructor(props){

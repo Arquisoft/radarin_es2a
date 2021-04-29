@@ -1,22 +1,22 @@
 .prueba ul {
-    list-style-type: none;
+    list-style-type:  none;
     padding: 0;
 }
 
 .h2 {
-    font-family: monospace;
+     font-family:  monospace;
     color: rgb(0, 9, 128);
 }
 
 .botones {
-    float: left;
+    float:  left;
     display: flex;
-    justify-content: center;
-    width: 100%;
+    justify-content:  center;
+    width:  100%;
 }
 
 #botonOpcion {
-    margin: 0.5em;
+    margin:  0.5em;
 }
 
 .hola {

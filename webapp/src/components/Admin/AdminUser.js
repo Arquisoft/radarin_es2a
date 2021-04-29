@@ -1,9 +1,9 @@
-import AdminUserForm from './AdminUserForm';
-import {db} from '../../api/firebase';
-import { toast } from 'react-toastify';
-import React, {useEffect, useState} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faTrashAlt, faEdit} from '@fortawesome/free-solid-svg-icons';
+import AdminUserForm from "./AdminUserForm";
+import {db} from "../../api/firebase";
+import { toast } from "react-toastify";
+import React, {useEffect, useState} from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faTrashAlt, faEdit} from "@fortawesome/free-solid-svg-icons";
 
 export const AdminUser = () => {
 
@@ -13,12 +13,12 @@ export const AdminUser = () => {
     
         const addOrEditUser = async (userObject) => {
             if(currentUser === ''){
-                await db.collection('users').doc().set(userObject)
-                toast("Se ha añadido el usuario " + userObject.email + " a la base de datos",{type:'success'})
+                await db.collection("users").doc().set(userObject)
+                toast("Se ha añadido el usuario " + userObject.email + " a la base de datos",{type:"success"})
             }
             else{
                 db.collection('users').doc(currentUser).update(userObject);
-                toast("Se ha editado el usuario " + userObject.email + " en la base de datos",{type:'info'})
+                toast("Se ha editado el usuario " + userObject.email + " en la base de datos",{type:"info"})
                 setCurrentUser('')
             }
         }
@@ -27,7 +27,7 @@ export const AdminUser = () => {
         const getUsers = async() => {
             //get los obtiene pero no los actualiza automaticamente
             //const querySnapshot = await db.collection('links').get();
-            db.collection('users').onSnapshot(
+            db.collection("users").onSnapshot(
                 (querySnapshot) => {
                     const  docs=[];
                     querySnapshot.forEach(doc => {
@@ -38,14 +38,14 @@ export const AdminUser = () => {
         }
     
         const onDeleteUser= async (userObject) =>{
-            if(window.confirm('Si pulsa aceptar se eliminará al usuario ' + userObject.email + ' de la base de datos.')){
+            if(window.confirm("Si pulsa aceptar se eliminará al usuario " + userObject.email + " de la base de datos.")){
                 await db.collection('users').doc(userObject.id).delete();
-                toast("Se ha eliminado el usuario " + userObject.email + " de la base de datos",{type:'error', autoClose: 3000});
+                toast("Se ha eliminado el usuario " + userObject.email + " de la base de datos",{type:"error", autoClose: 3000});
             }
         }
 
         const existeAdmin = async (idUser) => {
-            const querySnapShot = await db.collection('admins').get();
+            const querySnapShot = await db.collection("admins").get();
             var existeAdmin = false;
             querySnapShot.forEach(doc => {
               if (String(doc.data().idUser.localeCompare(idUser)) === String(0)) 
@@ -56,15 +56,15 @@ export const AdminUser = () => {
 
         const admin= async (userObject) =>{
             if (await existeAdmin(userObject.id)) {
-                toast("El usuario " + userObject.email + " ya es administrador",{type:'error', autoClose: 3000});
+                toast("El usuario " + userObject.email + " ya es administrador",{type:"error", autoClose: 3000});
             }
             else{
             const adminUser = {
                 emailUser: userObject.email,
                 idUser: userObject.id
             }
-            await db.collection('admins').doc().set(adminUser);
-            toast("El usuario " + userObject.email + " se ha añadido al grupo de administradores",{type:'success', autoClose: 3000});
+            await db.collection("admins").doc().set(adminUser);
+            toast("El usuario " + userObject.email + " se ha añadido al grupo de administradores",{type:"success", autoClose: 3000});
             }
             
         }

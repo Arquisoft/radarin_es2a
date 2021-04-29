@@ -1,9 +1,9 @@
-import React from 'react';
-import RegistrerForm from './RegistrerForm';
-import { Container } from '@material-ui/core';
-import Home from '../Home';
-import {db} from '../../api/firebase'
-import { toast } from 'react-toastify';
+import React from "react";
+import RegistrerForm from "./RegistrerForm";
+import { Container } from "@material-ui/core";
+import Home from "../Home";
+import {db} from "../../api/firebase";
+import { toast } from "react-toastify";
 
 function Registrer() {
 
@@ -14,7 +14,7 @@ function Registrer() {
             toast("No pueden existir campos vacíos",
             {
                 position: toast.POSITION.TOP_CENTER,
-                type: 'error',
+                type: "error",
                 autoClose: 3000,
             })
         }
@@ -23,7 +23,7 @@ function Registrer() {
             toast("La contraseña ha de tener mínimo 5 caracteres",
             {
                 position: toast.POSITION.TOP_CENTER,
-                type: 'error',
+                type: "error",
                 autoClose: 3000,
             })
         }
@@ -33,7 +33,7 @@ function Registrer() {
             toast("Usuario añadido correctamente",
             {
                 position: toast.POSITION.TOP_CENTER,
-                type: 'success',
+                type: "success",
                 autoClose: 3000,
             })
         }
@@ -49,7 +49,7 @@ function Registrer() {
     }
 
     const existeUsuario = async (emailUsuario) => {
-        const querySnapShot = await db.collection('users').get();
+        const querySnapShot = await db.collection("users").get();
         var existeUsuario = false;
         querySnapShot.forEach(doc => {
             if (String(doc.data().email.localeCompare(emailUsuario))=== String(0)){
@@ -80,4 +80,4 @@ function Registrer() {
 
 }
 
-export default Registrer
+export default Registrer;

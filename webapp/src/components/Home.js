@@ -22,7 +22,6 @@ function Home() {
   };
 
   function success(pos) {
-    console.log("Success")
     if (window.sessionStorage.getItem('user') !== null) {
       var crd = pos.coords;
       addUserPos(crd.latitude,crd.longitude)
@@ -56,7 +55,7 @@ function Home() {
             <div className="row d-flex p-2 mb-5 justify-content-center">
             
             <div className="col-md-4">
-            <div className="card bg-light p-2 mb-5" style={{ width: '18rem', high: '16rem' }}>
+            <div className="card bg-light p-2 mb-5" style={{ width: "18rem", high: "16rem" }}>
               <img src={solid} className="card-img-top"></img>
               <div className="card-body bg-dark">
                 <h5 className="text-light">Solid</h5>

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Nav from 'react-bootstrap/Nav';
+import React, { Component } from "react";
+import Nav from "react-bootstrap/Nav";
 import { LoggedOut } from "@solid/react";
-import LogoutHook from '../Login/LogoutHook'
+import LogoutHook from "../Login/LogoutHook";
 
 export default class NavBar extends Component {
     render(){

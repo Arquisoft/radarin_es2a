@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { db } from '../../api/firebase'
-import distance from '../Service/DistanceService'
+import React, { useState, useEffect } from "react";
+import { db } from "../../api/firebase";
+import distance from "../Service/DistanceService";
 
 export const DistanceBetween = (props) => {
 
@@ -18,15 +18,15 @@ export const DistanceBetween = (props) => {
             } else {
                 var km = distance(coord1, coord2)
                 var kmFormat = Math.round(km*100)/100;
-                return (kmFormat + 'km')
+                return (kmFormat + "km")
             }
         }
     }
 
     const loadPositions = async () => {
         const friendEmail = props.friendEmail;
-        const userEmail = await window.sessionStorage.getItem('user')
-        await db.collection('locations').
+        const userEmail = await window.sessionStorage.getItem("user")
+        await db.collection("locations").
             onSnapshot(
                 (querySnapshot) => {
                     const coordTemp1 = {lat:0,lng:0}

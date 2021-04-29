@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Nav from 'react-bootstrap/Nav';
+import React, { Component } from "react";
+import Nav from "react-bootstrap/Nav";
 import { AuthButton} from "@solid/react";
 import {  LoggedIn, LoggedOut} from "@solid/react";
 
