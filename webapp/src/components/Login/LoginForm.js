@@ -68,7 +68,7 @@ function LoginForm({ Login, error }) {
             </LoggedIn>
             </div>
     </div>
-  )
+  );
 }
 
 export default LoginForm;

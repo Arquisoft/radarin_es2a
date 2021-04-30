@@ -33,15 +33,19 @@ function Friends() {
 
   const [pods, setPods] = useState([]);
 
-  const [distances, setDistances] = useState([])
+  const [distances, setDistances] = useState([]);
 
   const history = useHistory();
 
   const id = useWebId();
 
 
-  var pod = window.sessionStorage.getItem("pod")
+  var pod = window.sessionStorage.getItem("pod");
 
+
+  async function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
   function SendEmail(destinatario, correoDestinatario) {
     //const webId = useWebId();
@@ -136,77 +140,23 @@ function Friends() {
   };
 
 
-  const addFriend = async (idAmigo) => {
-    
-    details.receptor=idAmigo;
-    console.log(details.receptor);
-    if (window.sessionStorage.getItem("user") === null){
-      details.emisor=window.sessionStorage.getItem("pod")
-    }
-
-    if (idAmigo.localeCompare(details.emisor) !== 0 ) {
-      if (idAmigo.localeCompare("") !== 0) {
-        if (await existeUsuario(idAmigo)) {
-          if (await existeAmigo(idAmigo)) {
-            toast.error("Ya sois amig@s", {
-              position: toast.POSITION.TOP_CENTER,
-              autoClose: 2500
-            });
-          } else {
-            if (await existePeticion(idAmigo)) {
-              toast.error("Ya habías enviado esta petición", {
-                position: toast.POSITION.TOP_CENTER,
-                autoClose: 2500
-              });
-            }
-            else {
-              await db.collection("peticiones").doc().set(details);
-              toast.info("Has enviado la petición de amistad correctamente", {
-                position: toast.POSITION.TOP_CENTER,
-                autoClose: 2500
-              });
-              await sleep(2500);
-            }
-          }
-        }
-        else {
-          toast.error("No existe el usuario indicado", {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 2500
-          });
-        }
-      } else {
-        toast.error("Cadena vacía", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 2500
-        });
-      }
-    }
-    else {
-      toast.error("No puedes agregarte a ti mism@", {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 2500
-      });
-    }
-  };
-
-
-const  NavigateToMessages = (id)=>{
+ 
+const  NavigateToMessages = (id) => {
   if (id.includes("https://")){
     let indice = id.indexOf("/");
     let extraida = id.substring(indice+2, id.length);
     history.push("/mensajes/"+ extraida);
-    history.go(0)
+    history.go(0);
   }
   else{
     history.push("/mensajes/"+ id);
-    history.go(0)
+    history.go(0);
   }
 }
 
-const  NavigateToMap = (id)=>{
+const  NavigateToMap = (id) => {
   history.push("/map/"+id);
-  history.go(0)
+  history.go(0);
 }
 
 function comprobarUsuario(idUsuario){
@@ -269,14 +219,68 @@ function comprobarAmigo(idUsuario){
   else {
     return false;
   }
-}
+};
+
+const addFriend = async (idAmigo) => {
+    
+  details.receptor=idAmigo;
+  if (window.sessionStorage.getItem("user") === null){
+    details.emisor=window.sessionStorage.getItem("pod");
+  }
+
+  if (idAmigo.localeCompare(details.emisor) !== 0 ) {
+    if (idAmigo.localeCompare("") !== 0) {
+      if (await existeUsuario(idAmigo)) {
+        if (await existeAmigo(idAmigo)) {
+          toast.error("Ya sois amig@s", {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 2500
+          });
+        } else {
+          if (await existePeticion(idAmigo)) {
+            toast.error("Ya habías enviado esta petición", {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: 2500
+            });
+          }
+          else {
+            await db.collection("peticiones").doc().set(details);
+            toast.info("Has enviado la petición de amistad correctamente", {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: 2500
+            });
+            await sleep(2500);
+          }
+        }
+      }
+      else {
+        toast.error("No existe el usuario indicado", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2500
+        });
+      }
+    } else {
+      toast.error("Cadena vacía", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500
+      });
+    }
+  }
+  else {
+    toast.error("No puedes agregarte a ti mism@", {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 2500
+    });
+  }
+};
+
 
 
 const Card =  (props) => {
   //Tres posibles escenarios: El usuario de solid no usa la aplicación, la usa pero no somos amigos o la usa y somos amigos.
   //Si la usa y somos amigos ya lo muestra en la primera lista, por lo que aquí no lo mostramos
   
-  var friend = props.nombre.substring(1,props.nombre.length-1)
+  var friend = props.nombre.substring(1,props.nombre.length-1);
   var existeUsuario = comprobarUsuario(friend);
   var existeAmigo = comprobarAmigo(friend);
   if (existeUsuario){
@@ -328,9 +332,7 @@ const Card =  (props) => {
 
 
 
-  async function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+ 
 
   useEffect(() => {
     getUsuarios();

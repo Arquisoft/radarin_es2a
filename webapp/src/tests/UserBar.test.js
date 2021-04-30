@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 
 
 test("usuario presiona desconectar", () => {
-  window.sessionStorage.setItem("user","usuario1@usuario.com")
+  window.sessionStorage.setItem("user","usuario1@usuario.com");
   const { getByTestId} = render(
   <BrowserRouter>
   <UserBar />

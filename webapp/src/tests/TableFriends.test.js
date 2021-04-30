@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import TableFriends from "../components/Friends/TableFriends";
 
 afterAll(cleanup);
-describe("<TableFriends />", () =>{
+describe("<TableFriends />", () => {
   
     it("renders without crashing", () => {
         const div = document.createElement("div");

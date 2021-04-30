@@ -4,11 +4,11 @@ import { act } from "react-dom/test-utils";
 import ReactDOM from "react-dom";
 import HomeBar from ".././components/Navegation/HomeBar";
 
-let container
+let container;
 
 beforeEach(() => {
-  container = document.createElement("div")
-  document.body.appendChild(container)
+  container = document.createElement("div");
+  document.body.appendChild(container);
 });
 
 afterEach(() => {
@@ -20,8 +20,8 @@ it("HomeBar", () => {
   act(() => {
     ReactDOM.render(<Router>
       <HomeBar />
-    </Router>, container)
-  })
+    </Router>, container);
+  });
 
-  expect(container).toBeTruthy()
-})
+  expect(container).toBeTruthy();
+});

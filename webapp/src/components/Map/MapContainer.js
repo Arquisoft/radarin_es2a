@@ -12,23 +12,23 @@ export const MapContainer=(props) => {
   const loadCoords = async() => {
     db.collection("locations").onSnapshot((querySnapShot) => {
       querySnapShot.forEach(doc => {
-      if(doc.data().email==friend){
+      if(doc.data().email===friend){
         setLat(doc.data().lat);
         setLng(doc.data().lng);
       }
-    })})
-  }
+    })});
+  };
 
 
   useEffect(() => {
     loadCoords();
-}, [])
+}, []);
 
 
 
 
     return (
       <MapFriendLocation lat={lat} lng={lng} />
-    )
+    );
 }
 export default MapContainer;

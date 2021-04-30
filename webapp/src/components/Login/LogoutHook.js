@@ -6,6 +6,6 @@ export default function RedirecttHook() {
         <Redirect
             to="/"
         />
-    )
+    );
 
 }

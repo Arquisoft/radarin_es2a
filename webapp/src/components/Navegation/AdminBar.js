@@ -25,7 +25,7 @@ class BarraAdmin extends React.Component{
             </Navbar>:null
            }
            </div>
-        )
+        );
     }
 }
 

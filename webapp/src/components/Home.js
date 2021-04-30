@@ -21,21 +21,22 @@ function Home() {
     maximumAge: 1000
   };
 
+  function error(err) {
+  };
+
   function success(pos) {
     if (window.sessionStorage.getItem("user") !== null) {
       var crd = pos.coords;
-      addUserPos(crd.latitude,crd.longitude)
+      addUserPos(crd.latitude,crd.longitude);
     }
     navigator.geolocation.watchPosition(success, error, options);
-  };
+  }
 
  
 
   
 
-  function error(err) {
-    console.log("Error")
-  };
+  
 
 
   useEffect( () =>{

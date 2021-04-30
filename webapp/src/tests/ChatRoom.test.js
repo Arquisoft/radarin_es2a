@@ -14,4 +14,4 @@ test("MapContainer", async() => {
   </BrowserRouter>, div);
  window.sessionStorage.removeItem("user");
 
-  })
+  });
