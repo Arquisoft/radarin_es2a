@@ -29,7 +29,7 @@ function Registrer() {
         }
         else{
         if(await existeUsuario(details.email)===false){
-            await db.collection('users').doc().set(details);
+            await db.collection("users").doc().set(details);
             toast("Usuario añadido correctamente",
             {
                 position: toast.POSITION.TOP_CENTER,

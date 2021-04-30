@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../api/firebase";
 import { useParams } from "react-router";
 
-import Message from './Message';
+import Message from "./Message";
 
 export const ChatRoom = (props) => {
 
@@ -24,24 +24,26 @@ export const ChatRoom = (props) => {
     
     const loadMessages = async () => {
         db.collection("messages").
-            where('user', 'in', [usuario,friend])
+            where("user", "in", [usuario,friend])
             .onSnapshot(
                 (querySnapshot) => {
                     const docs = [];
                     querySnapshot.forEach(element => {
                         if(element.data().friend===friend){
-                            docs.push({ ...element.data(), id: element.id })
+                            docs.push({ ...element.data(), id: element.id });
                         }
-                        if(element.data().friend===usuario)
-                            docs.push({ ...element.data(), id: element.id })
+                        if(element.data().friend===usuario){
+                            docs.push({ ...element.data(), id: element.id });
+                        }
                     });
                     let sorted = docs.sort((a, b) => (a.date > b.date) ? 1 : -1)
-                    if(sorted.length>15)
-                        sorted = sorted.slice(-15)
-                    setMessages(sorted)
+                    if(sorted.length>15){
+                        sorted = sorted.slice(-15);
+                    }
+                    setMessages(sorted);
                 }
-            )
-    }
+            );
+    };
 
 
     useEffect(() => {
@@ -51,17 +53,15 @@ export const ChatRoom = (props) => {
 
 
     const addMessage = async () => {
-        const fecha = Date.now()
-        console.log(fecha);
-        console.log(usuario)
+        const fecha = Date.now();
         const messageObject = {
             friend: friend,
             user: usuario,
             text: messageToSend,
             date: fecha
         }
-        await db.collection("messages").doc().set(messageObject)
-        setMessageToSend("")
+        await db.collection("messages").doc().set(messageObject);
+        setMessageToSend("");
     }
 
     function MessageList() {
@@ -73,11 +73,11 @@ export const ChatRoom = (props) => {
             <div>{messageList}</div>
         )
 
-    }
+    };
 
     const handleSubmit = e => {
-        e.preventDefault()
-        if(messageToSend!=""){
+        e.preventDefault();
+        if(messageToSend!==""){
         addMessage(messageToSend);
         }
     }

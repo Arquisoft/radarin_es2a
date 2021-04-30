@@ -1,29 +1,16 @@
-import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
-import { act } from 'react-dom/test-utils'
-import ReactDOM from 'react-dom'
-import NavBar from '.././components/Navegation/NavBar';
+import React from "react";
+import NavBar from ".././components/Navegation/NavBar";
+import { render, cleanup } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 
-let container
+afterAll(cleanup);
 
-beforeEach(() => {
-  container = document.createElement('div')
-  document.body.appendChild(container)
-})
+test("NavBar desconectando", async() => {
+  window.sessionStorage.setItem("desconecto","si");
+  render(
+    <BrowserRouter>
+  <NavBar />
+  </BrowserRouter>
+  );
+});
 
-afterEach(() => {
-  document.body.removeChild(container)
-  container = null
-})
-
-test('NavBar', () => {
-  //Para que cubra todo
-  //window.sessionStorage.setItem('user', 'usuario1@usuario.com');
-  act(() => {
-    ReactDOM.render(<Router>
-      <NavBar />
-    </Router>, container)
-  })
-  //window.sessionStorage.removeItem('user');
-  expect(container).toBeTruthy()
-}) 

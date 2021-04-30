@@ -4,84 +4,84 @@
 }
 
 .h2 {
-     font-family:  monospace;
-    color: rgb(0, 9, 128);
+  font-family:  monospace;
+  color: rgb(0, 9, 128);
 }
 
 .botones {
-    float:  left;
-    display: flex;
-    justify-content:  center;
-    width:  100%;
+  float:  left;
+  display: flex;
+  justify-content:  center;
+  width:  100%;
 }
 
 #botonOpcion {
-    margin:  0.5em;
+  margin:0.5em;
 }
 
 .hola {
-    color: #3517b8;
+  color: #3517b8;
 }
 
 .right {
-    float: right;
+  float: right;
 }
 
 /* Resize the wrap to see the search bar change! */
 
 .iconSearch {
-    margin-right: 0.2em;
-    color: rgb(255, 255, 255);
+  margin-right: 0.2em;
+  color: rgb(255, 255, 255);
 }
 
 .search {
-    width: 100%;
-    position: relative;
-    display: flex;
+  width: 100%;
+  position: relative;
+  display: flex;
 }
 
 .searchTerm {
-    width: 100%;
-    border: 3px solid #1735b8;
-    border-right: none;
-    padding: 5px;
-    height: 2.3em;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-    color: #9f9dbf;
-    background-color: #f8f8fa;
+  width: 100%;
+  border: 3px solid #1735b8;
+  border-right: none;
+  padding: 5px;
+  height: 2.3em;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9f9dbf;
+  background-color: #f8f8fa;
 }
 
 .searchTerm:focus {
-    color: #1735b8;
+  color: #1735b8;
 }
 
 .searchButton {
-    width: 40px;
-    height: 1.85em;
-    border: 1px solid #1735b8;
-    background: #1735b8;
-    text-align: center;
-    color: rgb(255, 255, 255);
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 20px;
+  width: 40px;
+  height: 1.85em;
+  border: 1px solid #1735b8;
+  background: #1735b8;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 #addFriend {
-    font-family: Verdana, Geneva, sans-serif;
-    font-size: 1em;
-    letter-spacing: 2.2px;
-    word-spacing: 1.8px;
-    color: #000000;
-    padding: 0.2em;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 1em;
+  letter-spacing: 2.2px;
+  word-spacing: 1.8px;
+  color: #000;
+  padding: 0.2em;
 }
 
 #addFriend::after {
-    color: rgb(2, 0, 128);
-    content: "\21B4";
-    font-size: 1.5em;
-    margin-left: 0.7em;
+  color: rgb(2, 0, 128);
+  content: "\21B4";
+  font-size: 1.5em;
+  margin-left: 0.7em;
 }
 
 .form-inline {

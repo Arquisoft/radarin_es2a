@@ -24,19 +24,20 @@ export default class NavBar extends Component {
     
 
      async componentDidMount(){
-        const usuario = window.sessionStorage.getItem('user');
-        const pod = window.sessionStorage.getItem('pod');
+        const usuario = window.sessionStorage.getItem("user");
+        const pod = window.sessionStorage.getItem("pod");
         if(usuario !== null ){
             this.setState({
                 session: true
-            })
+            });
 
-        const querySnapShot = await db.collection('admins').get();
+        const querySnapShot = await db.collection("admins").get();
         querySnapShot.forEach(doc => {
-          if (String(doc.data().emailUser.localeCompare(window.sessionStorage.getItem('user'))) === String(0)) 
-          this.setState({
-            admin: true
-        })
+          if (String(doc.data().emailUser.localeCompare(window.sessionStorage.getItem("user"))) === String(0)) {
+            this.setState({
+                admin: true
+            })
+          }
         })
         }
     }
@@ -49,7 +50,7 @@ export default class NavBar extends Component {
                     <Navbar.Brand>Radarin</Navbar.Brand>
                     <Nav.Link href="/" className="navbar-brand">
                         <i className="material-icons">
-                            <FontAwesomeIcon icon={faHome} size='1x'/></i>
+                            <FontAwesomeIcon icon={faHome} size="1x"/></i>
                     </Nav.Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>

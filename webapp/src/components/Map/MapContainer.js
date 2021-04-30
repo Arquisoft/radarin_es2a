@@ -5,30 +5,30 @@ import { useParams } from "react-router";
 
 export const MapContainer=(props) => {
 
-  const [lat,setLat] = useState(0)
-  const [lng,setLng] = useState(0)
+  const [lat,setLat] = useState(0);
+  const [lng,setLng] = useState(0);
   let { friend } = useParams();
 
   const loadCoords = async() => {
     db.collection("locations").onSnapshot((querySnapShot) => {
       querySnapShot.forEach(doc => {
-      if(doc.data().email==friend){
-        setLat(doc.data().lat)
-        setLng(doc.data().lng)
+      if(doc.data().email===friend){
+        setLat(doc.data().lat);
+        setLng(doc.data().lng);
       }
-    })})
-  }
+    })});
+  };
 
 
   useEffect(() => {
-    loadCoords()
-}, [])
+    loadCoords();
+}, []);
 
 
 
 
     return (
       <MapFriendLocation lat={lat} lng={lng} />
-    )
+    );
 }
 export default MapContainer;

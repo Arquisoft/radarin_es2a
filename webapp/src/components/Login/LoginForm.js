@@ -13,7 +13,7 @@ function LoginForm({ Login, error }) {
     e.preventDefault();
 
     Login(details);
-  }
+  };
 
   return (
 
@@ -68,7 +68,7 @@ function LoginForm({ Login, error }) {
             </LoggedIn>
             </div>
     </div>
-  )
+  );
 }
 
 export default LoginForm;

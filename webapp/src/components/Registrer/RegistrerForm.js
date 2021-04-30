@@ -10,10 +10,10 @@ function RegistrerForm (props) {
     e.preventDefault();
     props.addUser(details);
     
-  }
+  };
 
     return (
-      <div className="container" style={{width: '500px'}}>
+      <div className="container" style={{width: "500px"}}>
       <form className="card bg-white border-warning mx-auto w-75" onSubmit={submitHandler}>
           <div className="card-header bg-warning text-white font-weight-bold">Registrarse</div>
           <div className="card card-body">
@@ -64,7 +64,7 @@ function RegistrerForm (props) {
           </div>
       </form>
     </div>
-    )
+    );
 }
 
 export default RegistrerForm;

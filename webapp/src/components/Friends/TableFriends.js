@@ -1,37 +1,36 @@
 import React, { useState, useEffect } from "react";
-import distance from "../Service/DistanceService";
 import DistanceBetween from "./DistanceBetween";
 
 
 export const TableFriends = (props) => {
 
-    const friends = props.friends
-    const [friendWithDistance, setFriendWithDistance] = useState([])
+    const friends = props.friends;
+    const [friendWithDistance, setFriendWithDistance] = useState([]);
 
 
     const load = async () => {
-        const docs = []
+        const docs = [];
         friends.forEach(element => {
             docs.push({
                 nombre: element.nombre,
                 distance: <DistanceBetween friendEmail={element.nombre} />
-            })
+            });
             setFriendWithDistance(docs)
         });
-    }
+    };
 
 
     useEffect(() => {
-        load()
+        load();
     }, []);
 
     return (
         <div className="table table-striped" id="tabla">
             <thead>
                 <tr>
-                    <th scope='col'>Email</th>
-                    <th scope='col'>Distancia</th>
-                    <th scope='col'></th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Distancia</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -70,6 +69,6 @@ export const TableFriends = (props) => {
             </tbody>
         </div>
 
-    )
+    );
 }
 export default TableFriends;

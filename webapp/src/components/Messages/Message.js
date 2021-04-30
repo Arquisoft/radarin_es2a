@@ -13,10 +13,10 @@ export default class Message extends Component {
 
     render() {
         if (this.props.session===this.props.messageSender) {
-            return (<div className="list-group-item list-group-item-success text-right">{this.state.text}</div>)
+            return (<div className="list-group-item list-group-item-success text-right">{this.state.text}</div>);
         }
         else {
-            return (<div className="list-group-item list-group-item-warning text-left">{this.state.text}</div>)
+            return (<div className="list-group-item list-group-item-warning text-left">{this.state.text}</div>);
         }
     }
 }

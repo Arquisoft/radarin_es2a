@@ -2,7 +2,7 @@ export const mapStyles = [
     {
       stylers: [
         {
-          hue: '#2c3e50',
+          hue: "#2c3e50",
         },
         {
           saturation: 250,
@@ -10,23 +10,23 @@ export const mapStyles = [
       ],
     },
     {
-      featureType: 'road',
-      elementType: 'geometry',
+      featureType: "road",
+      elementType: "geometry",
       stylers: [
         {
           lightness: 50,
         },
         {
-          visibility: 'simplified',
+          visibility: "simplified",
         },
       ],
     },
     {
-      featureType: 'road',
-      elementType: 'labels',
+      featureType: "road",
+      elementType: "labels",
       stylers: [
         {
-          visibility: 'off',
+          visibility: "off",
         },
       ],
     },
