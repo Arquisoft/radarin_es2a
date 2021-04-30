@@ -12,5 +12,5 @@ test("NavBar desconectando", async() => {
   <NavBar />
   </BrowserRouter>
   );
-}) 
+});
 

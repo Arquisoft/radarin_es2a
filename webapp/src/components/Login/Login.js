@@ -15,7 +15,7 @@ function Login() {
 
     const Login = async (details) => {
         const querySnapShot = await db.collection("users").get();
-        var cambio = false
+        var cambio = false;
         querySnapShot.forEach(doc => {
             if (String(doc.data().email.localeCompare(details.email))=== String(0)){
                 if (String(doc.data().password.localeCompare(details.password))=== String(0)){
@@ -26,12 +26,12 @@ function Login() {
                     cambio = true;
                     window.sessionStorage.setItem("user", details.email);
                     history.push("/home");
-                    history.go(0)
+                    history.go(0);
                     
                 }
                 }
 
-        })
+        });
     
         if (!cambio){
             toast("El usuario y/o la contraseña no coinciden", {
@@ -51,7 +51,7 @@ function Login() {
         });
         window.sessionStorage.removeItem("user");
         
-    }
+    };
     return (
         <Container className="LoginConstants" style={{width: "500px"}}>
             {(user.email !== "") ? ( 
@@ -66,4 +66,4 @@ function Login() {
     );
 }
 
-export default Login
+export default Login;

@@ -9,6 +9,38 @@ function Registrer() {
 
     var registro = false;
 
+    const existeUsuario = async (emailUsuario) => {
+        const querySnapShot = await db.collection("users").get();
+        var existeUsuario = false;
+        querySnapShot.forEach(doc => {
+            if (String(doc.data().email.localeCompare(emailUsuario))=== String(0)){
+                existeUsuario = true;
+                }
+        });
+        if (existeUsuario){
+            return true;
+        }
+        else{
+            return false;
+        }
+      };
+
+    if (registro) {
+        return (
+        <Container className="RegistrerConstants">
+                <Container>
+                    <Home />
+                </Container> 
+        </Container>
+    );
+    }
+        return (
+        <RegistrerForm  addUser={addUser}/>
+        );
+    
+
+}
+
     const addUser = async (details) => {
         if (details.email.length ===0 || details.password.length ===0 || details.pod.length === 0){
             toast("No pueden existir campos vacíos",
@@ -48,36 +80,6 @@ function Registrer() {
     }
     }
 
-    const existeUsuario = async (emailUsuario) => {
-        const querySnapShot = await db.collection("users").get();
-        var existeUsuario = false;
-        querySnapShot.forEach(doc => {
-            if (String(doc.data().email.localeCompare(emailUsuario))=== String(0)){
-                existeUsuario = true;
-                }
-        })
-        if (existeUsuario){
-            return true;
-        }
-        else{
-            return false;
-        }
-      };
-
-    if (registro) {
-        return (
-        <Container className="RegistrerConstants">
-                <Container>
-                    <Home />
-                </Container> 
-        </Container>
-    );
-    }
-        return (
-        <RegistrerForm  addUser={addUser}/>
-        );
     
-
-}
 
 export default Registrer;

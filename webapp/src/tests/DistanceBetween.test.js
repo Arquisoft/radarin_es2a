@@ -14,7 +14,7 @@ test("DistanceBetween", async() => {
   </BrowserRouter>, div);
  window.sessionStorage.removeItem("user");
 
-  })
+  });
 
 
 

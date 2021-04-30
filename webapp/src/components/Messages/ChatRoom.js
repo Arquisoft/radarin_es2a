@@ -32,16 +32,18 @@ export const ChatRoom = (props) => {
                         if(element.data().friend===friend){
                             docs.push({ ...element.data(), id: element.id });
                         }
-                        if(element.data().friend===usuario)
+                        if(element.data().friend===usuario){
                             docs.push({ ...element.data(), id: element.id });
+                        }
                     });
                     let sorted = docs.sort((a, b) => (a.date > b.date) ? 1 : -1)
-                    if(sorted.length>15)
-                        sorted = sorted.slice(-15)
-                    setMessages(sorted)
+                    if(sorted.length>15){
+                        sorted = sorted.slice(-15);
+                    }
+                    setMessages(sorted);
                 }
-            )
-    }
+            );
+    };
 
 
     useEffect(() => {
@@ -51,14 +53,14 @@ export const ChatRoom = (props) => {
 
 
     const addMessage = async () => {
-        const fecha = Date.now()
+        const fecha = Date.now();
         const messageObject = {
             friend: friend,
             user: usuario,
             text: messageToSend,
             date: fecha
         }
-        await db.collection("messages").doc().set(messageObject)
+        await db.collection("messages").doc().set(messageObject);
         setMessageToSend("");
     }
 
@@ -71,10 +73,10 @@ export const ChatRoom = (props) => {
             <div>{messageList}</div>
         )
 
-    }
+    };
 
     const handleSubmit = e => {
-        e.preventDefault()
+        e.preventDefault();
         if(messageToSend!==""){
         addMessage(messageToSend);
         }

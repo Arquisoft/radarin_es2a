@@ -8,22 +8,21 @@ export const AdminUserForm= (props) => {
         email: "",
         password: "",
         pod:""
-    }
+    };
 
     const [values, setValues]  = useState(initialStateValues);
 
-    const handleInputChange = e =>{
+    const handleInputChange = e => {
         const {name, value} = e.target;
-        setValues({...values, [name]: value})
+        setValues({...values, [name]: value});
         
     }
 
 
     const handleSubmit= e => {
         e.preventDefault();
-        console.log(values);
         props.addOrEditUser(values);
-        setValues({...initialStateValues})
+        setValues({...initialStateValues});
     }
     
 
@@ -33,7 +32,7 @@ export const AdminUserForm= (props) => {
     }
 
 
-    useEffect(()=>{
+    useEffect(() => {
         if(props.currentUser=== ""){
             setValues({...initialStateValues});
         }else{
@@ -95,6 +94,6 @@ export const AdminUserForm= (props) => {
         </form> 
     </div> 
     )
-}
+};
 
 export default AdminUserForm;

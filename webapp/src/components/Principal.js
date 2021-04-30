@@ -9,7 +9,7 @@ function Principal() {
             <img src={logo} className="App-logo" alt="logo" />
             <Welcome name="Bienvenid@" />
           </div>
-  )  
+  ); 
 
 }
 
