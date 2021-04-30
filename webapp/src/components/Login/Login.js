@@ -14,7 +14,7 @@ function Login() {
 
 
     const Login = async (details) => {
-        const querySnapShot = await db.collection('users').get();
+        const querySnapShot = await db.collection("users").get();
         var cambio = false
         querySnapShot.forEach(doc => {
             if (String(doc.data().email.localeCompare(details.email))=== String(0)){
@@ -24,8 +24,8 @@ function Login() {
                         pod: details.pod
                     });
                     cambio = true;
-                    window.sessionStorage.setItem('user', details.email);
-                    history.push('/home');
+                    window.sessionStorage.setItem("user", details.email);
+                    history.push("/home");
                     history.go(0)
                     
                 }
@@ -49,11 +49,11 @@ function Login() {
             email: "",
             pod: ""
         });
-        window.sessionStorage.removeItem('user');
+        window.sessionStorage.removeItem("user");
         
     }
     return (
-        <Container className="LoginConstants" style={{width: '500px'}}>
+        <Container className="LoginConstants" style={{width: "500px"}}>
             {(user.email !== "") ? ( 
                 <div>    
                     <Home/>

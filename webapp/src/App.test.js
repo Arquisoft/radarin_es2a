@@ -1,12 +1,12 @@
-import { render, cleanup, fireEvent, screen } from '@testing-library/react';
+import { render, cleanup, fireEvent, screen } from "@testing-library/react";
 
-import App from './App';
+import App from "./App";
 
 
 afterAll(cleanup);
-describe('<App />',()=>{
+describe("<App />",()=>{
   
-    test('renders without crashing', () => {
+    test("renders without crashing", () => {
         const { getByText } = render(<App />);
 
         const mainHeader = getByText("Hola");

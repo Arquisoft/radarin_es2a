@@ -1,12 +1,12 @@
-import React from 'react';
-import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
-import { mapStyles } from './mapStyles';
-import credentials from '../../api/credentials'
-import { Fragment } from 'react';
+import React from "react";
+import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import { mapStyles } from "./mapStyles";
+import credentials from "../../api/credentials";
+import { Fragment } from "react";
 
 const containerStyle = {
-  width: '100vw',
-  height: '100vh',
+  width: "100vw",
+  height: "100vh",
 };
 
 

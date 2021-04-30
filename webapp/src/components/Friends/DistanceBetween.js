@@ -41,8 +41,8 @@ export const DistanceBetween = (props) => {
                             coordTemp2.lng=element.data().lng
                         }
                     });
-                    setCoord1(coordTemp1)
-                    setCoord2(coordTemp2)
+                    setCoord1(coordTemp1);
+                    setCoord2(coordTemp2);
                 }
                 
             )

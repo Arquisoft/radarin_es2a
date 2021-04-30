@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { List, Value, Name, Link } from "@solid/react";
 import "./Friends.css";
 import "bootstrap/dist/css/bootstrap.css";
 import DocumentTitle from "react-document-title";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { db } from '../../api/firebase'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { db } from "../../api/firebase";
 
 
 function Peticiones() {
@@ -16,18 +15,18 @@ function Peticiones() {
 
     const [peticiones, setPeticiones] = useState([]);
 
-    const [amigos, setAmigos] = useState({ usuario1: window.sessionStorage.getItem('user'), usuario2: "" });
+    const [amigos, setAmigos] = useState({ usuario1: window.sessionStorage.getItem("user"), usuario2: "" });
 
     const getPeticiones = async () => {
         if (usuarioActivo === null){
-            usuarioActivo= window.sessionStorage.getItem('pod');
+            usuarioActivo= window.sessionStorage.getItem("pod");
             amigos.usuario1=usuarioActivo;
         }
         db.collection("peticiones").onSnapshot((querySnapShot) => {
             const docs = [];
             querySnapShot.forEach(doc => {
-                if (String(doc.data().receptor.localeCompare(usuarioActivo)) === String(0) || String(doc.data().receptor.localeCompare(window.sessionStorage.getItem('pod'))) === String(0) ) {
-                    docs.push({ ...doc.data(), id: doc.id })
+                if (String(doc.data().receptor.localeCompare(usuarioActivo)) === String(0) || String(doc.data().receptor.localeCompare(window.sessionStorage.getItem("pod"))) === String(0) ) {
+                    docs.push({ ...doc.data(), id: doc.id });
                 }
             });
             setPeticiones(docs);

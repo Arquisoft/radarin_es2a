@@ -10,7 +10,7 @@ test("MapContainer", async() => {
   window.sessionStorage.setItem("user","usuario1@usuario.com");
   const div = document.createElement("div");
   container =  ReactDOM.render(<BrowserRouter>
-    <MapContainer user={window.sessionStorage.getItem('user')}/>
+    <MapContainer user={window.sessionStorage.getItem("user")}/>
   </BrowserRouter>, div);
  window.sessionStorage.removeItem("user");
 

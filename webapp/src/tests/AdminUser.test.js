@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import AdminUser from ".././components/Admin/AdminUser";
 
 afterAll(cleanup);
-describe("<AdminUser />",()=>{
+describe("<AdminUser />",() => {
   
     it("renders without crashing", () => {
         const div = document.createElement("div");

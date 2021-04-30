@@ -4,7 +4,7 @@ import {jest} from "@jest/globals";
 
 
 afterAll(cleanup);
-describe("<Home />",()=>{
+describe("<Home />",() => {
   
     test("renders without crashing", () => {
         window.sessionStorage.setItem("user","usuario1@usuario.com");

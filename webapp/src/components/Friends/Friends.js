@@ -22,10 +22,10 @@ function Friends() {
 
   const { default: data } = require("@solid/query-ldflex");
 
-  var usuarioActivo = window.sessionStorage.getItem('user');
+  var usuarioActivo = window.sessionStorage.getItem("user");
 
   
-  const [details, setDetails] = useState({ emisor: window.sessionStorage.getItem('user'), receptor: "" });
+  const [details, setDetails] = useState({ emisor: window.sessionStorage.getItem("user"), receptor: "" });
 
   const [amigos, setAmigos] = useState([]);
 
@@ -40,7 +40,7 @@ function Friends() {
   const id = useWebId();
 
 
-  var pod = window.sessionStorage.getItem('pod')
+  var pod = window.sessionStorage.getItem("pod")
 
 
   function SendEmail(destinatario, correoDestinatario) {
@@ -51,7 +51,7 @@ function Friends() {
       to_name:destinatario,
       to_address:correoDestinatario
     };
-    emailjs.send('service_nlb79jf', 'template_6mokhp4', Params, 'user_HhFnythpqGU2PbbLkk938')
+    emailjs.send("service_nlb79jf", "template_6mokhp4", Params, "user_HhFnythpqGU2PbbLkk938")
       .then((result) => {
       }, (error) => {
       });
@@ -75,7 +75,7 @@ function Friends() {
   }
 
   const getAmigos = async () => {
-    if (window.sessionStorage.getItem('user') === null){
+    if (window.sessionStorage.getItem("user") === null){
       usuarioActivo= pod;
     }
     
@@ -83,10 +83,10 @@ function Friends() {
       const docs = [];
       querySnapShot.forEach(doc => {
         if (String(doc.data().usuario1.localeCompare(usuarioActivo)) === String(0)) {
-          docs.push({ nombre: doc.data().usuario2, id: doc.id })
+          docs.push({ nombre: doc.data().usuario2, id: doc.id });
         }
         if ((String(doc.data().usuario2.localeCompare(usuarioActivo)) === String(0))) {
-          docs.push({ nombre: doc.data().usuario1, id: doc.id })
+          docs.push({ nombre: doc.data().usuario1, id: doc.id });
         }
       });
       
@@ -102,11 +102,11 @@ function Friends() {
       const pods = [];
       querySnapShot.forEach(doc => {
         if ((String(doc.data().email.localeCompare("")) === String(0))) {
-          docs.push({ nombre: doc.data().pod, id: doc.id })
-          pods.push({ nombre: doc.data().pod, id: doc.id })
+          docs.push({ nombre: doc.data().pod, id: doc.id });
+          pods.push({ nombre: doc.data().pod, id: doc.id });
         }
         else{
-          docs.push({ nombre: doc.data().email, id: doc.id })
+          docs.push({ nombre: doc.data().email, id: doc.id });
         }
       });
       setPods(pods);
@@ -115,13 +115,33 @@ function Friends() {
 
   };
 
+  const existeAmigo = async (idAmigo) => {
+
+    const querySnapShot = await db.collection("amigos").get();
+    var existeAmigo = false;
+    querySnapShot.forEach(doc => {
+      if (String(doc.data().usuario1.localeCompare(details.emisor)) === String(0) && (String(doc.data().usuario2.localeCompare(idAmigo)) === String(0))) {
+        existeAmigo = true;
+      }
+      if (String(doc.data().usuario2.localeCompare(details.emisor)) === String(0) && (String(doc.data().usuario1.localeCompare(idAmigo)) === String(0))) {
+        existeAmigo = true;
+      }
+    })
+    if (existeAmigo) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  };
+
 
   const addFriend = async (idAmigo) => {
     
     details.receptor=idAmigo;
     console.log(details.receptor);
-    if (window.sessionStorage.getItem('user') === null){
-      details.emisor=window.sessionStorage.getItem('pod')
+    if (window.sessionStorage.getItem("user") === null){
+      details.emisor=window.sessionStorage.getItem("pod")
     }
 
     if (idAmigo.localeCompare(details.emisor) !== 0 ) {
@@ -216,25 +236,7 @@ function existePod(idUsuario){
 return existePod;
 }
 
-const existeAmigo = async (idAmigo) => {
 
-  const querySnapShot = await db.collection("amigos").get();
-  var existeAmigo = false;
-  querySnapShot.forEach(doc => {
-    if (String(doc.data().usuario1.localeCompare(details.emisor)) === String(0) && (String(doc.data().usuario2.localeCompare(idAmigo)) === String(0))) {
-      existeAmigo = true;
-    }
-    if (String(doc.data().usuario2.localeCompare(details.emisor)) === String(0) && (String(doc.data().usuario1.localeCompare(idAmigo)) === String(0))) {
-      existeAmigo = true;
-    }
-  })
-  if (existeAmigo) {
-    return true;
-  }
-  else {
-    return false;
-  }
-};
 
 const existePeticion = async (idAmigo) => {
   const querySnapShot = await db.collection("peticiones").get();
@@ -331,9 +333,8 @@ const Card =  (props) => {
   }
 
   useEffect(() => {
-    console.log("AAAAA");
-    getUsuarios()
-    getAmigos()
+    getUsuarios();
+    getAmigos();
   }, []);
 
 

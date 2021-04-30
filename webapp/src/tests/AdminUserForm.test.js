@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import AdminUserForm from ".././components/Admin/AdminUserForm";
 
 afterAll(cleanup);
-describe("<Peticiones />",()=>{
+describe("<Peticiones />",() => {
   
     it("renders without crashing", () => {
         const div = document.createElement("div");
