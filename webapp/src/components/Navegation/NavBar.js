@@ -1,26 +1,36 @@
-import React, { Component } from 'react';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faHome} from '@fortawesome/free-solid-svg-icons';
-import UserBar from './UserBar';
-import HomeBar from './HomeBar';
-import AdminBar from './AdminBar';
-import {db} from '../../api/firebase';
+import React, { Component } from "react";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faHome} from "@fortawesome/free-solid-svg-icons";
+import UserBar from "./UserBar";
+import HomeBar from "./HomeBar";
+import AdminBar from "./AdminBar";
+import {db} from "../../api/firebase";
+import {  LoggedIn, LoggedOut} from "@solid/react";
+
+
+
 
 
 export default class NavBar extends Component {
     state = {
         session: false,
-        admin: false
+        admin: false,
     }
 
-    async componentDidMount(){
+    
+
+    
+
+     async componentDidMount(){
         const usuario = window.sessionStorage.getItem('user');
-        if(usuario != null){
+        const pod = window.sessionStorage.getItem('pod');
+        if(usuario !== null ){
             this.setState({
                 session: true
             })
+
         const querySnapShot = await db.collection('admins').get();
         querySnapShot.forEach(doc => {
           if (String(doc.data().emailUser.localeCompare(window.sessionStorage.getItem('user'))) === String(0)) 
@@ -46,11 +56,17 @@ export default class NavBar extends Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                          
-                        {
+                        
+                            <LoggedIn>
+                                <UserBar/>
+                            </LoggedIn>
+                            <LoggedOut>
+                            {    
                             this.state.session?
-                                <UserBar/> : <HomeBar/>
-                                
-                        }
+                            <UserBar/>:
+                            <HomeBar/>
+                            }
+                            </LoggedOut>
                     </div>
                 </div>
             </Navbar>

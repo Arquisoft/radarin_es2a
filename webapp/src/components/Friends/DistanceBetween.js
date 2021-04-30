@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../api/firebase";
 import distance from "../Service/DistanceService";
-import { ToastContainer, toast } from "react-toastify";
 
 export const DistanceBetween = (props) => {
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import Welcome from './Welcome';
-import logo from '../logo.svg';
+import Welcome from "./Welcome";
+import logo from "../logo.svg";
 
 function Principal() {
   return(

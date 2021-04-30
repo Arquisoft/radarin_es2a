@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {db} from '../../api/firebase';
+import React, {useEffect, useState} from "react";
+import {db} from "../../api/firebase";
 
 
 export const AdminUserForm= (props)=> {
@@ -28,7 +28,7 @@ export const AdminUserForm= (props)=> {
     
 
     const getUserById = async (id) => {
-        const doc = await db.collection('users').doc(id).get();
+        const doc = await db.collection("users").doc(id).get();
         setValues({...doc.data()});
     }
 
@@ -48,7 +48,7 @@ export const AdminUserForm= (props)=> {
         <br></br> 
         <h1>Gestor de usuarios:</h1> 
         <form className="card card-body" onSubmit={handleSubmit}> 
-            <p>{props.currentUser === '' ? 'Nuevo usuario:' : 'Editar usuario:'}</p> 
+            <p>{props.currentUser === "" ? "Nuevo usuario:" : "Editar usuario:"}</p> 
             <div className="form-group input-group"> 
                 <div className="input-group-text bg-light"> 
                     <i>Email:</i> 
@@ -90,7 +90,7 @@ export const AdminUserForm= (props)=> {
             </div> 
 
             <button className="btn btn-primary btn-block"> 
-                {props.currentUser === '' ? 'Guardar' : 'Actualizar'} 
+                {props.currentUser === "" ? "Guardar" : "Actualizar"} 
             </button> 
         </form> 
     </div> 

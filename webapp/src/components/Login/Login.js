@@ -1,11 +1,10 @@
-import React, {useState, useContext} from 'react';
-import LoginForm from './LoginForm';
-import Home from '../Home';
-import { Container, Button} from '@material-ui/core';
-import {db} from '../../api/firebase'
-import { toast } from 'react-toastify';
-import Context from '../../context/UserContext'
-import {useHistory} from 'react-router-dom'
+import React, {useState, useContext} from "react";
+import LoginForm from "./LoginForm";
+import Home from "../Home";
+import { Container, Button} from "@material-ui/core";
+import {db} from "../../api/firebase";
+import { toast } from "react-toastify";
+import {useHistory} from "react-router-dom";
 
 function Login() {
 
@@ -33,6 +32,7 @@ function Login() {
                 }
 
         })
+    
         if (!cambio){
             toast("El usuario y/o la contraseña no coinciden", {
                 position: toast.POSITION.TOP_CENTER,
@@ -40,9 +40,8 @@ function Login() {
                 autoClose: 3000,
             });
         }
-        
+    
 
-        
       };
 
     const Logout = () => {

@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
-import { Container, Button, Input} from '@material-ui/core';
+import React, {useState} from "react";
+import { Container, Button, Input} from "@material-ui/core";
 
 
 function RegistrerForm (props) {
   const [details, setDetails] = useState({email: "", password: "", pod: ""});
+  
 
   const submitHandler = e => {
     e.preventDefault();
     props.addUser(details);
+    
   }
 
     return (
@@ -19,9 +21,10 @@ function RegistrerForm (props) {
             <div className="form-group mx-auto mb-3">
               <div className="input-group-text mx-0 mb-3">
                 <Input  
-                  className="form-control w-100" 
+                  className="form-control-lg w-100 bg-light" 
                   type="email" 
                   name="email" 
+                  data-testid="emailRegistro" 
                   id="emailRegistro" 
                   placeholder="Correo Electrónico" 
                   onChange={e => setDetails({ ...details, email: e.target.value })} 
@@ -29,26 +32,29 @@ function RegistrerForm (props) {
               </div>        
               <div className="input-group-text mx-0 mb-3">
                 <Input 
-                  className="form-control w-100"
+                  className="form-control-lg w-100 bg-light"
                   type="password" 
                   name="password" 
                   id="passwordRegistro" 
+                  data-testid="passwordRegistro" 
                   placeholder="Contraseña" 
                   onChange={e => setDetails({ ...details, password: e.target.value })} 
                   value={details.password} />
               </div>
               <div className="input-group-text mx-0 mb-3">
                 <Input 
-                  className="form-control w-100"
+                  className="form-control-lg w-100 bg-light"
                   type="text" 
                   name="pod" 
-                  id="pod" 
+                  id="pod"
+                  data-testid="pod" 
                   placeholder="Direccion POD" 
                   onChange={e => setDetails({...details, pod:e.target.value})} 
                   value={details.pod} />
               </div>    
               <div >
                 <Button 
+                  data-testid="btnRegistro"
                   className="bg-warning btn btn-block text-white font-weight-bold" 
                   type="submit">
                     Registrarse

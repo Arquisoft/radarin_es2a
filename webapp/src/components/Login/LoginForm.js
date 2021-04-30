@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
-import { Container, Button, Input } from '@material-ui/core';
+import React, { useState } from "react";
+import { Container, Button, Input } from "@material-ui/core";
+import { AuthButton, Link, LoggedOut } from "@solid/react";
+import {  LoggedIn } from "@solid/react";
+import RedirectHook from "./RedirectHook";
+
 
 
 function LoginForm({ Login, error }) {
@@ -23,7 +27,7 @@ function LoginForm({ Login, error }) {
             <div className="form-group mx-auto mb-3">
               <div className="input-group-text mx-0 mb-3">
                 <Input  
-                  className="form-control w-100" 
+                  className="form-control-lg w-100 bg-light" 
                   type="email" 
                   name="email" 
                   id="email" 
@@ -34,7 +38,7 @@ function LoginForm({ Login, error }) {
               
               <div className="input-group-text mx-0 mb-3">
                 <Input 
-                  className="form-control w-100"
+                  className="form-control-lg w-100 bg-light"
                   type="password" 
                   name="password" 
                   id="password" 
@@ -42,7 +46,6 @@ function LoginForm({ Login, error }) {
                   onChange={e => setDetails({ ...details, password: e.target.value })} 
                   value={details.password} />
               </div>
-              
               <div >
                 <Button 
                   className="bg-success btn btn-block text-white font-weight-bold" 
@@ -50,10 +53,20 @@ function LoginForm({ Login, error }) {
                     Confirmar
                 </Button>
               </div>
-              
+              </div>
+              </div>
+              </form>
+            <div className="mt-3">
+            <a> ¿Tienes un pod? </a>
+            <AuthButton className="btn btn-info" popup="https://solid.github.io/solid-auth-client/dist/popup.html"
+            login="Iniciar sesión con solid" logout="Cerrar Sesion"/> 
+            <div>    
+            <Link href="https://solidcommunity.net/register">Registrate en Solid</Link>     
+            </div> 
+            <LoggedIn>
+              <RedirectHook/>
+            </LoggedIn>
             </div>
-          </div>
-      </form>
     </div>
   )
 }

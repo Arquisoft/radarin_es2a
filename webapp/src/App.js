@@ -3,9 +3,11 @@ import './App.css';
 import AdminUser from "./components/Admin/AdminUser";
 import AdminAdmin from "./components/Admin/AdminAdmin";
 import Login from "./components/Login/Login";
+import Logout from "./components/Login/Logout";
+import LoginHook from "./components/Login/LoginHook";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registrer from './components/Registrer/Registrer';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,39 +19,44 @@ import ChatRoom from './components/Messages/ChatRoom'
 import {UserContextProvider} from './context/UserContext'
 import Principal from './components/Principal';
 import Home from './components/Home';
-import {useHistory} from 'react-router-dom';
+import Profile from './components/Profile/Profile';
+import { LoggedIn, LoggedOut } from '@solid/react';
 
 
 
 
-function Logout ()
+/*function Logout ()
 {
   const history = useHistory();
   window.sessionStorage.removeItem('user');
   history.push('/');
   history.go(0)
-}
+  
+  
+}*/
 
 class App extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = { users: [] }
+    
   }
 
-  refreshUsers(users) {
+  /*refreshUsers(users) {
     this.setState({ users: users })
   }
-
+*/
 
 
   render() {
     return (
       <UserContextProvider>
       <div className="App">
-        <Router>
-          <Barra/>
-
+        <Router >
+            <Barra/>
           <div className="App-content">
+          <Switch>
+          <React.Fragment>
             <Route exact path="/" component={Principal} />
             <Route path="/admin/users" component={AdminUser} />
             <Route path="/admin/admins" component={AdminAdmin} />
@@ -59,14 +66,31 @@ class App extends React.Component {
             <Route path="/home" component={Home} />
             <Route path="/amigos" component={Friends} />
             <Route path="/peticiones" component={Peticiones} />
+            <Route path="/perfil" component={Profile} />
+            <LoggedIn>
+            <Route path="/mensajes/:friend">
+                <ChatRoom user={window.sessionStorage.getItem('pod')}/>
+            </Route>
+            <Route path="/map/:friend">
+                <MapContainer user={window.sessionStorage.getItem('pod')}/>
+            </Route>
+            </LoggedIn>
+            <LoggedOut>
             <Route path="/mensajes/:friend">
                 <ChatRoom user={window.sessionStorage.getItem('user')}/>
             </Route>
             <Route path="/map/:friend">
                 <MapContainer user={window.sessionStorage.getItem('user')}/>
             </Route>
+            </LoggedOut>
+            
+            <LoginHook />
             <ToastContainer />
+            </React.Fragment>
+            </Switch>
+
           </div>
+          
 
         </Router>
       </div>
