@@ -8,18 +8,18 @@ import {faTrashAlt, faEdit} from "@fortawesome/free-solid-svg-icons";
 export const AdminUser = () => {
 
         const [users, setUsers] = useState([]);
-        const [currentUser, setCurrentUser] =useState(''); // elemento seleccionado
-        const usuarioActivo = window.sessionStorage.getItem('user');
+        const [currentUser, setCurrentUser] =useState(""); // elemento seleccionado
+        const usuarioActivo = window.sessionStorage.getItem("user");
     
         const addOrEditUser = async (userObject) => {
-            if(currentUser === ''){
+            if(currentUser === ""){
                 await db.collection("users").doc().set(userObject)
-                toast("Se ha añadido el usuario " + userObject.email + " a la base de datos",{type:"success"})
+                toast("Se ha añadido el usuario " + userObject.email + " a la base de datos",{type:"success"});
             }
             else{
-                db.collection('users').doc(currentUser).update(userObject);
-                toast("Se ha editado el usuario " + userObject.email + " en la base de datos",{type:"info"})
-                setCurrentUser('')
+                db.collection("users").doc(currentUser).update(userObject);
+                toast("Se ha editado el usuario " + userObject.email + " en la base de datos",{type:"info"});
+                setCurrentUser("")
             }
         }
     
@@ -31,7 +31,7 @@ export const AdminUser = () => {
                 (querySnapshot) => {
                     const  docs=[];
                     querySnapshot.forEach(doc => {
-                        docs.push({...doc.data(), id: doc.id})
+                        docs.push({...doc.data(), id: doc.id});
                     })
                 setUsers(docs);
             });
@@ -39,7 +39,7 @@ export const AdminUser = () => {
     
         const onDeleteUser= async (userObject) =>{
             if(window.confirm("Si pulsa aceptar se eliminará al usuario " + userObject.email + " de la base de datos.")){
-                await db.collection('users').doc(userObject.id).delete();
+                await db.collection("users").doc(userObject.id).delete();
                 toast("Se ha eliminado el usuario " + userObject.email + " de la base de datos",{type:"error", autoClose: 3000});
             }
         }
@@ -86,16 +86,16 @@ export const AdminUser = () => {
                                 <div className="d-flex justify-content-between">
                                     <h4>{user.email}</h4>
                                     <div> 
-                                        <i className="material-icons" style={{margin: '0.5em', paddingLeft: 0, listStyle: 'none'}}
-                                           onClick={() =>setCurrentUser(user.id)}><FontAwesomeIcon icon={faEdit} size='1x'/></i>
+                                        <i className="material-icons" style={{margin: "0.5em", paddingLeft: 0, listStyle: "none"}}
+                                           onClick={() =>setCurrentUser(user.id)}><FontAwesomeIcon icon={faEdit} size="1x"/></i>
                                         <i className="material-icons text-danger" onClick={()=>onDeleteUser(user)}>
-                                           <FontAwesomeIcon icon={faTrashAlt} size='1x'/></i>
+                                           <FontAwesomeIcon icon={faTrashAlt} size="1x"/></i>
                                     </div>
                                 </div>
                                 <p>Contraseña: {user.password}</p>
                                 <a href={user.pod + "/profile/card#me"} target="_blank" rel="react-hooks/exhaustive-deps">Ver POD</a>
                                 <br></br><br></br>
-                                <button class="btn btn-dark" target="_blank" rel="react-hooks/exhaustive-deps" onClick={()=>admin(user)}>Hacer admin</button>
+                                <button class="btn btn-dark" target="_blank" rel="react-hooks/exhaustive-deps" onClick={ () =>admin(user)}>Hacer admin</button>
                             </div>
                         </div>
                     ) 

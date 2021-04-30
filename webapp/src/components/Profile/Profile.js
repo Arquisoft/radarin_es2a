@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 import data from "@solid/query-ldflex";
 
 import { Value, Link } from "@solid/react";

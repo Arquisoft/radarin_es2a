@@ -1,19 +1,19 @@
 import React, { useState, useEffect  } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 
-import { addUserPos } from '../components/Service/LocationService'
-import imagen from '../home_image.jpg'
-import solid from '../solid.svg'
-import github from '../github.svg'
-import document from '../document.svg'
+import { addUserPos } from "../components/Service/LocationService";
+import imagen from "../home_image.jpg";
+import solid from "../solid.svg";
+import github from "../github.svg";
+import document from "../document.svg";
 
 
 function Home() {
 
   //Hay que ponerle las comillas en esos campos para no dar problemas a la parte de login
-  const [details, setDetails] = useState({ email: "", password:"", pod: window.sessionStorage.getItem('pod') }); 
+  const [details, setDetails] = useState({ email: "", password:"", pod: window.sessionStorage.getItem("pod") }); 
 
-  const usuarioActivo = window.sessionStorage.getItem('user');
+  const usuarioActivo = window.sessionStorage.getItem("user");
 
   var options = {
     enableHighAccuracy: true,
@@ -22,7 +22,7 @@ function Home() {
   };
 
   function success(pos) {
-    if (window.sessionStorage.getItem('user') !== null) {
+    if (window.sessionStorage.getItem("user") !== null) {
       var crd = pos.coords;
       addUserPos(crd.latitude,crd.longitude)
     }
@@ -35,11 +35,10 @@ function Home() {
 
   function error(err) {
     console.log("Error")
-    console.warn('ERROR(' + err.code + '): ' + err.message);
   };
 
 
-  useEffect(()=>{
+  useEffect( () =>{
     navigator.geolocation.getCurrentPosition(success, error, options);
   });
   
@@ -74,7 +73,7 @@ function Home() {
 
 
             <div className="col-md-4">
-            <div className="card bg-light p-2 mb-2" style={{ width: '18rem', high: '16rem' }}>
+            <div className="card bg-light p-2 mb-2" style={{ width: "18rem", high: "16rem" }}>
               <img src={github} className="card-img-top"></img>
               <div className="card-body bg-dark">
                 <h5 className="text-light">Solid</h5>
@@ -92,7 +91,7 @@ function Home() {
             </div>
 
             <div className="col-md-4">
-            <div className="card bg-light" style={{ width: '18rem', high: '16rem' }}>
+            <div className="card bg-light" style={{ width: "18rem", high: "16rem" }}>
               <img src={document} className="card-img-top"></img>
               <div className="card-body bg-dark">
                 <h5 className="text-light">Documentacion</h5>

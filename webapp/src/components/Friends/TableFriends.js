@@ -14,7 +14,7 @@ export const TableFriends = (props) => {
             docs.push({
                 nombre: element.nombre,
                 distance: <DistanceBetween friendEmail={element.nombre} />
-            })
+            });
             setFriendWithDistance(docs)
         });
     }
@@ -28,9 +28,9 @@ export const TableFriends = (props) => {
         <div className="table table-striped" id="tabla">
             <thead>
                 <tr>
-                    <th scope='col'>Email</th>
-                    <th scope='col'>Distancia</th>
-                    <th scope='col'></th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Distancia</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
