@@ -4,13 +4,14 @@ import "./Friends.css";
 import "bootstrap/dist/css/bootstrap.css";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import DocumentTitle from "react-document-title";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { db } from "../../api/firebase";
 import { useHistory } from "react-router-dom" ;
 import DistanceBetween from "./DistanceBetween";
 import {eliminarAmigo,existeUsuario} from "../Service/FriendService";
 import emailjs from "emailjs-com";
+import {notificaAmigoCercano} from "./DistValue";
 
 
 
@@ -88,9 +89,11 @@ function Friends() {
       querySnapShot.forEach(doc => {
         if (String(doc.data().usuario1.localeCompare(usuarioActivo)) === String(0)) {
           docs.push({ nombre: doc.data().usuario2, id: doc.id });
+          notificaAmigoCercano(doc.data().usuario2,[]);
         }
         if ((String(doc.data().usuario2.localeCompare(usuarioActivo)) === String(0))) {
           docs.push({ nombre: doc.data().usuario1, id: doc.id });
+          notificaAmigoCercano(doc.data().usuario1,[]);
         }
       });
       
