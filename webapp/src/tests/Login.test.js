@@ -30,7 +30,7 @@ it("Login", () => {
 }) 
 
 test("Aparece bien texto", async () => {
-  render(<BrowserRouter><LoginForm /><Route path='/login' exact component={Login}/></BrowserRouter>);
+  render(<BrowserRouter><LoginForm /><Route path="/login" exact component={Login}/></BrowserRouter>);
   
   const linkElement = screen.getByText(/¿Tienes un pod?/i);
   const linkElement2 = screen.getByText(/Iniciar sesión con solid/i);

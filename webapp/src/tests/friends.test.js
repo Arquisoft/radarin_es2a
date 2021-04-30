@@ -5,8 +5,8 @@ import Friends from "../components/Friends/Friends";
 import { BrowserRouter as Router } from "react-router-dom";
 
 afterAll(cleanup);
-describe("<Friends />",()=>{
-  window.sessionStorage.setItem("user","usuario1@usuario.com")
+describe("<Friends />",() => {
+  window.sessionStorage.setItem("user","usuario1@usuario.com");
     const div = document.createElement("div");
     const container = ReactDOM.render(
         <Router>

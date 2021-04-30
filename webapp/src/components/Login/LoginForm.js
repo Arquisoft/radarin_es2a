@@ -13,7 +13,7 @@ function LoginForm({ Login, error }) {
     e.preventDefault();
 
     Login(details);
-  }
+  };
 
   return (
 

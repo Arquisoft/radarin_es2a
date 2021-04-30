@@ -6,7 +6,7 @@ import {faUserCog} from "@fortawesome/free-solid-svg-icons";
 
 class BarraAdmin extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
       }
 
   
@@ -17,7 +17,7 @@ class BarraAdmin extends React.Component{
                 this.props.adm?
 
             <Navbar bg="primary" variant="dark">
-                <Navbar.Brand><i className="material-icons"><FontAwesomeIcon icon={faUserCog} size='1x'/></i></Navbar.Brand>
+                <Navbar.Brand><i className="material-icons"><FontAwesomeIcon icon={faUserCog} size="1x"/></i></Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link href="/admin/users">Usuarios</Nav.Link>
                     <Nav.Link href="/admin/admins">Administradores</Nav.Link>

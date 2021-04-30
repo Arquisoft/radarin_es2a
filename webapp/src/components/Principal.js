@@ -5,7 +5,7 @@ import logo from "../logo.svg";
 
 function Principal() {
   return(
-    <div className="App-header" style={{width:'80%'}}>
+    <div className="App-header" style={{width:"80%"}}>
             <img src={logo} className="App-logo" alt="logo" />
             <Welcome name="Bienvenid@" />
           </div>

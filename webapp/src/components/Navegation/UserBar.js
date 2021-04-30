@@ -4,7 +4,7 @@ import { AuthButton} from "@solid/react";
 import {  LoggedIn, LoggedOut} from "@solid/react";
 
 function desconectar(){
-    window.sessionStorage.setItem('desconecto','si')
+    window.sessionStorage.setItem("desconecto","si");
 }
 export default class NavBar extends Component {
     render(){

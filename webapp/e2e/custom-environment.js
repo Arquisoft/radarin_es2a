@@ -10,7 +10,7 @@ class CustomEnvironment extends NodeEnvironemnt {
             headless: true,
             //slowMo: 20
         })
-        this.global.page = await this.global.browser.newPage()
+        this.global.page = await this.global.browser.newPage();
     }
     async teardown(){
         await this.global.browser.close()

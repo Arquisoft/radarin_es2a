@@ -10,11 +10,11 @@ export const AdminAdmin = () => {
     
     
         const getUsers = async() => {
-            db.collection('admins').onSnapshot(
+            db.collection("admins").onSnapshot(
                 (querySnapshot) => {
                     const  docs=[];
                     querySnapshot.forEach(doc => {
-                        docs.push({...doc.data(), id: doc.id})
+                        docs.push({...doc.data(), id: doc.id});
                     })
                 setUsers(docs);
             });

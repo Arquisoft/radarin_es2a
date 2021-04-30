@@ -10,7 +10,7 @@ export function UserContextProvider ({children}) {
     setUser
   }}>
     {children}
-  </Context.Provider>
+  </Context.Provider>;
 }
 
 export default Context

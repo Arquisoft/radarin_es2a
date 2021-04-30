@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {db} from "../../api/firebase";
 
 
-export const AdminUserForm= (props)=> {
+export const AdminUserForm= (props) => {
 
     const initialStateValues = {
         email: "",
@@ -34,7 +34,7 @@ export const AdminUserForm= (props)=> {
 
 
     useEffect(()=>{
-        if(props.currentUser=== ''){
+        if(props.currentUser=== ""){
             setValues({...initialStateValues});
         }else{
             getUserById(props.currentUser)
