@@ -4,12 +4,12 @@ import DistanceBetween from "./DistanceBetween";
 
 export const TableFriends = (props) => {
 
-    const friends = props.friends
-    const [friendWithDistance, setFriendWithDistance] = useState([])
+    const friends = props.friends;
+    const [friendWithDistance, setFriendWithDistance] = useState([]);
 
 
     const load = async () => {
-        const docs = []
+        const docs = [];
         friends.forEach(element => {
             docs.push({
                 nombre: element.nombre,
@@ -17,11 +17,11 @@ export const TableFriends = (props) => {
             });
             setFriendWithDistance(docs)
         });
-    }
+    };
 
 
     useEffect(() => {
-        load()
+        load();
     }, []);
 
     return (
@@ -69,6 +69,6 @@ export const TableFriends = (props) => {
             </tbody>
         </div>
 
-    )
+    );
 }
 export default TableFriends;

@@ -7,26 +7,26 @@ import LoginForm from ".././components/Login/LoginForm";
 import {  render, screen } from "@testing-library/react";
 import { BrowserRouter, Route } from "react-router-dom";
 
-let container
+let container;
 
 beforeEach(() => {
   container = document.createElement("div")
-  document.body.appendChild(container)
-})
+  document.body.appendChild(container);
+});
 
 afterEach(() => {
-  document.body.removeChild(container)
-  container = null
+  document.body.removeChild(container);
+  container = null;
 })
 
 it("Login", () => {
   act(() => {
     ReactDOM.render(<Router>
       <Login />
-    </Router>, container)
+    </Router>, container);
   })
 
-  expect(container).toBeTruthy()
+  expect(container).toBeTruthy();
 }) 
 
 test("Aparece bien texto", async () => {

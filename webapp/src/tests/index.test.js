@@ -15,5 +15,5 @@ test("root div", () => {
             <App/>
             </Suspense>
         </React.StrictMode>,
-        div))
+        div));
 });

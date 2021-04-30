@@ -6,7 +6,7 @@ import ReactDOM from "react-dom";
 
 let container;
 afterAll(cleanup);
-describe("<Peticiones />",() =>{
+describe("<Peticiones />", () => {
   
     test("renders without crashing", async () => {
         const div = document.createElement("div");

@@ -19,16 +19,19 @@ function MapFriendLocation(props) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: `${credentials.mapsKey}`,
   });
-  console.log("Por favor")
-  console.log(props.lat)
 
   const center = {
     lat: props.lat,
     lng: props.lng,
   };
 
-  if (loadError) return "Error loading maps";
-  if (!isLoaded) return "Loading maps";
+  if (loadError){
+    return "Error loading maps";
+  } 
+  if (!isLoaded){
+    return "Loading maps";
+  }
+   
 
   return (
     <div className="App">

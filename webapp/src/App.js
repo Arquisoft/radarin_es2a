@@ -38,7 +38,7 @@ import { LoggedIn, LoggedOut } from "@solid/react";
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { users: [] }
+    this.state = { users: [] };
     
   }
 
@@ -97,7 +97,7 @@ class App extends React.Component {
 
       </UserContextProvider>
 
-    )
+    );
 }
 }
 export default App;

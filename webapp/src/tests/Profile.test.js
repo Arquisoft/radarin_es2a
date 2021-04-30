@@ -13,4 +13,4 @@ test("Profile", async() => {
     <Profile/>
   </BrowserRouter>, div);
 
-  })
+  });

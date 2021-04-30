@@ -10,7 +10,7 @@ function RegistrerForm (props) {
     e.preventDefault();
     props.addUser(details);
     
-  }
+  };
 
     return (
       <div className="container" style={{width: "500px"}}>
@@ -64,7 +64,7 @@ function RegistrerForm (props) {
           </div>
       </form>
     </div>
-    )
+    );
 }
 
 export default RegistrerForm;
