@@ -4,6 +4,7 @@ import data from "@solid/query-ldflex";
 import { Value, Link } from "@solid/react";
 import DocumentTitle from "react-document-title";
 import { Image} from "@solid/react";
+import sinPerfil from "../../images/sinPerfil.png";
 
 function Profile (){
 
@@ -14,28 +15,26 @@ function Profile (){
     return (
       <div>
         <br></br>
-        
-      <DocumentTitle title="Profile">
+        <DocumentTitle title="Profile">
           <div className="prueba">
-            <Image src={image} defaultSrc="/img/defaultUser.png" />
+            <Image src={image} defaultSrc={sinPerfil} style={{ width: "250px", high: "250px" }}/> 
+            <br></br><br></br>
             <h2><Value src="user.name"></Value></h2>
-                      <p><Link href={`${webId}`}>Acceder a mi pod</Link></p>
-            </div>
-            </DocumentTitle>
+            <p><Link href={`${webId}`}>Acceder a mi pod</Link></p>
+          </div>
+        </DocumentTitle>
       </div>
-  );
+    );
   }
   else{
     return (
-          <DocumentTitle title="Profile">
+        <DocumentTitle title="Profile">
           <div className="prueba">
             <h2 className="h2" data-testId="label">No estas logueado con tu pod</h2>
-            </div>
-            </DocumentTitle>
+          </div>
+        </DocumentTitle>
     );
   }
-  
- 
 }
 
 export default Profile;
