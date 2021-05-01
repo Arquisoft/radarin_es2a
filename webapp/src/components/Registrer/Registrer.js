@@ -25,7 +25,7 @@ function Registrer() {
                 position: toast.POSITION.TOP_CENTER,
                 type: "error",
                 autoClose: 3000,
-            })
+            });
         }
         else{
         if(await existeUsuario(details.email)===false){
@@ -46,16 +46,16 @@ function Registrer() {
         }
     }
     }
-    }
+    };
 
     const existeUsuario = async (emailUsuario) => {
         const querySnapShot = await db.collection("users").get();
         var existeUsuario = false;
-        querySnapShot.forEach(doc => {
+        querySnapShot.forEach((doc) => {
             if (String(doc.data().email.localeCompare(emailUsuario))=== String(0)){
                 existeUsuario = true;
                 }
-        })
+        });
         if (existeUsuario){
             return true;
         }

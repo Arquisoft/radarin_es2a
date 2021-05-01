@@ -30,7 +30,7 @@ export const AdminUser = () => {
             db.collection("users").onSnapshot(
                 (querySnapshot) => {
                     const  docs=[];
-                    querySnapshot.forEach(doc => {
+                    querySnapshot.forEach((doc) => {
                         docs.push({...doc.data(), id: doc.id});
                     });
                 setUsers(docs);
@@ -47,7 +47,7 @@ export const AdminUser = () => {
         const existeAdmin = async (idUser) => {
             const querySnapShot = await db.collection("admins").get();
             var existeAdmin = false;
-            querySnapShot.forEach(doc => {
+            querySnapShot.forEach((doc) => {
               if (String(doc.data().idUser.localeCompare(idUser)) === String(0)){
                 existeAdmin = true;
               }  
@@ -63,7 +63,7 @@ export const AdminUser = () => {
             const adminUser = {
                 emailUser: userObject.email,
                 idUser: userObject.id
-            }
+            };
             await db.collection("admins").doc().set(adminUser);
             toast("El usuario " + userObject.email + " se ha añadido al grupo de administradores",{type:"success", autoClose: 3000});
             }
