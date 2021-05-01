@@ -8,32 +8,32 @@ defineFeature(feature, test => {
   })*/
 
   test("The user is not registered in the site", ({given,when,then}) => {
-       given("An unregistered user", () => {
+  given("An unregistered user", () => {
 
-    	});
+  });
 
-    	when("I fill the data in the form and press submit", () => {
+  when("I fill the data in the form and press submit", () => {
 
-    	});
+  });
 
-    	then("A welcome message should be shown in the screen", () => {
+  then("A welcome message should be shown in the screen", () => {
 
-    	});
+  });
   });
 
   test("The user is already registered in the site", ({ given, when, then }) => {
     
     given("An already registered user", () => {
-     });
+  });
  
      when("I fill the data in the form and press submit",  () => {
        
-     });
+  });
  
      then("An error message should be shown in the screen",  () => {
-     });
+  });
      
-   });
+  });
 });
 
 
