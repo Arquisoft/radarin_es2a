@@ -3,7 +3,7 @@ import data from "@solid/query-ldflex";
 
 import { Value, Link } from "@solid/react";
 import DocumentTitle from "react-document-title";
-import { Image} from "@solid/react";
+import {Image} from "@solid/react";
 import sinPerfil from "../../images/sinPerfil.png";
 
 function Profile (){

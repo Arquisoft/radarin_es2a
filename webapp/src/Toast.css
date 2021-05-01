@@ -1,8 +1,8 @@
 .Toastify__toast--default {
-    background-image: url("./images/sinPerfil.png");
+    background-image: url("./images/localizacionAmigo.png");
     background-repeat: no-repeat;
-    background-position: 10px 15px;
-    background-size: 80px 80px;
+    background-position: 20px 15px;
+    background-size: 70px 70px;
     background-color: lightblue;
 }
 
@@ -16,5 +16,5 @@
 }
 
 .Toastify__toast-container {
-    width: 375px;
+    width: 367px;
 }
