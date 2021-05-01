@@ -16,7 +16,7 @@ export const MapContainer=(props) => {
         setLat(doc.data().lat);
         setLng(doc.data().lng);
       }
-    })});
+    });});
   };
 
 
@@ -30,5 +30,5 @@ export const MapContainer=(props) => {
     return (
       <MapFriendLocation lat={lat} lng={lng} />
     );
-}
+};
 export default MapContainer;

@@ -152,12 +152,12 @@ const  NavigateToMessages = (id) => {
     history.push("/mensajes/"+ id);
     history.go(0);
   }
-}
+};
 
 const  NavigateToMap = (id) => {
   history.push("/map/"+id);
   history.go(0);
-}
+};
 
 function comprobarUsuario(idUsuario){
   
@@ -219,7 +219,7 @@ function comprobarAmigo(idUsuario){
   else {
     return false;
   }
-};
+}
 
 const addFriend = async (idAmigo) => {
     

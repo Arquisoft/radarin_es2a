@@ -20,7 +20,7 @@ async function addUserPos (lat,lng) {
             where("email", "==", email)
             .onSnapshot(
                 (querySnapshot) => {
-                    querySnapshot.forEach(element => {
+                    querySnapshot.forEach((element) => {
                         objreturn.email = element.data.email;
                         objreturn.lat = element.data.lat;
                         objreturn.lng = element.data.lng;
