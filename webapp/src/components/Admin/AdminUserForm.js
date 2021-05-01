@@ -16,7 +16,7 @@ export const AdminUserForm= (props) => {
         const {name, value} = e.target;
         setValues({...values, [name]: value});
         
-    }
+    };
 
 
     const handleSubmit= e => {
@@ -36,7 +36,7 @@ export const AdminUserForm= (props) => {
         if(props.currentUser=== ""){
             setValues({...initialStateValues});
         }else{
-            getUserById(props.currentUser)
+            getUserById(props.currentUser);
         }
     },[props.currentUser]
     );
@@ -93,7 +93,7 @@ export const AdminUserForm= (props) => {
             </button> 
         </form> 
     </div> 
-    )
+    );
 };
 
 export default AdminUserForm;

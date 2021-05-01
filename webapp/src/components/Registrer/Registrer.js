@@ -16,7 +16,7 @@ function Registrer() {
                 position: toast.POSITION.TOP_CENTER,
                 type: "error",
                 autoClose: 3000,
-            })
+            });
         }
         else{
         if (details.password.length < 5 ){
