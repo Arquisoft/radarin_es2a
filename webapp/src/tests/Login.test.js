@@ -24,7 +24,7 @@ it("Login", () => {
     ReactDOM.render(<Router>
       <Login />
     </Router>, container);
-  })
+  });
 
   expect(container).toBeTruthy();
 }) 

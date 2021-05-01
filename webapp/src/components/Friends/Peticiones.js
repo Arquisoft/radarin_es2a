@@ -24,7 +24,7 @@ function Peticiones() {
         }
         db.collection("peticiones").onSnapshot((querySnapShot) => {
             const docs = [];
-            querySnapShot.forEach(doc => {
+            querySnapShot.forEach((doc) => {
                 if (String(doc.data().receptor.localeCompare(usuarioActivo)) === String(0) || String(doc.data().receptor.localeCompare(window.sessionStorage.getItem("pod"))) === String(0) ) {
                     docs.push({ ...doc.data(), id: doc.id });
                 }
@@ -59,7 +59,7 @@ function Peticiones() {
     };
 
     async function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
+        return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
 
@@ -75,7 +75,7 @@ function Peticiones() {
                 <div className="prueba">
                     <h2 className="h2" data-testId="label">Estas son tus peticiones pendientes: </h2>
                     <div className="col-md-8 p-2">
-                        {peticiones.map(peticion => (
+                        {peticiones.map((peticion) => (
                             <div className="card mb-1">
                                 <div className="card-body">
                                     <h4>{peticion.emisor}</h4>

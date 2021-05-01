@@ -75,7 +75,7 @@ export const ChatRoom = (props) => {
 
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         if(messageToSend!==""){
         addMessage(messageToSend);
@@ -112,6 +112,6 @@ export const ChatRoom = (props) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 export default ChatRoom;

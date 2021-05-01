@@ -37,7 +37,7 @@ var options = {
   };
 
   function error(err) {
-  };
+  }
 
   function success(pos) {
     if (window.sessionStorage.getItem("user") !== null) {

@@ -32,11 +32,11 @@ export default class NavBar extends Component {
             });
 
         const querySnapShot = await db.collection("admins").get();
-        querySnapShot.forEach(doc => {
+        querySnapShot.forEach((doc) => {
           if (String(doc.data().emailUser.localeCompare(window.sessionStorage.getItem("user"))) === String(0)) {
             this.setState({
                 admin: true
-            })
+            });
           }
         })
         }

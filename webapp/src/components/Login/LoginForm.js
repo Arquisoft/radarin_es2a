@@ -9,7 +9,7 @@ import RedirectHook from "./RedirectHook";
 function LoginForm({ Login, error }) {
   const [details, setDetails] = useState({ email: "", password: "" });
 
-  const submitHandler = e => {
+  const submitHandler = (e) => {
     e.preventDefault();
 
     Login(details);
@@ -32,7 +32,7 @@ function LoginForm({ Login, error }) {
                   name="email" 
                   id="email" 
                   placeholder="Correo Electrónico" 
-                  onChange={e => setDetails({ ...details, email: e.target.value })} 
+                  onChange={(e) => setDetails({ ...details, email: e.target.value })} 
                   value={details.email} />
               </div>
               
@@ -43,7 +43,7 @@ function LoginForm({ Login, error }) {
                   name="password" 
                   id="password" 
                   placeholder="Contraseña" 
-                  onChange={e => setDetails({ ...details, password: e.target.value })} 
+                  onChange={(e) => setDetails({ ...details, password: e.target.value })} 
                   value={details.password} />
               </div>
               <div >
