@@ -40,7 +40,7 @@ function Home() {
     if (window.sessionStorage.getItem("user") === null){
     var existeUsuario = false;
     const querySnapShot = await db.collection("users").get();
-    querySnapShot.forEach(doc => {
+    querySnapShot.forEach((doc) => {
       if (String(doc.data().pod.localeCompare(details.pod)) === String(0)){
         existeUsuario = true;
       }
@@ -53,7 +53,7 @@ function Home() {
 
 
 
-  useEffect( () =>{
+  useEffect( () => {
     registroUsuarioPod();
     navigator.geolocation.getCurrentPosition(success, error, options);
   });
@@ -130,7 +130,7 @@ function Home() {
 
         </div>
       </div>
-  )
+  );
 
 
 }

@@ -6,7 +6,7 @@ function RegistrerForm (props) {
   const [details, setDetails] = useState({email: "", password: "", pod: ""});
   
 
-  const submitHandler = e => {
+  const submitHandler = (e) => {
     e.preventDefault();
     props.addUser(details);
     
@@ -38,7 +38,7 @@ function RegistrerForm (props) {
                   id="passwordRegistro" 
                   data-testid="passwordRegistro" 
                   placeholder="Contraseña" 
-                  onChange={e => setDetails({ ...details, password: e.target.value })} 
+                  onChange={(e) => setDetails({ ...details, password: e.target.value })} 
                   value={details.password} />
               </div>
               <div className="input-group-text mx-0 mb-3">
@@ -49,7 +49,7 @@ function RegistrerForm (props) {
                   id="pod"
                   data-testid="pod" 
                   placeholder="Direccion POD" 
-                  onChange={e => setDetails({...details, pod:e.target.value})} 
+                  onChange={(e) => setDetails({...details, pod:e.target.value})} 
                   value={details.pod} />
               </div>    
               <div >
