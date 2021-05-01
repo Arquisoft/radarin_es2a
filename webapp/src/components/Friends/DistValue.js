@@ -3,6 +3,7 @@ import { db } from "../../api/firebase";
 import distance from "../Service/DistanceService";
 import { toast } from "react-toastify";
 import '../../Toast.css';
+import { NavigateToMap } from "./Friends";
 
 
     async function notificaAmigoCercano(friendEmail, avisados) {
@@ -28,12 +29,12 @@ import '../../Toast.css';
                             var kmFormat = Math.round(km*100)/100;
                             if (!avisados.some(f => (f === friendEmail)) && kmFormat > 0 && kmFormat < 2){
                                 avisados.push(friendEmail);
-                                notifica(friendEmail + " está a " + kmFormat + " km de ti.")
+                                Notifica(friendEmail + "\nestá a " + kmFormat + " km de ti.", friendEmail)
                             }
                             else
                                 if(!avisados.some(f => (f === friendEmail)) && kmFormat >= 0 && kmFormat < 0.2){
                                     avisados.push(friendEmail);
-                                    notifica(friendEmail + " y tú estáis en la misma posición.");
+                                    Notifica(friendEmail + " y tú estáis en la misma posición.", friendEmail);
                                 }
                         }
                     } 
@@ -42,14 +43,15 @@ import '../../Toast.css';
            
     }
 
-    async function notifica(mensaje){
+    async function Notifica(mensaje, friendEmail){
         toast(mensaje, {
             position: "top-right",
-            autoClose: 7000,
+            autoClose: 27000,
             hideProgressBar: false,
-            closeOnClick: true,
+            closeOnClick: false,
             pauseOnHover: true,
-            draggable: true
+            draggable: true,
+            onClick: () => {window.location.replace("/map/" + friendEmail)}
         });
     }
 
