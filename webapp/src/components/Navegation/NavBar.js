@@ -62,11 +62,10 @@ export default class NavBar extends Component {
                                 <UserBar/>
                             </LoggedIn>
                             <LoggedOut>
-                            {    
-                            this.state.session?
-                            <UserBar/>:
-                            <HomeBar/>
-                            }
+                                {    
+                                    this.state.session?
+                                        <UserBar/>:<HomeBar/>
+                                }
                             </LoggedOut>
                     </div>
                 </div>

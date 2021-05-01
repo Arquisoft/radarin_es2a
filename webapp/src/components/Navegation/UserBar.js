@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Nav from "react-bootstrap/Nav";
-import { AuthButton} from "@solid/react";
-import {  LoggedIn, LoggedOut} from "@solid/react";
+import {AuthButton} from "@solid/react";
+import {LoggedIn, LoggedOut} from "@solid/react";
 
 function desconectar(){
     window.sessionStorage.setItem("desconecto","si");
@@ -18,7 +18,7 @@ export default class NavBar extends Component {
                 </li>
                 <LoggedOut className="btn btn-danger">
                 <li className="nav-item">
-                    <Nav.Link href="/logout" data-testId="logout" className="nav-link">Cerrar Sesión</Nav.Link>
+                    <Nav.Link href="/logout" data-testId="logout" className="nav-item active">Cerrar Sesión</Nav.Link>
                 </li>
                 </LoggedOut>
                 <LoggedIn>
