@@ -12,6 +12,7 @@ import DistanceBetween from "./DistanceBetween";
 import {eliminarAmigo,existeUsuario} from "../Service/FriendService";
 import emailjs from "emailjs-com";
 import {notificaAmigoCercano} from "./DistValue";
+import { watchLocation } from "../Service/LocationService";
 
 
 
@@ -155,12 +156,12 @@ const  NavigateToMessages = (id) => {
     history.push("/mensajes/"+ id);
     history.go(0);
   }
-}
+};
 
 const  NavigateToMap = (id) => {
   history.push("/map/"+id);
   history.go(0);
-}
+};
 
 function comprobarUsuario(idUsuario){
   
@@ -222,7 +223,7 @@ function comprobarAmigo(idUsuario){
   else {
     return false;
   }
-};
+}
 
 const addFriend = async (idAmigo) => {
     
@@ -340,6 +341,7 @@ const Card =  (props) => {
   useEffect(() => {
     getUsuarios();
     getAmigos();
+    watchLocation();
   }, []);
 
 
