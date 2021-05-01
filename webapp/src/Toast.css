@@ -1,13 +1,9 @@
 .Toastify__toast--default {
-    background-image: url("./images/localizacionAmigo.png");
-    background-repeat: no-repeat;
-    background-position: 20px 15px;
-    background-size: 70px 70px;
     background-color: lightblue;
 }
 
 .Toastify__toast-body {
-    margin: 22px 95px;
+    /*margin: 8px 95px;*/
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1rem;
     font-weight: 400;
@@ -16,5 +12,13 @@
 }
 
 .Toastify__toast-container {
-    width: 367px;
+    width: 327px;
+}
+
+.left{
+    float: left;
+}
+.right{
+    width:221px;
+    margin:0 auto
 }

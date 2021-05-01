@@ -3,7 +3,9 @@ import { db } from "../../api/firebase";
 import distance from "../Service/DistanceService";
 import { toast } from "react-toastify";
 import '../../Toast.css';
-import { NavigateToMap } from "./Friends";
+import {Image} from "@solid/react";
+import data from "@solid/query-ldflex";
+import sinPerfil from "../../images/sinPerfil.png";
 
 
     async function notificaAmigoCercano(friendEmail, avisados) {
@@ -29,12 +31,17 @@ import { NavigateToMap } from "./Friends";
                             var kmFormat = Math.round(km*100)/100;
                             if (!avisados.some(f => (f === friendEmail)) && kmFormat > 0 && kmFormat < 2){
                                 avisados.push(friendEmail);
-                                Notifica(friendEmail + "\nestá a " + kmFormat + " km de ti.", friendEmail)
+                                podImage(friendEmail).then((image) =>{
+                                    notifica(friendEmail + "\na " + kmFormat + " km de ti.\t\n(Ver mapa)", friendEmail, image)
+                                });
+                                
                             }
                             else
                                 if(!avisados.some(f => (f === friendEmail)) && kmFormat >= 0 && kmFormat < 0.2){
                                     avisados.push(friendEmail);
-                                    Notifica(friendEmail + " y tú estáis en la misma posición.", friendEmail);
+                                    podImage(friendEmail).then((image) =>{
+                                        notifica(friendEmail + "\n posición común. \n(Ver mapa)", friendEmail, podImage(friendEmail));
+                                    });
                                 }
                         }
                     } 
@@ -43,8 +50,46 @@ import { NavigateToMap } from "./Friends";
            
     }
 
-    async function Notifica(mensaje, friendEmail){
-        toast(mensaje, {
+    const podImage = async (friendEmail) => {
+        const querySnapShot = await db.collection("users").get();
+        const webId = "";
+        querySnapShot.forEach(doc => {
+          if (String(doc.data().pod.localeCompare(friendEmail)) === String(0)){
+            webId = doc.data().pod;
+          }  
+        });
+        const image = null;
+        if (webId != "")
+            image = data[webId].vcard_hasPhoto;
+        return image;
+    }
+
+    
+    const msgDistintaPos = (friendEmail,km,image) => (
+        <div>
+        <div class="left">
+            {
+                image===null?
+                    <img src={sinPerfil} style={{ width: "70px", high: "70px" }}/>:<Image src={image} style={{ width: "70px", high: "70px" }}/>
+            }
+        </div>
+        <div class="right">
+            <p style={{fontWeight:"bold", margin:"0"}}>{friendEmail}</p>
+            <p style={{margin:"0"}}> a {km} km de ti. </p>
+            <p style={{margin:"0"}}> (Ver mapa) </p>
+        </div>
+        </div>
+      )
+      const msgMismaPos = (friendEmail) => (
+        <div>
+            <p></p>
+         <h6> My title</h6>
+         <p> Some test </p>
+        </div>
+      )
+
+    async function notifica(mensaje, friendEmail,image){
+        toast(msgDistintaPos(friendEmail,5,image), {
             position: "top-right",
             autoClose: 27000,
             hideProgressBar: false,
