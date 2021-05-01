@@ -12,18 +12,18 @@ export const AdminUserForm= (props) => {
 
     const [values, setValues]  = useState(initialStateValues);
 
-    const handleInputChange = e => {
+    const handleInputChange = (e) => {
         const {name, value} = e.target;
         setValues({...values, [name]: value});
         
     };
 
 
-    const handleSubmit= e => {
+    const handleSubmit= (e) => {
         e.preventDefault();
         props.addOrEditUser(values);
         setValues({...initialStateValues});
-    }
+    };
     
 
     const getUserById = async (id) => {
