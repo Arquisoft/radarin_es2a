@@ -1,7 +1,7 @@
 const {defineFeature, loadFeature}=require("jest-cucumber");
 const feature = loadFeature("./features/register-form.feature");
 
-defineFeature((feature, test) => {
+defineFeature(feature, test => {
 
  /* beforeEach(async () => {
     await global.page.goto('http://localhost:3000')
