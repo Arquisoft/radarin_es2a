@@ -6,6 +6,7 @@ import imagen from "../home_image.jpg";
 import solid from "../solid.svg";
 import github from "../github.svg";
 import document from "../document.svg";
+import { db } from '../api/firebase'
 
 
 function Home() {
@@ -35,11 +36,24 @@ function Home() {
  
 
   
+  async function registroUsuarioPod(){
+    if (window.sessionStorage.getItem("user") === null){
+    var existeUsuario = false;
+    const querySnapShot = await db.collection("users").get();
+    querySnapShot.forEach(doc => {
+      if (String(doc.data().pod.localeCompare(details.pod)) === String(0)) 
+      existeUsuario = true;
+      })
+    if (existeUsuario!==true){
+        db.collection('users').doc().set(details)
+    }  
+  }
+}
 
-  
 
 
   useEffect( () =>{
+    registroUsuarioPod();
     navigator.geolocation.getCurrentPosition(success, error, options);
   });
   
