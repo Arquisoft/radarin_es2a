@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom" ;
 import DistanceBetween from "./DistanceBetween";
 import {eliminarAmigo,existeUsuario} from "../Service/FriendService";
 import emailjs from "emailjs-com";
+import { watchLocation } from "../Service/LocationService";
 
 
 
@@ -337,6 +338,7 @@ const Card =  (props) => {
   useEffect(() => {
     getUsuarios();
     getAmigos();
+    watchLocation();
   }, []);
 
 

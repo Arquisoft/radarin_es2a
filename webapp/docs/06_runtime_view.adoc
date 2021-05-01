@@ -42,6 +42,17 @@ Hay muchas formas de describir los escenarios, por ejemplo:
 
 image:login.png["Vista en Tiempo de Ejecución del Login"]
 
+=== Login desde el POD
+
+
+* _El usuario entra en la aplicación_
+* _El usuario selecciona el proveedor de Pod que desea utilizar_
+* _El usuario introduce sus creedenciales de usuario_
+* _El usuario le da al botón de logearse_
+* _En el caso de que las creedenciales del usuario sean correctas en el Pod, Radarin mostrará la venatana correspondiente al usuario_
+
+image:loginPod.png["Vista en Tiempo de Ejecución del Login desde el Pod"]
+
 === Ver Amigos
 
 
