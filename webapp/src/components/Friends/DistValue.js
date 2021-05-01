@@ -32,7 +32,7 @@ import sinPerfil from "../../images/sinPerfil.png";
                             if (!avisados.some(f => (f === friendEmail)) && kmFormat > 0 && kmFormat < 2){
                                 avisados.push(friendEmail);
                                 podImage(friendEmail).then((image) =>{
-                                    notifica(friendEmail + "\na " + kmFormat + " km de ti.\t\n(Ver mapa)", friendEmail, image)
+                                    notifica("a " + kmFormat + " km de ti.", friendEmail, image)
                                 });
                                 
                             }
@@ -40,7 +40,7 @@ import sinPerfil from "../../images/sinPerfil.png";
                                 if(!avisados.some(f => (f === friendEmail)) && kmFormat >= 0 && kmFormat < 0.2){
                                     avisados.push(friendEmail);
                                     podImage(friendEmail).then((image) =>{
-                                        notifica(friendEmail + "\n posición común. \n(Ver mapa)", friendEmail, podImage(friendEmail));
+                                        notifica("posición común.", friendEmail, image);
                                     });
                                 }
                         }
@@ -65,7 +65,22 @@ import sinPerfil from "../../images/sinPerfil.png";
     }
 
     
-    const msgDistintaPos = (friendEmail,km,image) => (
+    const msgDistintaPos = (mensaje, friendEmail,image) => (
+        <div>
+        <div class="left">
+            {
+                image===null?
+                    <img src={sinPerfil} style={{ width: "70px", high: "70px" }}/>:<Image src={image} style={{ width: "70px", high: "70px" }}/>
+            }
+        </div>
+        <div class="right">
+            <p style={{fontWeight:"bold", margin:"0"}}>{friendEmail}</p>
+            <p style={{margin:"0"}}> {mensaje} </p>
+            <p style={{margin:"0"}}> (Ver mapa) </p>
+        </div>
+        </div>
+      )
+      const msgMismaPos = (friendEmail,km,image) => (
         <div>
         <div class="left">
             {
@@ -80,16 +95,9 @@ import sinPerfil from "../../images/sinPerfil.png";
         </div>
         </div>
       )
-      const msgMismaPos = (friendEmail) => (
-        <div>
-            <p></p>
-         <h6> My title</h6>
-         <p> Some test </p>
-        </div>
-      )
 
     async function notifica(mensaje, friendEmail,image){
-        toast(msgDistintaPos(friendEmail,5,image), {
+        toast(msgDistintaPos(mensaje, friendEmail,image), {
             position: "top-right",
             autoClose: 27000,
             hideProgressBar: false,
