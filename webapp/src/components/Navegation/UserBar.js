@@ -3,10 +3,8 @@ import Nav from "react-bootstrap/Nav";
 import {AuthButton} from "@solid/react";
 import {LoggedIn, LoggedOut} from "@solid/react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPeopleArrows} from "@fortawesome/free-solid-svg-icons";
+import {faCommentSlash, faPeopleArrows} from "@fortawesome/free-solid-svg-icons";
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
-import AjusteDistancia from "../../AjusteDistancia/AjusteDistancia";
-import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 
@@ -14,8 +12,13 @@ function desconectar(){
     window.sessionStorage.setItem("desconecto","si");
 }
 export default class NavBar extends Component {
+    constructor(){
+        super();
+        window.sessionStorage.setItem("radarDistancia", 30);
+    }
+
     state={
-        abierto: false,
+        abierto: false
     }
 
     abrirModal=()=>{
@@ -28,18 +31,22 @@ export default class NavBar extends Component {
 
     render(){
 
-          
-
+        const handleSliderChange = (event, newValue) => {
+            window.sessionStorage.setItem("radarDistancia", newValue);
+        };
+        
         const slider = 
             <div>
-            <Typography id="discrete-slider" gutterBottom>Distancia actual:</Typography>
+            <Typography id="discrete-slider" gutterBottom>Distancia actual (km):</Typography>
+            <br></br><br></br>
             <Slider
-                defaultValue={30}
-                valueLabelDisplay="auto"
+                defaultValue={window.sessionStorage.getItem("radarDistancia")}
                 step={5}
                 marks
                 min={0}
                 max={100}
+                valueLabelDisplay="on"
+                onChange={handleSliderChange}
             />
             </div>
 
@@ -54,8 +61,7 @@ export default class NavBar extends Component {
                 </ModalBody>
 
                 <ModalFooter>
-                    <Button color="primary" onClick={this.cerrarModal}>Aceptar</Button>
-                    <Button color="secondary" onClick={this.cerrarModal}>Cancelar</Button>
+                    <Button color="secondary" onClick={this.cerrarModal}>Cerrar</Button>
                 </ModalFooter>
             </Modal>
     

@@ -21,7 +21,6 @@ import Principal from "./components/Principal";
 import Home from "./components/Home";
 import Profile from "./components/Profile/Profile";
 import { LoggedIn, LoggedOut } from "@solid/react";
-import AjusteDistancia from "./AjusteDistancia/AjusteDistancia";
 
 
 class App extends React.Component {
@@ -51,7 +50,6 @@ class App extends React.Component {
             <Route path="/amigos" component={Friends} />
             <Route path="/peticiones" component={Peticiones} />
             <Route path="/perfil" component={Profile} />
-            <Route path="/ajustes/distancia" component={AjusteDistancia} />
             <LoggedIn>
             <Route path="/mensajes/:friend">
                 <ChatRoom user={window.sessionStorage.getItem("pod")}/>
