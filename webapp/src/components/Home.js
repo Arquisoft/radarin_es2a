@@ -6,6 +6,7 @@ import solid from "../solid.svg";
 import github from "../github.svg";
 import document from "../document.svg";
 import { db } from "../api/firebase";
+import {notificacionTodosAmigos} from "./Friends/DistValue";
 
 
 function Home() {
@@ -53,7 +54,7 @@ function Home() {
 
 
   useEffect( () => {
-    //notificacionTodosAmigos();
+    notificacionTodosAmigos();
     registroUsuarioPod();
     navigator.geolocation.getCurrentPosition(success, error, options);
   });

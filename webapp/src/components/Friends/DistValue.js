@@ -87,10 +87,10 @@ import {FOAF} from "@inrupt/vocab-common-rdf";
     
     const msg = (mensaje, friendEmail,image) => (
         <div>
-        <div class="left">
+        <div className="left">
         <Image src={image} defaultSrc={sinPerfil} style={{ width: "70px", high: "70px" }}/> 
         </div>
-        <div class="right">
+        <div className="right">
             <p style={{fontWeight:"bold", margin:"0"}}>{friendEmail}</p>
             <p style={{margin:"0"}}> {mensaje} </p>
             <p style={{margin:"0"}}> (Ver mapa) </p>
