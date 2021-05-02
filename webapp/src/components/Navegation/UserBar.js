@@ -12,10 +12,6 @@ function desconectar(){
     window.sessionStorage.setItem("desconecto","si");
 }
 export default class NavBar extends Component {
-    constructor(){
-        super();
-        window.sessionStorage.setItem("radarDistancia", 30);
-    }
 
     state={
         abierto: false
@@ -35,7 +31,7 @@ export default class NavBar extends Component {
             window.sessionStorage.setItem("radarDistancia", newValue);
         };
         
-        const slider = 
+        var slider = 
             <div>
             <Typography id="discrete-slider" gutterBottom>Distancia actual (km):</Typography>
             <br></br><br></br>
@@ -50,7 +46,7 @@ export default class NavBar extends Component {
             />
             </div>
 
-        const ventanaModal=
+        var ventanaModal=
             <Modal isOpen={this.state.abierto} style={{position: "absolute", top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}>
                 <ModalHeader style={{background: "#007bff", color: "white"}}>Ajustar distancia</ModalHeader>
                 <ModalBody>

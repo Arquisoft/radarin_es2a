@@ -10,7 +10,7 @@ import {getSolidDataset,getThing,getStringNoLocale} from "@inrupt/solid-client";
 import {FOAF} from "@inrupt/vocab-common-rdf";
 
 
-    async function notificaAmigoCercano(friendEmail, avisados) {
+    async function notificaAmigoCercano(friendEmail, avisados) { console.log(window.sessionStorage.getItem("radarDistancia"))
         const userEmail = await window.sessionStorage.getItem("user")
         await db.collection("locations").
             onSnapshot(
@@ -26,14 +26,12 @@ import {FOAF} from "@inrupt/vocab-common-rdf";
                             coordTemp2.lat=element.data().lat
                             coordTemp2.lng=element.data().lng
                         }
-                    });podImage(friendEmail).then((image) =>{
-                        notifica("a " + kmFormat + " km de ti.", friendEmail, image)
                     });
                     
                             if (!(coordTemp1.lat == 0 || coordTemp1.len == 0 || coordTemp2.lat == 0 || coordTemp2 == 0)){
                             var km = distance(coordTemp1, coordTemp2)
                             var kmFormat = Math.round(km*100)/100;
-                            if (!avisados.some(f => (f === friendEmail)) && kmFormat > 0 && kmFormat < 2){
+                            if (!avisados.some(f => (f === friendEmail)) && kmFormat > 0 && kmFormat <= window.sessionStorage.getItem("radarDistancia")){
                                 avisados.push(friendEmail);
                                 podImage(friendEmail).then((image) =>{
                                     notifica("a " + kmFormat + " km de ti.", friendEmail, image)
