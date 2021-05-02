@@ -171,7 +171,7 @@ function comprobarUsuario(idUsuario){
     if (String(usuario.nombre.localeCompare(idUsuario)) ===String(0)){
         existeUsuario = true;
     }
-  })
+  });
 return existeUsuario;
 }
 
@@ -194,7 +194,7 @@ return existePod;
 const existePeticion = async (idAmigo) => {
   const querySnapShot = await db.collection("peticiones").get();
   var existePeticion = false;
-  querySnapShot.forEach(doc => {
+  querySnapShot.forEach((doc) => {
     if (String(doc.data().emisor.localeCompare(details.emisor)) === String(0) && (String(doc.data().receptor.localeCompare(idAmigo)) === String(0))) {
       existePeticion = true;
     }
@@ -211,7 +211,7 @@ const existePeticion = async (idAmigo) => {
 function comprobarAmigo(idUsuario){
   
   var existeAmigo = false;
- amigos.forEach(doc => {
+ amigos.forEach((doc) => {
     if (String(doc.nombre.localeCompare(idUsuario)) === String(0)) {
       existeAmigo = true;
     }
@@ -354,7 +354,7 @@ const Card =  (props) => {
           <h4 class="card-title" id="addFriend" data-testId="addFriend">Envía una petición a un/a amig@</h4>
           <div class="wrap">
             <div class="search">
-              <input type="text" class="searchTerm" placeholder="Introduce su correo o dirección pod" onChange={e => setDetails({ ...details, receptor: e.target.value })} id="input" />
+              <input type="text" class="searchTerm" placeholder="Introduce su correo o dirección pod" onChange={(e) => setDetails({ ...details, receptor: e.target.value })} id="input" />
               <button type="submit" class="searchButton" onClick={() => addFriend(document.getElementById("input").value)}>
                 <SearchOutlinedIcon className="iconSearch" />
               </button>
