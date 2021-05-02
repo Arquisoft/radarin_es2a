@@ -11,7 +11,6 @@ import { useHistory } from "react-router-dom" ;
 import DistanceBetween from "./DistanceBetween";
 import {eliminarAmigo,existeUsuario} from "../Service/FriendService";
 import emailjs from "emailjs-com";
-import {notificacionTodosAmigos} from "./DistValue";
 import { watchLocation } from "../Service/LocationService";
 
 
@@ -92,11 +91,9 @@ function Friends() {
       querySnapShot.forEach((doc) => {
         if (String(doc.data().usuario1.localeCompare(usuarioActivo)) === String(0)) {
           docs.push({ nombre: doc.data().usuario2, id: doc.id });
-          //notificaAmigoCercano(doc.data().usuario2,[]);
         }
         if ((String(doc.data().usuario2.localeCompare(usuarioActivo)) === String(0))) {
           docs.push({ nombre: doc.data().usuario1, id: doc.id });
-          //notificaAmigoCercano(doc.data().usuario1,[]);
         }
       });
       
@@ -344,7 +341,6 @@ const Card =  (props) => {
     getUsuarios();
     getAmigos();
     watchLocation();
-    notificacionTodosAmigos();
   }, []);
 
 

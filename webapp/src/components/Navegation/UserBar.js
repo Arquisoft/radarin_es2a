@@ -23,6 +23,7 @@ export default class NavBar extends Component {
 
     cerrarModal=()=>{
         this.setState({abierto: false});
+        window.location.reload();
     }
 
     render(){
@@ -37,10 +38,10 @@ export default class NavBar extends Component {
             <br></br><br></br>
             <Slider
                 defaultValue={window.sessionStorage.getItem("radarDistancia")}
-                step={5}
+                step={0.5}
                 marks
                 min={0}
-                max={100}
+                max={20}
                 valueLabelDisplay="on"
                 onChange={handleSliderChange}
             />

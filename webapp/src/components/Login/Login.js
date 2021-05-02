@@ -25,9 +25,9 @@ function Login() {
                     });
                     cambio = true;
                     window.sessionStorage.setItem("user", details.email);
+                    window.sessionStorage.setItem("radarDistancia", 2);
                     history.push("/home");
                     history.go(0);
-                    
                 }
                 }
 

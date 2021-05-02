@@ -17,12 +17,10 @@ import {FOAF} from "@inrupt/vocab-common-rdf";
 
             db.collection("amigos").onSnapshot((querySnapShot) => {
                 querySnapShot.forEach((doc) => {
-                  if (String(doc.data().usuario1.localeCompare(usuarioActivo)) === String(0)) {
+                  if (String(doc.data().usuario1.localeCompare(usuarioActivo)) === String(0)) 
                     notificaAmigoCercano(doc.data().usuario2,[]);
-                  }
-                  if ((String(doc.data().usuario2.localeCompare(usuarioActivo)) === String(0))) {
+                  if ((String(doc.data().usuario2.localeCompare(usuarioActivo)) === String(0))) 
                     notificaAmigoCercano(doc.data().usuario1,[]);
-                  }
                 });
             });
     }
