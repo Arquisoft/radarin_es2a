@@ -1,0 +1,20 @@
+[[load-tests]]
+== Pruebas de Carga
+.*Finalidad*
+Saber cómo funcionaría nuestra aplicación en el mundo real, es decir, cuando un elevado número de usuarios la utilice y haga una serie de operaciones y peticiones. Esto nos permitirá conocer los diferentes problemas que podrían ocasionar una bajada en el rendimiento de la aplicación o que, directamente, ésta deje de funcionar.
+
+.*Ventajas*
+Este tipo de pruebas ayudan enormemente a:
+
+- Detectar cuellos de botella
+
+- Disminuir tiempos de carga
+
+Es imprescindible el uso de pruebas de carga antes del lanzamiento de nuestra aplicación, ya que nos proporcionara una vista bastante amplia de cómo va a responder ante una situación real. De esta manera, podremos evitar problemas de rendimiento y hacer así que la experiencia del usuario sea excelente (al menos en cuanto al rendimiento).
+
+.*Inconvenientes y limitaciones*
+En nuestro caso particular, hemos tenido ciertos problemas a la hora de realizar pruebas de carga. El motivo es que usamos la plataforma Firebase, que en su versión gratuita ofrece un número límitado de peticiones. 
+Se han intentado realizar diferentes pruebas de carga que nos permitieran analizar la aplicación correctamente pero, debido a esta limitación, los test realizados están preparados para un número de usuarios muy bajo. Debido a esto, nuestra capacidad de detectar cuellos de botella y determinados aspectos que afectan al rendimiento de la aplicación, se han reducido en gran medida.
+En un futuro, se explorarán opciones que nos permitan realizar este tipo de pruebas sin limitación alguna.
+
+image:13_planGratuitoFirebase["Alguna de las limitaciones en el plan gratuito de Firebase"]

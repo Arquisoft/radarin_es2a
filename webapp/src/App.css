@@ -49,3 +49,9 @@
     transform: rotate(360deg);
   }
 }
+
+.solid {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}

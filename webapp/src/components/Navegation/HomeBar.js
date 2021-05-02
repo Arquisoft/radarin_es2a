@@ -16,7 +16,7 @@ export default class NavBar extends Component {
                 </li>
                 <LoggedOut>
               {
-                window.sessionStorage.getItem("desconecto")==="si"?
+                window.sessionStorage.getItem('desconecto')==='si'?
                 <LogoutHook/>:
                 null
               }

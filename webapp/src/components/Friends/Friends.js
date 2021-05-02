@@ -4,7 +4,7 @@ import "./Friends.css";
 import "bootstrap/dist/css/bootstrap.css";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import DocumentTitle from "react-document-title";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { db } from "../../api/firebase";
 import { useHistory } from "react-router-dom" ;
