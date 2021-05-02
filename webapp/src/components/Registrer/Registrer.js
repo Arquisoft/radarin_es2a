@@ -35,7 +35,7 @@ function Registrer() {
                 position: toast.POSITION.TOP_CENTER,
                 type: "success",
                 autoClose: 3000,
-            })
+            });
         }
         else{
         toast("Ya existe un usuario con ese email", {

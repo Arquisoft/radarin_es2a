@@ -11,7 +11,7 @@ export const MapContainer=(props) => {
 
   const loadCoords = async() => {
     db.collection("locations").onSnapshot((querySnapShot) => {
-      querySnapShot.forEach(doc => {
+      querySnapShot.forEach((doc) => {
       if(doc.data().email===friend){
         setLat(doc.data().lat);
         setLng(doc.data().lng);

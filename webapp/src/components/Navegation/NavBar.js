@@ -38,7 +38,7 @@ export default class NavBar extends Component {
                 admin: true
             });
           }
-        })
+        });
         }
     }
 
