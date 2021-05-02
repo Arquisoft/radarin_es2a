@@ -6,7 +6,7 @@ import {jest} from "@jest/globals";
 afterAll(cleanup);
 describe("<Home />",() => {
   
-    test("renders without crashing", () => {
+    test("renders with user", () => {
         window.sessionStorage.setItem("user","usuario1@usuario.com");
         //Para saltar el error de no encontrar la localización
         const mockGeolocation = {
@@ -18,7 +18,6 @@ describe("<Home />",() => {
 
         render(<Home />);
         window.sessionStorage.removeItem("user");
-       
     });
 
 });
