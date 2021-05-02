@@ -48,10 +48,18 @@ export default class NavBar extends Component {
             <Navbar bg="primary" variant="dark">
                 <div className="container">
                     <Navbar.Brand>Radarin</Navbar.Brand>
-                    <Nav.Link href="/home" className="navbar-brand">
-                        <i className="material-icons">
-                            <FontAwesomeIcon icon={faHome} size="1x"/></i>
-                    </Nav.Link>
+                    {
+                        this.state.session?
+                            <Nav.Link href="/home" className="navbar-brand">
+                                <i className="material-icons">
+                                    <FontAwesomeIcon icon={faHome} size="1x"/></i>
+                            </Nav.Link>
+                            :
+                            <Nav.Link href="/" className="navbar-brand">
+                                <i className="material-icons">
+                                    <FontAwesomeIcon icon={faHome} size="1x"/></i>
+                            </Nav.Link>
+                    }
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
