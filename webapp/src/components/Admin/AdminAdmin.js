@@ -25,7 +25,7 @@ export const AdminAdmin = () => {
                 await db.collection("admins").doc(userObject.id).delete();
                 toast(userObject.emailUser + " ya no es administrador",{type:"error", autoClose: 3000});
             }
-        }
+        };
     
     
         useEffect(() => {

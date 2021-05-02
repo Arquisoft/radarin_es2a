@@ -31,7 +31,7 @@ export const DistanceBetween = (props) => {
                 (querySnapshot) => {
                     const coordTemp1 = {lat:0,lng:0};
                     const coordTemp2 = {lat:0,lng:0};
-                    querySnapshot.forEach(element => {
+                    querySnapshot.forEach((element) => {
                         if(element.data().email===userEmail){
                             coordTemp1.lat=element.data().lat;
                             coordTemp1.lng=element.data().lng;
@@ -55,6 +55,6 @@ export const DistanceBetween = (props) => {
 
         return (<h4>{getDistanciaAmigo()}</h4>);
 
-}
+};
 
 export default DistanceBetween;

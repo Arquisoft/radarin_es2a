@@ -107,7 +107,7 @@ function Friends() {
     db.collection("users").onSnapshot((querySnapShot) => {
       const docs = [];
       const pods = [];
-      querySnapShot.forEach(doc => {
+      querySnapShot.forEach((doc) => {
         if ((String(doc.data().email.localeCompare("")) === String(0))) {
           docs.push({ nombre: doc.data().pod, id: doc.id });
           pods.push({ nombre: doc.data().pod, id: doc.id });
@@ -126,14 +126,14 @@ function Friends() {
 
     const querySnapShot = await db.collection("amigos").get();
     var existeAmigo = false;
-    querySnapShot.forEach(doc => {
+    querySnapShot.forEach((doc) => {
       if (String(doc.data().usuario1.localeCompare(details.emisor)) === String(0) && (String(doc.data().usuario2.localeCompare(idAmigo)) === String(0))) {
         existeAmigo = true;
       }
       if (String(doc.data().usuario2.localeCompare(details.emisor)) === String(0) && (String(doc.data().usuario1.localeCompare(idAmigo)) === String(0))) {
         existeAmigo = true;
       }
-    })
+    });
     if (existeAmigo) {
       return true;
     }
@@ -166,7 +166,7 @@ function comprobarUsuario(idUsuario){
   
   var existeUsuario = false;
  
-  usuarios.forEach(usuario => {
+  usuarios.forEach((usuario) => {
     
     if (String(usuario.nombre.localeCompare(idUsuario)) ===String(0)){
         existeUsuario = true;

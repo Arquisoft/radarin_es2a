@@ -29,7 +29,7 @@ export const AdminUserForm= (props) => {
     const getUserById = async (id) => {
         const doc = await db.collection("users").doc(id).get();
         setValues({...doc.data()});
-    }
+    };
 
 
     useEffect(() => {

@@ -14,6 +14,14 @@ function Login() {
 
 
     const Login = async (details) => {
+        if (details.password==="" || details.email===""){
+            toast("No puedes dejar campos vacíos", {
+                position: toast.POSITION.TOP_CENTER,
+                type: "error",
+                autoClose: 3000,
+            });
+        }
+        else{
         const querySnapShot = await db.collection("users").get();
         var cambio = false;
         querySnapShot.forEach((doc) => {
@@ -32,7 +40,6 @@ function Login() {
                 }
 
         });
-    
         if (!cambio){
             toast("El usuario y/o la contraseña no coinciden", {
                 position: toast.POSITION.TOP_CENTER,
@@ -41,7 +48,7 @@ function Login() {
             });
         }
     
-
+        }
       };
 
     const Logout = () => {
