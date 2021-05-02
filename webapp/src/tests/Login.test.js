@@ -4,7 +4,7 @@ import { act } from "react-dom/test-utils";
 import ReactDOM from "react-dom";
 import Login from ".././components/Login/Login";
 import LoginForm from ".././components/Login/LoginForm";
-import {  render, screen, fireEvent, waitFor } from "@testing-library/react";
+import {  render, screen } from "@testing-library/react";
 import { BrowserRouter, Route } from "react-router-dom";
 
 let container;
