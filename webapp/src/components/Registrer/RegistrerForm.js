@@ -14,7 +14,7 @@ function RegistrerForm (props) {
 
     return (
       <div className="container" style={{width: "500px"}}>
-      <form className="card bg-white border-warning mx-auto w-75" onSubmit={submitHandler}>
+      <form name="register" className="card bg-white border-warning mx-auto w-75" onSubmit={submitHandler}>
           <div className="card-header bg-warning text-white font-weight-bold">Registrarse</div>
           <div className="card card-body">
 
