@@ -184,7 +184,7 @@ function existePod(idUsuario){
     if (String(usuario.nombre.localeCompare(idUsuario)) ===String(0)){
         existePod = true;
     }
-  })
+  });
 
 return existePod;
 }

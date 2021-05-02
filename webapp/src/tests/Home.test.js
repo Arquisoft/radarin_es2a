@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import Home from "../components/Home";
 
 afterAll(cleanup);
-describe("<Peticiones />", () => {
+describe("<Home />", () => {
 
     it("renders without crashing", () => {
         const div = document.createElement("div");

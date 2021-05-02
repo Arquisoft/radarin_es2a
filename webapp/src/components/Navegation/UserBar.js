@@ -4,9 +4,9 @@ import {AuthButton} from "@solid/react";
 import {LoggedIn, LoggedOut} from "@solid/react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPeopleArrows} from "@fortawesome/free-solid-svg-icons";
-import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
-import Typography from '@material-ui/core/Typography';
-import {Slider} from '@material-ui/core';
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from "reactstrap";
+import Typography from "@material-ui/core/Typography";
+import {Slider} from "@material-ui/core";
 
 function desconectar(){
     window.sessionStorage.setItem("desconecto","si");
@@ -17,11 +17,11 @@ export default class NavBar extends Component {
         abierto: false
     }
 
-    abrirModal=()=>{
+    abrirModal= () => {
         this.setState({abierto: true});
     }
 
-    cerrarModal=()=>{
+    cerrarModal= () => {
         this.setState({abierto: false});
         window.location.reload();
     }
@@ -45,10 +45,10 @@ export default class NavBar extends Component {
                 valueLabelDisplay="on"
                 onChange={handleSliderChange}
             />
-            </div>
+            </div>;
 
         var ventanaModal=
-            <Modal isOpen={this.state.abierto} style={{position: "absolute", top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}>
+            <Modal isOpen={this.state.abierto} style={{position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>
                 <ModalHeader style={{background: "#007bff", color: "white"}}>Ajustar distancia</ModalHeader>
                 <ModalBody>
                     <p>¿Hasta qué distancia quiere recibir notificaciones de sus amigos?</p>
@@ -59,7 +59,7 @@ export default class NavBar extends Component {
 
                 <ModalFooter>
                     <Button color="secondary" onClick={this.cerrarModal}>Cerrar</Button>
-                </ModalFooter>
+                </ModalFooter>;
             </Modal>
     
     
