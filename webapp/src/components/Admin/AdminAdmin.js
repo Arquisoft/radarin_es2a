@@ -54,6 +54,6 @@ export const AdminAdmin = () => {
                 </div>
             </div>
         );
-    }
+    };
     
     export default AdminAdmin;
