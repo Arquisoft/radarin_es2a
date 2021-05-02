@@ -29,7 +29,6 @@ function Registrer() {
         }
         else{
         if(await existeUsuario(details.email)===false){
-            console.log("Usuario registrado");
             toast("Usuario añadido correctamente",
             {
                 position: toast.POSITION.TOP_CENTER,
