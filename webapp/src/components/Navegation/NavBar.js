@@ -7,21 +7,16 @@ import UserBar from "./UserBar";
 import HomeBar from "./HomeBar";
 import AdminBar from "./AdminBar";
 import {db} from "../../api/firebase";
-import {  LoggedIn, LoggedOut} from "@solid/react";
-
-
-
+import {LoggedIn, LoggedOut} from "@solid/react";
+import {Image} from "@solid/react";
 
 
 export default class NavBar extends Component {
+
     state = {
         session: false,
-        admin: false,
+        admin: false
     }
-
-    
-
-    
 
      async componentDidMount(){
         const usuario = window.sessionStorage.getItem("user");
@@ -48,10 +43,20 @@ export default class NavBar extends Component {
             <Navbar bg="primary" variant="dark">
                 <div className="container">
                     <Navbar.Brand>Radarin</Navbar.Brand>
-                    <Nav.Link href="/" className="navbar-brand">
-                        <i className="material-icons">
-                            <FontAwesomeIcon icon={faHome} size="1x"/></i>
-                    </Nav.Link>
+                    {
+                        this.state.session?
+                            <div>
+                            <Nav.Link href="/home" className="navbar-brand" style={{float:"left"}}>
+                                <i className="material-icons">
+                                    <FontAwesomeIcon icon={faHome} size="1x"/></i>
+                            </Nav.Link>
+                            </div>
+                            :
+                            <Nav.Link href="/" className="navbar-brand">
+                                <i className="material-icons">
+                                    <FontAwesomeIcon icon={faHome} size="1x"/></i>
+                            </Nav.Link>
+                    }
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -62,11 +67,10 @@ export default class NavBar extends Component {
                                 <UserBar/>
                             </LoggedIn>
                             <LoggedOut>
-                            {    
-                            this.state.session?
-                            <UserBar/>:
-                            <HomeBar/>
-                            }
+                                {    
+                                    this.state.session?
+                                        <UserBar/>:<HomeBar/>
+                                }
                             </LoggedOut>
                     </div>
                 </div>

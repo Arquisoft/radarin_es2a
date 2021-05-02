@@ -8,13 +8,8 @@ import {toast } from "react-toastify";
       if (String(doc.data().email.localeCompare(idAmigo)) === String(0) || (String(doc.data().pod.localeCompare(idAmigo)) === String(0))) {
         existeUsuario = true;
       }
-    });
-    if (existeUsuario) {
-      return true;
-    }
-    else {
-      return false;
-    }
+    })
+    return existeUsuario;
   };
 
   const eliminarAmigo = async (id) => {

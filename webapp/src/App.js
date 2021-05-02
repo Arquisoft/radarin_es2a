@@ -23,29 +23,11 @@ import Profile from "./components/Profile/Profile";
 import { LoggedIn, LoggedOut } from "@solid/react";
 
 
-
-
-/*function Logout ()
-{
-  const history = useHistory();
-  window.sessionStorage.removeItem('user');
-  history.push('/');
-  history.go(0)
-  
-  
-}*/
-
 class App extends React.Component {
   constructor() {
     super();
     this.state = { users: [] };
-    
   }
-
-  /*refreshUsers(users) {
-    this.setState({ users: users })
-  }
-*/
 
 
   render() {
