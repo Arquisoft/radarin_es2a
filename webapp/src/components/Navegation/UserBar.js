@@ -2,14 +2,73 @@ import React, { Component } from "react";
 import Nav from "react-bootstrap/Nav";
 import {AuthButton} from "@solid/react";
 import {LoggedIn, LoggedOut} from "@solid/react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faPeopleArrows} from "@fortawesome/free-solid-svg-icons";
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
+import AjusteDistancia from "../../AjusteDistancia/AjusteDistancia";
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
 
 function desconectar(){
     window.sessionStorage.setItem("desconecto","si");
 }
 export default class NavBar extends Component {
+    state={
+        abierto: false,
+    }
+
+    abrirModal=()=>{
+        this.setState({abierto: true});
+    }
+
+    cerrarModal=()=>{
+        this.setState({abierto: false});
+    }
+
     render(){
+
+          
+
+        const slider = 
+            <div>
+            <Typography id="discrete-slider" gutterBottom>Distancia actual:</Typography>
+            <Slider
+                defaultValue={30}
+                valueLabelDisplay="auto"
+                step={5}
+                marks
+                min={0}
+                max={100}
+            />
+            </div>
+
+        const ventanaModal=
+            <Modal isOpen={this.state.abierto} style={{position: "absolute", top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}>
+                <ModalHeader style={{background: "#007bff", color: "white"}}>Ajustar distancia</ModalHeader>
+                <ModalBody>
+                    <p>¿Hasta qué distancia quiere recibir notificaciones de sus amigos?</p>
+                    <p>Marque "0" si desea desactivar las notificaciones</p>
+                    <br></br>
+                    {slider}
+                </ModalBody>
+
+                <ModalFooter>
+                    <Button color="primary" onClick={this.cerrarModal}>Aceptar</Button>
+                    <Button color="secondary" onClick={this.cerrarModal}>Cancelar</Button>
+                </ModalFooter>
+            </Modal>
+    
+
         return(
             <ul className="navbar-nav ml-auto"> 
+                <li className="nav-item">
+                    <Nav.Item onClick={this.abrirModal}  className="navbar-brand">
+                        {ventanaModal}
+                        <i className="material-icons">
+                            <FontAwesomeIcon icon={faPeopleArrows} size="1x"/></i>
+                    </Nav.Item>
+                </li>
                 <li className="nav-item">
                     <Nav.Link href="/amigos" data-testId="amigos" className="nav-link">Amigos</Nav.Link>
                 </li>

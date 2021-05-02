@@ -21,19 +21,8 @@ import Principal from "./components/Principal";
 import Home from "./components/Home";
 import Profile from "./components/Profile/Profile";
 import { LoggedIn, LoggedOut } from "@solid/react";
+import AjusteDistancia from "./AjusteDistancia/AjusteDistancia";
 
-
-
-
-/*function Logout ()
-{
-  const history = useHistory();
-  window.sessionStorage.removeItem('user');
-  history.push('/');
-  history.go(0)
-  
-  
-}*/
 
 class App extends React.Component {
   constructor() {
@@ -41,11 +30,6 @@ class App extends React.Component {
     this.state = { users: [] };
     
   }
-
-  /*refreshUsers(users) {
-    this.setState({ users: users })
-  }
-*/
 
 
   render() {
@@ -67,6 +51,7 @@ class App extends React.Component {
             <Route path="/amigos" component={Friends} />
             <Route path="/peticiones" component={Peticiones} />
             <Route path="/perfil" component={Profile} />
+            <Route path="/ajustes/distancia" component={AjusteDistancia} />
             <LoggedIn>
             <Route path="/mensajes/:friend">
                 <ChatRoom user={window.sessionStorage.getItem("pod")}/>
