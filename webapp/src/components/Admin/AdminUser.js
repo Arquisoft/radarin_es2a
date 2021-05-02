@@ -104,6 +104,6 @@ export const AdminUser = () => {
                 </div>
             </div>
         );
-    }
+    };
     
     export default AdminUser;

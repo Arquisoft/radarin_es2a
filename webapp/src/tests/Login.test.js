@@ -27,7 +27,7 @@ it("Login", () => {
   });
 
   expect(container).toBeTruthy();
-}) 
+});
 
 test("Aparece bien texto", async () => {
   render(<BrowserRouter><LoginForm /><Route path="/login" exact component={Login}/></BrowserRouter>);
