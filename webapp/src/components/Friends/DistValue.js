@@ -6,6 +6,8 @@ import '../../Toast.css';
 import {Image} from "@solid/react";
 import data from "@solid/query-ldflex";
 import sinPerfil from "../../images/sinPerfil.png";
+import {getSolidDataset,getThing,getStringNoLocale} from "@inrupt/solid-client";
+import {FOAF} from "@inrupt/vocab-common-rdf";
 
 
     async function notificaAmigoCercano(friendEmail, avisados) {
@@ -24,9 +26,9 @@ import sinPerfil from "../../images/sinPerfil.png";
                             coordTemp2.lat=element.data().lat
                             coordTemp2.lng=element.data().lng
                         }
-                    });/*podImage(friendEmail).then((image) =>{
+                    });podImage(friendEmail).then((image) =>{
                         notifica("a " + kmFormat + " km de ti.", friendEmail, image)
-                    });*/
+                    });
                     
                             if (!(coordTemp1.lat == 0 || coordTemp1.len == 0 || coordTemp2.lat == 0 || coordTemp2 == 0)){
                             var km = distance(coordTemp1, coordTemp2)
@@ -78,10 +80,26 @@ import sinPerfil from "../../images/sinPerfil.png";
             <p style={{margin:"0"}}> (Ver mapa) </p>
         </div>
         </div>
-      )
+    )
+
+    async function getName(webId) {
+        const myDataset = await getSolidDataset(webId.slice(0, -3));
+        const profile = getThing(myDataset, webId);
+        const fn = getStringNoLocale(profile, FOAF.name);
+        return fn;
+    }
 
     async function notifica(mensaje, friendEmail,image){
-        toast(msg(mensaje, friendEmail,image), {
+        let friend = friendEmail;
+
+        if (image != null){
+            friend = await getName(friend).then(function (nombre){
+                return nombre;
+            })
+        }
+            console.log(friend)
+
+        toast(msg(mensaje, friend, image), {
             position: "top-right",
             autoClose: 27000,
             hideProgressBar: false,
