@@ -1,0 +1,1 @@
+Leer la documentación de las pruebas de carga (13_load_test.adoc). Imprescindible para conocer por qué las pruebas se han realizado de esta manera.
