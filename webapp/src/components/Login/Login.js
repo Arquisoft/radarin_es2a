@@ -61,9 +61,8 @@ function Login() {
     };
     return (
         <Container className="LoginConstants" style={{width: "500px"}}>
-            {(user.email !== "") ? ( 
+            {(window.sessionStorage.getItem("user") !== null) ? ( 
                 <div>    
-                    <Home/>
                     <Button onClick={Logout}>Cerrar sesión</Button>
                 </div>
             ) : (

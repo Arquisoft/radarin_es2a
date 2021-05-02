@@ -29,13 +29,15 @@ function Registrer() {
         }
         else{
         if(await existeUsuario(details.email)===false){
-            await db.collection("users").doc().set(details);
             toast("Usuario añadido correctamente",
             {
                 position: toast.POSITION.TOP_CENTER,
                 type: "success",
                 autoClose: 3000,
             });
+            await db.collection("users").doc().set(details);
+            
+           
         }
         else{
         toast("Ya existe un usuario con ese email", {
