@@ -20,7 +20,7 @@ async function addUserPos (lat,lng) {
             where("email", "==", email)
             .onSnapshot(
                 (querySnapshot) => {
-                    querySnapshot.forEach(element => {
+                    querySnapshot.forEach((element) => {
                         objreturn.email = element.data.email;
                         objreturn.lat = element.data.lat;
                         objreturn.lng = element.data.lng;
@@ -29,5 +29,26 @@ async function addUserPos (lat,lng) {
                 }
             );
 }
-export {addUserPos,getUserPos};
+
+var options = {
+    enableHighAccuracy: true,
+    timeout: 20000,
+    maximumAge: 1000
+  };
+
+  function error(err) {
+  }
+
+  function success(pos) {
+    if (window.sessionStorage.getItem("user") !== null) {
+      var crd = pos.coords;
+      addUserPos(crd.latitude,crd.longitude);
+    }
+  }
+
+  async function watchLocation(){
+    navigator.geolocation.watchPosition(success, error, options);
+  }
+
+export {addUserPos,getUserPos, watchLocation};
 

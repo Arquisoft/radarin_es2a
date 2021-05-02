@@ -30,32 +30,32 @@ export const AdminUser = () => {
             db.collection("users").onSnapshot(
                 (querySnapshot) => {
                     const  docs=[];
-                    querySnapshot.forEach(doc => {
+                    querySnapshot.forEach((doc) => {
                         docs.push({...doc.data(), id: doc.id});
                     });
                 setUsers(docs);
             });
-        }
+        };
     
         const onDeleteUser= async (userObject) => {
             if(window.confirm("Si pulsa aceptar se eliminará al usuario " + userObject.email + " de la base de datos.")){
                 await db.collection("users").doc(userObject.id).delete();
                 toast("Se ha eliminado el usuario " + userObject.email + " de la base de datos",{type:"error", autoClose: 3000});
             }
-        }
+        };
 
         const existeAdmin = async (idUser) => {
             const querySnapShot = await db.collection("admins").get();
             var existeAdmin = false;
-            querySnapShot.forEach(doc => {
+            querySnapShot.forEach((doc) => {
               if (String(doc.data().idUser.localeCompare(idUser)) === String(0)){
                 existeAdmin = true;
               }  
-            })
+            });
             return existeAdmin;
           };
 
-        const admin= async (userObject) =>{
+        const admin= async (userObject) => {
             if (await existeAdmin(userObject.id)) {
                 toast("El usuario " + userObject.email + " ya es administrador",{type:"error", autoClose: 3000});
             }
@@ -63,12 +63,12 @@ export const AdminUser = () => {
             const adminUser = {
                 emailUser: userObject.email,
                 idUser: userObject.id
-            }
+            };
             await db.collection("admins").doc().set(adminUser);
             toast("El usuario " + userObject.email + " se ha añadido al grupo de administradores",{type:"success", autoClose: 3000});
             }
             
-        }
+        };
     
     
         useEffect(() => {
@@ -81,7 +81,7 @@ export const AdminUser = () => {
                     <AdminUserForm {...{addOrEditUser, currentUser, users}}/>
                 </div>
                 <div className="col-md-42 p-2">
-                    {users.map((user) =>(
+                    {users.map((user) => (
                         <div className="card mb-1" key={user.id}>
                             <div className="card-body">
                                 <div className="d-flex justify-content-between">

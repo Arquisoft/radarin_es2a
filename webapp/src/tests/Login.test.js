@@ -10,21 +10,21 @@ import { BrowserRouter, Route } from "react-router-dom";
 let container;
 
 beforeEach(() => {
-  container = document.createElement("div")
+  container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
   document.body.removeChild(container);
   container = null;
-})
+});
 
 it("Login", () => {
   act(() => {
     ReactDOM.render(<Router>
       <Login />
     </Router>, container);
-  })
+  });
 
   expect(container).toBeTruthy();
 }) 

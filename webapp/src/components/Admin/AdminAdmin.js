@@ -13,7 +13,7 @@ export const AdminAdmin = () => {
             db.collection("admins").onSnapshot(
                 (querySnapshot) => {
                     const  docs=[];
-                    querySnapshot.forEach(doc => {
+                    querySnapshot.forEach((doc) => {
                         docs.push({...doc.data(), id: doc.id});
                     });
                 setUsers(docs);
@@ -53,7 +53,7 @@ export const AdminAdmin = () => {
                     )}
                 </div>
             </div>
-        )
+        );
     }
     
     export default AdminAdmin;

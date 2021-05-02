@@ -12,18 +12,18 @@ export const AdminUserForm= (props) => {
 
     const [values, setValues]  = useState(initialStateValues);
 
-    const handleInputChange = e => {
+    const handleInputChange = (e) => {
         const {name, value} = e.target;
         setValues({...values, [name]: value});
         
-    }
+    };
 
 
-    const handleSubmit= e => {
+    const handleSubmit= (e) => {
         e.preventDefault();
         props.addOrEditUser(values);
         setValues({...initialStateValues});
-    }
+    };
     
 
     const getUserById = async (id) => {
@@ -36,7 +36,7 @@ export const AdminUserForm= (props) => {
         if(props.currentUser=== ""){
             setValues({...initialStateValues});
         }else{
-            getUserById(props.currentUser)
+            getUserById(props.currentUser);
         }
     },[props.currentUser]
     );
@@ -93,7 +93,7 @@ export const AdminUserForm= (props) => {
             </button> 
         </form> 
     </div> 
-    )
+    );
 };
 
 export default AdminUserForm;

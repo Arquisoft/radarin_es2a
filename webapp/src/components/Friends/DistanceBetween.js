@@ -36,7 +36,7 @@ export const DistanceBetween = (props) => {
                             coordTemp1.lat=element.data().lat;
                             coordTemp1.lng=element.data().lng;
                         }
-                        if(element.data().email==friendEmail){
+                        if(element.data().email===friendEmail){
                             coordTemp2.lat=element.data().lat;
                             coordTemp2.lng=element.data().lng;
                         }
@@ -45,12 +45,12 @@ export const DistanceBetween = (props) => {
                     setCoord2(coordTemp2);
                 }
                 
-            )
-    }
+            );
+    };
     
 
     useEffect(() => {
-        loadPositions()
+        loadPositions();
     }, []);
 
         return (<h4>{getDistanciaAmigo()}</h4>);

@@ -4,7 +4,7 @@ import App from "./App";
 
 
 afterAll(cleanup);
-describe("<App />",()=>{
+describe("<App />", () => {
   
     test("renders without crashing", () => {
         const { getByText } = render(<App />);

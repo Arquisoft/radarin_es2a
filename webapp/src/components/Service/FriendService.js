@@ -4,7 +4,7 @@ import {toast } from "react-toastify";
   const existeUsuario = async (idAmigo) => {
     const querySnapShot = await db.collection("users").get();
     var existeUsuario = false;
-    querySnapShot.forEach(doc => {
+    querySnapShot.forEach((doc) => {
       if (String(doc.data().email.localeCompare(idAmigo)) === String(0) || (String(doc.data().pod.localeCompare(idAmigo)) === String(0))) {
         existeUsuario = true;
       }

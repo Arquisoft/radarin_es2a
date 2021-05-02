@@ -28,7 +28,7 @@ export const ChatRoom = (props) => {
             .onSnapshot(
                 (querySnapshot) => {
                     const docs = [];
-                    querySnapshot.forEach(element => {
+                    querySnapshot.forEach((element) => {
                         if(element.data().friend===friend){
                             docs.push({ ...element.data(), id: element.id });
                         }
@@ -36,7 +36,7 @@ export const ChatRoom = (props) => {
                             docs.push({ ...element.data(), id: element.id });
                         }
                     });
-                    let sorted = docs.sort((a, b) => (a.date > b.date) ? 1 : -1)
+                    let sorted = docs.sort((a, b) => (a.date > b.date) ? 1 : -1);
                     if(sorted.length>15){
                         sorted = sorted.slice(-15);
                     }
@@ -59,32 +59,32 @@ export const ChatRoom = (props) => {
             user: usuario,
             text: messageToSend,
             date: fecha
-        }
+        };
         await db.collection("messages").doc().set(messageObject);
         setMessageToSend("");
-    }
+    };
 
     function MessageList() {
         actualizarUsuario();
         const messageList = messages.map((message) => (
             <Message text={message.text} session={usuario} messageSender={message.user}></Message>)
-        )
+        );
         return (
             <div>{messageList}</div>
-        )
+        );
 
-    };
+    }
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         if(messageToSend!==""){
         addMessage(messageToSend);
         }
-    }
+    };
 
     const handleChange = (e) => {
         setMessageToSend(e.target.value);
-    }
+    };
 
 
     return (
@@ -112,6 +112,6 @@ export const ChatRoom = (props) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 export default ChatRoom;

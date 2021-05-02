@@ -12,6 +12,7 @@ import DistanceBetween from "./DistanceBetween";
 import {eliminarAmigo,existeUsuario} from "../Service/FriendService";
 import emailjs from "emailjs-com";
 import {notificaAmigoCercano} from "./DistValue";
+import { watchLocation } from "../Service/LocationService";
 
 
 
@@ -45,10 +46,10 @@ function Friends() {
 
 
   async function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  function SendEmail(destinatario, correoDestinatario) {
+  function sendEmail(destinatario, correoDestinatario) {
     //const webId = useWebId();
     //e.preventDefault();
     var Params ={
@@ -62,10 +63,11 @@ function Friends() {
       });
   }
 
-  function Correo(idAmigo){
+  function correo(idAmigo){
     let correo = prompt("Introduce el correo de tu amigo","amigo@amigo.com");
+    if (correo !== undefined){
     if(correo.includes("@")){
-      SendEmail(idAmigo, correo);
+      sendEmail(idAmigo, correo);
       toast.info("Has enviado la invitación correctamente", {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 2500
@@ -78,6 +80,7 @@ function Friends() {
       });
     }
   }
+  }
 
   const getAmigos = async () => {
     if (window.sessionStorage.getItem("user") === null){
@@ -86,7 +89,7 @@ function Friends() {
     
     db.collection("amigos").onSnapshot((querySnapShot) => {
       const docs = [];
-      querySnapShot.forEach(doc => {
+      querySnapShot.forEach((doc) => {
         if (String(doc.data().usuario1.localeCompare(usuarioActivo)) === String(0)) {
           docs.push({ nombre: doc.data().usuario2, id: doc.id });
           notificaAmigoCercano(doc.data().usuario2,[]);
@@ -155,12 +158,12 @@ const  NavigateToMessages = (id) => {
     history.push("/mensajes/"+ id);
     history.go(0);
   }
-}
+};
 
 const  NavigateToMap = (id) => {
   history.push("/map/"+id);
   history.go(0);
-}
+};
 
 function comprobarUsuario(idUsuario){
   
@@ -179,7 +182,7 @@ return existeUsuario;
 function existePod(idUsuario){
   var existePod = false;
  
-  pods.forEach(usuario => {
+  pods.forEach((usuario) => {
     
     if (String(usuario.nombre.localeCompare(idUsuario)) ===String(0)){
         existePod = true;
@@ -222,7 +225,7 @@ function comprobarAmigo(idUsuario){
   else {
     return false;
   }
-};
+}
 
 const addFriend = async (idAmigo) => {
     
@@ -319,7 +322,7 @@ const Card =  (props) => {
         </h4>
         <center>
           <div className="botones">
-          <button className="btn btn-light" id="botonOpcion" data-testId="button" onClick={() => Correo(friend)}>Invitar a usar radarín</button>
+          <button className="btn btn-light" id="botonOpcion" data-testId="button" onClick={() => correo(friend)}>Invitar a usar radarín</button>
           <Link href={props.nombre} className="btn btn-light" id="botonOpcion" data-testId="link">
                       <i className="material-icons">person</i>
           </Link>
@@ -340,6 +343,7 @@ const Card =  (props) => {
   useEffect(() => {
     getUsuarios();
     getAmigos();
+    watchLocation();
   }, []);
 
 
@@ -364,7 +368,7 @@ const Card =  (props) => {
 
           <div className="col-md-16 p-2">
           
-            {amigos.map(amigo => (
+            {amigos.map((amigo) => (
               <div class="card bg-info text-white mb-2" >
                 
                 <div className="card-body">

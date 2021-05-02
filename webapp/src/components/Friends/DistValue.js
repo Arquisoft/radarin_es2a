@@ -24,7 +24,9 @@ import sinPerfil from "../../images/sinPerfil.png";
                             coordTemp2.lat=element.data().lat
                             coordTemp2.lng=element.data().lng
                         }
-                    });
+                    });/*podImage(friendEmail).then((image) =>{
+                        notifica("a " + kmFormat + " km de ti.", friendEmail, image)
+                    });*/
                     
                             if (!(coordTemp1.lat == 0 || coordTemp1.len == 0 || coordTemp2.lat == 0 || coordTemp2 == 0)){
                             var km = distance(coordTemp1, coordTemp2)
@@ -32,7 +34,7 @@ import sinPerfil from "../../images/sinPerfil.png";
                             if (!avisados.some(f => (f === friendEmail)) && kmFormat > 0 && kmFormat < 2){
                                 avisados.push(friendEmail);
                                 podImage(friendEmail).then((image) =>{
-                                    notifica(friendEmail + "\na " + kmFormat + " km de ti.\t\n(Ver mapa)", friendEmail, image)
+                                    notifica("a " + kmFormat + " km de ti.", friendEmail, image)
                                 });
                                 
                             }
@@ -40,7 +42,7 @@ import sinPerfil from "../../images/sinPerfil.png";
                                 if(!avisados.some(f => (f === friendEmail)) && kmFormat >= 0 && kmFormat < 0.2){
                                     avisados.push(friendEmail);
                                     podImage(friendEmail).then((image) =>{
-                                        notifica(friendEmail + "\n posición común. \n(Ver mapa)", friendEmail, podImage(friendEmail));
+                                        notifica("posición común.", friendEmail, image);
                                     });
                                 }
                         }
@@ -52,44 +54,34 @@ import sinPerfil from "../../images/sinPerfil.png";
 
     const podImage = async (friendEmail) => {
         const querySnapShot = await db.collection("users").get();
-        const webId = "";
+        var webId = "";
         querySnapShot.forEach(doc => {
           if (String(doc.data().pod.localeCompare(friendEmail)) === String(0)){
             webId = doc.data().pod;
           }  
         });
-        const image = null;
+        var image = null;
         if (webId != "")
             image = data[webId].vcard_hasPhoto;
         return image;
     }
 
     
-    const msgDistintaPos = (friendEmail,km,image) => (
+    const msg = (mensaje, friendEmail,image) => (
         <div>
         <div class="left">
-            {
-                image===null?
-                    <img src={sinPerfil} style={{ width: "70px", high: "70px" }}/>:<Image src={image} style={{ width: "70px", high: "70px" }}/>
-            }
+        <Image src={image} defaultSrc={sinPerfil} style={{ width: "70px", high: "70px" }}/> 
         </div>
         <div class="right">
             <p style={{fontWeight:"bold", margin:"0"}}>{friendEmail}</p>
-            <p style={{margin:"0"}}> a {km} km de ti. </p>
+            <p style={{margin:"0"}}> {mensaje} </p>
             <p style={{margin:"0"}}> (Ver mapa) </p>
         </div>
         </div>
       )
-      const msgMismaPos = (friendEmail) => (
-        <div>
-            <p></p>
-         <h6> My title</h6>
-         <p> Some test </p>
-        </div>
-      )
 
     async function notifica(mensaje, friendEmail,image){
-        toast(msgDistintaPos(friendEmail,5,image), {
+        toast(msg(mensaje, friendEmail,image), {
             position: "top-right",
             autoClose: 27000,
             hideProgressBar: false,
