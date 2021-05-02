@@ -3,10 +3,10 @@ import Nav from "react-bootstrap/Nav";
 import {AuthButton} from "@solid/react";
 import {LoggedIn, LoggedOut} from "@solid/react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCommentSlash, faPeopleArrows} from "@fortawesome/free-solid-svg-icons";
+import {faPeopleArrows} from "@fortawesome/free-solid-svg-icons";
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
 import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
+import {Slider} from '@material-ui/core';
 
 function desconectar(){
     window.sessionStorage.setItem("desconecto","si");
@@ -61,6 +61,7 @@ export default class NavBar extends Component {
                     <Button color="secondary" onClick={this.cerrarModal}>Cerrar</Button>
                 </ModalFooter>
             </Modal>
+    
     
 
         return(
