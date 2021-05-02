@@ -10,7 +10,25 @@ import {getSolidDataset,getThing,getStringNoLocale} from "@inrupt/solid-client";
 import {FOAF} from "@inrupt/vocab-common-rdf";
 
 
-    async function notificaAmigoCercano(friendEmail, avisados) { console.log(window.sessionStorage.getItem("radarDistancia"))
+    async function notificacionTodosAmigos() {
+        var usuarioActivo = window.sessionStorage.getItem("user");
+        if (window.sessionStorage.getItem("user") === null)
+            usuarioActivo= window.sessionStorage.getItem("pod");
+
+            db.collection("amigos").onSnapshot((querySnapShot) => {
+                querySnapShot.forEach((doc) => {
+                  if (String(doc.data().usuario1.localeCompare(usuarioActivo)) === String(0)) {
+                    notificaAmigoCercano(doc.data().usuario2,[]);
+                  }
+                  if ((String(doc.data().usuario2.localeCompare(usuarioActivo)) === String(0))) {
+                    notificaAmigoCercano(doc.data().usuario1,[]);
+                  }
+                });
+            });
+    }
+
+
+    async function notificaAmigoCercano(friendEmail, avisados) { 
         const userEmail = await window.sessionStorage.getItem("user")
         await db.collection("locations").
             onSnapshot(
@@ -109,4 +127,4 @@ import {FOAF} from "@inrupt/vocab-common-rdf";
     }
 
     
-    export {notificaAmigoCercano};
+    export {notificacionTodosAmigos};

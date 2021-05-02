@@ -7,7 +7,7 @@ import UserBar from "./UserBar";
 import HomeBar from "./HomeBar";
 import AdminBar from "./AdminBar";
 import {db} from "../../api/firebase";
-import {  LoggedIn, LoggedOut} from "@solid/react";
+import {LoggedIn, LoggedOut} from "@solid/react";
 
 
 
@@ -48,7 +48,7 @@ export default class NavBar extends Component {
             <Navbar bg="primary" variant="dark">
                 <div className="container">
                     <Navbar.Brand>Radarin</Navbar.Brand>
-                    <Nav.Link href="/" className="navbar-brand">
+                    <Nav.Link href="/home" className="navbar-brand">
                         <i className="material-icons">
                             <FontAwesomeIcon icon={faHome} size="1x"/></i>
                     </Nav.Link>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect  } from "react";
-import "bootstrap/dist/css/bootstrap.css";
 
 import { addUserPos } from "../components/Service/LocationService";
 import imagen from "../home_image.jpg";
@@ -54,6 +53,7 @@ function Home() {
 
 
   useEffect( () => {
+    //notificacionTodosAmigos();
     registroUsuarioPod();
     navigator.geolocation.getCurrentPosition(success, error, options);
   });
