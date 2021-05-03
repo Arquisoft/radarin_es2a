@@ -48,11 +48,12 @@ defineFeature(feature, test => {
             password: password,
          })
          await expect(page).toClick('button', { text: 'Confirmar' })
-         await page.waitFor(500);
-         await expect(page).toMatch('Ver el codigo de la aplicacion en github')
+         
       });
 
       then("The home window should be shown", async() => {
+         await page.waitFor(1000);
+         await expect(page).toMatch('Ver el codigo de la aplicacion en github')
       });
 
    });

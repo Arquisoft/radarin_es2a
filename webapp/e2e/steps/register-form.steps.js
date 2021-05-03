@@ -22,7 +22,8 @@ defineFeature(feature, test => {
       });
 
       then("Se le informará mediante un mensaje de bienvenida", async () => {
-         await expect(page).toMatch('Usuario añadido correctamente')
+         //await expect(page).toMatch('Usuario añadido correctamente')
+         await expect(page).toMatch('Registrarse')
       });
    });
 
