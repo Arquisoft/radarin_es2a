@@ -45,13 +45,13 @@ export default class NavBar extends Component {
                     {
                         this.state.session?
                             <div>
-                            <Nav.Link href="/home" className="navbar-brand" style={{float:"left"}}>
+                            <Nav.Link href="/" className="navbar-brand" style={{float:"left"}}>
                                 <i className="material-icons">
                                     <FontAwesomeIcon icon={faHome} size="1x"/></i>
                             </Nav.Link>
                             </div>
                             :
-                            <Nav.Link href="/" className="navbar-brand">
+                            <Nav.Link href="/home" className="navbar-brand">
                                 <i className="material-icons">
                                     <FontAwesomeIcon icon={faHome} size="1x"/></i>
                             </Nav.Link>
