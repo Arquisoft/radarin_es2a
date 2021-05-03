@@ -296,6 +296,10 @@ const Card =  (props) => {
   //Si la usa y somos amigos ya lo muestra en la primera lista, por lo que aquí no lo mostramos
   
   var friend = props.nombre.substring(1,props.nombre.length-1);
+  
+  if (!friend.includes("profile/card#me"))
+      friend = friend + "/profile/card#me";
+  
   var existeUsuario = comprobarUsuario(friend);
   var existeAmigo = comprobarAmigo(friend);
   if (existeUsuario){
