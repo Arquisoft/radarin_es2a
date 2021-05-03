@@ -4,12 +4,14 @@ import { toast } from "react-toastify";
 import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashAlt, faEdit} from "@fortawesome/free-solid-svg-icons";
+import {getSolidDataset,getThing,getStringNoLocale} from "@inrupt/solid-client";
+import {FOAF} from "@inrupt/vocab-common-rdf";
+import { Button } from "reactstrap";
 
 export const AdminUser = () => {
 
         const [users, setUsers] = useState([]);
         const [currentUser, setCurrentUser] =useState(""); // elemento seleccionado
-        const usuarioActivo = window.sessionStorage.getItem("user");
     
         const addOrEditUser = async (userObject) => {
             if(currentUser === ""){
@@ -24,9 +26,7 @@ export const AdminUser = () => {
         };
     
     
-        const getUsers = async() => {
-            //get los obtiene pero no los actualiza automaticamente
-            //const querySnapshot = await db.collection('links').get();
+        const getUsers = async(option) => {
             db.collection("users").onSnapshot(
                 (querySnapshot) => {
                     const  docs=[];
@@ -69,6 +69,13 @@ export const AdminUser = () => {
             }
             
         };
+
+        async function getName(usuario) {
+            const myDataset = await getSolidDataset(usuario.pod.slice(0, -3));
+            const profile = getThing(myDataset, usuario.pod);
+            const fn = getStringNoLocale(profile, FOAF.name);
+            return fn;
+        }
     
     
         useEffect(() => {
@@ -80,22 +87,38 @@ export const AdminUser = () => {
                 <div className="col-md-42 p-2">
                     <AdminUserForm {...{addOrEditUser, currentUser, users}}/>
                 </div>
+
                 <div className="col-md-42 p-2">
                     {users.map((user) => (
                         <div className="card mb-1" key={user.id}>
                             <div className="card-body">
-                                <div className="d-flex justify-content-between">
-                                    <h4>{user.email}</h4>
-                                    <div> 
-                                        <i className="material-icons" style={{margin: "0.5em", paddingLeft: 0, listStyle: "none"}}
-                                           onClick={() => setCurrentUser(user.id)}><FontAwesomeIcon icon={faEdit} size="1x"/></i>
-                                        <i className="material-icons text-danger" onClick={() => onDeleteUser(user)}>
-                                           <FontAwesomeIcon icon={faTrashAlt} size="1x"/></i>
+                                {
+                                    user.email==""?
+                                    <div>
+                                        <div className="d-flex justify-content-between">
+                                            <h4>{user.pod}</h4>
+                                            <div> 
+                                                <i className="material-icons text-danger" onClick={() => onDeleteUser(user)}>
+                                                    <FontAwesomeIcon icon={faTrashAlt} size="1x"/></i>
+                                            </div>
+                                        </div>
+                                        <a href={user.pod} target="_blank" rel="react-hooks/exhaustive-deps">Ver POD</a>
                                     </div>
-                                </div>
-                                <p>Contraseña: {user.password}</p>
-                                <a href={user.pod + "/profile/card#me"} target="_blank" rel="react-hooks/exhaustive-deps">Ver POD</a>
-                                <br></br><br></br>
+                                :
+                                    <div>
+                                        <div className="d-flex justify-content-between">
+                                            <h4>{user.email}</h4>
+                                            <div> 
+                                                <i className="material-icons" style={{margin: "0.5em", paddingLeft: 0, listStyle: "none"}}
+                                                    onClick={() => setCurrentUser(user.id)}><FontAwesomeIcon icon={faEdit} size="1x"/></i>
+                                                <i className="material-icons text-danger" onClick={() => onDeleteUser(user)}>
+                                                    <FontAwesomeIcon icon={faTrashAlt} size="1x"/></i>   
+                                            </div>
+                                        </div>
+                                        <p>Contraseña: {user.password}</p>
+                                    </div>
+                                }
+                                <br></br>
                                 <button class="btn btn-dark" target="_blank" rel="react-hooks/exhaustive-deps" onClick={ () => admin(user)}>Hacer admin</button>
                             </div>
                         </div>
