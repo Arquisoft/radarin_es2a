@@ -6,40 +6,83 @@ defineFeature(feature, test => {
    beforeEach(async () => {
       await global.page.goto('http://localhost:3000/registrarse')
    })
-
-   test("The user is not registered in the site", ({ given, when, then }) => {
-      given("An unregistered user", () => {
+   
+   test("El usuario no está registrado", ({ given, when, then }) => {
+      given("Un usuario sin registrar", () => {
          email = "newuser@test.com"
-         username = "newuser"
+         password = "newuser"
       });
 
-      when("I fill the data in the form and press submit", async() =>  {
+      when("Rellena el formulario y pulsa Registrarse", async () => {
          await expect(page).toMatch('Registrarse')
          await expect(page).toFillForm('form[name="register"]', {
             email: email,
          })
          await expect(page).toClick('button', { text: 'Registrarse' })
+      });
+
+      then("Se le informará mediante un mensaje de bienvenida", async () => {
+         //await expect(page).toMatch('Usuario añadido correctamente')
          await expect(page).toMatch('Registrarse')
       });
-
-      then("A welcome message should be shown in the screen", async() => {
-
-      });
    });
 
-   test("The user is already registered in the site", ({ given, when, then }) => {
+   test("El usuario ya está registrado", ({ given, when, then }) => {
 
-      given("An already registered user", () => {
+      given("Un usuario registrado", () => {
+         email = "amigo3@email.com"
+         password = "otheruser"
+         pod = " "
       });
 
-      when("I fill the data in the form and press submit", () => {
+      when("Rellena el formulario y pulsa Registrarse", async () => {
+         await expect(page).toMatch('Registrarse')
 
+         await expect(page).toFillForm('form[name="register"]', {
+            email: email,
+            password: password,
+            pod: pod,
+         })
+         await expect(page).toClick('button', { text: 'Registrarse' })
+
+         await expect(page).toFillForm('form[name="register"]', {
+            email: email,
+            password: password,
+            pod: pod,
+         })
+         await expect(page).toClick('button', { text: 'Registrarse' })
       });
 
-      then("An error message should be shown in the screen", () => {
+      then("Se le informará mediante un mensaje de error", async () => {
+         await expect(page).toMatch('Ya existe un usuario con ese email')
       });
 
    });
+
+   test("El usuario introduce campos vacíos", ({ given, when, then }) => {
+
+      given("Un usuario cualquiera", () => {
+         email = ""
+         password = " "
+         pod = " "
+      });
+
+      when("Rellena el formulario con campos vacíos", async () => {
+         await expect(page).toMatch('Registrarse')
+         await expect(page).toFillForm('form[name="register"]', {
+            email: email,
+            password: password,
+            pod: pod,
+         })
+         await expect(page).toClick('button', { text: 'Registrarse' })
+      });
+
+      then("Se le informará mediante un mensaje de error", async () => {
+         await expect(page).toMatch('No pueden existir campos vacíos')
+      });
+
+   });
+
 });
 
 
