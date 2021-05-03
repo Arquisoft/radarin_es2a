@@ -17,7 +17,7 @@ defineFeature(feature, test => {
 
       when("Rellena el formulario para añadir nuevo usuario que ya existe y pulsa Guardar", async () => {
          await expect(page).toMatch('INICIAR SESIÓN')
-         await expect(page).toFillForm('form[name="login"]', {
+         await expect(page).toFillForm('form[name="logIn"]', {
             email: email,
             password: password,
          })
