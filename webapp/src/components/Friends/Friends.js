@@ -289,8 +289,6 @@ const addFriend = async (idAmigo) => {
   }
 };
 
-
-
 const Card =  (props) => {
   //Tres posibles escenarios: El usuario de solid no usa la aplicación, la usa pero no somos amigos o la usa y somos amigos.
   //Si la usa y somos amigos ya lo muestra en la primera lista, por lo que aquí no lo mostramos
@@ -299,7 +297,7 @@ const Card =  (props) => {
   
   if (!friend.includes("profile/card#me"))
       friend = friend + "/profile/card#me";
-  
+
   var existeUsuario = comprobarUsuario(friend);
   var existeAmigo = comprobarAmigo(friend);
   if (existeUsuario){
