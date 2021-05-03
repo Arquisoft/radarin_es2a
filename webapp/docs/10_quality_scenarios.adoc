@@ -2,7 +2,7 @@
 == Requerimientos de Calidad
 
 === Árbol de Calidad
-[plantuml, quality-tree, png]
+[plantuml, quality-tree, jpg]
 
 === Escenarios de calidad
 
@@ -10,12 +10,12 @@
 [options="header",cols="1,2,4,1,1"]
 |===
 |Referencia|Atributo|Escenario|Prioridad|Dificultad
-| EC.1 | Privacidad | Los datos personales de los usuarios se almacenan en su totalidad de manera descentralizada en PODs. | Alta| Media
-| EC.2 | Privacidad | Sólo se accederá a los datos imprescindibles para el correcto funcionamiento de la aplicación, localización y fecha/hora, (¿Contactos?). | Alta| Media
+| EC.1 | Privacidad | Los datos personales de los usuarios se almacenan en Firebase y en el POD. | Alta| Media
+| EC.2 | Privacidad | Sólo se accederá a los datos imprescindibles para el correcto funcionamiento de la aplicación (Lista de amigos y foto de perfil). | Alta| Media
 | EC.3 | Usabilidad | La documentación del proyecto se mantendrá actualizada y coherente con el proyecto. Se realizarán cambios en el momento en que algo cambie, y se comprobará que esto se cumple con una revisión cada dos semanas. | Media| Alta
-| EC.4 | Usabilidad | La aplicación debe ser intuitiba y fácil de utilizar.| Media| Media
-| EC.5 | Accesibilidad | La aplicación deberá pasar el nivel AAA en tawdis.net | Media| Alta
+| EC.4 | Usabilidad | La aplicación debe ser intuitiva y fácil de utilizar.| Media| Media
+| EC.5 | Accesibilidad | La aplicación deberá pasar el nivel AAA en tawdis.net | Baja| Alta
 | EC.6 | Portabilidad | Funcionalidades correspondientes en PC y dispositivo móvil disponibles siempre que la aplicación esté desplegada. (Ver: link:01_introduction_and_goals.adoc[Vista de requisitos] ) | Alta| Alta
-| EC.7 | Fiabilidad | Se mantendrá una nota en codacy mayor o igual a 'B', para asegurar la calidad del código. | Media| Media
-| EC.8 | Fiabilidad | Se mantendrá una cobertura de código mayor del 30 % en codecov. | Media| Media
+| EC.7 | Fiabilidad | Se mantendrá una nota en codacy mayor o igual a 'B', para asegurar la calidad del código. | Alta| Alta
+| EC.8 | Fiabilidad | Se mantendrá una cobertura de código mayor del 30 % en codecov. | Alta| Media
 |===
