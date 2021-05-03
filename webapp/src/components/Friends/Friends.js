@@ -178,9 +178,11 @@ return existeUsuario;
 
 function existePod(idUsuario){
   var existePod = false;
+  
+
+
  
   pods.forEach((usuario) => {
-    
     if (String(usuario.nombre.localeCompare(idUsuario)) ===String(0)){
         existePod = true;
     }
@@ -282,10 +284,10 @@ const addFriend = async (idAmigo) => {
 const Card =  (props) => {
   //Tres posibles escenarios: El usuario de solid no usa la aplicación, la usa pero no somos amigos o la usa y somos amigos.
   //Si la usa y somos amigos ya lo muestra en la primera lista, por lo que aquí no lo mostramos
-  
   var friend = props.nombre.substring(1,props.nombre.length-1);
   var existeUsuario = comprobarUsuario(friend);
   var existeAmigo = comprobarAmigo(friend);
+  
   if (existeUsuario){
     if (existeAmigo===false){
       return (
