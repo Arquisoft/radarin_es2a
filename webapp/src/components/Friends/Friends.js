@@ -12,7 +12,8 @@ import DistanceBetween from "./DistanceBetween";
 import {eliminarAmigo,existeUsuario} from "../Service/FriendService";
 import emailjs from "emailjs-com";
 import { watchLocation } from "../Service/LocationService";
-
+import {getSolidDataset,getThing,getStringNoLocale} from "@inrupt/solid-client";
+import {FOAF} from "@inrupt/vocab-common-rdf";
 
 
 
@@ -48,18 +49,29 @@ function Friends() {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
+  async function getName(webId) {
+    const myDataset = await getSolidDataset(webId.slice(0, -3));
+    const profile = getThing(myDataset, webId);
+    const fn = getStringNoLocale(profile, FOAF.name);
+    return fn;
+}
+
   function sendEmail(destinatario, correoDestinatario) {
-    //const webId = useWebId();
-    //e.preventDefault();
-    var Params ={
-      from_name:id,
-      to_name:destinatario,
-      to_address:correoDestinatario
-    };
-    emailjs.send("service_nlb79jf", "template_6mokhp4", Params, "user_HhFnythpqGU2PbbLkk938")
-      .then((result) => {
-      }, (error) => {
-      });
+
+    getName(id).then((fromName) => {
+      getName(destinatario).then((toName) => {
+        var Params ={
+          from_name:fromName,
+          to_name:toName,
+          to_address:correoDestinatario
+        };
+        emailjs.send("service_nlb79jf", "template_6mokhp4", Params, "user_HhFnythpqGU2PbbLkk938")
+          .then((result) => {
+          }, (error) => {
+          });
+      })
+    })
+
   }
 
   function correo(idAmigo){
