@@ -13,8 +13,32 @@ export const AdminUser = () => {
         const [users, setUsers] = useState([]);
         const [currentUser, setCurrentUser] =useState(""); // elemento seleccionado
     
+
+        const existeUsuario = async (emailUsuario) => {
+            const querySnapShot = await db.collection("users").get();
+            var existeUsuario = false;
+            querySnapShot.forEach((doc) => {
+                if (String(doc.data().email.localeCompare(emailUsuario))=== String(0)){
+                    existeUsuario = true;
+                    }
+            });
+            if (existeUsuario){
+                return true;
+            }
+            else{
+                return false;
+            }
+          };
+          
         const addOrEditUser = async (userObject) => {
-            if(currentUser === ""){
+            if(await existeUsuario(userObject.email)===true){
+                toast("Ya existe un usuario con ese email", {
+                    position: toast.POSITION.TOP_CENTER,
+                    type: "error",
+                    autoClose: 3000,
+                });
+            }
+            else if(currentUser === ""){
                 await db.collection("users").doc().set(userObject);
                 toast("Se ha añadido el usuario " + userObject.email + " a la base de datos",{type:"success"});
             }

@@ -46,7 +46,7 @@ export const AdminUserForm= (props) => {
         <div> 
         <br></br> 
         <h1>Gestor de usuarios:</h1> 
-        <form className="card card-body" onSubmit={handleSubmit}> 
+        <form name="userForm" className="card card-body" onSubmit={handleSubmit}> 
             <p>{props.currentUser === "" ? "Nuevo usuario:" : "Editar usuario:"}</p> 
             <div className="form-group input-group"> 
                 <div className="input-group-text bg-light"> 
