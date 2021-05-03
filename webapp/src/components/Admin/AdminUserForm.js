@@ -74,19 +74,6 @@ export const AdminUserForm= (props) => {
                     value={values.password} 
                 /> 
             </div> 
-            <div className="form-group input-group"> 
-                <div className="input-group-text bg-light"> 
-                    <i>POD:</i> 
-                </div> 
-                <input  
-                    type="text"  
-                    className="form-control"  
-                    name="pod"  
-                    placeholder="Dirección del POD" 
-                    onChange={handleInputChange} 
-                    value={values.pod} 
-                /> 
-            </div> 
 
             <button className="btn btn-primary btn-block"> 
                 {props.currentUser === "" ? "Guardar" : "Actualizar"} 
