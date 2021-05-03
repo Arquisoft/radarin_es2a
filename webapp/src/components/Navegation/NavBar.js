@@ -8,7 +8,6 @@ import HomeBar from "./HomeBar";
 import AdminBar from "./AdminBar";
 import {db} from "../../api/firebase";
 import {LoggedIn, LoggedOut} from "@solid/react";
-import {Image} from "@solid/react";
 
 
 export default class NavBar extends Component {
